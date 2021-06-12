@@ -26,6 +26,7 @@ import { MyOrdersComponent } from './Components/Client/my-orders/my-orders.compo
 import { SavedCardsComponent } from './Components/Client/saved-cards/saved-cards.component';
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
 import { ClientProfileComponent } from './Components/Client/client-profile/client-profile.component';
+import { SystemReviewComponent } from './Components/Review/system-review/system-review.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ClientProfileComponent } from './Components/Client/client-profile/clien
     MyOrdersComponent,
     SavedCardsComponent,
     NotFoundPageComponent,
-    ClientProfileComponent
+    ClientProfileComponent,
+    SystemReviewComponent
   ],
   imports: [
     BrowserModule,

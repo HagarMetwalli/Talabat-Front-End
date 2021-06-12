@@ -7,6 +7,7 @@ import { MyOrdersComponent } from './Components/Client/my-orders/my-orders.compo
 import { SavedAddressesComponent } from './Components/Client/saved-addresses/saved-addresses.component';
 import { SavedCardsComponent } from './Components/Client/saved-cards/saved-cards.component';
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
+import { SystemReviewComponent } from './Components/Review/system-review/system-review.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'account-info', component: AccountInfoComponent },
   { path: 'saved-addresses', component: SavedAddressesComponent },
   { path: 'saved-cards', component: SavedCardsComponent },
-
+  { path: 'system-review', component: SystemReviewComponent },
   { path: '**', component: NotFoundPageComponent }
 ];
 
