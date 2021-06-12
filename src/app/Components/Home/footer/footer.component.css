@@ -1,0 +1,356 @@
+html, body { height: 100%; }
+
+html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 150%;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+}
+
+body { margin: 0; }
+
+
+.locate-map {
+    width: 24px;
+    position: relative;
+    top: -7px;
+    right: 40px!important;
+    height: 24px;
+    vertical-align: middle;
+    border: 0;
+    background-color: #fff;
+}
+
+.locate-map>img {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.search-action {
+    width: 200px;
+    height: 52px;
+    background-color: #ff5a00;
+    line-height: 1.25;
+    margin-left: 15px;
+    border-radius: 8px;
+    outline: none;
+    border: 0;
+    font-weight: 400;
+    font-size: 18px;
+    cursor: pointer;
+    color: #fff;
+}
+
+#stores-cards  {
+    position: relative;
+    top: 150px;
+    left: 7%;
+    width: 1267px;
+    
+}
+
+.left-cards {
+    display: flex;
+    -webkit-box-pack: justify;
+
+}
+
+.store-card {
+    display: flex;
+    width: 44%;
+    height: 210px;
+    border-radius: 8px;
+    margin: 0px 30px 32px 0px;
+    /* border: 1px solid #ff5a00 ; */
+}
+
+.store-card .store-img {
+    width: 50%;
+    max-width: 200px;
+    border-radius: 8px 0 0 8px;
+    position: relative;
+}
+
+.store-card .store-img img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 169px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 0 0 8px;
+}
+
+.store-def-out {
+    border: 1px solid #ffc6a7;
+    width: 60%;
+    padding: 5px;
+    /* border: 1px solid #e5e5e5; */
+    border-radius: 0 8px 8px 0;
+    border-left: 0;
+    position: relative;
+    padding-bottom: 42px;
+    margin-left: -32px;
+}
+
+.store-card .store-def {
+    
+    margin-left: 25px;
+}
+
+.store-card .store-def h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #262626;
+}
+
+.store-card .store-def p {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 21px;
+    color: #262626;
+}
+
+.btn-explore {
+    background-color: #ff5a00;
+    border: none;
+    width: 40%;
+    height: 40px;
+    border-radius: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+}
+
+#partner-and-career {
+    position: relative;
+    top: 200px;
+    display: block;
+    -webkit-box-pack: justify;
+    text-align: center;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    padding: 54px 0 92px 0px;
+}
+
+.partner-and-career-header {
+    display: block;
+}
+
+.partner-and-career-header .header-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 32px;
+    color: #262626;
+    line-height: 1.3;
+    margin: 12px;
+}
+
+.partner-and-career-header .header-subtitle {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 21px;
+    color: #262626;
+}
+
+.partner-and-career-cards {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-evenly;
+}
+
+.partner-and-career-cards .partner-card {
+    min-width: 400px;
+}
+
+.partner-and-career-cards .partner-card .partner-img img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.partner-and-career-cards .partner-def .header-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #262626;
+}
+
+.partner-and-career-cards .partner-def .header-subtitle {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 21px;
+    color: #262626;
+}
+
+.btnPartnerExplore {
+    background-color: #ff5a00;
+    border: none;
+    min-width: 180px;
+    height: 45px;
+    border-radius: 8px;
+    line-height: 1.25;
+    border-radius: 8px;
+    line-height: 1.25;
+    padding: 12px 20px!important;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    min-width: 150px;
+    border: none;
+}
+
+#app-stores {
+    position: relative;
+    top: 200px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: center;
+    padding: 54px 0 200px 0px;
+}
+
+.app-card .app-desc .header-title{
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #262626;
+    line-height: 1.3;
+}
+
+.app-card .app-desc .header-subtitle{
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 21px;
+    color: #262626;
+}
+
+
+
+
+
+
+footer {
+    height: 452px;
+    font-size: 17px;
+    color: #fff;
+    background-color: #1f2532;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.grid-footer {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.link-header {
+    font-weight: 700;
+    margin-bottom: 24px;
+    font-size: 16px;
+}
+
+.appStores {
+    display: flex;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+}
+
+.footer-upperline {
+    margin-bottom: 40px;
+}
+
+/* .footer-upperline a {
+    padding: 10px 0;
+    line-height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #FFF;
+} */
+
+
+hr {
+    opacity: 0.12;
+    background-color: #d8d8d8;
+}
+
+.footer-underline {
+    opacity: .6;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #fff;
+    display: flex;
+    margin-block-start: 40px;
+    margin-block-end: 40px;
+    text-align: unset !important;
+}
+
+.social-media {
+    width: 255px;
+    display: flex !important;
+    margin: 20px 0 0 -20px;
+    border-bottom: 1px solid #757575;
+    padding-bottom: 30px;
+}
+
+.footer-container {
+    padding: 0 0 0 80px;
+}
+
+.footer-links {
+    margin-bottom: 30px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    margin-right: 90px;
+    color: #a6a6a6;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.restaurants-trends a {
+    width: auto;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    padding: 10px 0 0 0;
+    font-size: 15px;
+    color: #ff5a00
+}
+
+.cuisines-trends a {
+    width: auto;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    padding: 10px 0 0 0;
+    font-size: 15px;
+    color: #ff5a00
+}
+
+.trend {
+    color: #a6a6a6;
+    font-size: 14px;
+}
+
+.cuisines-trends .more {
+    font-style: italic;
+    color: #a6a6a6;
+}
+
+.restaurants-trends .more {
+    font-style: italic;
+    color: #a6a6a6;
+}
