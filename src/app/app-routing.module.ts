@@ -68,7 +68,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'Payment', component: PaymentCardComponent },
 
-  //Partener
+  //partener
   { path: 'partener-login', component: PartenerLoginComponent },
   { path: 'partener-profile', component: PartenerComponent },
 
