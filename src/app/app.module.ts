@@ -1,8 +1,13 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TooltipModule  } from 'ngx-bootstrap/tooltip';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NavBarComponent } from './Components/Home/nav-bar/nav-bar.component';
@@ -28,14 +33,20 @@ import { NotFoundPageComponent } from './Components/not-found-page/not-found-pag
 import { ClientProfileComponent } from './Components/Client/client-profile/client-profile.component';
 import { SystemReviewComponent } from './Components/Review/system-review/system-review.component';
 import { FooterComponent } from './Components/Home/footer/footer.component';
+import { BsModalService,ModalModule } from 'ngx-bootstrap/modal';
+import { CommonModule } from '@angular/common';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckoutComponent,
+    NgModule,
     LoginComponent,
     NavBarComponent,
     OffersComponent,
+    HomePageComponent,
     PaymentCardComponent,
     RegisterationComponent,
     AllResturantsComponent,
@@ -60,10 +71,26 @@ import { FooterComponent } from './Components/Home/footer/footer.component';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
+    CommonModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    HttpClientModule,
+    HttpHeaders,
+    NgModule,
+    BrowserAnimationsModule,
+    //MatInputModule,
+    FormsModule,
+    //Ng2SearchPipeModule,
+    //NgxPaginationModule,
+    ModalModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCUzKQYbhsvR6K__DdrqYTJiSnuXpDNsWE',
+      libraries: ['places']
+    }),
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

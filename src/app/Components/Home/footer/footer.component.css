@@ -1,0 +1,117 @@
+footer {
+    height: 452px;
+    font-size: 17px;
+    color: #fff;
+    background-color: #1f2532;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.grid-footer {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.link-header {
+    font-weight: 700;
+    margin-bottom: 24px;
+    font-size: 16px;
+}
+
+.appStores {
+    display: flex;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+}
+
+.footer-upperline {
+    margin-bottom: 40px;
+}
+
+/* .footer-upperline a {
+    padding: 10px 0;
+    line-height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #FFF;
+} */
+
+hr {
+    opacity: 0.12;
+    background-color: #d8d8d8;
+}
+
+.footer-underline {
+    opacity: .6;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #fff;
+    display: flex;
+    margin-block-start: 40px;
+    margin-block-end: 40px;
+    text-align: unset !important;
+}
+
+.social-media {
+    width: 255px;
+    display: flex !important;
+    margin: 20px 0 0 -20px;
+    border-bottom: 1px solid #757575;
+    padding-bottom: 30px;
+}
+
+.footer-container {
+    padding: 0 0 0 80px;
+}
+
+.footer-links {
+    margin-bottom: 30px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    margin-right: 90px;
+    color: #a6a6a6;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.restaurants-trends a {
+    width: auto;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    padding: 10px 0 0 0;
+    font-size: 15px;
+    color: #ff5a00
+}
+
+.cuisines-trends a {
+    width: auto;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    padding: 10px 0 0 0;
+    font-size: 15px;
+    color: #ff5a00
+}
+
+.trend {
+    color: #a6a6a6;
+    font-size: 14px;
+}
+
+.cuisines-trends .more {
+    font-style: italic;
+    color: #a6a6a6;
+}
+
+.restaurants-trends .more {
+    font-style: italic;
+    color: #a6a6a6;
+}
