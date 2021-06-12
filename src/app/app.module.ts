@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { LoginComponent } from './Components/login/login.component';
-import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
+import { NavBarComponent } from './Components/Home/nav-bar/nav-bar.component';
 import { OffersComponent } from './Components/offers/offers.component';
 import { PaymentCardComponent } from './Components/payment-card/payment-card.component';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
@@ -15,7 +15,7 @@ import { ResturantMenuComponent } from './Components/Resturant/resturant-menu/re
 import { CartHeaderComponent } from './Components/Cart/cart-header/cart-header.component';
 import { CartContentComponent } from './Components/Cart/cart-content/cart-content.component';
 import { CartButtonsComponent } from './Components/Cart/cart-buttons/cart-buttons.component';
-import { HomePageComponent } from './Components/home-page/home-page.component';
+import { HomePageComponent } from './Components/Home/home-page/home-page.component';
 import { GoogleMapComponent } from './Components/Maps/google-map/google-map.component';
 import { PartenerComponent } from './Components/Partener/partener/partener.component';
 import { PartenerLoginComponent } from './Components/Partener/partener-login/partener-login.component';
@@ -27,6 +27,7 @@ import { SavedCardsComponent } from './Components/Client/saved-cards/saved-cards
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
 import { ClientProfileComponent } from './Components/Client/client-profile/client-profile.component';
 import { SystemReviewComponent } from './Components/Review/system-review/system-review.component';
+import { FooterComponent } from './Components/Home/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { SystemReviewComponent } from './Components/Review/system-review/system-
     SavedCardsComponent,
     NotFoundPageComponent,
     ClientProfileComponent,
-    SystemReviewComponent
+    SystemReviewComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
