@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +20,12 @@ import { GoogleMapComponent } from './Components/Maps/google-map/google-map.comp
 import { PartenerComponent } from './Components/Partener/partener/partener.component';
 import { PartenerLoginComponent } from './Components/Partener/partener-login/partener-login.component';
 import { StoresInAreaComponent } from './Components/Store/stores-in-area/stores-in-area.component';
+import { AccountInfoComponent } from './Components/Client/account-info/account-info.component';
+import { SavedAddressesComponent } from './Components/Client/saved-addresses/saved-addresses.component';
+import { MyOrdersComponent } from './Components/Client/my-orders/my-orders.component';
+import { SavedCardsComponent } from './Components/Client/saved-cards/saved-cards.component';
+import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
+import { ClientProfileComponent } from './Components/Client/client-profile/client-profile.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,13 @@ import { StoresInAreaComponent } from './Components/Store/stores-in-area/stores-
     GoogleMapComponent,
     PartenerComponent,
     PartenerLoginComponent,
-    StoresInAreaComponent
+    StoresInAreaComponent,
+    AccountInfoComponent,
+    SavedAddressesComponent,
+    MyOrdersComponent,
+    SavedCardsComponent,
+    NotFoundPageComponent,
+    ClientProfileComponent
   ],
   imports: [
     BrowserModule,
