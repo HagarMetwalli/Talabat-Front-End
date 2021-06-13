@@ -28,6 +28,10 @@ import { NotFoundPageComponent } from './Components/not-found-page/not-found-pag
 import { ClientProfileComponent } from './Components/Client/client-profile/client-profile.component';
 import { SystemReviewComponent } from './Components/Review/system-review/system-review.component';
 import { FooterComponent } from './Components/Home/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfileService } from './Services/Profile/Profile.service';
+import { FormsModule } from '@angular/forms';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -61,9 +65,11 @@ import { FooterComponent } from './Components/Home/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ProfileService, BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

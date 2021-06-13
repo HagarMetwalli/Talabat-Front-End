@@ -1,1 +1,181 @@
-<p>saved-addresses works!</p>
+<div class="d-flex flex-row-reverse">
+  <button type="button" class="btn btn-outline-warning">+ Add Address</button>
+</div>
+
+<div *ngFor="let ca of addresses;">
+
+  <div class="d-flex">
+    <div class="m-2">
+      <div>Address Name</div>
+      <div>Address</div>
+      <div>Mobile Number</div>
+      <div *ngIf="ca.clientAddressLandLine !=0">Land line</div>
+    </div>
+    <div class="m-2">
+      <div>{{ca.clientAddressAddressTitle}}</div>
+      <div>{{ca.clientAddressStreet}} St, Building {{ca.clientAddressBuilding}}, Floor {{ca.clientAddressFloor}},
+        Apartment
+        {{ca.clientAddressApartmentNumber}}</div>
+      <div>+20 {{ca.clientAddressMobileNumber}}</div>
+      <div *ngIf="ca.clientAddressLandLine !=0">+40 {{ca.clientAddressLandLine}}</div>
+    </div>
+  </div>
+
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          Are you sure you want to delete?
+        </div>
+
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-danger" (click)="onDelete(ca.clientAddressId)">Ok</button>
+          <button type=" button" id="BtnCloseModal" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Delete Modal -->
+
+  <!-- Update Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+
+        <div class="modal-body text-center d-flex">
+          <div>
+
+            <div class="d-flex">
+
+              <div class="form-group m-2">
+                <label for="phonenumber" class="m-auto">Phone number</label>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="phonenumberHelp">+20</span>
+                  </div>
+                  <input type="number" class="form-control" id="phonenumber" aria-describedby="phonenumberHelp"
+                    placeholder="010011111111" [value]="ca.clientAddressMobileNumber" aria-label="phonenumber" />
+                </div>
+              </div>
+
+              <div class="form-group m-2">
+                <label for="landLine" class="m-auto">Lind line</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="landLine">+40</span>
+                  </div>
+                  <input type="number" class="form-control" id="landLine" aria-describedby="landlineHelp"
+                    placeholder="3503333" [value]="ca.clientAddressLandLine" aria-label="landLine" />
+                </div>
+              </div>
+
+            </div>
+
+            <div class="d-flex">
+
+              <div class="form-group m-2">
+                <label class="m-auto" for="city">City</label>
+                <input type="text" class="form-control" id="city" aria-describedby="cityHelper"
+                  placeholder="City ex: tanta..." [value]="ca.clientAddressAddressTitle" />
+              </div>
+              <div class="form-group m-2">
+                <label class="m-auto" for="floor">Floor number</label>
+                <input type="number" class="form-control" id="floor" aria-describedby="floorHelp"
+                  placeholder="Floor ex: 3" [value]="ca.clientAddressFloor" />
+              </div>
+
+            </div>
+
+            <div class="d-flex">
+
+              <div class="form-group m-2">
+                <label class="m-auto" for="street">Street name</label>
+                <input type="text" class="form-control" id="street" aria-describedby="streetHelper"
+                  placeholder="Street ex: elnasr..." [value]="ca.clientAddressStreet" />
+              </div>
+              <div class="form-group m-2">
+                <label class="m-auto" for="apartment">Floor name</label>
+                <input type="number" class="form-control" id="apartment" aria-describedby="apartmentHelp"
+                  placeholder="Apartment ex: 3" [value]="ca.clientAddressApartmentNumber" />
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+          <!-- <div class="form-group mb-4">
+            <label for="phonenumber" class="m-auto">Building number</label>
+            <input type="number" class="form-control" id="building" aria-describedby="buildingHelp" placeholder="Building ex: 2"
+              [value]="ca.clientAddressBuilding" />
+          </div> -->
+
+
+        </div>
+
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-success" (click)="onEdit(ca, confirmation)">Save
+            Changes
+            <button type="button" #confirmation class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#updatedModal" hidden>
+            </button>
+          </button>
+          <button type=" button" id="BtnCloseModal" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Update Modal -->
+
+  <!-- Confirm Modal -->
+  <div class="modal fade" id="updatedModal" tabindex="-1" aria-labelledby="updatedModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updatedModalLabel">Delete Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center d-flex">
+          Address Updated Successfully!
+        </div>
+
+        <div class="modal-footer d-flex justify-content-center">
+          <button type=" button" id="BtnCloseModal" class="btn btn-secondary" data-bs-dismiss="modal"
+            (click)="reload()">Close<button type="button" #confirmation class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#updatedModal" hidden>
+            </button></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Confirm Modal -->
+
+
+  <div class="d-flex flex-row-reverse">
+    <button class="btn linkLike" (click)="opeEdit(DeleteModalOpen)">EDIT
+      <button type=" button" #DeleteModalOpen class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
+        hidden>
+      </button></button>
+    <button class="btn" (click)="openDelete(UpdateModalOpen)"
+      style="border-right: 1px solid black; margin-right: 1em; padding-right: 1em;">DELETE
+      <button type="button" #UpdateModalOpen class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#deleteModal" hidden>
+      </button>
+    </button>
+  </div>
+  <hr />
+</div>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-//Home 
+//Home
 import { HomePageComponent } from './Components/Home/home-page/home-page.component';
 
 //Client Registeration
@@ -51,18 +51,24 @@ const routes: Routes = [
   { path: 'all-resturant', component: AllResturantsComponent },
   { path: 'resturant/menu', component: ResturantMenuComponent },
   { path: 'resturant', component: ResturantProfileComponent },
-  
+
   //client
-  { path: 'profile', component: ClientProfileComponent },
-  { path: 'my-orders', component: MyOrdersComponent },
-  { path: 'account-info', component: AccountInfoComponent },
-  { path: 'saved-addresses', component: SavedAddressesComponent },
-  { path: 'saved-cards', component: SavedCardsComponent },
-  { path: 'system-review', component: SystemReviewComponent },
-  
+  {
+    path: 'profile', component: ClientProfileComponent, children: [
+      { path: '', component: AccountInfoComponent, outlet: 'subOutlet' },
+      { path: 'my-orders', component: MyOrdersComponent, outlet: 'subOutlet' },
+      { path: 'account-info', component: AccountInfoComponent, outlet: 'subOutlet' },
+      { path: 'saved-addresses', component: SavedAddressesComponent, outlet: 'subOutlet' },
+      { path: 'saved-cards', component: SavedCardsComponent, outlet: 'subOutlet' },
+      { path: 'system-review', component: SystemReviewComponent, outlet: 'subOutlet' },
+
+    ]
+  },
+
+
   //store
   { path: 'nearest-stores', component: StoresInAreaComponent },
-  
+
   //order
   { path: 'offers', component: OffersComponent },
   { path: 'checkout', component: CheckoutComponent },
