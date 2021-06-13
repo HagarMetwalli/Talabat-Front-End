@@ -2,7 +2,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider,
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  FacebookLoginProvider,
+  GoogleLoginProvider,
 } from 'angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -44,7 +48,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field' ;
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -87,7 +91,7 @@ import {
     NotFoundPageComponent,
     ClientProfileComponent,
     SystemReviewComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -117,14 +121,14 @@ import {
     MatSelectModule,
     MatTabsModule,
     OverlayModule,
+    MatNativeDateModule,
     MatFormFieldModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
   ],
   providers: [
     BsModalService,
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },    
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     {
-      
       provide: 'SocialAuthServiceConfig',
       useValue: {
         autoLogin: false,
@@ -145,7 +149,7 @@ import {
     NgbModule,
     //StoresService
   ],
-  
-  bootstrap: [AppComponent]
+
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
