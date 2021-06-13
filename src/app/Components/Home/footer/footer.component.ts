@@ -1,6 +1,6 @@
 import { FooterService } from './../../../Services/Home/footer.service';
 import { Component, OnInit } from '@angular/core';
-import { Stores } from 'src/app/Models/Store';
+import { Store } from 'src/app/Models/Store';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class FooterComponent {
   ngOnInit(): void {
     this.MostCommonStores()
   }
-  stores! : Stores [];
+  stores! : Store [];
   MostCommonStores(){
       console.log (this._footerservice.getstores());
   }

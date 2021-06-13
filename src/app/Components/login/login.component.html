@@ -1,1 +1,117 @@
-<p>login works!</p>
+<div class="login">
+    <form
+      action=""
+      class="login-form"
+      name="formGroup"
+      #log="ngForm"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-group">
+        <h1>Login</h1>
+        <input
+          formControlName="email"
+          type="email"
+          placeholder="Enter your Email"
+          class="form-control"
+          [(ngModel)]="loggedClient.email"
+          [ngClass]="{ 'is-invalid': submitted && fieldget.email.errors }"
+          required
+        />
+        <div *ngIf="submitted && fieldget.email.errors" class="invalid-feedback">
+          <div class="errormsg" *ngIf="fieldget.email.errors.required">
+            Email is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          formControlName="password"
+          placeholder=" Enter your Password"
+          class="form-control"
+          [(ngModel)]="loggedClient.password"
+          [ngClass]="{
+            'is-invalid': submitted && fieldget.password.errors
+          }"
+          required
+        />
+  
+        <div
+          *ngIf="submitted && fieldget.password.errors"
+          class="invalid-feedback"
+        >
+          <div class="errormsg" *ngIf="fieldget.password.errors.required">
+            Password is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+  
+      <div class="remember">
+        <label class="custom-checkbox"
+          >Keep me logged in
+          <input
+            type="checkbox"
+            checked="checked"
+            (change)="rememberMe = !rememberMe"
+          />
+          <span class="checkmark"></span>
+        </label>
+        <a href="#" class="pull-right">Forgot Password?</a>
+      </div>
+      <button class="btn" type="submit">Login</button>
+  
+      <div class="col-md-12">
+        <div class="login-or">
+          <hr class="hr-or" />
+          <span class="span-or">OR</span>
+        </div>
+      </div>
+      <div class="icons">
+        <img
+          class="icon1 mr-2"
+          (click)="signInWithGoogle()"
+          src="../../assets/google.png"
+        />
+        <img
+          class="icon2 ml-2"
+          (click)="signInWithFB()"
+          src="../../assets/facebook.png"
+        />
+      </div>
+  
+      <p
+        [routerLink]="['/register']"
+        routerLinkActive="router-link-active"
+        class="reg"
+      >
+        Don't have an account?
+        <a (click)="closeModal()" class="signup"> Sign Up</a>
+      </p>
+    </form>
+  </div>
+  <!-- social -->
+  <!-- <div *ngIf="user" class="card text-center">
+    <div class="card-block"></div>
+    <img
+      *ngIf="user.photoUrl"
+      class="card-img-top img-responsive photo"
+      src="{{ user.photoUrl }}"
+    />
+    <div class="card-block">
+      <h4 class="card-title">{{ user.name }}</h4>
+      <p class="card-text">{{ user.email }}</p>
+      <p class="card-text">Logged in with {{ user.provider }}</p>
+    </div>
+    <div class="card-block">
+      <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+    </div>
+    <div
+      class="card-block"
+      *ngIf="user.provider === GoogleLoginProvider.PROVIDER_ID"
+    >
+      <button class="btn" (click)="refreshGoogleToken()">
+        Refresh google token
+      </button>
+    </div>
+  </div> -->

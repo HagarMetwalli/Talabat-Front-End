@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Stores } from 'src/app/Models/Store';
+import { Store} from '../../Models/Store';
 import { Observable } from 'rxjs';
 const API ="https://localhost:44311/api/Stores";
 @Injectable({
@@ -8,7 +8,7 @@ const API ="https://localhost:44311/api/Stores";
 })
 export class FooterService {
 
-  _Stores = Stores;
+  _Stores = Store;
   constructor(private http: HttpClient) {}
   
   getstores(){
