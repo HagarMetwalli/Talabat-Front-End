@@ -1,13 +1,15 @@
+import { DemoComponent } from './Components/demo/demo.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TooltipModule  } from 'ngx-bootstrap/tooltip';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NavBarComponent } from './Components/Home/nav-bar/nav-bar.component';
@@ -33,14 +35,13 @@ import { NotFoundPageComponent } from './Components/not-found-page/not-found-pag
 import { ClientProfileComponent } from './Components/Client/client-profile/client-profile.component';
 import { SystemReviewComponent } from './Components/Review/system-review/system-review.component';
 import { FooterComponent } from './Components/Home/footer/footer.component';
-import { BsModalService,ModalModule } from 'ngx-bootstrap/modal';
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { CommonModule } from '@angular/common';
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavBarComponent,
     CheckoutComponent,
     NgModule,
     LoginComponent,
@@ -48,6 +49,7 @@ import { CommonModule } from '@angular/common';
     OffersComponent,
     HomePageComponent,
     PaymentCardComponent,
+    DemoComponent,
     RegisterationComponent,
     AllResturantsComponent,
     ResturantProfileComponent,
@@ -67,7 +69,7 @@ import { CommonModule } from '@angular/common';
     NotFoundPageComponent,
     ClientProfileComponent,
     SystemReviewComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,12 +87,11 @@ import { CommonModule } from '@angular/common';
     ModalModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCUzKQYbhsvR6K__DdrqYTJiSnuXpDNsWE',
-      libraries: ['places']
+      libraries: ['places'],
     }),
   ],
+  exports:[NgModule],
   providers: [BsModalService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
-
+export class AppModule {}
