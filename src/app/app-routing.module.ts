@@ -29,6 +29,7 @@ import { StoresInAreaComponent } from './Components/Store/stores-in-area/stores-
 import { OffersComponent } from './Components/offers/offers.component';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { PaymentCardComponent } from './Components/payment-card/payment-card.component';
+import { OrderReviewComponent } from './order-review/order-review.component';
 
 //Partentar
 import { PartenerLoginComponent } from './Components/Partener/partener-login/partener-login.component';
@@ -71,6 +72,7 @@ const routes: Routes = [
   //partener
   { path: 'partener-login', component: PartenerLoginComponent },
   { path: 'partener-profile', component: PartenerComponent },
+  { path: 'order-revew', component: OrderReviewComponent },
 
   { path: '**', component: NotFoundPageComponent }
 

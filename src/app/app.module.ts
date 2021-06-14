@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,7 +29,10 @@ import { NotFoundPageComponent } from './Components/not-found-page/not-found-pag
 import { ClientProfileComponent } from './Components/Client/client-profile/client-profile.component';
 import { SystemReviewComponent } from './Components/Review/system-review/system-review.component';
 import { FooterComponent } from './Components/Home/footer/footer.component';
-
+import { OrderReviewComponent } from './order-review/order-review.component';
+import { NgxFeedbackModule } from 'ngx-feedback';
+import {FormsModule } from '@angular/forms';
+import { RatingComponent } from './rating/rating.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,12 +60,17 @@ import { FooterComponent } from './Components/Home/footer/footer.component';
     NotFoundPageComponent,
     ClientProfileComponent,
     SystemReviewComponent,
-    FooterComponent
+    FooterComponent,
+    OrderReviewComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxFeedbackModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
