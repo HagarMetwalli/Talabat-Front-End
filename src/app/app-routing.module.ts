@@ -29,7 +29,7 @@ import { StoresInAreaComponent } from './Components/Store/stores-in-area/stores-
 import { OffersComponent } from './Components/offers/offers.component';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { PaymentCardComponent } from './Components/payment-card/payment-card.component';
-import { OrderReviewComponent } from './order-review/order-review.component';
+import { OrderReviewComponent } from './Components/order-review/order-review.component';
 
 //Partentar
 import { PartenerLoginComponent } from './Components/Partener/partener-login/partener-login.component';
@@ -40,10 +40,11 @@ import { SystemReviewComponent } from './Components/Review/system-review/system-
 
 //Error
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
+import { OrderItemsReviewComponent } from './Components/order-items-review/order-items-review.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'register', component: RegisterationComponent },
   { path: 'login', component: LoginComponent },
@@ -60,6 +61,10 @@ const routes: Routes = [
   { path: 'saved-addresses', component: SavedAddressesComponent },
   { path: 'saved-cards', component: SavedCardsComponent },
   { path: 'system-review', component: SystemReviewComponent },
+  { path: 'order-review/:id', component: OrderReviewComponent },
+  { path: 'review-orderitems/:orderId/:orderReviewId', component: OrderItemsReviewComponent },
+  
+
   
   //store
   { path: 'nearest-stores', component: StoresInAreaComponent },

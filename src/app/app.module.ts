@@ -29,10 +29,11 @@ import { NotFoundPageComponent } from './Components/not-found-page/not-found-pag
 import { ClientProfileComponent } from './Components/Client/client-profile/client-profile.component';
 import { SystemReviewComponent } from './Components/Review/system-review/system-review.component';
 import { FooterComponent } from './Components/Home/footer/footer.component';
-import { OrderReviewComponent } from './order-review/order-review.component';
+import { OrderReviewComponent } from './Components/order-review/order-review.component';
 import { NgxFeedbackModule } from 'ngx-feedback';
 import {FormsModule } from '@angular/forms';
-import { RatingComponent } from './rating/rating.component';
+import { RatingComponent } from './Components/rating/rating.component';
+import { OrderItemsReviewComponent } from './Components/order-items-review/order-items-review.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import { RatingComponent } from './rating/rating.component';
     SystemReviewComponent,
     FooterComponent,
     OrderReviewComponent,
-    RatingComponent
+    RatingComponent,
+    OrderItemsReviewComponent
   ],
   imports: [
     BrowserModule,
