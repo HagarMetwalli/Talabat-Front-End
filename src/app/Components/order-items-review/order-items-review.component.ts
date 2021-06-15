@@ -71,15 +71,11 @@ export class OrderItemsReviewComponent implements OnInit {
   onSubmit(){
     for( this.i =0; this.i <this.items.length ; this.i++){
       this.orderItemReview["itemId"]= this.items[this.i]["itemId"];
-      
       this.orderItemReview["orderReviewId"]= + this.orderItemReviewId;
       this.orderItemReview["rate"]= this.itemsReview[this.i]["rating"];
       this._OrderService.addOrderItemsReview(this.orderItemReview).subscribe();
       this._router.navigate(['home']);
     };
-     
-     console.log("order",this.orderItemReview);
-    
   }
 
 }
