@@ -2,7 +2,6 @@
 
   <div class="container">
 
-    <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="main-breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/home">Home </a></li>
@@ -13,16 +12,17 @@
     <h1 class="mainTitle">My Account
     </h1>
 
-    <!-- /Breadcrumb -->
     <div class="d-flex align-self-baseline">
 
       <div class="row gutters-sm col-3">
         <div class=" d-md-block">
           <div class="card">
             <div class="card-body">
+
               <nav class="nav flex-column nav-pills nav-gap-y-1">
-                <a [routerLink]="['/profile', { outlets: {'subOutlet':['account-info']}}]" data-toggle=" tab"
-                  class="nav-item nav-link has-icon nav-link-faded active">
+
+                <a #h [routerLink]="['/profile', { outlets: {'subOutlet':['account-info']}}]" data-toggle=" tab"
+                  class="nav-item nav-link has-icon nav-link-faded custom-nav" (click)="sss(h, hh, hhh, hhhh)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="feather feather-user mr-2">
@@ -30,8 +30,8 @@
                     <circle cx="12" cy="7" r="4"></circle>
                   </svg> Account Info
                 </a>
-                <a [routerLink]="['/profile', { outlets: {'subOutlet':['saved-addresses']}}]" data-toggle="tab"
-                  class="nav-item nav-link has-icon nav-link-faded">
+                <a #hh [routerLink]="['/profile', { outlets: {'subOutlet':['saved-addresses']}}]" data-toggle="tab"
+                  class="nav-item nav-link has-icon nav-link-faded" (click)="sss(hh, h, hhh, hhhh)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="feather feather-settings mr-2">
@@ -41,8 +41,8 @@
                     </path>
                   </svg> Saved Addresses
                 </a>
-                <a [routerLink]="['/profile', { outlets: {'subOutlet':['my-orders']}}]" data-toggle="tab"
-                  class="nav-item nav-link has-icon nav-link-faded">
+                <a #hhh [routerLink]="['/profile', { outlets: {'subOutlet':['my-orders']}}]" data-toggle="tab"
+                  class="nav-item nav-link has-icon nav-link-faded" (click)="sss(hhh, h, hh, hhhh)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="feather feather-bell mr-2">
@@ -50,8 +50,8 @@
                     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                   </svg> My Orders
                 </a>
-                <a [routerLink]="['/profile', { outlets: {'subOutlet':['saved-cards']}}]" data-toggle="tab"
-                  class="nav-item nav-link has-icon nav-link-faded">
+                <a #hhhh [routerLink]="['/profile', { outlets: {'subOutlet':['saved-cards']}}]" data-toggle="tab"
+                  class="nav-item nav-link has-icon nav-link-faded" (click)="sss(hhhh, hh, h, hhh)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="feather feather-credit-card mr-2">
@@ -59,25 +59,13 @@
                     <line x1="1" y1="10" x2="23" y2="10"></line>
                   </svg> Saved Cards
                 </a>
+
               </nav>
+
             </div>
           </div>
         </div>
       </div>
-
-      <!-- <div class="row">
-        <div class="col-4">
-          <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" role="tab"
-              aria-controls="home">Home</a>
-            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" role="tab"
-              aria-controls="profile">Profile</a>
-            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" role="tab"
-              aria-controls="messages">Messages</a>
-            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" role="tab"
-              aria-controls="settings">Settings</a>
-          </div>
-        </div> -->
 
       <div class="card-body tab-content">
         <router-outlet name="subOutlet"></router-outlet>
