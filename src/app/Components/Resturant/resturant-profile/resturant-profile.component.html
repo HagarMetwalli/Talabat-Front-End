@@ -1,1 +1,78 @@
-<p>resturant-profile works!</p>
+<div id="header">
+    <h4>Choose Your Area To View Restaurant Menu</h4>
+    <img src="../../assets/removebg-preview.png" id="emoji" />
+</div>
+<div id="bg">
+    <img src="../../assets/Capture6.PNG" id="back" />
+</div>
+<div id="search">
+    <input type="text" id="searchtxt" class="form-control" placeholder=" ...Find an area,street,landmark" />
+    <img src="../../assets/location.PNG" id="loc" />
+    <button class="btn btn-success" id="button" (click)="showmenu(_store.storeId)"
+        [routerLink]="['storemenu/',_store.storeId]">Food Menu</button>
+</div>
+<div id="description" class="col-sm-6">
+    <h4 id="headofdesc">Description</h4>
+    <p id="pragraph">{{_store.storeDescription}}</p>
+</div>
+<!--Best Selling-->
+<div class="text1">
+    <h4 class="txt1">Best Selling</h4>
+</div>
+<div class="col-lg-3" id="res">
+    <button data-toggle="tooltip" data-placement="bottom" title="Best Selling" id="tooltipbtn">
+        <img src="../../assets/Capture.PNG" id="tooltip" />
+    </button>
+    <!--Reviews-->
+    <div class="text2">
+        <h4 class="txt2">Reviews</h4>
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="content-item" id="comments">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4" id="allcomment">
+                                    <div class="media" id="commentphoto">
+                                        <div class="media-body">
+                                            <h4 class="media-heading">John Doe</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
+                                                dolor sit amet,consectetur adipiscing elit. Lorem ipsum dolor sit
+                                                amet,consectetur adipiscing elit. Lorem ipsum dolor sit amet,consectetur
+                                                adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="content-item" id="comments">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4" id="allcomment">
+                                    <div class="media" id="commentphoto">
+                                        <div class="media-body">
+                                            <h4 class="media-heading">John Doe</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
+                                                dolor sit amet,consectetur adipiscing elit. Lorem ipsum dolor sit
+                                                amet,consectetur adipiscing elit. Lorem ipsum dolor sit amet,consectetur
+                                                adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <img src="../../assets/user-comments-icon.png" id="commentsphoto" />

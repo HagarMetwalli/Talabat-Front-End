@@ -1,1 +1,43 @@
-<p>all-resturants works!</p>
+<div class="ss">
+    <div class="searchdiv">
+        <input type="text" class="form-control" id="search" placeholder="&#xf002; Search For Resturants"
+            [(ngModel)]="filterTerm" />
+    </div>
+
+    <div id="info">
+        <div id="Header">
+            <h2>All Resturant</h2>
+            <p>
+                This Page For All Resturants From Talabat Team<br />You Can Now Get Your
+                Order Fast<br />Hope You Will Enjoy
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3" *ngFor="
+            let img of stores
+              | filter: filterTerm
+              | paginate: { itemsPerPage: 4, currentPage: p }
+          " [routerLink]="['/store-profile/',img.storeId]" (click)="storeprofileshow(img.storeId)">
+                <div class="restaurant-box">
+                    <div class="restaurant-thumb">
+                        <div class="restaurant-overlay" style="background-image: url('../../assets/turkey.PNG')"></div>
+                    </div>
+                    <div class="restaurant-caption">
+                        <a href="#">{{ img.storeName }}</a>
+                        <div class="main-recipe">
+                            <div class="main-recipe-name">{{ img.storeDescription }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--pagination-->
+        <pagination-controls class="text-center current" (pageChange)="p = $event">
+        </pagination-controls>
+    </div>
+
+</div>

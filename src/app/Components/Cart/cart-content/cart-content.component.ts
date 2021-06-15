@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from '../../../Models/Product';
+import { CartServiceService } from '../../../Services/cart-service.service';
 
 @Component({
   selector: 'app-cart-content',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-content.component.css']
 })
 export class CartContentComponent implements OnInit {
-
-  constructor() { }
-
+  @Input('product') productItem!: Product;
+  constructor(private cartServ: CartServiceService) { }
   ngOnInit(): void {
   }
-
+  changecount(type: String) {
+    if (type === 'ADD') {
+      this.productItem.count!++;
+      this.productItem.value = (this.productItem.itemPrice!) * (this.productItem.count!);
+    } else {
+      if (!(this.productItem?.count! <= 0)) {
+        this.productItem.count!--;
+        this.productItem.value = (this.productItem.value!) - (this.productItem.itemPrice!);
+      }
+    }
+    this.cartServ.updateProduct(this.productItem)
+  }
+  removeitem() {
+    this.cartServ.deleteProduct(this.productItem.itemId || 0);
+  }
 }
+
+
+

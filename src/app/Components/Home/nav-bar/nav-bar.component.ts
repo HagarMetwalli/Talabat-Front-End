@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { OffersComponent } from './../../offers/offers.component';
 import { RegisterationComponent } from './../../registeration/registeration.component';
 import { LoginComponent } from './../../login/login.component';
 import { Component, OnInit } from '@angular/core';
@@ -8,7 +7,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css'],
+   styleUrls: ['./nav-bar.component.css'],
   // template: `<!-- To render DropDownButton. -->
   // <button
   //   ejs-dropdownbutton

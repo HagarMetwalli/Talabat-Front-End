@@ -163,3 +163,18 @@
    font-size: 15px;
    color: #222;
 } 
+
+
+.hidenbtn{
+   display: none;
+}
+
+
+.modal-content {
+   margin-top: 12rem;
+}
+
+
+
+
+

@@ -18,18 +18,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NavBarComponent } from './Components/Home/nav-bar/nav-bar.component';
-import { OffersComponent } from './Components/offers/offers.component';
+import { CartHeaderComponent } from './Components/Cart/cart-header/cart-header.component';
+import { CartContentComponent } from './Components/cart/cart-content/cart-content.component';
 import { PaymentCardComponent } from './Components/payment-card/payment-card.component';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
-import { AllResturantsComponent } from './Components/Resturant/all-resturants/all-resturants.component';
+import { AllResturantComponent } from './Components/Resturant/all-resturants/all-resturants.component';
 import { ResturantProfileComponent } from './Components/Resturant/resturant-profile/resturant-profile.component';
 import { ResturantMenuComponent } from './Components/Resturant/resturant-menu/resturant-menu.component';
-import { CartHeaderComponent } from './Components/Cart/cart-header/cart-header.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { CartContentComponent } from './Components/Cart/cart-content/cart-content.component';
-import { CartButtonsComponent } from './Components/Cart/cart-buttons/cart-buttons.component';
-import { HomePageComponent } from './Components/Home/home-page/home-page.component';
-import { GoogleMapComponent } from './Components/Maps/google-map/google-map.component';
+import { HomepageComponent } from './Components/Home/home-page/home-page.component';
+import { AgmCoreModule } from '@agm/core';
+import { GoogleMapsComponent } from './Components/google-maps/google-maps.component';
 import { PartenerComponent } from './Components/Partener/partener/partener.component';
 import { PartenerLoginComponent } from './Components/Partener/partener-login/partener-login.component';
 import { StoresInAreaComponent } from './Components/Store/stores-in-area/stores-in-area.component';
@@ -58,10 +57,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgxWebstorageModule } from 'ngx-webstorage'
+import { OffersComponent } from './Components/offers/offers.component';
+
+
 
 import {
   MatNativeDateModule,
-  MatRippleModule,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
 @NgModule({
@@ -70,17 +75,13 @@ import {
     CheckoutComponent,
     LoginComponent,
     NavBarComponent,
-    OffersComponent,
     PaymentCardComponent,
     RegisterationComponent,
-    AllResturantsComponent,
+    AllResturantComponent,
     ResturantProfileComponent,
     ResturantMenuComponent,
-    CartHeaderComponent,
-    CartContentComponent,
-    CartButtonsComponent,
-    HomePageComponent,
-    GoogleMapComponent,
+    HomepageComponent,
+    GoogleMapsComponent,
     PartenerComponent,
     PartenerLoginComponent,
     StoresInAreaComponent,
@@ -92,6 +93,10 @@ import {
     ClientProfileComponent,
     SystemReviewComponent,
     FooterComponent,
+    CartHeaderComponent,
+    CartContentComponent,
+    OffersComponent
+
   ],
   imports: [
     AppRoutingModule,
@@ -123,33 +128,64 @@ import {
     OverlayModule,
     MatNativeDateModule,
     MatFormFieldModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
     TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCUzKQYbhsvR6K__DdrqYTJiSnuXpDNsWE',
+      libraries: ['places']
+    }),
+    MatExpansionModule,
+    NgxWebstorageModule.forRoot(),
+
+
   ],
+
   providers: [
     BsModalService,
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     {
       provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '480432450025-dlkiap8l9pvop7mamvht1ab6ond71fof.apps.googleusercontent.com'
-            ),
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('1080637959127854'),
-          },
-        ],
-      } as SocialAuthServiceConfig,
+      useValue:
+        {
+          autoLogin: false,
+          providers: [{ id: GoogleLoginProvider.PROVIDER_ID, provider: new GoogleLoginProvider('480432450025-dlkiap8l9pvop7mamvht1ab6ond71fof.apps.googleusercontent.com'), },
+          { id: FacebookLoginProvider.PROVIDER_ID, provider: new FacebookLoginProvider('1080637959127854'), },],
+        } as SocialAuthServiceConfig,
     },
     NgbModule,
-    //StoresService
+
   ],
+
+
+  // providers: [
+
+  //   { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+  //   {
+  //     provide: 'SocialAuthServiceConfig',
+  //     useValue: {
+  //       autoLogin: false,
+  //       providers: [
+  //         BsModalService,
+  //         {
+  //           id: GoogleLoginProvider.PROVIDER_ID,
+  //           provider: new GoogleLoginProvider(
+  //             '480432450025-dlkiap8l9pvop7mamvht1ab6ond71fof.apps.googleusercontent.com'
+  //           ),
+  //         },
+  //         {
+  //           id: FacebookLoginProvider.PROVIDER_ID,
+  //           provider: new FacebookLoginProvider('1080637959127854'),
+  //         },
+  //       ],
+  //     } as SocialAuthServiceConfig,
+  //   },
+  //   NgbModule,
+  //   //StoresService
+  // ],
+
 
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
