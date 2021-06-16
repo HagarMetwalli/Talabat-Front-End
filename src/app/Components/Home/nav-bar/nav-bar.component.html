@@ -1,38 +1,46 @@
 <nav class="navbar navbar-default" id="navbar">
   <div class="container-fluid">
-    <div>
-      <div id="navbar-align" class="row">
+    <div class="row">
+      <div id="navbar-align">
         <div class="col-lg-3" id="talbat-logo">
           <a href="#">
-            <img src="../../../../assets/talbat-logo.png" width="140" height="40" />
+            <img src="../../assets/talbat-logo.png" width="140" height="40" />
           </a>
         </div>
         <div class="col-lg-7">
           <ul class="nav navbar-nav">
             <li><a routerLink="/offers">Offers</a></li>
-            <li><a routerLink="/partener">Become a Partner</a></li>
-            <li><a routerLink="/all-resturant"> All resturants </a></li>
+            <li><a href="#">Become a Partner</a></li>
+            <li><a routerLink="/all-resturants"> All resturants </a></li>
 
             <li><a href="#"> العربية </a></li>
             <li>
               <a href="#">
-                <img src="../../../../assets/Egypt-Flag.png" width="22" height="20" />
+                <img src="../../assets/Egypt-Flag.png" width="22" height="20" />
               </a>
             </li>
             <li>
-              <button *ngIf="!loggedIn()" class="btn-login" (click)="openModal()">
+              <button
+                *ngIf="!loggedIn()"
+                class="btn-login"
+                (click)="openModal()"
+              >
                 Login
               </button>
             </li>
             <li>
-              <button *ngIf="!loggedIn()" class="btn-register" (click)="register()">
+              <button
+                *ngIf="!loggedIn()"
+                class="btn-register"
+                (click)="register()"
+              >
                 Register
               </button>
             </li>
 
             <li *ngIf="loggedIn()">
               <button mat-button [matMenuTriggerFor]="menu">My account</button>
-              <div #menu="matMenu">
+              <mat-menu #menu="matMenu">
                 <button mat-menu-item>Talabat Pay</button>
                 <button mat-menu-item>My Orders</button>
                 <button mat-menu-item>Account Info</button>
@@ -40,7 +48,7 @@
                 <button class="btn btn-danger" (click)="logout()" mat-menu-item>
                   Logout
                 </button>
-              </div>
+              </mat-menu>
             </li>
           </ul>
         </div>

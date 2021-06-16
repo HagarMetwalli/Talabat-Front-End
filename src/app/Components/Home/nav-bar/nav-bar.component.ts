@@ -2,12 +2,12 @@ import { Router } from '@angular/router';
 import { RegisterationComponent } from './../../registeration/registeration.component';
 import { LoginComponent } from './../../login/login.component';
 import { Component, OnInit } from '@angular/core';
-import { SocialUser,SocialAuthService } from 'angularx-social-login';
+import { SocialUser, SocialAuthService } from 'angularx-social-login';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-   styleUrls: ['./nav-bar.component.css'],
+  styleUrls: ['./nav-bar.component.css'],
   // template: `<!-- To render DropDownButton. -->
   // <button
   //   ejs-dropdownbutton
@@ -17,7 +17,6 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   // ></button>`,
 })
 export class NavBarComponent implements OnInit {
-
   bsmodalRef?: BsModalRef;
   user?: SocialUser;
   constructor(
@@ -36,11 +35,11 @@ export class NavBarComponent implements OnInit {
   loggedIn() {
     let token = sessionStorage.getItem('token');
     if (token != '' && token != null) {
-      console.log('from nav bar token here', token);
+      //  console.log('from nav bar token here', token);
 
       return true;
     } else {
-      console.log('from nav bar no token ');
+      //  console.log('from nav bar no token ');
 
       return false;
     }
@@ -51,5 +50,4 @@ export class NavBarComponent implements OnInit {
     sessionStorage.setItem('token', '');
   }
   ngOnInit(): void {}
-
 }
