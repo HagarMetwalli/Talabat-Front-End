@@ -62,6 +62,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxWebstorageModule } from 'ngx-webstorage'
 import { OffersComponent } from './Components/offers/offers.component';
+import { ProfileService } from './Services/Profile/Profile.service';
 
 
 
@@ -143,6 +144,7 @@ import {
   ],
 
   providers: [
+    ProfileService,
     BsModalService,
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     {
@@ -159,31 +161,8 @@ import {
   ],
 
 
-  // providers: [
 
-  //   { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-  //   {
-  //     provide: 'SocialAuthServiceConfig',
-  //     useValue: {
-  //       autoLogin: false,
-  //       providers: [
-  //         BsModalService,
-  //         {
-  //           id: GoogleLoginProvider.PROVIDER_ID,
-  //           provider: new GoogleLoginProvider(
-  //             '480432450025-dlkiap8l9pvop7mamvht1ab6ond71fof.apps.googleusercontent.com'
-  //           ),
-  //         },
-  //         {
-  //           id: FacebookLoginProvider.PROVIDER_ID,
-  //           provider: new FacebookLoginProvider('1080637959127854'),
-  //         },
-  //       ],
-  //     } as SocialAuthServiceConfig,
-  //   },
-  //   NgbModule,
-  //   //StoresService
-  // ],
+
 
 
   bootstrap: [AppComponent],
