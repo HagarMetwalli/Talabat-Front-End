@@ -40,6 +40,10 @@ import { SystemReviewComponent } from './Components/Review/system-review/system-
 //offer
 import { OffersComponent } from './Components/offers/offers.component'
 
+//item review
+import { OrderReviewComponent } from './Components/order-review/order-review.component';
+import { OrderItemsReviewComponent } from './Components/order-items-review/order-items-review.component';
+
 //Error
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
 
@@ -89,7 +93,14 @@ const routes: Routes = [
   //offer
   { path: 'offers', component: OffersComponent },
 
+  //item review
+  { path: 'order-review/:id', component: OrderReviewComponent },
+  { path: 'review-orderitems/:orderId/:orderReviewId', component: OrderItemsReviewComponent },
+
   { path: '**', component: NotFoundPageComponent },
+
+
+
 
 
 ];

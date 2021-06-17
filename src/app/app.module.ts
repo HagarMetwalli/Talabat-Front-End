@@ -63,6 +63,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxWebstorageModule } from 'ngx-webstorage'
 import { OffersComponent } from './Components/offers/offers.component';
 import { ProfileService } from './Services/Profile/Profile.service';
+import { OrderReviewComponent } from './Components/order-review/order-review.component';
+import { OrderItemsReviewComponent } from './Components/order-items-review/order-items-review.component'
+import { RatingComponent } from './Components/rating/rating.component';
 
 
 
@@ -96,7 +99,12 @@ import {
     FooterComponent,
     CartHeaderComponent,
     CartContentComponent,
-    OffersComponent
+    OffersComponent,
+    OrderReviewComponent,
+    RatingComponent,
+    OrderItemsReviewComponent
+
+
 
   ],
   imports: [
