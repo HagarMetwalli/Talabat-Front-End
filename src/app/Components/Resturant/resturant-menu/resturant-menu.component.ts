@@ -25,9 +25,9 @@ export class ResturantMenuComponent implements OnInit {
   menu: any;
   _item !: Product;
   myitem: Product[] = [
-    { itemId: 1, itemName: 'item 1', itemPrice: 1, discount: 5 },
-    { itemId: 2, itemName: 'item 2', itemPrice: 2, discount: 5 },
-    { itemId: 3, itemName: 'item 3', itemPrice: 3, discount: 4 },
+    { itemId: 1, itemName: 'item 1', itemPrice: 1 },
+    { itemId: 2, itemName: 'item 2', itemPrice: 2 },
+    { itemId: 3, itemName: 'item 3', itemPrice: 3 },
   ];
   cart!: Product;
   ngOnInit() {
@@ -68,5 +68,9 @@ export class ResturantMenuComponent implements OnInit {
   //  get all cart items
   getCartItems() {
     this.cartItems = this.cartServ.getProducts()
+  }
+  removeItem(id: any){
+    this.cartServ.deleteProduct(id);
+    this.getCartItems()
   }
 }

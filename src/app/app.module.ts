@@ -18,7 +18,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NavBarComponent } from './Components/Home/nav-bar/nav-bar.component';
-import { CartHeaderComponent } from './Components/Cart/cart-header/cart-header.component';
 import { CartContentComponent } from './Components/cart/cart-content/cart-content.component';
 import { PaymentCardComponent } from './Components/payment-card/payment-card.component';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
@@ -93,7 +92,6 @@ import {
     ClientProfileComponent,
     SystemReviewComponent,
     FooterComponent,
-    CartHeaderComponent,
     CartContentComponent,
     OffersComponent
 

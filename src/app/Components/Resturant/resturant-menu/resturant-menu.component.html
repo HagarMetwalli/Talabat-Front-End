@@ -112,56 +112,50 @@
         </mat-tab>
 
         <mat-tab label="Food Menu">
-            <img src="../../assets/foodknief.png" id="kniefphoto" />
-            <img src="../../assets/forkfood.png" id="forkphoto" />
-
-            <div class="row">
-                <div class="col-lg-9">
-                    <div id="menu">
-                        <mat-accordion>
-                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        Catigory 1
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div class="collapscontent" *ngFor="let c of myitem">
-                                    <p>{{c.itemName}}</p>
-                                    <p>{{c.itemPrice}}</p>
-                                    <button class="btn btn-success" id="addbutton" (click)="onpress(c)">+</button>
-                                </div>
+            <div class="row" style="margin: 5rem;">
+              <img  class="col-lg-3 d-lg-block d-none" width="300" height="500" src="../../assets/foodknief.png" id="kniefphoto"/>
+                <div class="col-lg-3 pt-3 col-md-6">
+                  <div id="menu">
+                      <mat-accordion>
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                 (closed)="panelOpenState = false">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                 Catigory 1
+                                </mat-panel-title>
+                              </mat-expansion-panel-header>
+                              <div id="collapscontent" *ngFor="let c of myitem" class="flex-container">
+                                  <div class="it">
+                                      <p>{{c.itemName}}</p>
+                                      <p>{{c.itemPrice}}</p>
+                                  </div>
+                                  <div class="bt">
+                                      <button class="btn btn-success" id="addbutton" (click)="onpress(c)">+</button>
+                                  </div>
+                              </div>
                             </mat-expansion-panel>
-
-                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        Catigory 2
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div class="collapscontent">
-                                    <p>item 2</p>
-                                    <p>Price</p>
-                                    <button class="btn btn-success">+</button>
-                                </div>
+              
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                 (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                            <mat-panel-title>
+                            Catigory 2
+                            </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="collapscontent">
+                              <p>item 2</p>
+                              <p>Price</p>
+                              <button class="btn btn-success">+</button>
+                            </div>
                             </mat-expansion-panel>
-                        </mat-accordion>
+                          </mat-accordion>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="bigcart">
-                        <app-cart-header></app-cart-header>
-                        <div class="w-100">
-                            <app-cart-content [product]="item" *ngFor="let item of cartItems"></app-cart-content>
-                        </div>
-                    </div>
+                <div class="col-lg-3 pt-3 col-md-6">
+                          <app-cart-content (remove)="removeItem($event)" [product]="item" *ngFor="let item of cartItems"></app-cart-content>
                 </div>
+                <img class="col-lg-3 d-lg-block d-none" width="300" height="500" src="../../assets/forkfood.png" id="forkphoto"/>
             </div>
-            <div class="Catigory">
-                <p class="p">Menu Catigory</p>
-                <button class="catbtn">catigory 1</button>
-                <button class="catbtn">catigory 2</button>
-                <button class="catbtn">catigory 3</button>
-            </div>
-        </mat-tab>
+          </mat-tab>
     </mat-tab-group>
 </div>
