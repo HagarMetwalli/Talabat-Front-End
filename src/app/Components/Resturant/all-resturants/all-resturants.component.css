@@ -5,26 +5,12 @@ html,body{
 .ss{
     max-width: 100vw;
 }
-#search{
-    border-color:rgb(255, 90, 0);
-    width: 350px;
-    height: 40px;
-    font-size: 16px;
-    position: relative;
-    top: 9px;
-    right: 190px;
-    float: right;
-}
-
-.searchdiv{
-   height: 60px;
-}
-
 .search-restaurant {
   display: flex;
   width: 360px;
   position: relative;
   left: 905px;
+  top: 30px;
   padding-top: 10px;
 }
 
@@ -53,16 +39,14 @@ html,body{
 }
 
 #Header{
-    width: 1140px;
-    height: 350px; 
+    width: 1180px;
+    height: 400px; 
     background: url(../../../../assets/pizza-3.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
     margin: 0 auto;
     color: rgb(255, 90, 0);
-    /* position: absolute;
-    right: 160px; */
 }
 #info{
     margin-top: 40px;
@@ -75,20 +59,19 @@ html,body{
     align-content: center;
 }
 h2{
-    font-family: Roboto;
-    font-weight: 600;
-    font-size: 40px;
+    font-family:Microsoft Sans Serif;
+    font-size: 35px;
+    font-weight: bold;
     position: relative;
-    top: 175px;
-    left: 796px;
+    top: 250px;
+    left: 850px;
     width: 25rem;
     line-height: 1.1;
-    letter-spacing: 2px;
 }
 p{
     position: relative;
-    top: 172px;
-    left: 796px;
+    top: 240px;
+    left: 850px;
     width: 30rem;
     font-size: 17px;
     line-height:1.4
@@ -104,6 +87,7 @@ p{
     display: inline-block;
     margin-top: 40px;
     margin-bottom: 30px;
+    margin-left: 30px;
     padding-bottom: 10px;
     border-radius: 15px;
     font-family: 'Calibri', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
@@ -205,5 +189,16 @@ p{
 .main-recipe, .restaurant-info span {
     font-size: 15px;
     color: #222;
+}
+.flex-container{
+    display: flex;
+    width: 350px;
+    flex-wrap:nowarp;
+    margin-left: 100px;
+    padding-left: 40px;
+}
+.pag{
+    width: 300px;
+    margin-left: 600px;
 }
 
