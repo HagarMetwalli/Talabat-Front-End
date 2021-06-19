@@ -6,6 +6,8 @@ import { ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
+
 
 interface Coordinates {
   address: string,
@@ -53,22 +55,30 @@ export class HomepageComponent implements OnInit {
     private modalService: BsModalService,
     private toolTipModule: TooltipModule,
     private storeTypeService: StoretypeService,
-    private _router: Router
+    private _router: Router,
+    public nav: NavbarService
   ) {
     this.coordinates = {} as Coordinates;
   }
 
   onTextChange(value: string) {
+    
     this.txtValue = value;
     if (this.txtValue != '') {
+      this.mapMarkactive = false;
       this.closeMarkactive = true;
+      // this.mapMarkactive = false;
       //this.message="Textbox is empty !!!";
-    }
+    }else{
     this.mapMarkactive = true;
+  }
+
   }
 
   clearInputControl() {
     this.searchElementRef.nativeElement.value = ' ';
+    this.closeMarkactive = false;
+    this.mapMarkactive = true;
   }
 
   config = {
@@ -93,7 +103,7 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.nav.show();
     this.storeTypeService.getStoreTypes().subscribe(
       type => {
         console.log(type);

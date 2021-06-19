@@ -14,6 +14,9 @@
         height: 625px;
         /* background-color: rgba(rgba(88, 85, 85, 0.288), 0.66); */
         overflow: hidden;
+        position: relative;
+        top: 0;
+        left: 0;
     }
 
     video {
@@ -51,20 +54,21 @@
     nav {
         background: 0 0;
         font-size: 16px;
-        padding: 32px 0;
+        padding: 0px 0;
         display: flex;
         -webkit-box-align: center;
         align-items: center;
         -webkit-box-pack: justify;
         justify-content: space-between;
         position: relative;
-        top: 45px;
+        top: -30px;
         clear: both;
     }
 
     .tlb-logo {
         width: 160px;
         height: auto;
+        cursor: pointer
     }
 
     .site-lang {
@@ -104,6 +108,7 @@
         font-size: 40px;
         color: #fff;
         text-align: left;
+        line-height: 1.1;
     }
 
     .header-left h3 {
@@ -118,10 +123,11 @@
     }
 
     .header-right {
-        margin-top: 30px;
+        margin-top: 50px;
         position: relative;
-        top: -150px;
-        left: 60px;
+        top: -100px;
+        left: 10px;
+        border-radius: 5px;
         /* max-width: 4%; */
     }
 
@@ -272,7 +278,7 @@
     .partner-benefits {
         text-align: center;
         justify-content: center;
-        margin-top: 200px;
+        margin-top: 150px;
         margin-bottom: 100px ;
     }
 
@@ -362,7 +368,7 @@
     .talabtRiders-in-number {
         margin: 0 auto;
         position: relative;
-        top: 50%;
+        top: 0;
         left: 50%;
         transform: translate(-50%, -50%);
         
