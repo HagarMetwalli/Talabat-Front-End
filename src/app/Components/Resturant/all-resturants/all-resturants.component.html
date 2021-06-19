@@ -1,32 +1,24 @@
 <div class="ss">
-    <!-- <div class="searchdiv">
-      <div class="search-icon"><i class="fa fa-search"></i></div>
-      <input type="text" class="form-control search-box" id="search" placeholder="&#xf002; Search For Resturants"
-          [(ngModel)]="filterTerm" />
-    </div> -->
     <div class="search-restaurant">
       <input type="text" name="search" placeholder="Search For Resturants" [(ngModel)]="filterTerm">
       <button class="search-icon"><i class="fa fa-search fa-3x"></i></button>
     </div>
     <div class="container">
-      <div class="row">
-
-    <div id="info">
-        <div id="Header">
-            <h2>All Restaurants</h2>
-            <p>
-                 Pick Your Favourite Restaurant<br />And Get Your Order Fast Now.
-            </p>
-        </div>
-    </div>
-
-    <!-- <div class="container"> -->
-        <!-- <div class="row"> -->
-            <div class="col-lg-3" *ngFor="
-            let img of stores
-              | filter: filterTerm
-              | paginate: { itemsPerPage: 4, currentPage: p }
-              "[routerLink]="['/store-profile/',img.storeId]" (click)="storeprofileshow(img.storeId)">
+        <div class="row">
+            <div id="info">
+                <div id="Header">
+                    <h2>All Restaurants</h2>
+                    <p>
+                         Pick Your Favourite Restaurant<br />And Get Your Order Fast Now.
+                    </p>
+                </div>
+            </div>
+           <div class="flex-container">
+              <div class="col-lg-3" *ngFor="
+              let img of stores
+               | filter: filterTerm
+               | paginate: { itemsPerPage: 4, currentPage: p }
+               "[routerLink]="['/store-profile/',img.storeId]" (click)="storeprofileshow(img.storeId)">
                 <div class="restaurant-box">
                     <div class="restaurant-thumb">
                         <div class="restaurant-overlay" style="background-image: url('../../assets/turkey.PNG')"></div>
@@ -38,12 +30,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        <!-- </div> -->
-
-        <!--pagination-->
-        <pagination-controls class="text-center current" (pageChange)="p = $event">
-        </pagination-controls>
+             </div>
+        </div>
+           
+          <!--pagination-->
+         <div class="pag">
+            <pagination-controls class="text-center current" (pageChange)="p = $event"></pagination-controls>
+         </div>
+        </div>
     </div>
 
 </div>
