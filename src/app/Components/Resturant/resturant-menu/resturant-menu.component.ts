@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../../Models/Product';
 import { StoreprofileService } from '../../../Services/Stores/store-profile.service';
 import { CartServiceService } from '../../../Services/cart-service.service';
+import { Store } from './../../../Models/Store';
 
 @Component({
   selector: 'app-resturant-menu',
@@ -13,17 +14,18 @@ import { CartServiceService } from '../../../Services/cart-service.service';
 export class ResturantMenuComponent implements OnInit {
   panelOpenState = false;
   cartItems: Array<any> = [];
-  constructor(private _Activatedroute: ActivatedRoute,
-    private cartServ: CartServiceService,
-
-    private _StoreprofileService: StoreprofileService) { }
   sub: any;
   _store: any;
   id: any;
   display: boolean = false;
   displayimg: boolean = true;
-  menu: any;
-  _item !: Product;
+  menu!: string;
+  _item :any;
+  constructor(private _Activatedroute: ActivatedRoute,
+    private cartServ: CartServiceService,
+
+    private _StoreprofileService: StoreprofileService) { }
+ 
   myitem: Product[] = [
     { itemId: 1, itemName: 'item 1', itemPrice: 1 },
     { itemId: 2, itemName: 'item 2', itemPrice: 2 },
@@ -39,22 +41,35 @@ export class ResturantMenuComponent implements OnInit {
       console.log("IIIID", params.get('storeid'));
 
     });
-
     this._StoreprofileService.getStoreById(this.id).subscribe(
       store => {
-        console.log(store);
+        console.log("from get by id",store);
         this._store = store;
+        console.log("from get by _id",this._store);
+        this.gett(this._store.storeName);
       }
     )
 
-    this._StoreprofileService.getmenu(this.menu).subscribe(
-      item => {
-        console.log(item);
-        this._item = item;
-      }
-    )
-
+    // this._StoreprofileService.getmenu(this._store?.storeName).subscribe(
+    //   item => {
+    //     console.log("itemstore",item);
+    //     this._item = item;
+    //   }
+    // )
   }
+
+
+ gett(m : string){
+  this._StoreprofileService.getmenu(m).subscribe(
+    item => {
+      console.log("itemstore",item);
+      this._item = item;
+      console.log("_itemstore",this._item);
+    }
+  )
+ }
+
+
   itemincart !: Product;
   onpress(cartitem: Product) {
     this.display = true;

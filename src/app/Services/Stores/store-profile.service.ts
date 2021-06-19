@@ -15,5 +15,6 @@ export class StoreprofileService {
   }
   public getmenu(menu?: string) {
     return this.http.get(API + menu + '/Menu');
+    console.log(API+menu+'/Menu');
   }
 }

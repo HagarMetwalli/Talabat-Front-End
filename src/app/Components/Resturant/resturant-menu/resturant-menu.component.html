@@ -142,8 +142,8 @@
                             Catigory 2
                             </mat-panel-title>
                             </mat-expansion-panel-header>
-                            <div class="collapscontent">
-                              <p>item 2</p>
+                            <div class="collapscontent" *ngIf="_item">
+                              <p>{{_item?.itemName}}</p>
                               <p>Price</p>
                               <button class="btn btn-success">+</button>
                             </div>
