@@ -7,18 +7,51 @@ html,body{
 }
 #search{
     border-color:rgb(255, 90, 0);
-    margin-left: 1300px;
     width: 350px;
     height: 40px;
     font-size: 16px;
     position: relative;
-    top:20px;
-    right: 400px;
+    top: 9px;
+    right: 190px;
+    float: right;
 }
 
 .searchdiv{
    height: 60px;
 }
+
+.search-restaurant {
+  display: flex;
+  width: 360px;
+  position: relative;
+  left: 905px;
+  padding-top: 10px;
+}
+
+.search-restaurant input {
+  border-radius: 8px;
+  border: 2px solid #ff5a00;
+  outline: none;
+  padding: 10px;
+  width: 300px;
+}
+
+.search-restaurant .search-icon {
+  width: 30px;
+  height: 45px;
+  background-color: #ff5a00;
+  position: relative;
+  left: -32px;
+  border: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.search-restaurant .svg-inline--fa {
+  top: 10px;
+  font-size: 20px;
+  color: #fff;
+}
+
 #Header{
     width: 1140px;
     height: 350px; 
@@ -26,14 +59,14 @@ html,body{
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
-    margin: 30px;
+    margin: 0 auto;
     color: rgb(255, 90, 0);
-    position: absolute;
-    right: 160px;
+    /* position: absolute;
+    right: 160px; */
 }
 #info{
     margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     height: 300px;
     padding: 60px;
     display: flex;
@@ -42,19 +75,23 @@ html,body{
     align-content: center;
 }
 h2{
-    font-family: Vladimir Script;
-    font-weight: bold;
+    font-family: Roboto;
+    font-weight: 600;
     font-size: 40px;
     position: relative;
-    top: 200px;
-    left: 820px;
-    width: 21rem;
+    top: 175px;
+    left: 796px;
+    width: 25rem;
+    line-height: 1.1;
+    letter-spacing: 2px;
 }
 p{
     position: relative;
-    top: 200px;
-    left: 820px;
+    top: 172px;
+    left: 796px;
     width: 30rem;
+    font-size: 17px;
+    line-height:1.4
 }
 #imgf{
    width: 300px;
@@ -169,3 +206,4 @@ p{
     font-size: 15px;
     color: #222;
 }
+
