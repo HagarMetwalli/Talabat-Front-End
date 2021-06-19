@@ -41,7 +41,7 @@
           }"
           required
         />
-  
+
         <div
           *ngIf="submitted && fieldget.password.errors"
           class="invalid-feedback"
@@ -51,7 +51,7 @@
           </div>
         </div>
       </div>
-  
+
       <div class="remember">
         <label class="custom-checkbox"
           >Keep me logged in
@@ -65,18 +65,18 @@
         <a href="#" class="pull-right">Forgot Password?</a>
       </div>
       <button class="btn" type="submit">Login</button>
-  
+
       <div class="col-md-12">
         <div class="login-or">
           <hr class="hr-or" />
           <span class="span-or">OR</span>
         </div>
       </div>
-      
+
 
       <div class="icons">
-        <i class="fab fa-google" (click)="signInWithGoogle()" ></i>
-      <i class="fab fa-facebook-square" (click)="signInWithFB()"></i>
+        <a (click)="signInWithGoogle()"><i class="fab fa-google"></i></a>
+        <a (click)="signInWithFB()"><i class="fab fa-facebook-square"></i></a>
         <!-- <img
           class="icon1 mr-2"
           (click)="signInWithGoogle()"
@@ -88,7 +88,7 @@
           src="../../assets/facebook.png"
         /> -->
       </div>
-  
+
       <p
         [routerLink]="['/register']"
         routerLinkActive="router-link-active"

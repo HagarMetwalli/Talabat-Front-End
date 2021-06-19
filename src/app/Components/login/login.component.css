@@ -76,7 +76,7 @@
     text-align: center;
     align-content: center;
     vertical-align: middle;
-  
+
   }
   .btn:focus{
     outline: none;
@@ -99,7 +99,7 @@
   .pull-right {
     color: #a39e9e;
   }
-  
+
   .login-or {
     position: relative;
     color: #aaa;
@@ -128,7 +128,7 @@
     justify-content: space-between;
     padding: 5px;
   }
-  
+
   .icon1 {
     width: 33px;
     height: 30px;
@@ -223,6 +223,7 @@
     background-repeat: no-repeat;
     font-size: 30px;
     margin-left: 35px;
+    cursor:pointer
 
   }
 
