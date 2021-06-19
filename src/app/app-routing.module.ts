@@ -40,6 +40,10 @@ import { SystemReviewComponent } from './Components/Review/system-review/system-
 //offer
 import { OffersComponent } from './Components/offers/offers.component'
 
+//item review
+import { OrderReviewComponent } from './Components/order-review/order-review.component';
+import { OrderItemsReviewComponent } from './Components/order-items-review/order-items-review.component';
+
 //Error
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
 
@@ -56,12 +60,23 @@ const routes: Routes = [
   { path: 'store-profile/:storeid', component: ResturantProfileComponent },
 
   //client
-  { path: 'profile', component: ClientProfileComponent },
-  { path: 'my-orders', component: MyOrdersComponent },
-  { path: 'account-info', component: AccountInfoComponent },
-  { path: 'saved-addresses', component: SavedAddressesComponent },
-  { path: 'saved-cards', component: SavedCardsComponent },
-  { path: 'system-review', component: SystemReviewComponent },
+  // { path: 'profile', component: ClientProfileComponent },
+  // { path: 'my-orders', component: MyOrdersComponent },
+  // { path: 'account-info', component: AccountInfoComponent },
+  // { path: 'saved-addresses', component: SavedAddressesComponent },
+  // { path: 'saved-cards', component: SavedCardsComponent },
+  // { path: 'system-review', component: SystemReviewComponent },
+  {
+    path: 'profile', component: ClientProfileComponent, children: [
+      { path: '', component: AccountInfoComponent, outlet: 'subOutlet' },
+      { path: 'my-orders', component: MyOrdersComponent, outlet: 'subOutlet' },
+      { path: 'account-info', component: AccountInfoComponent, outlet: 'subOutlet' },
+      { path: 'saved-addresses', component: SavedAddressesComponent, outlet: 'subOutlet' },
+      { path: 'saved-cards', component: SavedCardsComponent, outlet: 'subOutlet' },
+      { path: 'system-review', component: SystemReviewComponent, outlet: 'subOutlet' },
+
+    ]
+  },
 
   //store
   { path: 'nearest-stores', component: StoresInAreaComponent },
@@ -78,7 +93,12 @@ const routes: Routes = [
   //offer
   { path: 'offers', component: OffersComponent },
 
-  { path: '**', component: NotFoundPageComponent }
+  //item review
+  { path: 'order-review/:id', component: OrderReviewComponent },
+  { path: 'review-orderitems/:orderId/:orderReviewId', component: OrderItemsReviewComponent },
+
+  { path: '**', component: NotFoundPageComponent },
+
 
 
 
