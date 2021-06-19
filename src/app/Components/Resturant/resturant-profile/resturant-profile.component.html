@@ -5,12 +5,80 @@
 <div id="bg">
     <img src="../../assets/Capture6.PNG" id="back" />
 </div>
-<div id="search">
+<!-- <div id="search">
     <input type="text" id="searchtxt" class="form-control" placeholder=" ...Find an area,street,landmark" />
     <img src="../../assets/location.PNG" id="loc" />
     <button class="btn btn-success" id="button" (click)="showmenu(_store.storeId)"
         [routerLink]="['storemenu/',_store.storeId]">Food Menu</button>
+</div> -->
+
+<div class="search-bar">
+  <div class="search-box">
+      <input type="text" class="form-control empty" name="search-bar" [value]='txtValue'
+          (keyup.enter)='openGoogleMapsModalOnClick($event)'
+          placeholder="&#xf041;   ...Find an area,street,landmark"
+          (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off"
+          spellcheck="off" type="text" #search [(ngModel)]="txtValue"
+          (ngModelChange)="onTextChange($event)" required>
+
+      <button class="locate-map" *ngIf="mapMarkactive" (click)="openGoogleMapsModal()">
+          <img src="../../assets/home/locate-map.svg" width="24" height="24">
+      </button>
+      <button class="locate-map close" *ngIf="closeMarkactive" (click)="clearInputControl()">
+          <img src="../../assets/home/close-circle-map.svg" width="24" height="24">
+      </button>
+      <p>
+          <span tooltip="Enter your full delivery address" triggers="" #pop="bs-tooltip">
+            Enter your full delivery address
+          </span>
+      </p>
+  </div>
+  <div>
+      <button class="btn btn-warning search-action"
+        (click)="openGoogleMapsModalOnClick()">Food Menu</button>
+
+  </div>
 </div>
+
+
+<ng-template #template>
+  <div class="modal-header">
+
+    <span class="modalheader">Delivery Address</span>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+  </div>
+  <div class="modal-body">
+
+    <div class="form-group">
+      <input type="text" class="form-control empty" name="search-bar" value="" placeholder="Search Nearest Location"
+        (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+        #search>
+    </div>
+
+    <agm-map style="width: 565px; height: 400px;" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
+    [usePanning]="true" (centerChange)="centerChanged($event)" (mapReady)="mapReady($event)">
+
+    </agm-map>
+    <div class="map-center-overlay">
+      <img src="../../assets/home/map-marker.svg" width="30" height="30">
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary navigate" [disabled]="btnDisabled" [class.spinner]="loading"
+    [ngStyle]="{'background-color': (btnDisabled)? '#ff5a00': 'gray'}" (click)="getstoreMenu(_store.storeId,_store.storeName)">{{btnText}}</button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+  </div>
+</ng-template>
+
+
+
+
+
+
 <div id="description" class="col-sm-6">
     <h4 id="headofdesc">Description</h4>
     <p id="pragraph">{{_store.storeDescription}}</p>
