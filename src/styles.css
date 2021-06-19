@@ -4,9 +4,11 @@
     z-index: 9999;
 
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-@import "../node_modules/bootstrap/dist/css/bootstrap.css"
-
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
 
