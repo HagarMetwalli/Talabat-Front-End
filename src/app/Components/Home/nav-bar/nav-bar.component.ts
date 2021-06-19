@@ -4,6 +4,7 @@ import { LoginComponent } from './../../login/login.component';
 import { Component, OnInit } from '@angular/core';
 import { SocialUser,SocialAuthService } from 'angularx-social-login';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -23,11 +24,19 @@ export class NavBarComponent implements OnInit {
   constructor(
     private authService: SocialAuthService,
     private modalService: BsModalService,
-    private router: Router
+    private router: Router,
+    public nav: NavbarService
   ) {}
 
+  config = {
+    animated: true,
+    keyboard: false,
+    backdrop: true,
+    ignoreBackdropClick: true,
+  };
+
   openModal() {
-    this.bsmodalRef = this.modalService.show(LoginComponent);
+    this.bsmodalRef = this.modalService.show(LoginComponent, this.config);
   }
 
   register() {
