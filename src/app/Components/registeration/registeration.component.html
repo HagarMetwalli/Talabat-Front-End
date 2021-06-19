@@ -54,20 +54,19 @@
                     <mat-form-field>
                       <mat-label>Email</mat-label>
                       <input
-                        type="email"
                         matInput
-                        required
                         placeholder="example.pat@example.com"
                         [(ngModel)]="client.clientEmail"
                         name="clientEmail"
                         #clientEmail="ngModel"
-                        pattern="^[a-zA-Z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})$"
+                        required
                       />
-                      <mat-error *ngIf="clientEmail.hasError('pattern')">
-                        Please enter a valid email address
-                      </mat-error>
+                      <!-- pattern="[a-zA-Z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})" -->
                       <mat-error *ngIf="clientEmail.hasError('required')">
                         Email is <strong>required</strong>
+                      </mat-error>
+                      <mat-error *ngIf="clientEmail.hasError('pattern')">
+                        Please enter a valid email address
                       </mat-error>
                     </mat-form-field>
                   </div>
@@ -101,7 +100,7 @@
                         }}</mat-icon>
                       </button>
                       <mat-error *ngIf="clientPassword.hasError('pattern')">
-                        Password should have minimum 8 characters, at least 1
+                        Password have to minimum 8 characters, at least 1
                         uppercase letter, 1 lowercase letter, 1 number and special
                         character
                       </mat-error>
@@ -115,10 +114,11 @@
                     <mat-form-field>
                       <mat-label>Gender</mat-label>
                       <mat-select
-                        required
-                        #clientGenderIsMale="ngModel"
+                        
                         [(ngModel)]="client.clientGenderIsMale"
                         name="clientGenderIsMale"
+                        #clientGenderIsMale="ngModel"
+                        required
                         matNativeControl
                       >
                         <mat-option value="1">Male</mat-option>
