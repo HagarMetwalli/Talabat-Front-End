@@ -31,16 +31,17 @@
             </li>
 
             <li *ngIf="loggedIn()">
+              
               <button mat-button [matMenuTriggerFor]="menu">My account</button>
-              <div #menu="matMenu">
-                <button mat-menu-item>Talabat Pay</button>
-                <button mat-menu-item>My Orders</button>
-                <button mat-menu-item>Account Info</button>
-                <button mat-menu-item>Saved Address</button>
+              <mat-menu #menu=matMenu >
+               
+                <button mat-menu-item  >My Orders</button>
+                <button mat-menu-item [routerLink]="['profile/account-info']" routerLinkActive="active" >Account Info</button>
+                <button mat-menu-item [routerLink]="['profile/saved-addresses']" routerLinkActive="active">Saved Address</button>
                 <button class="btn btn-danger" (click)="logout()" mat-menu-item>
                   Logout
-                </button>
-              </div>
+                </button> 
+               </mat-menu>
             </li>
           </ul>
         </div>

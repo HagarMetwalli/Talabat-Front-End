@@ -154,13 +154,7 @@ export class GoogleMapsComponent implements OnInit {
         this.btnDisabled = false;
         this.btnText = 'Deliver here';
         this.router.navigate(['/RestInArea', this.stores]);
-        /*setTimeout(() => {
-            this.btnText = 'click me again';
-            this.btnDisabled = false
-            }, 5000);*/
-
-        //}
-
+    
       })
 
   }

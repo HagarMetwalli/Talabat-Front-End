@@ -129,7 +129,7 @@ export class LoginComponent implements OnInit {
         }
         sessionStorage.setItem('token', JSON.stringify(data));
         //console.log('token', data);
-        this.router.navigate(['/home']);
+        this.router.navigate(['']);
         this.closeModal();
       });
     console.log('before getting email');

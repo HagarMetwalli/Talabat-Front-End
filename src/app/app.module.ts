@@ -9,6 +9,7 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider,
 } from 'angularx-social-login';
+import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -49,7 +50,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';

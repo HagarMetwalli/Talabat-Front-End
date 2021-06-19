@@ -15,13 +15,14 @@
 <div class="search-bar">
   <div class="search-box">
       <input type="text" class="form-control empty" name="search-bar" [value]='txtValue'
-          (keyup.enter)='openGoogleMapsModalOnClick($event)'
+          
           placeholder="&#xf041;   ...Find an area,street,landmark"
           (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off"
           spellcheck="off" type="text" #search [(ngModel)]="txtValue"
           (ngModelChange)="onTextChange($event)" required>
+          <!-- (keyup.enter)='openGoogleMapsModalOnClick($event)' -->
 
-      <button class="locate-map" *ngIf="mapMarkactive" (click)="openGoogleMapsModal()">
+      <button class="locate-map" *ngIf="mapMarkactive" (click)="openGoogleMapsModalOnClick()">
           <img src="../../assets/home/locate-map.svg" width="24" height="24">
       </button>
       <button class="locate-map close" *ngIf="closeMarkactive" (click)="clearInputControl()">
@@ -45,7 +46,7 @@
   <div class="modal-header">
 
     <span class="modalheader">Delivery Address</span>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bsModalRef?.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
 
@@ -69,8 +70,8 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-primary navigate" [disabled]="btnDisabled" [class.spinner]="loading"
-    [ngStyle]="{'background-color': (btnDisabled)? '#ff5a00': 'gray'}" (click)="getstoreMenu(_store.storeId,_store.storeName)">{{btnText}}</button>
-    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+    [ngStyle]="{'background-color': (btnDisabled)? '#ff5a00': 'gray'}" (click)="GetStoreMenu(_store.storeId,_store.storeName)">{{btnText}}</button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef?.hide()">Close</button>
   </div>
 </ng-template>
 

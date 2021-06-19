@@ -62,16 +62,16 @@ export class HomepageComponent implements OnInit {
   }
 
   onTextChange(value: string) {
-    
+
     this.txtValue = value;
     if (this.txtValue != '') {
       this.mapMarkactive = false;
       this.closeMarkactive = true;
       // this.mapMarkactive = false;
       //this.message="Textbox is empty !!!";
-    }else{
-    this.mapMarkactive = true;
-  }
+    } else {
+      this.mapMarkactive = true;
+    }
 
   }
 
@@ -140,7 +140,8 @@ export class HomepageComponent implements OnInit {
     this.storeTypeService.getStoreTypeById(type.storeTypeId).subscribe(
       res => {
         console.log(res);
-        this._router.navigate(['/all-resturants/', type.storeTypeName])
+        // this._router.navigate(['/all-resturants/', type.storeTypeName])
+        this._router.navigate(['/all-resturant'])
       }
     )
   }
