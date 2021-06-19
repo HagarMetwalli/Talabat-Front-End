@@ -18,13 +18,14 @@ import { TokenService } from './../../Services/token.service';
 import { LoggedClient } from './../../Models/LoggedClient';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ClientService } from './../../Services/client.service';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   bsmodalRef?: BsModalRef;
   loading = false;
   loginForm!: FormGroup;
@@ -115,6 +116,21 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    //check if user is exist
+    this.clientservice.getByemail(this.loggedClient.email).subscribe((data) => {
+      console.log('status from mail', data);
+      console.log('status', data[0].status);
+      //   sessionStorage.setItem('client id', JSON.stringify(data));
+
+      if (data[0].status == 404) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Email is not Exist Please Register First!',
+        });
+      }
+    });
+    //login
     this.authService
       .login(this.fieldget.email.value, this.fieldget.password.value)
       .subscribe((data) => {
@@ -132,12 +148,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
         this.closeModal();
       });
-    console.log('before getting email');
+    //console.log('before getting email');
 
     // store client id in session
-    this.clientservice.getByemail(this.loggedClient.email).subscribe((data) => {
-      console.log('getbyemail', data);
-      sessionStorage.setItem('client id', JSON.stringify(data));
-    });
+    // this.clientservice.getByemail(this.loggedClient.email).subscribe((data) => {
+    //   console.log('getbyemail', data);
+    //   sessionStorage.setItem('client id', JSON.stringify(data));
+    // });
   }
 }

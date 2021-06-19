@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-//Home 
+//Home
 import { HomepageComponent } from './Components/Home/home-page/home-page.component';
 
 //Client Registeration
@@ -38,14 +38,14 @@ import { PartenerComponent } from './Components/Partener/partener/partener.compo
 import { SystemReviewComponent } from './Components/Review/system-review/system-review.component';
 
 //offer
-import { OffersComponent } from './Components/offers/offers.component'
+import { OffersComponent } from './Components/offers/offers.component';
 
 //Error
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
 
 const routes: Routes = [
-
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomepageComponent },
   { path: '', component: HomepageComponent },
   { path: 'register', component: RegisterationComponent },
   { path: 'login', component: LoginComponent },
@@ -65,6 +65,8 @@ const routes: Routes = [
 
   //store
   { path: 'nearest-stores', component: StoresInAreaComponent },
+  
+
 
   //order
 
@@ -78,15 +80,11 @@ const routes: Routes = [
   //offer
   { path: 'offers', component: OffersComponent },
 
-  { path: '**', component: NotFoundPageComponent }
-
-
-
-
+  { path: '**', component: NotFoundPageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

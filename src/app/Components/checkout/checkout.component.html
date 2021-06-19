@@ -53,6 +53,34 @@
             <strong>$20</strong>
           </li>
         </ul>
+        <mat-card class="example-card">
+          <mat-card-header class="text-center">
+            <mat-card-title>Add voucher code</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <hr class="mb-3" />
+            <form class="form-inline">
+              <div class="form-row align-items-center">
+                <mat-form-field>
+                  <input
+                    type="text"
+                    matInput
+                    placeholder="Enter voucher code"
+                  />
+                  <!-- [(ngModel)]=""
+              name="vouchercode"
+              #vouchercode="ngModel" -->
+                  <!-- <mat-error *ngIf="vouchercode.hasError('pattern')">
+                voucher code isn't valid (pleace check it's ending date)
+              </mat-error> -->
+                </mat-form-field>
+              </div>
+              <div class="col-auto">
+                <button type="submit">REDEEM</button>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
       </div>
 
       <div class="col-md-8 order-md-1">

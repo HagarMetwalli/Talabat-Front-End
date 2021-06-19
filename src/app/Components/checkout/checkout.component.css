@@ -261,3 +261,21 @@ p {
     max-width: 70rem;
     margin: 4rem;
 }
+textarea.mat-input-element {
+  resize: none;
+  overflow: auto;
+}
+.mat-input-element {
+  font: inherit;
+  background: transparent;
+  color: currentColor;
+  border: 2rem;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: bottom;
+  text-align: inherit;
+  box-sizing: content-box;
+}
