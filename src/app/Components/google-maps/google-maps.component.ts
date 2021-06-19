@@ -63,9 +63,10 @@ export class GoogleMapsComponent implements OnInit {
     map.addListener("dragend", () => {
       this.loading = true
       console.log(this.centerLatitude, this.centerLongitude);
-      this.loading = false;
+      
     });
   }
+  // this.loading = false;
 
   closeModal() {
     this.modalService.hide();
