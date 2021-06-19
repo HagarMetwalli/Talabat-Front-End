@@ -1,7 +1,8 @@
 import { AppRoutingModule } from './app-routing.module';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+
 import {
   SocialLoginModule,
   SocialAuthServiceConfig,
@@ -62,6 +63,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxWebstorageModule } from 'ngx-webstorage'
 import { OffersComponent } from './Components/offers/offers.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 
@@ -95,7 +97,7 @@ import {
     FooterComponent,
     CartHeaderComponent,
     CartContentComponent,
-    OffersComponent
+    OffersComponent,
 
   ],
   imports: [
@@ -138,7 +140,7 @@ import {
     }),
     MatExpansionModule,
     NgxWebstorageModule.forRoot(),
-
+    MatStepperModule
 
   ],
 
@@ -187,5 +189,6 @@ import {
 
 
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

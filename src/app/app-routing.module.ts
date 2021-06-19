@@ -1,3 +1,4 @@
+import { NavBarComponent } from './Components/Home/nav-bar/nav-bar.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -51,7 +52,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   //resturant
-  { path: 'all-resturant', component: AllResturantComponent },
+  { path: 'all-resturant', component: AllResturantComponent},
   { path: 'storemenu/:storeid', component: ResturantMenuComponent },
   { path: 'store-profile/:storeid', component: ResturantProfileComponent },
 
@@ -72,8 +73,8 @@ const routes: Routes = [
   { path: 'Payment', component: PaymentCardComponent },
 
   //partener
-  { path: 'partener-login', component: PartenerLoginComponent },
-  { path: 'partener', component: PartenerComponent },
+  { path: 'partener-login', component: PartenerLoginComponent, data: {navbar: false}},
+  { path: 'partener', component: PartenerComponent, data: {navbar: false} },
 
   //offer
   { path: 'offers', component: OffersComponent },
