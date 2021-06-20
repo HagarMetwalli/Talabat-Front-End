@@ -170,15 +170,6 @@ export class ResturantProfileComponent implements OnInit {
     });
   }
 
-  public getAllStoreIn(event: any, type: any) {
-    this.storeTypeService.getStoreTypeById(type.storeTypeId).subscribe(
-      res => {
-        console.log(res);
-        this._router.navigate(['/all-resturants/', type.storeTypeName])
-      }
-    )
-  }
-
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
