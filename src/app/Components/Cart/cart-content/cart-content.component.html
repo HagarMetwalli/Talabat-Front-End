@@ -1,62 +1,59 @@
+
 <div *ngIf="productItem" style="width: 30rem;">
-
+  
   <div class="card" style="width: 18rem;">
-    <h5 class="card-title">Your Cart</h5>
-    <div class="card-body">
-      <div id="tablediv">
-        <div class="flex-container" style="width: 30rem;">
-          <div class="icon">
-            <i class=" fa fa-minus-circle" id="i" (click)="removeitem()"></i>
-          </div>
-          <div style="width: 25rem;">
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <button class="btns" (click)="changecount('minus')">-</button>
-                  </td>
-                  <td>
-                    <input [value]="productItem.count" disabled type="text" id="textbox" />
-                  </td>
-                  <td>
-                    <button class="btns" (click)="changecount('ADD')">+</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="pdiv">
-            <p>{{productItem.itemName}}</p>
-          </div>
-        </div>
-        <hr>
-        <div style="width: 35rem;" class="flex-container" id="inline">
-          <div class="pricetable">
-            <table>
-              <tbody>
-                <tr>
-                  <td>{{productItem.value}}</td>
-                  <td class="v">Total Price</td>
-                </tr>
-                <tr>
-                  <td>{{productItem.discount}}</td>
-                  <td class="v">Total discount</td>
-                </tr>
-                <tr>
-                  <td>{{productItem.itemPrice! - ((productItem.discount! / 100) * productItem.itemPrice!)}}</td>
-                  <td class="v">Total amount</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div style="width: 30rem;">
-            <button class="btn btn-success" id="button">Execute Request</button>
-          </div>
-        </div>
+      <h5 class="card-title">Your Cart</h5>
+      <div class="card-body">
+        <div id="tablediv">
+            <div class="flex-container" style="width: 30rem;">
+              <div class="icon" (click)="removeitem()">
+                  <i class=" fa fa-minus-circle" id="i" ></i>
+              </div>
+              <div style="width: 25rem;">
+                  <table>
+                      <tbody>
+                          <tr>
+                              <td>
+                                  <button class="btns" (click) ="changecount('minus')">-</button>
+                              </td>
+                              <td>
+                                  <input [value]="productItem.count"disabled type="text" id="textbox"/>
+                              </td>
+                              <td>
+                                  <button class="btns" (click) ="changecount('ADD')">+</button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="pdiv">
+              <p>{{productItem.itemName}}</p>
+              </div>
+            </div>
+          <hr>
+          <div style="width: 35rem;" class="flex-container" id="inline">
+              <div class="pricetable">
+                  <table>
+                      <tbody>
+                          <tr>
+                              <td>{{productItem.itemPrice}}</td>
+                              <td class="v">Total Price</td>
+                          </tr>
+                          <tr>
+                              <td>{{productItem.value}}</td>
+                              <td class="v">Total amount</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div style="width: 30rem;">
+                  <button class="btn btn-success" id="button">Execute Request</button>
+              </div>
+          </div>  
       </div>
-
+      
+      </div>
     </div>
-  </div>
 
-
+  
 </div>
