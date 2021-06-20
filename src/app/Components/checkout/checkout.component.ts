@@ -1,15 +1,10 @@
+
 import { LocalStorageService } from 'ngx-webstorage';
 import { Product } from '../../Models/Product';
 
-import { MapsAPILoader } from '@agm/core';
-import {
-  Component,
-  ElementRef,
-  NgZone,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { MapsAPILoader, LatLngLiteral } from '@agm/core';
+import { Component, ElementRef, NgZone, OnInit, TemplateRef, ViewChild } from '@angular/core';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { GooglemapService } from 'src/app/Services/google-map.service';
@@ -55,37 +50,38 @@ export class CheckoutComponent implements OnInit {
     private ngZone: NgZone,
     private modalService: BsModalService,
     private _googlemapservice: GooglemapService
-  ) {
-    this.coordinates = {} as Coordinates;
-    // this.calcTotals();
-  }
-  //calculate order
-  // calcTotals() {
-  //   this.VoucherDiscount = 0;
-  //   this.subtotalPrice = 0;
-  //   this.DeliverFees = 0;
-  //   this.totalPrice = 0;
-  //   if (this.locals.retrieve('cart')) {
-  //     const arr: Array<Product> = JSON.parse(this.locals.retrieve('cart'));
-  //     arr.map((e) => {
-  //       this.subtotalPrice += e.itemPrice! * e.count!;
-  //       this.VoucherDiscount += e.discount || 0;
-  //       this.totalPrice += this.subtotalPrice + 19 || 0;
-  //     });
-  //   }
-  // }
-  //get items in  muenu from local storage
-  // getProducts(): Array<any> {
-  //   if (this.locals.retrieve('cart')) {
-  //     const arr: Array<any> = JSON.parse(this.locals.retrieve('cart'));
-  //     this.calcTotals();
-  //     return arr;
-  //   } else {
-  //     return [];
-  //   }
-  // }
 
-  onfig = {
+    )
+    {
+      this.coordinates = {} as Coordinates;
+    }
+
+
+  centerLatitude = this.latitude;
+  centerLongitude = this.longitude;
+
+  // initialZoom = 5;
+
+  public centerChanged(coords: LatLngLiteral) {
+    this.centerLatitude = coords.lat;
+    this.centerLongitude = coords.lng;
+  }
+
+    public mapReady(map: { addListener: (arg0: string, arg1: () => void) => void; }) {
+      map.addListener("dragend", () => {
+        console.log(this.centerLatitude, this.centerLongitude);
+      });
+    }
+
+
+    closeModal() {
+      this.modalService.hide();
+    };
+
+
+
+  config = {
+
     animated: true,
     keyboard: false,
     backdrop: true,

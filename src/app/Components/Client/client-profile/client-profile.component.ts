@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/Models/Client';
 import { ProfileService } from 'src/app/Services/Profile/Profile.service';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
 
 
 @Component({
@@ -12,9 +13,10 @@ import { ProfileService } from 'src/app/Services/Profile/Profile.service';
 export class ClientProfileComponent implements OnInit {
   // aaa: boolean = false;
   btnstyle: string = 'side-btns-nav'
-  constructor() { }
+  constructor(public nav: NavbarService) { }
 
   ngOnInit(): void {
+    this.nav.show();
   }
 
   sss(btn: HTMLAnchorElement, btn2: HTMLAnchorElement, btn3: HTMLAnchorElement, btn4: HTMLAnchorElement) {
