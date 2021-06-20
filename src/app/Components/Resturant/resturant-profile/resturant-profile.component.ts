@@ -8,6 +8,7 @@ import { LatLngLiteral, MapsAPILoader } from '@agm/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { GooglemapService } from 'src/app/Services/google-map.service';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
 
 interface Coordinates {
   address: string,
@@ -62,11 +63,11 @@ export class ResturantProfileComponent implements OnInit {
     private modalService: BsModalService,
     private toolTipModule: TooltipModule,
     private storeTypeService: StoretypeService,
-    private _googlemapservice: GooglemapService
-    )
-    {
-      this.coordinates = {} as Coordinates;
-    }
+    private _googlemapservice: GooglemapService,
+    public nav: NavbarService
+  ) {
+    this.coordinates = {} as Coordinates;
+  }
 
   sub: any;
   _store: any;
@@ -86,9 +87,9 @@ export class ResturantProfileComponent implements OnInit {
       this.closeMarkactive = true;
       // this.mapMarkactive = false;
       //this.message="Textbox is empty !!!";
-    }else{
-    this.mapMarkactive = true;
-  }
+    } else {
+      this.mapMarkactive = true;
+    }
 
   }
 
@@ -129,7 +130,7 @@ export class ResturantProfileComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.nav.show();
     this.sub = this._Activatedroute.paramMap.subscribe(params => {
       console.log(params);
       this.id = params.get('storeid');
@@ -143,7 +144,7 @@ export class ResturantProfileComponent implements OnInit {
         console.log(store);
         this._store = store;
 
-    });
+      });
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {

@@ -310,11 +310,13 @@ html, body { height: 100%; }
 
     #app-stores {
         position: relative;
-        top: 200px;
+        top: 0px;
         display: flex;
-        -webkit-box-pack: justify;
         justify-content: center;
         padding: 54px 0 200px 0px;
+        height: 300px;
+        margin-top: 350px;
+        margin-bottom: 77px;
     }
 
     .app-card .app-desc .header-title{

@@ -10,6 +10,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { OffersServiceService } from '../../Services/OffersService.service';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
 
 @Component({
   selector: 'app-offers',
@@ -30,10 +31,12 @@ export class OffersComponent implements OnInit {
     private router: Router,
     private avtive: ActivatedRoute,
     private offersService: OffersServiceService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    public nav: NavbarService
   ) { }
 
   ngOnInit(): void {
+    this.nav.show();
     this.offersService.PromotionStores().subscribe((prom) => {
       console.log(prom);
       this.PromsStores = prom;

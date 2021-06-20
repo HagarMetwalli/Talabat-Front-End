@@ -11,6 +11,7 @@ import { StoreprofileService } from '../../../Services/Stores/store-profile.serv
 import { CartServiceService } from '../../../Services/cart-service.service';
 import { Router } from '@angular/router';
 import { Store } from 'src/app/Models/Store';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
 
 @Component({
   selector: 'app-resturant-menu',
@@ -25,9 +26,9 @@ export class ResturantMenuComponent implements OnInit {
     private _Activatedroute: ActivatedRoute,
     private _router: Router,
     private cartServ: CartServiceService,
-
+    public nav:NavbarService,
     private _StoreprofileService: StoreprofileService
-  ) {}
+  ) { }
   sub: any;
   _store!: Store;
   id: any;
@@ -42,6 +43,7 @@ export class ResturantMenuComponent implements OnInit {
   ];
   cart!: Product;
   ngOnInit() {
+    this.nav.show();
     this.getCartItems();
     this.sub = this._Activatedroute.paramMap.subscribe((params) => {
       console.log(params);
@@ -80,8 +82,4 @@ export class ResturantMenuComponent implements OnInit {
     this.getCartItems();
   }
 
-  removeItem(id: any){
-    this.cartServ.deleteProduct(id);
-    this.getCartItems()
-  }
 }

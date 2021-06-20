@@ -124,7 +124,7 @@
                 class="close"
                 data-dismiss="modal"
                 aria-label="Close"
-                (click)="modalRef.hide()"
+                (click)="bsModalRef?.hide()"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -164,7 +164,7 @@
                 />
               </div>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
               <button
                 type="button"
                 class="btn btn-primary navigate"
@@ -181,11 +181,11 @@
                 type="button"
                 class="btn btn-default"
                 (click)="modalRef.hide()"
-              >
+              > 
                 Close
-              </button>
-            </div>
-          </ng-template>
+               </button>
+            </div>-->
+          </ng-template> 
 
           <hr class="mb-3" />
           <!-- <speciall requesssssssssssssssssssssssssssssssssssst> -->
@@ -411,19 +411,19 @@
                       <mat-list-item> <strong>Stock:</strong> {{ this.secondFormGroup.value.stock }}</mat-list-item>
                       </mat-list> -->
 
-                          <div>
+                          <!-- <div>
                               <button mat-button matStepperPrevious>Back</button>
                               <button mat-button (click)="submit()">Conirm</button>
                           </div>
-                      </mat-step>
-                    </mat-horizontal-stepper>
-                  </div>
+                      </mat-step> -->
+                    <!-- </mat-horizontal-stepper> -->
+                  <!-- </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary navigate" (click)="getClientAddress()">Confirm</button>
                     <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
                   </div>
-                </ng-template>
-
+                </ng-template> -->
+<!-- 
                 <hr class="mb-3" />
 
                 <div class="mb-3">
@@ -460,10 +460,10 @@
                 </div>
 
                 <hr class="mb-4" />
-                <button class="btn" type="submit">Place order</button>
-              </form>
-            </div>
-          </div>
+                <button class="btn" type="submit">Place order</button> -->
+              <!-- </form> -->
+            <!-- </div> -->
+          <!-- </div>
         </div>
       </section>
     </main>

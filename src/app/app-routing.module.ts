@@ -51,8 +51,8 @@ import { NotFoundPageComponent } from './Components/not-found-page/not-found-pag
 import { ThankyouComponent } from './Components/thankyou/thankyou.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomepageComponent },
+  // { path: '', redirectTo: '', pathMatch: 'full' },
+  // { path: 'home', component: HomepageComponent },
   { path: '', component: HomepageComponent },
   { path: 'register', component: RegisterationComponent },
   { path: 'login', component: LoginComponent },
