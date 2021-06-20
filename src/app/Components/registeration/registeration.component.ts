@@ -83,6 +83,27 @@ export class RegisterationComponent implements OnInit {
     this.bsmodalRef = this.modalService.show(LoginComponent);
   }
 
+  ngOnInit(): void {
+    //login in with social works
+    this.socialService.authState.subscribe((user) => {
+      this.user = user;
+    });
+    this.registerForm = this.formBuilder.group({
+      //   clientPassword:['', Validators.compose([Validators.required, this.cs.patternValidator()])],
+
+      //   cclientPassword: ['', Validators.required]
+      // },
+      // {  // validator: this.cs.MatchPassword,
+
+        clientEmail: Validators.pattern(/^[a-zA-Z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})$/),
+
+    });
+  }
+
+  get registerFormControl() {
+    return this.registerForm.controls;
+  }
+
   register() {
     if (this.client.clientGenderIsMale == 1) {
       this.client.clientGenderIsMale = 1;
@@ -121,24 +142,6 @@ export class RegisterationComponent implements OnInit {
     console.log(this.client);
   }
 
-  ngOnInit(): void {
-    //login in with social works
-    this.socialService.authState.subscribe((user) => {
-      this.user = user;
-    });
-    this.registerForm = this.formBuilder.group({
-      //   clientPassword:['', Validators.compose([Validators.required, this.cs.patternValidator()])],
-
-      //   cclientPassword: ['', Validators.required]
-      // },
-      // {
-      validator: this.cs.MatchPassword,
-    });
-  }
-
-  get registerFormControl() {
-    return this.registerForm.controls;
-  }
 
   signInWithGoogle(): void {
     console.log(GoogleLoginProvider.PROVIDER_ID);

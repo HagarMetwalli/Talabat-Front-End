@@ -13,10 +13,18 @@
               <h3 class="register-heading">Create an account</h3>
               <div class="text-center social-btn">
                 <a class="btn btn-secondary" (click)="signInWithFB()"
-                  ><i class="fab fa-facebook"></i> Sign up with Facebook</a
+                  ><i
+                    class="fab fa-facebook"
+                    style="font-size: 18px; vertical-align: middle"
+                  ></i>
+                  Sign up with Facebook</a
                 >
                 <a class="btn btn-danger" (click)="signInWithGoogle()"
-                  ><i class="fab fa-google"></i>Sign up with Google</a
+                  ><i
+                    class="fab fa-google"
+                    style="font-size: 18px; vertical-align: middle"
+                  ></i>
+                  Sign up with Google</a
                 >
               </div>
               <h5>OR</h5>
@@ -54,20 +62,19 @@
                   <mat-form-field>
                     <mat-label>Email</mat-label>
                     <input
-                      type="email"
                       matInput
-                      required
                       placeholder="example.pat@example.com"
                       [(ngModel)]="client.clientEmail"
                       name="clientEmail"
                       #clientEmail="ngModel"
-                      pattern="^[a-zA-Z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})$"
+                      required
                     />
-                    <mat-error *ngIf="clientEmail.hasError('pattern')">
-                      Please enter a valid email address
-                    </mat-error>
+                    <!-- pattern="[a-zA-Z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})" -->
                     <mat-error *ngIf="clientEmail.hasError('required')">
                       Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="clientEmail.hasError('pattern')">
+                      Please enter a valid email address
                     </mat-error>
                   </mat-form-field>
                 </div>
@@ -101,7 +108,7 @@
                       }}</mat-icon>
                     </button>
                     <mat-error *ngIf="clientPassword.hasError('pattern')">
-                      Password should have minimum 8 characters, at least 1
+                      Password have to minimum 8 characters, at least 1
                       uppercase letter, 1 lowercase letter, 1 number and special
                       character
                     </mat-error>
@@ -115,10 +122,10 @@
                   <mat-form-field>
                     <mat-label>Gender</mat-label>
                     <mat-select
-                      required
-                      #clientGenderIsMale="ngModel"
                       [(ngModel)]="client.clientGenderIsMale"
                       name="clientGenderIsMale"
+                      #clientGenderIsMale="ngModel"
+                      required
                       matNativeControl
                     >
                       <mat-option value="1">Male</mat-option>
@@ -179,38 +186,38 @@
 
                 <div class="form-group">
                   <!-- <mat-form-field>
-                      <mat-label>Confirm Password</mat-label>
-                      <input
-                        matInput
-                        [type]="hide0 ? 'password' : 'text'"
-                        type="password"
-                        matInput
-                        placeholder="Confirm password"
-                        name="cclientPassword"
-                        [formControl]="cclientPassword"
-                        required
-                      />
-                      <button
-                        mat-icon-button
-                        matSuffix
-                        (click)="hide0 = !hide0"
-                        [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide0"
-                      >
-                        <mat-icon>{{
-                          hide0 ? "visibility_off" : "visibility"
-                        }}</mat-icon>
-                      </button>
-                      <mat-error
-                        *ngIf="
-                          registerForm.controls['cclientPassword'].pristine ||
-                          registerForm.controls['cclientPassword'].errors
-                            ?.MatchPassword
-                        "
-                      >
-                        Password dosn't match
-                      </mat-error>
-                    </mat-form-field> -->
+                    <mat-label>Confirm Password</mat-label>
+                    <input
+                      matInput
+                      [type]="hide0 ? 'password' : 'text'"
+                      type="password"
+                      matInput
+                      placeholder="Confirm password"
+                      name="cclientPassword"
+                      [formControl]="cclientPassword"
+                      required
+                    />
+                    <button
+                      mat-icon-button
+                      matSuffix
+                      (click)="hide0 = !hide0"
+                      [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide0"
+                    >
+                      <mat-icon>{{
+                        hide0 ? "visibility_off" : "visibility"
+                      }}</mat-icon>
+                    </button>
+                    <mat-error
+                      *ngIf="
+                        registerForm.controls['cclientPassword'].pristine ||
+                        registerForm.controls['cclientPassword'].errors
+                          ?.MatchPassword
+                      "
+                    >
+                      Password dosn't match
+                    </mat-error>
+                  </mat-form-field> -->
                 </div>
 
                 <div class="form-group subscribe">
@@ -238,7 +245,7 @@
           <input
             type="submit"
             (click)="register()"
-            class="btnRegister"
+            class="btnRegister btn btn-cont"
             value="Create your account"
           />
           <p class="text-center">

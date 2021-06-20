@@ -1,13 +1,15 @@
 import { AppRoutingModule } from './app-routing.module';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+
 import {
   SocialLoginModule,
   SocialAuthServiceConfig,
   FacebookLoginProvider,
   GoogleLoginProvider,
 } from 'angularx-social-login';
+import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -48,7 +50,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -63,7 +64,15 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { OffersComponent } from './Components/offers/offers.component';
 
+import { ProfileService } from './Services/Profile/Profile.service';
+import { OrderReviewComponent } from './Components/order-review/order-review.component';
+import { OrderItemsReviewComponent } from './Components/order-items-review/order-items-review.component';
+import { RatingComponent } from './Components/rating/rating.component';
+
+import { MatStepperModule } from '@angular/material/stepper';
+
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,6 +99,10 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     FooterComponent,
     CartContentComponent,
     OffersComponent,
+
+    OrderReviewComponent,
+    RatingComponent,
+    OrderItemsReviewComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -131,9 +144,12 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     }),
     MatExpansionModule,
     NgxWebstorageModule.forRoot(),
+
+    MatStepperModule,
   ],
 
   providers: [
+    ProfileService,
     BsModalService,
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     {
@@ -157,32 +173,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     NgbModule,
   ],
 
-  // providers: [
-
-  //   { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-  //   {
-  //     provide: 'SocialAuthServiceConfig',
-  //     useValue: {
-  //       autoLogin: false,
-  //       providers: [
-  //         BsModalService,
-  //         {
-  //           id: GoogleLoginProvider.PROVIDER_ID,
-  //           provider: new GoogleLoginProvider(
-  //             '480432450025-dlkiap8l9pvop7mamvht1ab6ond71fof.apps.googleusercontent.com'
-  //           ),
-  //         },
-  //         {
-  //           id: FacebookLoginProvider.PROVIDER_ID,
-  //           provider: new FacebookLoginProvider('1080637959127854'),
-  //         },
-  //       ],
-  //     } as SocialAuthServiceConfig,
-  //   },
-  //   NgbModule,
-  //   //StoresService
-  // ],
-
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

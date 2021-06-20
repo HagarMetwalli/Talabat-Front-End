@@ -1,5 +1,5 @@
 .modal-content {
-    width: 450px;
+    width: 350px;
     height: 30px;
     position: relative;
     background-color: #fff;
@@ -15,6 +15,8 @@
     display: none;
     height: 0;
     border: none;
+    width: 60%;
+
   }
   .reg:hover {
     cursor: pointer;}
@@ -25,12 +27,13 @@
   .login {
     text-align: center;
     justify-content: center;
+    z-index: 9999;
   }
   p a {
     padding-left: 2px;
   }
   .form-group h1 {
-    font-size: 25px;
+    font-size: 32px;
     text-align: center;
     color: #ff5a00;
     font-weight: bold;
@@ -47,6 +50,7 @@
     box-shadow: none;
     height: 63px;
     border-radius: 0px;
+    text-align: left;
   }
   .login-form {
     /* width: 350px; */
@@ -72,7 +76,7 @@
     text-align: center;
     align-content: center;
     vertical-align: middle;
-  
+
   }
   .btn:focus{
     outline: none;
@@ -95,7 +99,7 @@
   .pull-right {
     color: #a39e9e;
   }
-  
+
   .login-or {
     position: relative;
     color: #aaa;
@@ -124,7 +128,7 @@
     justify-content: space-between;
     padding: 5px;
   }
-  
+
   .icon1 {
     width: 33px;
     height: 30px;
@@ -205,4 +209,24 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+.fa-google{
+  font-size: 30px;
+  color: #ff5a00;
+  cursor: pointer;
+}
+  .fa-facebook-square {
+    color: #3b5998;
+    background-image: linear-gradient( to bottom, transparent 20%, white 20%, white 93%, transparent 93% );
+    background-size: 55%;
+    background-position: 70% 0;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    margin-left: 35px;
+    cursor:pointer
+
+  }
+
+  .icons i {
+    margin-right: 20px;
   }

@@ -7,11 +7,13 @@
     <div class="viewport-header">
         <div class="container">
             <nav>
-                <img class="tlb-logo" src="../../assets/partner/logo-tlb.png" alt="talabatlogo">
+                <a routerLink="">
+                    <img class="tlb-logo" src="../../assets/partner/logo-tlb.png" alt="talabatlogo">
+                </a>
                 <div>
                     <span><img class="site-lang" src="../../assets/partner/iconfinder_Egypt-Flag_32209.png"
                             alt="arabic-language"></span>
-                    <button class="btnvendorportal"><a routerLink="/partener-login">Vendor Portal</a></button>
+                    <a routerLink="/partener-login"><button class="btnvendorportal">Vendor Portal</button></a>
                 </div>
             </nav>
 
@@ -21,56 +23,128 @@
                     <h3>Join Talabat, the Middle East's <br>largest delivery platform.</h3>
                 </div>
                 <div class="col-lg-6 header-right">
-                    <!-- multistep form -->
-                    <form id="msform">
-                        <!-- progressbar -->
-                        <ul id="progressbar">
-                            <li class="active">Your Details</li>
-                            <li>Store Details</li>
-                            <li>Submit</li>
-                        </ul>
-                        <!-- fieldsets -->
-                        <fieldset>
-                            <h2 class="fs-title">Join Us Today!</h2>
-                            <!-- <h3 class="fs-subtitle">This is step 1</h3> -->
-                            <input class="form-control" type="text" name="fname" placeholder="First Name" />
-                            <input class="form-control" type="text" name="lname" placeholder="Last Name" />
-                            <input class="form-control" type="text" name="phone" placeholder="Mobile Number" />
-                            <input class="form-control" type="email" name="email" placeholder="E-mail Address" />
-                            <select class="form-select" data-role="tagsinput" name="contact-role"
-                                aria-placeholder="--Contact Role--" aria-label="--Contact Role--">
-                                <option selected value="none">Contact Role</option>
-                                <option value="Washington">Owner</option>
-                                <option value="Sydney">Co-Owner</option>
-                                <option value="Beijing">Manager</option>
-                                <option value="Cairo">Employee</option>
-                            </select>
+                    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                        <mat-step [stepControl]="firstFormGroup">
+                            <form [formGroup]="firstFormGroup">
+                                <ng-template matStepLabel>Basic Details</ng-template>
+                                <mat-form-field>
+                                    <mat-label>First Name</mat-label>
+                                    <input matInput placeholder="First Name" formControlName="firstName" required>
+                                </mat-form-field>
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Last Name</mat-label>
+                                    <input matInput type="text" placeholder="Last Name" formControlName="lastName"
+                                        required>
+                                </mat-form-field>
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Phone Number</mat-label>
+                                    <input matInput placeholder="Phone Number" formControlName="phoneNumber" required>
+                                </mat-form-field>
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Email Address</mat-label>
+                                    <input matInput placeholder="Email Address" formControlName="emailAddress" required>
+                                </mat-form-field>
+                                <br />
+                                <!-- <mat-form-field>
+                            <mat-label>--Contact Role--</mat-label>
+                            <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
+                              <mat-option value="Owner">Owner</mat-option>
+                              <mat-option value="Co-Owner">Co-Owner</mat-option>
+                              <mat-option value="Manager">Manager</mat-option>
+                              <mat-option value="Employee">Employee</mat-option>
+                            </mat-select>
+                            <mat-hint>Errors appear instantly!</mat-hint>
+                            <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+                            </mat-error>
+                          </mat-form-field> -->
+                                <div>
+                                    <button mat-button matStepperNext>Next</button>
+                                </div>
+                            </form>
+                        </mat-step>
+                        <mat-step [stepControl]="secondFormGroup">
+                            <form [formGroup]="secondFormGroup">
+                                <ng-template matStepLabel>Store Details</ng-template>
+                                <mat-form-field>
+                                    <mat-label>Store Name</mat-label>
+                                    <input matInput placeholder="Store Name" formControlName="storeName" required>
+                                </mat-form-field>
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Number Of Branches</mat-label>
+                                    <input matInput placeholder="Number Of Branches" formControlName="numBranchNo"
+                                        required>
+                                </mat-form-field>
+                                <br />
+                                <!-- <mat-form-field>
+                                    <mat-label>--Store Type--</mat-label>
+                                    <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
+                            <mat-option value="Restaurant">Restaurant</mat-option>
+                            <mat-option value="Grocery">Grocery</mat-option>
+                            <mat-option value="Pharmacy">Pharmacy</mat-option>
+                            </mat-select>
+                                    <mat-hint>Errors appear instantly!</mat-hint>
+                                    <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+                            </mat-error>
+                                </mat-form-field> -->
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Website/Social Contact</mat-label>
+                                    <input matInput placeholder="Website/Social Contact" formControlName="contacts"
+                                        required>
+                                </mat-form-field>
+                                <br />
+                                <!-- <mat-form-field>
+                            <mat-label>--Store location--</mat-label>
+                            <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
+                            <mat-option value="UAE">United Arabia Emirates/mat-option>
+                            <mat-option value="Egypt">Egypt</mat-option>
+                            <mat-option value="Qatar">Qatar</mat-option>
+                            <mat-option value="Jordan">Jordan</mat-option>
+                            <mat-option value="Kuwait">Kuwait</mat-option>
+                            <mat-option value="Oman">Oman</mat-option>
+                            <mat-option value="Iraq">Iraq</mat-option>
+                            <mat-option value="Bahrain">Bahrain</mat-option>
+                            </mat-select>
+                            <mat-hint>Errors appear instantly!</mat-hint>
+                            <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+                            </mat-error>
+                          </mat-form-field> -->
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Store Address</mat-label>
+                                    <input matInput type="text" class="form-control empty" name="search-bar"
+                                        placeholder="&#xf041;  Store Address" formControlName="storeAddress"
+                                        (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off"
+                                        spellcheck="off" type="text" #search required>
+                                </mat-form-field>
+                                <div>
+                                    <button mat-button matStepperPrevious>Back</button>
+                                    <button mat-button matStepperNext>Next</button>
+                                </div>
+                            </form>
+                        </mat-step>
+                        <mat-step>
+                            <ng-template matStepLabel>Done</ng-template>
+                            <p>You are now done.</p>
 
-                            <input type="button" name="next" class="next action-button" value="Next" />
-                        </fieldset>
-                        <fieldset>
-                            <h2 class="fs-title">Store Details</h2>
-                            <!-- <h3 class="fs-subtitle">We will never sell it</h3> -->
-                            <input type="text" name="email" placeholder="Store Name" />
-                            <input type="password" name="pass" placeholder="Number Of Branches" />
-                            <select class="form-select" data-role="tagsinput" name="contact-role"
-                                aria-placeholder="--Contact Role--" aria-label="--Contact Role--">
-                                <option selected value="none">Contact Role</option>
-                                <option value="Washington">Resturant</option>
-                                <option value="Sydney">Grocery</option>
-                                <option value="Beijing">Pharmacy</option>
-                            </select>
-                            <input type="text" name="media" placeholder="Website/Social Media" />
-                            <input type="text" name="address" placeholder="Store Address" />
-                            <!-- <iframe></iframe> -->
-                            <input type="button" name="previous" class="previous action-button" value="Previous" />
-                            <input type="button" name="next" class="next action-button" value="Next" />
-                        </fieldset>
-                        <fieldset>
-                            <input type="button" name="previous" class="previous action-button" value="Previous" />
-                            <input type="submit" name="submit" class="submit action-button" value="Join Now" />
-                        </fieldset>
-                    </form>
+                            <!-- <mat-list>
+                        <mat-list-item> <strong>Name:</strong> {{ this.firstFormGroup.value.name }}</mat-list-item>
+                        <mat-list-item> <strong>Description:</strong> {{ this.firstFormGroup.value.description }}</mat-list-item>
+                        <mat-list-item> <strong>Amount:</strong> {{ this.secondFormGroup.value.amount }}</mat-list-item>
+                        <mat-list-item> <strong>Stock:</strong> {{ this.secondFormGroup.value.stock }}</mat-list-item>
+                        </mat-list> -->
+
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button (click)="stepper.reset()">Reset</button>
+                                <button mat-button (click)="submit()">Submit</button>
+                            </div>
+                        </mat-step>
+                    </mat-horizontal-stepper>
                 </div>
             </div>
 
@@ -129,7 +203,7 @@
 </section>
 <div class="container talabtRiders-in-number">
     <img class="fleet-img" src="../../assets/partner/fleet-new.png" alt="fleet-new">
-    <h1 class="fleet-txt" style="color: #000;">Fleet of over
+    <h1 class="fleet-txt" style="font-size: 30px;line-height:1.5; color: #000;;">Fleet of over
         <span style="display: block; color: #ff5a00;">16000
             <span style="color: #000;">riders and growing</span>
         </span>

@@ -15,12 +15,12 @@
                     <button class="locate-map" *ngIf="mapMarkactive" (click)="openGoogleMapsModal()">
                         <img src="../../assets/home/locate-map.svg" width="24" height="24">
                     </button>
-                    <button class="locate-map" *ngIf="closeMarkactive" (click)="clearInputControl()">
+                    <button class="locate-map close" *ngIf="closeMarkactive" (click)="clearInputControl()">
                         <img src="../../assets/home/close-circle-map.svg" width="24" height="24">
                     </button>
                     <p>
                         <span tooltip="Enter your full delivery address" triggers="" #pop="bs-tooltip">
-                            This text has attached tooltip
+                          Enter your full delivery address
                         </span>
                     </p>
                 </div>

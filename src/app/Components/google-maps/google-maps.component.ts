@@ -63,9 +63,24 @@ export class GoogleMapsComponent implements OnInit {
     map.addListener("dragend", () => {
       this.loading = true
       console.log(this.centerLatitude, this.centerLongitude);
-      this.loading = false;
+      //-----------------------------------------------------
+      this._googlemapservice.getstores(this.centerLatitude, this.centerLongitude).subscribe(
+        _stores => {
+          if(_stores)
+          {
+          console.log("<<<<<", _stores);
+          this.stores = _stores;
+          console.log(">>>>>", this.stores);
+
+          this.btnDisabled = false;
+          this.btnText = 'Deliver here';
+          // this.router.navigate(['/RestInArea', this.stores]);
+        }
+
+        })
     });
   }
+  // this.loading = false;
 
   closeModal() {
     this.modalService.hide();
@@ -141,26 +156,20 @@ export class GoogleMapsComponent implements OnInit {
 
   @Output() stores: Store[] = [];
 
-  GetAllNearStores() {
+  // GetAllNearStores() {
 
-    this._googlemapservice.getstores(this.latitude, this.longitude).subscribe(
-      _stores => {
+  //   this._googlemapservice.getstores(this.latitude, this.longitude).subscribe(
+  //     _stores => {
 
-        console.log("<<<<<", _stores);
-        this.stores = _stores;
-        console.log(">>>>>", this.stores);
+  //       console.log("<<<<<", _stores);
+  //       this.stores = _stores;
+  //       console.log(">>>>>", this.stores);
 
-        this.btnDisabled = false;
-        this.btnText = 'Deliver here';
-        this.router.navigate(['/RestInArea', this.stores]);
-        /*setTimeout(() => {
-            this.btnText = 'click me again';
-            this.btnDisabled = false
-            }, 5000);*/
+  //       this.btnDisabled = false;
+  //       this.btnText = 'Deliver here';
+  //       // this.router.navigate(['/RestInArea', this.stores]);
 
-        //}
+  //     })
 
-      })
-
-  }
+  // }
 }
