@@ -2,7 +2,7 @@ import { NavBarComponent } from './Components/Home/nav-bar/nav-bar.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-//Home 
+//Home
 import { HomepageComponent } from './Components/Home/home-page/home-page.component';
 
 //Client Registeration
@@ -39,7 +39,7 @@ import { PartenerComponent } from './Components/Partener/partener/partener.compo
 import { SystemReviewComponent } from './Components/Review/system-review/system-review.component';
 
 //offer
-import { OffersComponent } from './Components/offers/offers.component'
+import { OffersComponent } from './Components/offers/offers.component';
 
 //item review
 import { OrderReviewComponent } from './Components/order-review/order-review.component';
@@ -51,8 +51,8 @@ import { NotFoundPageComponent } from './Components/not-found-page/not-found-pag
 import { ThankyouComponent } from './Components/thankyou/thankyou.component';
 
 const routes: Routes = [
-
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomepageComponent },
   { path: '', component: HomepageComponent },
   { path: 'register', component: RegisterationComponent },
   { path: 'login', component: LoginComponent },
@@ -70,7 +70,9 @@ const routes: Routes = [
   // { path: 'saved-cards', component: SavedCardsComponent },
   // { path: 'system-review', component: SystemReviewComponent },
   {
-    path: 'profile', component: ClientProfileComponent, children: [
+    path: 'profile',
+    component: ClientProfileComponent,
+    children: [
       { path: '', component: AccountInfoComponent, outlet: 'subOutlet' },
       { path: 'my-orders', component: MyOrdersComponent, outlet: 'subOutlet' },
       { path: 'account-info', component: AccountInfoComponent, outlet: 'subOutlet' },
@@ -78,6 +80,8 @@ const routes: Routes = [
       { path: 'saved-cards', component: SavedCardsComponent, outlet: 'subOutlet' },
 
     ]
+
+
   },
 
   //system review
@@ -92,7 +96,9 @@ const routes: Routes = [
   { path: 'Payment', component: PaymentCardComponent },
 
   //partener
+
   { path: 'partener-login', component: PartenerLoginComponent, data: { navbar: false } },
+
   { path: 'partener', component: PartenerComponent, data: { navbar: false } },
 
   //offer
@@ -100,15 +106,13 @@ const routes: Routes = [
 
   //item review
   { path: 'order-review/:id', component: OrderReviewComponent },
-  { path: 'review-orderitems/:orderId/:orderReviewId', component: OrderItemsReviewComponent },
+  {
+    path: 'review-orderitems/:orderId/:orderReviewId',
+    component: OrderItemsReviewComponent,
+  },
 
   { path: 'Thankyou', component: ThankyouComponent },
   { path: '**', component: NotFoundPageComponent },
-
-
-
-
-
 ];
 
 @NgModule({

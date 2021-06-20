@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NavBarComponent } from './Components/Home/nav-bar/nav-bar.component';
-import { CartHeaderComponent } from './Components/Cart/cart-header/cart-header.component';
+
 import { CartContentComponent } from './Components/cart/cart-content/cart-content.component';
 import { PaymentCardComponent } from './Components/payment-card/payment-card.component';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
@@ -61,24 +61,20 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { NgxWebstorageModule } from 'ngx-webstorage'
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { OffersComponent } from './Components/offers/offers.component';
 
 import { ProfileService } from './Services/Profile/Profile.service';
 import { OrderReviewComponent } from './Components/order-review/order-review.component';
-import { OrderItemsReviewComponent } from './Components/order-items-review/order-items-review.component'
+import { OrderItemsReviewComponent } from './Components/order-items-review/order-items-review.component';
 import { RatingComponent } from './Components/rating/rating.component';
 
 import { MatStepperModule } from '@angular/material/stepper';
 import { ThankyouComponent } from './Components/thankyou/thankyou.component';
 
 
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
-
-import {
-  MatNativeDateModule,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,18 +99,13 @@ import {
     ClientProfileComponent,
     SystemReviewComponent,
     FooterComponent,
-    CartHeaderComponent,
     CartContentComponent,
     OffersComponent,
     ThankyouComponent,
 
     OrderReviewComponent,
     RatingComponent,
-    OrderItemsReviewComponent
-
-
-
-
+    OrderItemsReviewComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -152,12 +143,12 @@ import {
     ModalModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCUzKQYbhsvR6K__DdrqYTJiSnuXpDNsWE',
-      libraries: ['places']
+      libraries: ['places'],
     }),
     MatExpansionModule,
     NgxWebstorageModule.forRoot(),
-    MatStepperModule
 
+    MatStepperModule,
   ],
 
   providers: [
@@ -166,23 +157,26 @@ import {
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     {
       provide: 'SocialAuthServiceConfig',
-      useValue:
-        {
-          autoLogin: false,
-          providers: [{ id: GoogleLoginProvider.PROVIDER_ID, provider: new GoogleLoginProvider('480432450025-dlkiap8l9pvop7mamvht1ab6ond71fof.apps.googleusercontent.com'), },
-          { id: FacebookLoginProvider.PROVIDER_ID, provider: new FacebookLoginProvider('1080637959127854'), },],
-        } as SocialAuthServiceConfig,
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '480432450025-dlkiap8l9pvop7mamvht1ab6ond71fof.apps.googleusercontent.com'
+            ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('1080637959127854'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
     },
     NgbModule,
-
   ],
 
-
-
-
-
-
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

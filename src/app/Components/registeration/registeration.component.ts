@@ -17,6 +17,10 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { CustomValidationService } from './../../Services/custom-validation.service';
+import { ClientService } from './../../Services/client.service';
+import Swal from 'sweetalert2';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
+
 @Component({
   selector: 'app-registeration',
   templateUrl: './registeration.component.html',
@@ -72,7 +76,9 @@ export class RegisterationComponent implements OnInit {
     private modalService: BsModalService,
     private router: Router,
     private socialService: SocialAuthService,
-    private authService: AuthService
+    private authService: AuthService,
+    private clientservice: ClientService,
+    public nav: NavbarService
   ) {}
   //toOpenLoginModal
   openModal() {
@@ -80,6 +86,7 @@ export class RegisterationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.nav.show();
     //login in with social works
     this.socialService.authState.subscribe((user) => {
       this.user = user;
@@ -91,8 +98,9 @@ export class RegisterationComponent implements OnInit {
       // },
       // {  // validator: this.cs.MatchPassword,
 
-        clientEmail: Validators.pattern(/^[a-zA-Z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})$/),
-
+      clientEmail: Validators.pattern(
+        /^[a-zA-Z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})$/
+      ),
     });
   }
 
@@ -116,7 +124,19 @@ export class RegisterationComponent implements OnInit {
     } else {
       this.client.clientSmsSubscribe = 0;
     }
+    //check if user is exist
+    this.clientservice.getByemail(this.client.clientEmail).subscribe((data) => {
+      console.log('status from mail', data);
+      console.log('status', data[0].status);
 
+      if (data[0].status == 200) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Email is alraedy Exist Use diffrent Email OR login !',
+        });
+      }
+    });
     console.log('hi', this.client);
     this.authService.register(this.client).subscribe((a) => {
       console.log('subscribed', this.client);
@@ -125,7 +145,6 @@ export class RegisterationComponent implements OnInit {
 
     console.log(this.client);
   }
-
 
   signInWithGoogle(): void {
     console.log(GoogleLoginProvider.PROVIDER_ID);

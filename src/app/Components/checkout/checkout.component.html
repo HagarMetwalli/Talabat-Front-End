@@ -1,4 +1,250 @@
-<body>
+<section id="checkout-container">
+  <div class="container">
+    <div class="row py-5">
+      <!-- <order revieweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee> -->
+
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your Order</span>
+          <span class="text-muted">Modify Order</span>
+          <span class="badge badge-secondary badge-pill">num</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li
+            class="list-group-item d-flex justify-content-between lh-condensed"
+          >
+            <div>
+              <h2 class="my-0">Tasterr</h2>
+            </div>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between lh-condensed"
+          >
+            <div>
+              <h6 class="my-0">Product name</h6>
+              <small class="text-muted">Details</small>
+            </div>
+            <span class="text-muted">$12</span>
+            <span class="text-muted">Special Request</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between lh-condensed"
+          >
+            <div>
+              <h6 class="my-0">Second product</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">$8</span>
+            <span class="text-muted">Special Request</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between lh-condensed"
+          >
+            <div>
+              <h6 class="my-0">Third item</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">$5</span>
+            <span class="text-muted">Special Request</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>$20</strong>
+          </li>
+        </ul>
+        <mat-card class="example-card">
+          <mat-card-header class="text-center">
+            <mat-card-title>Add voucher code</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <hr class="mb-3" />
+            <form class="form-inline">
+              <div class="form-row align-items-center">
+                <mat-form-field>
+                  <input
+                    type="text"
+                    matInput
+                    placeholder="Enter voucher code"
+                  />
+                  <!-- [(ngModel)]=""
+              name="vouchercode"
+              #vouchercode="ngModel" -->
+                  <!-- <mat-error *ngIf="vouchercode.hasError('pattern')">
+                voucher code isn't valid (pleace check it's ending date)
+              </mat-error> -->
+                </mat-form-field>
+              </div>
+              <div class="col-auto">
+                <button type="submit">REDEEM</button>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="col-md-8 order-md-1">
+        <!-- <formmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm> -->
+
+        <form>
+          <!-- <ADRESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS> -->
+
+          <div class="mb-3 text-center">
+            <mat-card class="example-card">
+              <mat-card-header class="text-center">
+                <mat-card-title>Address</mat-card-title>
+              </mat-card-header>
+
+              <mat-card-content>
+                <hr class="mb-3" />
+
+                <p>bind here adress details</p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button style="background-color: blue; color: white">
+                  edit
+                </button>
+
+                <button
+                  mat-button
+                  style="background-color: green; color: white"
+                  (click)="openAddressModalOnClick()"
+                >
+                  add
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+
+          <ng-template #template>
+            <div class="modal-header">
+              <span class="modalheader">Delivery Address</span>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                (click)="modalRef.hide()"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control empty"
+                  name="search-bar"
+                  value=""
+                  placeholder="Search Nearest Location"
+                  (keydown.enter)="$event.preventDefault()"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  spellcheck="off"
+                  type="text"
+                  #search
+                />
+              </div>
+
+              <agm-map
+                style="width: 565px; height: 400px"
+                [latitude]="latitude"
+                [longitude]="longitude"
+                [zoom]="zoom"
+                [usePanning]="true"
+                (centerChange)="centerChanged($event)"
+                (mapReady)="mapReady($event)"
+              >
+              </agm-map>
+              <div class="map-center-overlay">
+                <img
+                  src="../../assets/home/map-marker.svg"
+                  width="30"
+                  height="30"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary navigate"
+                [disabled]="btnDisabled"
+                [class.spinner]="loading"
+                [ngStyle]="{
+                  'background-color': btnDisabled ? '#ff5a00' : 'gray'
+                }"
+                (click)="getstoreMenu(_store.storeId, _store.storeName)"
+              >
+                Confirm
+              </button>
+              <button
+                type="button"
+                class="btn btn-default"
+                (click)="modalRef.hide()"
+              >
+                Close
+              </button>
+            </div>
+          </ng-template>
+
+          <hr class="mb-3" />
+          <!-- <speciall requesssssssssssssssssssssssssssssssssssst> -->
+          <div class="mb-3">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>Add special Request</mat-card-title>
+              </mat-card-header>
+
+              <mat-card-content class="text-center">
+                <hr class="mb-3" />
+                <textarea class="text-center" matInput></textarea>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <hr class="mb-3" />
+
+          <!-- <olineeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee payment> -->
+
+          <div class="mb-3">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>Online Payment</mat-card-title>
+              </mat-card-header>
+
+              <mat-card-content class="text-center">
+                <hr class="mb-3" />
+                <app-payment-card class="text-center"></app-payment-card>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <!-- <CASHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH> -->
+          <hr class="mb-3" />
+          <div class="mb-3">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>Cash On delivery</mat-card-title>
+              </mat-card-header>
+              <mat-card-content class="text-center">
+                <hr class="mb-3" />
+
+                <mat-checkbox name="Cashondelivery" class="example-margin"
+                  >Cash on delivery</mat-checkbox
+                >
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <hr class="mb-4" />
+          <button class="btn" type="submit">Place order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <body>
     <main id="main" role="main">
       <section id="checkout-container">
         <div class="container">
@@ -157,7 +403,6 @@
 
                 <hr class="mb-3" />
 
-                <!-- //////////////// -->
 
                 <div class="mb-3">
                   <mat-card class="example-card">
@@ -184,4 +429,4 @@
         </div>
       </section>
     </main>
-  </body>
+  </body> -->

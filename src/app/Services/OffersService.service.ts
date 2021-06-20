@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class OffersServiceService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   PromotionStores() {
     return this.http.get(
       'https://localhost:44311/api/Promotions/GetAllStoresHavePromotions'
