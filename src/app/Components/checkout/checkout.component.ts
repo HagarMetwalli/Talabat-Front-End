@@ -1,4 +1,4 @@
-import { MapsAPILoader } from '@agm/core';
+import { MapsAPILoader, LatLngLiteral } from '@agm/core';
 import { Component, ElementRef, NgZone, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -46,6 +46,28 @@ export class CheckoutComponent implements OnInit {
     {
       this.coordinates = {} as Coordinates;
     }
+
+
+  centerLatitude = this.latitude;
+  centerLongitude = this.longitude;
+
+  // initialZoom = 5;
+
+  public centerChanged(coords: LatLngLiteral) {
+    this.centerLatitude = coords.lat;
+    this.centerLongitude = coords.lng;
+  }
+
+    public mapReady(map: { addListener: (arg0: string, arg1: () => void) => void; }) {
+      map.addListener("dragend", () => {
+        console.log(this.centerLatitude, this.centerLongitude);
+      });
+    }
+
+
+    closeModal() {
+      this.modalService.hide();
+    };
 
 
 

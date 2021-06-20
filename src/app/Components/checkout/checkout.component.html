@@ -92,6 +92,7 @@
                       <button
                         mat-button
                         style="background-color: blue; color: white"
+                        (click)="openAddressModalOnClick()"
                       >
                         edit
                       </button>
@@ -114,28 +115,65 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
                       <span aria-hidden="true">&times;</span>
                     </button>
-
                   </div>
                   <div class="modal-body">
+                    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                      <mat-step [stepControl]="firstFormGroup">
+                          <form [formGroup]="firstFormGroup">
+                              <ng-template matStepLabel> Address Map</ng-template>
+                                <div class="form-group">
+                                  <input type="text" class="form-control empty" name="search-bar" value="" placeholder="Search Nearest Location"
+                                    (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+                                    #search>
+                                </div>
 
-                    <div class="form-group">
-                      <input type="text" class="form-control empty" name="search-bar" value="" placeholder="Search Nearest Location"
-                        (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
-                        #search>
-                    </div>
+                                <agm-map style="width: 565px; height: 400px;" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
+                                [usePanning]="true" (centerChange)="centerChanged($event)" (mapReady)="mapReady($event)">
 
-                    <agm-map style="width: 565px; height: 400px;" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
-                    [usePanning]="true" (centerChange)="centerChanged($event)" (mapReady)="mapReady($event)">
+                                </agm-map>
+                                <div class="map-center-overlay">
+                                  <img src="../../assets/home/map-marker.svg" width="30" height="30">
+                                </div>
+                              <div>
+                                  <button mat-button matStepperNext>Next</button>
+                              </div>
+                          </form>
+                      </mat-step>
+                      <mat-step [stepControl]="secondFormGroup">
+                          <form [formGroup]="secondFormGroup">
+                              <ng-template matStepLabel>Address Details</ng-template>
+                              <mat-form-field>
+                                  <mat-label>Store Name</mat-label>
+                                  <input matInput placeholder="Store Name" formControlName="storeName" required>
+                              </mat-form-field>
+                              <br />
 
-                    </agm-map>
-                    <div class="map-center-overlay">
-                      <img src="../../assets/home/map-marker.svg" width="30" height="30">
-                    </div>
+                              <div>
+                                  <button mat-button matStepperPrevious>Back</button>
+                                  <button mat-button matStepperNext>Next</button>
+                              </div>
+                          </form>
+                      </mat-step>
+                      <mat-step>
+                          <ng-template matStepLabel>Done</ng-template>
+                          <p>You are now done.</p>
 
+                          <!-- <mat-list>
+                      <mat-list-item> <strong>Name:</strong> {{ this.firstFormGroup.value.name }}</mat-list-item>
+                      <mat-list-item> <strong>Description:</strong> {{ this.firstFormGroup.value.description }}</mat-list-item>
+                      <mat-list-item> <strong>Amount:</strong> {{ this.secondFormGroup.value.amount }}</mat-list-item>
+                      <mat-list-item> <strong>Stock:</strong> {{ this.secondFormGroup.value.stock }}</mat-list-item>
+                      </mat-list> -->
+
+                          <div>
+                              <button mat-button matStepperPrevious>Back</button>
+                              <button mat-button (click)="submit()">Conirm</button>
+                          </div>
+                      </mat-step>
+                    </mat-horizontal-stepper>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary navigate" [disabled]="btnDisabled" [class.spinner]="loading"
-                    [ngStyle]="{'background-color': (btnDisabled)? '#ff5a00': 'gray'}" (click)="getstoreMenu(_store.storeId,_store.storeName)">Confirm</button>
+                    <button type="button" class="btn btn-primary navigate" (click)="getClientAddress()">Confirm</button>
                     <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
                   </div>
                 </ng-template>
