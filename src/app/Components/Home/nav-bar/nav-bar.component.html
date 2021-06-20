@@ -49,20 +49,16 @@
             <li *ngIf="loggedIn()">
               <button mat-button [matMenuTriggerFor]="menu">My account</button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item>My Orders</button>
-                <button
-                  mat-menu-item
-                  [routerLink]="['profile/account-info']"
-                  routerLinkActive="active"
-                >
-                  Account Info
+                <button mat-menu-item>
+                  <a href="/profile/(suOutlet:my-orders)">My Orders</a>
                 </button>
-                <button
-                  mat-menu-item
-                  [routerLink]="['profile/saved-addresses']"
-                  routerLinkActive="active"
-                >
-                  Saved Address
+                <button mat-menu-item>
+                  <a href="/profile/(suOutlet:account-info)">Account Info </a>
+                </button>
+                <button mat-menu-item>
+                  <a href="/profile/(suOutlet:saved-addresses)"
+                    >Saved Address
+                  </a>
                 </button>
                 <button class="btn btn-danger" (click)="logout()" mat-menu-item>
                   Logout
