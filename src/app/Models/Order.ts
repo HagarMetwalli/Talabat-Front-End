@@ -9,13 +9,12 @@ export class Order {
     public storeId: number,
     public isDelivered: IsDelivered,
     public deliveryStatusInString: string = 'Delivered'
-  ) { }
-
+  ) {}
 }
 
 export enum IsDelivered {
   InKitchen,
   ReadyForDeliver,
   InWay,
-  Delivered
+  Delivered,
 }

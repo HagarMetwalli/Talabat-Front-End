@@ -13,6 +13,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { GooglemapService } from 'src/app/Services/google-map.service';
+import { Order } from 'src/app/Models/Order';
 
 interface Coordinates {
   address: string;
@@ -26,7 +27,6 @@ interface Coordinates {
 })
 export class CheckoutComponent implements OnInit {
   coordinates: Coordinates;
-
   bsModalRef?: BsModalRef;
 
   latitude!: number;
@@ -47,6 +47,19 @@ export class CheckoutComponent implements OnInit {
   VoucherDiscount = 0;
   DeliverFees = 0;
   totalPrice = 0;
+
+  //form inputs
+  // order: Order = {
+  //   //  orderId: 0,
+  //   orderCost: 0,
+  //   orderSpecialRequest: '',
+  //   orderTime: '',
+  //   addressDetails: '',
+  //   clientId: 0,
+  //   storeId: 0,
+  //   //  isDelivered:   ,
+  //   //  deliveryStatusInString: string = 'Delivered'
+  // };
   constructor(
     private locals: LocalStorageService,
     private _Activatedroute: ActivatedRoute,
