@@ -10,8 +10,12 @@ import { CartServiceService } from '../../../Services/cart-service.service';
 export class CartContentComponent implements OnInit {
   @Input('product') productItem!: Product;
   @Output('remove') remove: EventEmitter<any> = new EventEmitter();
-  constructor(private cartServ: CartServiceService) {}
-  ngOnInit(): void {}
+
+
+  constructor(private cartServ: CartServiceService) { }
+  ngOnInit(): void {
+  }
+
   changecount(type: String) {
     if (type === 'ADD') {
       this.productItem.count!++;
@@ -26,7 +30,9 @@ export class CartContentComponent implements OnInit {
     }
     this.cartServ.updateProduct(this.productItem);
   }
-  removeitem() {
+
+  removeitem(){
+
     this.remove.emit(this.productItem.itemId);
   }
 }

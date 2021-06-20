@@ -79,4 +79,9 @@ export class ResturantMenuComponent implements OnInit {
     this.cartServ.deleteProduct(id);
     this.getCartItems();
   }
+
+  removeItem(id: any){
+    this.cartServ.deleteProduct(id);
+    this.getCartItems()
+  }
 }

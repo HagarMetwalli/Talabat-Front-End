@@ -208,4 +208,22 @@ table{
 .flex-container{
     display: flex;
     justify-content: center;
+
 }
+#myCarousel{
+    width: 90rem;
+    height: 60rem;
+    margin-top: 8rem;
+    margin-left: 30rem;
+  }
+  .carousel-inner {
+    width: 100%;
+    overflow: hidden;
+  }
+  p {
+    color: darkslategray;
+  }
+  .media-heading{
+    font-size: 3rem;
+  }
+
