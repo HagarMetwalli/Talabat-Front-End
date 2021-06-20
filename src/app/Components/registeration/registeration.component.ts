@@ -19,6 +19,7 @@ import {
 import { CustomValidationService } from './../../Services/custom-validation.service';
 import { ClientService } from './../../Services/client.service';
 import Swal from 'sweetalert2';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
 
 @Component({
   selector: 'app-registeration',
@@ -76,7 +77,8 @@ export class RegisterationComponent implements OnInit {
     private router: Router,
     private socialService: SocialAuthService,
     private authService: AuthService,
-    private clientservice: ClientService
+    private clientservice: ClientService,
+    public nav: NavbarService
   ) {}
   //toOpenLoginModal
   openModal() {
@@ -84,6 +86,7 @@ export class RegisterationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.nav.show();
     //login in with social works
     this.socialService.authState.subscribe((user) => {
       this.user = user;
@@ -95,8 +98,9 @@ export class RegisterationComponent implements OnInit {
       // },
       // {  // validator: this.cs.MatchPassword,
 
-        clientEmail: Validators.pattern(/^[a-zA-Z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})$/),
-
+      clientEmail: Validators.pattern(
+        /^[a-zA-Z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})$/
+      ),
     });
   }
 
@@ -141,7 +145,6 @@ export class RegisterationComponent implements OnInit {
 
     console.log(this.client);
   }
-
 
   signInWithGoogle(): void {
     console.log(GoogleLoginProvider.PROVIDER_ID);

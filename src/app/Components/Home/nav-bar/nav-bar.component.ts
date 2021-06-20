@@ -46,11 +46,11 @@ export class NavBarComponent implements OnInit {
   loggedIn() {
     let token = sessionStorage.getItem('token');
     if (token != '' && token != null) {
-      console.log('from nav bar token here', token);
+      //console.log('from nav bar token here', token);
 
       return true;
     } else {
-      console.log('from nav bar no token ');
+      // console.log('from nav bar no token ');
 
       return false;
     }

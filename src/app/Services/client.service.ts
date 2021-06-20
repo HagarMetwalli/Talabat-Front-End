@@ -32,10 +32,10 @@ export class ClientService {
           return res.status;
         }),
         catchError((error: any) => {
-          if (error.status < 400 || error.status === 500) {
-            return Observable.throw(new Error(error.status));
+          if (error.status > 400 || error.status === 500) {
+            return [{ status: error.status }];
           }
-          return status;
+          return error.status;
         })
       );
   }

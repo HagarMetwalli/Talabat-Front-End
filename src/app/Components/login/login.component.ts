@@ -97,8 +97,6 @@ export class LoginComponent implements OnInit {
       console.log('data from google', this.user);
 
     console.log('client', this.loggedClient);
-    // this.closeModal();
-    // this.router.navigate(['/'])
   }
 
   signInWithFB(): void {
@@ -116,20 +114,22 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('hena', this.fieldget.email.value);
     //check if user is exist
-    this.clientservice.getByemail(this.loggedClient.email).subscribe((data) => {
-      console.log('status from mail', data);
-      console.log('status', data[0].status);
-      //   sessionStorage.setItem('client id', JSON.stringify(data));
+    this.clientservice
+      .getByemail(this.fieldget.email.value)
+      .subscribe((data) => {
+        console.log('status from mail', data);
+        console.log('status', data.status);
 
-      if (data[0].status == 404) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Email is not Exist Please Register First!',
-        });
-      }
-    });
+        if (data.status == 404) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Email is not Exist Please Register First!',
+          });
+        }
+      });
     //login
     this.authService
       .login(this.fieldget.email.value, this.fieldget.password.value)
@@ -150,10 +150,10 @@ export class LoginComponent implements OnInit {
       });
     //console.log('before getting email');
 
-    // store client id in session
-    // this.clientservice.getByemail(this.loggedClient.email).subscribe((data) => {
-    //   console.log('getbyemail', data);
-    //   sessionStorage.setItem('client id', JSON.stringify(data));
-    // });
+    //store client id in session
+    this.clientservice.getByemail(this.loggedClient.email).subscribe((data) => {
+      console.log('getbyemail', data);
+      sessionStorage.setItem('client id', JSON.stringify(data));
+    });
   }
 }
