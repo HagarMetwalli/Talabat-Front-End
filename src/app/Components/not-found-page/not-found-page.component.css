@@ -1,0 +1,12 @@
+body{
+    background-image: url('../../../assets/notfound2.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: auto;
+    text-align: center;
+}
+.btn{
+    margin-top:800px !important;
+    width: 200px;
+    font-size: 2rem;
+}

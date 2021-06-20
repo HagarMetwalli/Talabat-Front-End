@@ -70,6 +70,8 @@ import { OrderItemsReviewComponent } from './Components/order-items-review/order
 import { RatingComponent } from './Components/rating/rating.component';
 
 import { MatStepperModule } from '@angular/material/stepper';
+import { ThankyouComponent } from './Components/thankyou/thankyou.component';
+
 
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
@@ -99,6 +101,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     FooterComponent,
     CartContentComponent,
     OffersComponent,
+    ThankyouComponent,
 
     OrderReviewComponent,
     RatingComponent,

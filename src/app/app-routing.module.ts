@@ -47,6 +47,8 @@ import { OrderItemsReviewComponent } from './Components/order-items-review/order
 
 //Error
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
+//thankyou
+import { ThankyouComponent } from './Components/thankyou/thankyou.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -96,6 +98,9 @@ const routes: Routes = [
     ],
   },
 
+  //system review
+  { path: 'system-review', component: SystemReviewComponent },
+
   //store
   { path: 'nearest-stores', component: StoresInAreaComponent },
 
@@ -105,11 +110,13 @@ const routes: Routes = [
   { path: 'Payment', component: PaymentCardComponent },
 
   //partener
+
   {
     path: 'partener-login',
     component: PartenerLoginComponent,
     data: { navbar: false },
   },
+
   { path: 'partener', component: PartenerComponent, data: { navbar: false } },
 
   //offer
@@ -122,6 +129,7 @@ const routes: Routes = [
     component: OrderItemsReviewComponent,
   },
 
+  { path: 'Thankyou', component: ThankyouComponent },
   { path: '**', component: NotFoundPageComponent },
 ];
 
