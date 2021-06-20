@@ -10,8 +10,6 @@ html,body{
   width: 360px;
   position: relative;
   left: 905px;
-  top: 30px;
-  padding-top: 10px;
 }
 
 .search-restaurant input {
@@ -39,22 +37,21 @@ html,body{
 }
 
 #Header{
-    width: 1180px;
-    height: 400px; 
+    width: 120rem;
+    height: 40rem; 
     background: url(../../../../assets/pizza-3.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
-    margin: 0 auto;
+     margin-top: 40px;
     color: rgb(255, 90, 0);
 }
 #info{
     margin-top: 40px;
     margin-bottom: 60px;
     height: 300px;
-    padding: 60px;
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     align-items: center;
     align-content: center;
 }
@@ -62,16 +59,13 @@ h2{
     font-family:Microsoft Sans Serif;
     font-size: 35px;
     font-weight: bold;
-    position: relative;
-    top: 250px;
-    left: 850px;
+    margin-top: 250px;
+    margin-left: 880px;
     width: 25rem;
     line-height: 1.1;
 }
 p{
-    position: relative;
-    top: 240px;
-    left: 850px;
+    margin-left: 880px;
     width: 30rem;
     font-size: 17px;
     line-height:1.4
@@ -87,7 +81,7 @@ p{
     display: inline-block;
     margin-top: 40px;
     margin-bottom: 30px;
-    margin-left: 30px;
+    margin-right: 80px;
     padding-bottom: 10px;
     border-radius: 15px;
     font-family: 'Calibri', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
@@ -99,12 +93,17 @@ p{
 .restaurant-box .restaurant-thumb {
     position: relative;
     overflow: hidden;
-    /* display: block; */
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     
 }
-
+.row {
+    margin-right: -15px;
+    margin-left: -150px;
+}
+.container {
+    margin-right: 98px;
+}
 .restaurant-box .restaurant-overlay {
     background-position: 40% center;
     background-repeat: no-repeat;
@@ -113,7 +112,6 @@ p{
     height: 180px;
     position: relative;
     overflow: hidden;
-    /* display: block; */
     border-radius: 0;
     transition: all 0.25s ease-in-out 0s;
 }
@@ -125,7 +123,6 @@ p{
 .restaurant-box .restaurant-caption {
     width: 100%;
     padding: 10px;
-    /* display: block; */
 }
 .restaurant-box .restaurant-caption a {
     width: 100%;
@@ -194,11 +191,11 @@ p{
     display: flex;
     width: 350px;
     flex-wrap:nowarp;
-    margin-left: 100px;
+    margin-right: 180px;
     padding-left: 40px;
 }
 .pag{
     width: 300px;
-    margin-left: 600px;
+    margin-left: 500px;
 }
 
