@@ -6,8 +6,9 @@ export class SystemReview {
       public rateTalabatExperience?: number,
       public effortMadeToOrderFood?: number,
       public recommendToFriend?: number,
-      public systemReviewComment?: number,
+      public systemReviewComment?: String,
       public clientId?: number,
+      
       
     ) {}
   }

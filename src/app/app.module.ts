@@ -70,6 +70,8 @@ import { OrderItemsReviewComponent } from './Components/order-items-review/order
 import { RatingComponent } from './Components/rating/rating.component';
 
 import { MatStepperModule } from '@angular/material/stepper';
+import { ThankyouComponent } from './Components/thankyou/thankyou.component';
+
 
 
 
@@ -104,6 +106,7 @@ import {
     CartHeaderComponent,
     CartContentComponent,
     OffersComponent,
+    ThankyouComponent,
 
     OrderReviewComponent,
     RatingComponent,

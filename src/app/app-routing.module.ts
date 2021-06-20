@@ -47,6 +47,8 @@ import { OrderItemsReviewComponent } from './Components/order-items-review/order
 
 //Error
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
+//thankyou
+import { ThankyouComponent } from './Components/thankyou/thankyou.component';
 
 const routes: Routes = [
 
@@ -56,7 +58,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   //resturant
-  { path: 'all-resturant', component: AllResturantComponent},
+  { path: 'all-resturant', component: AllResturantComponent },
   { path: 'storemenu/:storeid', component: ResturantMenuComponent },
   { path: 'store-profile/:storeid', component: ResturantProfileComponent },
 
@@ -74,10 +76,12 @@ const routes: Routes = [
       { path: 'account-info', component: AccountInfoComponent, outlet: 'subOutlet' },
       { path: 'saved-addresses', component: SavedAddressesComponent, outlet: 'subOutlet' },
       { path: 'saved-cards', component: SavedCardsComponent, outlet: 'subOutlet' },
-      { path: 'system-review', component: SystemReviewComponent, outlet: 'subOutlet' },
 
     ]
   },
+
+  //system review
+  { path: 'system-review', component: SystemReviewComponent },
 
   //store
   { path: 'nearest-stores', component: StoresInAreaComponent },
@@ -88,8 +92,8 @@ const routes: Routes = [
   { path: 'Payment', component: PaymentCardComponent },
 
   //partener
-  { path: 'partener-login', component: PartenerLoginComponent, data: {navbar: false}},
-  { path: 'partener', component: PartenerComponent, data: {navbar: false} },
+  { path: 'partener-login', component: PartenerLoginComponent, data: { navbar: false } },
+  { path: 'partener', component: PartenerComponent, data: { navbar: false } },
 
   //offer
   { path: 'offers', component: OffersComponent },
@@ -98,6 +102,7 @@ const routes: Routes = [
   { path: 'order-review/:id', component: OrderReviewComponent },
   { path: 'review-orderitems/:orderId/:orderReviewId', component: OrderItemsReviewComponent },
 
+  { path: 'Thankyou', component: ThankyouComponent },
   { path: '**', component: NotFoundPageComponent },
 
 
