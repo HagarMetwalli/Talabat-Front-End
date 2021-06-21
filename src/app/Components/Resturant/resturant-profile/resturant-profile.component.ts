@@ -62,7 +62,8 @@ export class ResturantProfileComponent implements OnInit {
     private ngZone: NgZone,
     private modalService: BsModalService,
     private toolTipModule: TooltipModule,
-    private _googlemapservice: GooglemapService
+    private _googlemapservice: GooglemapService,
+    public nav:NavbarService,
   ) {
     this.coordinates = {} as Coordinates;
   }
