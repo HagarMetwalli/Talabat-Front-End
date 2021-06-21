@@ -77,6 +77,7 @@ import {
   MatNativeDateModule,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
+import { PaymentComponent } from './Components/payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +108,8 @@ import {
 
     OrderReviewComponent,
     RatingComponent,
-    OrderItemsReviewComponent
+    OrderItemsReviewComponent,
+    PaymentComponent
 
 
 

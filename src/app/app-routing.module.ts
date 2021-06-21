@@ -47,6 +47,7 @@ import { OrderItemsReviewComponent } from './Components/order-items-review/order
 
 //Error
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
+import { PaymentComponent } from './Components/payment/payment.component';
 
 const routes: Routes = [
 
@@ -59,6 +60,7 @@ const routes: Routes = [
   { path: 'all-resturant', component: AllResturantComponent},
   { path: 'storemenu/:storeid', component: ResturantMenuComponent },
   { path: 'store-profile/:storeid', component: ResturantProfileComponent },
+  { path: 'payment', component: PaymentComponent },
 
   //client
   // { path: 'profile', component: ClientProfileComponent },
