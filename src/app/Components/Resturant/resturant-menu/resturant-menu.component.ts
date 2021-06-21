@@ -15,7 +15,7 @@ export class ResturantMenuComponent implements OnInit {
   panelOpenState = false;
   cartItems: Array<any> = [];
   constructor(private _Activatedroute: ActivatedRoute,
-    private cartServ: CartServiceService,
+    public cartServ: CartServiceService,
 
     private _StoreprofileService: StoreprofileService) { }
   sub: any;

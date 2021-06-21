@@ -7,8 +7,7 @@ import { Product } from '../Models/Product';
   providedIn: 'root'
 })
 export class CartServiceService {
-  subtotalPrice = 0;
-  totalDiscount = 0;
+
   totalPrice = 0;
 
   constructor(private locals: LocalStorageService) {
@@ -22,7 +21,10 @@ export class CartServiceService {
     product.count = 0;
     if (this.locals.retrieve('cart')) {
       const arr: Array<any> = JSON.parse(this.locals.retrieve('cart'));
-      this.subtotalPrice
+      if(arr.find(e => e.itemId === product.itemId)){
+        alert('product is already exited')
+        return;
+      }
       arr.push(product);
       this.locals.store('cart', JSON.stringify(arr));
     } else {
@@ -70,15 +72,13 @@ export class CartServiceService {
 
 
   calcTotals() {
-    this.totalDiscount = 0;
-    this.subtotalPrice = 0;
+ 
     this.totalPrice = 0;
     if (this.locals.retrieve('cart')) {
       const arr: Array<Product> = JSON.parse(this.locals.retrieve('cart'));
       arr.map(e => {
-        this.subtotalPrice += e.itemPrice! * e.count!;
-        this.totalDiscount += e.discount || 0;
-        this.totalPrice += this.subtotalPrice + 19 || 0;
+        
+        this.totalPrice += (e.itemPrice! * e.count!)  || 0;
 
       })
 
