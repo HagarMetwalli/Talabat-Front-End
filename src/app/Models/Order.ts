@@ -3,12 +3,12 @@ export class Order {
     public orderId: number,
     public orderCost: number,
     public orderSpecialRequest: string,
-    public orderTime: Date,
+    public orderTime: any,
     public addressDetails: string,
     public clientId: number,
     public storeId: number,
-    public isDelivered: IsDelivered,
-    public deliveryStatusInString: string = 'Delivered'
+    public isDelivered: any,
+    public deliveryStatusInString: any = 'Delivered'
   ) {}
 }
 

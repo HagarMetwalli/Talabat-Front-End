@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from '../../../Models/Product';
 import { CartServiceService } from '../../../Services/cart-service.service';
 
@@ -11,7 +12,7 @@ export class CartContentComponent implements OnInit {
   @Input('product') productItem!: Product;
   @Output('remove') remove: EventEmitter<any> = new EventEmitter();
 
-  constructor(private cartServ: CartServiceService) {}
+  constructor(private cartServ: CartServiceService, private router: Router) {}
   ngOnInit(): void {}
   changecount(type: String) {
     if (type === 'ADD') {
@@ -29,5 +30,8 @@ export class CartContentComponent implements OnInit {
   }
   removeitem() {
     this.remove.emit(this.productItem.itemId);
+  }
+  checkout() {
+    this.router.navigate(['/checkout']);
   }
 }

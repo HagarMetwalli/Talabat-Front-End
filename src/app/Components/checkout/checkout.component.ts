@@ -14,6 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { GooglemapService } from 'src/app/Services/google-map.service';
 import { Order } from 'src/app/Models/Order';
+import { Store } from './../../Models/Store';
+import { StoreprofileService } from 'src/app/Services/Stores/store-profile.service';
 
 interface Coordinates {
   address: string;
@@ -47,19 +49,25 @@ export class CheckoutComponent implements OnInit {
   VoucherDiscount = 0;
   DeliverFees = 0;
   totalPrice = 0;
+  //store
+  //objects to store
+  sub: any;
+  store!: Store;
+  id: any;
+  arr: any = { itemId: 0, itemName: '', itemPrice: 0, count: 0, value: 0 };
 
   //form inputs
-  // order: Order = {
-  //   //  orderId: 0,
-  //   orderCost: 0,
-  //   orderSpecialRequest: '',
-  //   orderTime: '',
-  //   addressDetails: '',
-  //   clientId: 0,
-  //   storeId: 0,
-  //   //  isDelivered:   ,
-  //   //  deliveryStatusInString: string = 'Delivered'
-  // };
+  order: Order = {
+    orderId: 0,
+    orderCost: 0,
+    orderSpecialRequest: '',
+    orderTime: '',
+    addressDetails: '',
+    clientId: 0,
+    storeId: 0,
+    isDelivered: '',
+    deliveryStatusInString: '',
+  };
   constructor(
     private locals: LocalStorageService,
     private _Activatedroute: ActivatedRoute,
@@ -67,11 +75,13 @@ export class CheckoutComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private modalService: BsModalService,
-    private _googlemapservice: GooglemapService
+    private _googlemapservice: GooglemapService,
+    private _StoreprofileService: StoreprofileService
   ) {
     this.coordinates = {} as Coordinates;
     // this.calcTotals();
   }
+
   //calculate order
   // calcTotals() {
   //   this.VoucherDiscount = 0;
@@ -137,6 +147,25 @@ export class CheckoutComponent implements OnInit {
         });
       });
     });
+
+    // order works
+    // this.sub = this._Activatedroute.paramMap.subscribe((params) => {
+    //   console.log(params);
+    //   this.id = params.get('storeid');
+    //   this.id = +this.id;
+    //   console.log('IIIID', params.get('storeid'));
+    // });
+
+    // this._StoreprofileService.getStoreById(this.id).subscribe((store) => {
+    //   console.log(store);
+    //   this.store = store;
+    // });
+    console.log('memmm', localStorage.getItem('ngx-webstorage|cart'));
+    // this.myarr = localStorage.getItem('ngx-webstorage|cart');
+    this.arr = JSON.parse(this.locals.retrieve('cart'))[0];
+
+    // console.log('array', this.myarr);
+    console.log('tanyarrr', this.arr);
   }
 
   private setCurrentLocation() {
