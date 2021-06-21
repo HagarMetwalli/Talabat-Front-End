@@ -8,7 +8,7 @@ const API ="https://localhost:44311/api/Stores";
 })
 export class FooterService {
 
-  _Stores = Store;
+  _Stores : Store | undefined;
   constructor(private http: HttpClient) {}
   
   getstores(){

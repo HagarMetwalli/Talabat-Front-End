@@ -114,14 +114,15 @@
               <div class="col-lg-3 pt-3 col-md-6">
                 <div id="menu">
                     <mat-accordion>
-                          <mat-expansion-panel (opened)="panelOpenState = true"
-                                               (closed)="panelOpenState = false">
+                          <mat-expansion-panel  (opened)="chooseCat(cat);panelOpenState =true"
+                                               (closed)="panelOpenState = false"
+                                               *ngFor="let cat of categories">
                             <mat-expansion-panel-header>
                               <mat-panel-title>
-                               Catigory 1
+                              {{cat}}
                               </mat-panel-title>
                             </mat-expansion-panel-header>
-                            <div id="collapscontent" *ngFor="let c of myitem" class="flex-container">
+                            <div id="collapscontent" *ngFor="let c of _item" class="flex-container">
                                 <div class="it">
                                     <p>{{c.itemName}}</p>
                                     <p>{{c.itemPrice}}</p>
@@ -132,19 +133,7 @@
                             </div>
                           </mat-expansion-panel>
             
-                          <mat-expansion-panel (opened)="panelOpenState = true"
-                                               (closed)="panelOpenState = false">
-                          <mat-expansion-panel-header>
-                          <mat-panel-title>
-                          Catigory 2
-                          </mat-panel-title>
-                          </mat-expansion-panel-header>
-                          <div class="collapscontent">
-                            <p>item 2</p>
-                            <p>Price</p>
-                            <button class="btn btn-success">+</button>
-                          </div>
-                          </mat-expansion-panel>
+                         
                         </mat-accordion>
                   </div>
               </div>

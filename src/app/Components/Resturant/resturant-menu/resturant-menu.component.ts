@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../../Models/Product';
 import { StoreprofileService } from '../../../Services/Stores/store-profile.service';
 import { CartServiceService } from '../../../Services/cart-service.service';
+import { Store } from 'src/app/Models/Store';
 
 @Component({
   selector: 'app-resturant-menu',
@@ -18,7 +19,8 @@ export class ResturantMenuComponent implements OnInit {
 
     private _StoreprofileService: StoreprofileService) { }
   sub: any;
-  _store: any;
+  categories:any[] = [];
+  _store: Store | undefined ;
   id: any;
   display: boolean = false;
   displayimg: boolean = true;
@@ -38,22 +40,34 @@ export class ResturantMenuComponent implements OnInit {
       this.id = + this.id;
       console.log("IIIID", params.get('storeid'));
 
+     
+
+      this._StoreprofileService.getStoreById(this.id).subscribe(
+        (store: any ) => {
+          console.log(store);
+          this._store = store || undefined;
+          this.initialize();
+        }
+      )
     });
 
-    this._StoreprofileService.getStoreById(this.id).subscribe(
-      store => {
-        console.log(store);
-        this._store = store;
+
+  
+
+  }
+
+  initialize(){
+    this._StoreprofileService.getAllCategory(this._store?.storeName || '').subscribe(res => {
+      this.categories = res;
+    })
+  }
+  chooseCat(cat: string){
+    this._StoreprofileService.getItemsByCategory(this._store?.storeName || '',cat ).subscribe(
+      items => {
+        console.log(items);
+        this._item = items;
       }
     )
-
-    this._StoreprofileService.getmenu(this.menu).subscribe(
-      item => {
-        console.log(item);
-        this._item = item;
-      }
-    )
-
   }
   itemincart !: Product;
   onpress(cartitem: Product) {
