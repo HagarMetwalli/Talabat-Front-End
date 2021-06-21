@@ -169,10 +169,10 @@ body{
     width: 40rem;
 }
 /*resturant info table style*/
-table{
+:ng-deep .table-am{
     margin: 10rem;  
 }
-.table{
+.table-am{
     width: 100rem;
     margin-left: 25rem;  
 }
@@ -226,4 +226,12 @@ table{
   .media-heading{
     font-size: 3rem;
   }
+
+  .card-title{
+    background-color: #FF5A00 ; 
+    color: white; 
+    padding: 2rem 0;
+    text-align: center;
+    width: 35rem;
+ }
 

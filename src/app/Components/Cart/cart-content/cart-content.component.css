@@ -24,9 +24,6 @@
 .pdiv{
     width: 30rem;
 }
-.icon{
-   width: 30rem;
-}
 #i{
     background-color: gray;
     border-radius: 1rem;
@@ -57,7 +54,7 @@ tr{
 .flex-container{
     display: flex;
     justify-content: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
 }
 .card-title{

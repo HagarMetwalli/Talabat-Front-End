@@ -24,6 +24,7 @@ import { NavbarService } from 'src/app/Services/Home/navbar.service';
 export class ResturantMenuComponent implements OnInit {
   panelOpenState = false;
   cartItems: Array<any> = [];
+
   constructor(
     private _Activatedroute: ActivatedRoute,
     private _router: Router,
@@ -31,6 +32,7 @@ export class ResturantMenuComponent implements OnInit {
     public nav: NavbarService,
     private _StoreprofileService: StoreprofileService
   ) { }
+
   sub: any;
 
   categories: any[] = [];
