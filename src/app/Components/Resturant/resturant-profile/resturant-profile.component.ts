@@ -62,12 +62,11 @@ export class ResturantProfileComponent implements OnInit {
     private ngZone: NgZone,
     private modalService: BsModalService,
     private toolTipModule: TooltipModule,
-    private storeTypeService: StoretypeService,
-    private _googlemapservice: GooglemapService,
-    public nav: NavbarService
+    private _googlemapservice: GooglemapService
   ) {
     this.coordinates = {} as Coordinates;
   }
+
 
   sub: any;
   _store: any;
@@ -108,6 +107,17 @@ export class ResturantProfileComponent implements OnInit {
     map.addListener("dragend", () => {
       this.loading = true
       console.log(this.centerLatitude, this.centerLongitude);
+      //----------------------------------------------------
+      // this._googlemapservice.getstoreMenu(storeName, this.latitude, this.longitude).subscribe(
+      //   _menu => {
+
+      //     if(_menu[0].stauts==200){
+      //       this.loading = false;
+      //       this.btnDisabled = false;
+      //       this.btnText = 'Deliver here';
+      //     }
+
+      //   })
 
     });
   }

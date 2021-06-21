@@ -8,6 +8,8 @@ import { Component, ElementRef, NgZone, OnInit, TemplateRef, ViewChild } from '@
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { GooglemapService } from 'src/app/Services/google-map.service';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 interface Coordinates {
   address: string;
@@ -36,12 +38,19 @@ export class CheckoutComponent implements OnInit {
   @ViewChild('pop')
   public LocationsearchElementRef!: ElementRef;
 
-  @ViewChild('template')
+  @ViewChild('template', { static: true })
   public templateRef!: TemplateRef<any>;
+
   subtotalPrice = 0;
   VoucherDiscount = 0;
   DeliverFees = 0;
   totalPrice = 0;
+
+
+
+  btnDisabled = false;
+
+
   constructor(
     private locals: LocalStorageService,
     private _Activatedroute: ActivatedRoute,
@@ -49,12 +58,12 @@ export class CheckoutComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private modalService: BsModalService,
-    private _googlemapservice: GooglemapService
+    private _googlemapservice: GooglemapService,
+    public nav: NavbarService,
 
-    )
-    {
-      this.coordinates = {} as Coordinates;
-    }
+  ) {
+    this.coordinates = {} as Coordinates;
+  }
 
 
   centerLatitude = this.latitude;
@@ -67,16 +76,16 @@ export class CheckoutComponent implements OnInit {
     this.centerLongitude = coords.lng;
   }
 
-    public mapReady(map: { addListener: (arg0: string, arg1: () => void) => void; }) {
-      map.addListener("dragend", () => {
-        console.log(this.centerLatitude, this.centerLongitude);
-      });
-    }
+  public mapReady(map: { addListener: (arg0: string, arg1: () => void) => void; }) {
+    map.addListener("dragend", () => {
+      console.log(this.centerLatitude, this.centerLongitude);
+    });
+  }
 
 
-    closeModal() {
-      this.modalService.hide();
-    };
+  closeModal() {
+    this.modalService.hide();
+  };
 
 
 
@@ -88,12 +97,16 @@ export class CheckoutComponent implements OnInit {
     ignoreBackdropClick: true,
   };
 
+
+
   openAddressModalOnClick() {
-    this.bsModalRef = this.modalService.show(this.templateRef);
+    this.bsModalRef = this.modalService.show(this.templateRef, this.config)
+
   }
 
   ngOnInit(): void {
-    this.bsModalRef = this.modalService.show(this.templateRef);
+    this.nav.show();
+    this.bsModalRef = this.modalService.show(this.templateRef, this.config);
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
@@ -152,6 +165,25 @@ export class CheckoutComponent implements OnInit {
           // window.alert('Geocoder failed due to: ' + status);
         }
       }
+
+
     );
+
   }
+
+  // CheckAddressInZone(id: number, storeName: string) {
+
+  //   this._googlemapservice.getstoreMenu(storeName, this.latitude, this.longitude).subscribe(
+  //     _res => {
+  //       if(_res[0].status==200){
+  //         console.log("Good, Your Address In Store Zone !");
+  //       }else{
+  //         this.btnDisabled = true;
+  //         console.log("Sorry, Your Address Out Store Zone !");
+
+  //       }
+
+  //     })
+
+  // }
 }
