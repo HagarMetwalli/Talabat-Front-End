@@ -66,16 +66,12 @@ export class GoogleMapsComponent implements OnInit {
       //-----------------------------------------------------
       this._googlemapservice.getstores(this.centerLatitude, this.centerLongitude).subscribe(
         _stores => {
-          if(_stores)
+          if(_stores[0].status==200)
           {
-          console.log("<<<<<", _stores);
-          this.stores = _stores;
-          console.log(">>>>>", this.stores);
-
-          this.btnDisabled = false;
-          this.btnText = 'Deliver here';
-          // this.router.navigate(['/RestInArea', this.stores]);
-        }
+            this.loading = false;
+            this.btnDisabled = false;
+            this.btnText = 'Deliver here';
+          }
 
         })
     });
@@ -156,20 +152,20 @@ export class GoogleMapsComponent implements OnInit {
 
   @Output() stores: Store[] = [];
 
-  // GetAllNearStores() {
+  GetAllNearStores() {
 
-  //   this._googlemapservice.getstores(this.latitude, this.longitude).subscribe(
-  //     _stores => {
+    this._googlemapservice.getstores(this.latitude, this.longitude).subscribe(
+      _stores => {
 
-  //       console.log("<<<<<", _stores);
-  //       this.stores = _stores;
-  //       console.log(">>>>>", this.stores);
+        console.log("<<<<<", _stores);
+        this.stores = _stores;
+        console.log(">>>>>", this.stores);
 
-  //       this.btnDisabled = false;
-  //       this.btnText = 'Deliver here';
-  //       // this.router.navigate(['/RestInArea', this.stores]);
+        this.btnDisabled = false;
+        this.btnText = 'Deliver here';
+        // this.router.navigate(['/RestInArea', this.stores]);
 
-  //     })
+      })
 
-  // }
+  }
 }
