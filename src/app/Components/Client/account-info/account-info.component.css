@@ -57,3 +57,92 @@ body {
 .shadow-none {
   box-shadow: none !important;
 }
+
+.cgoWNg {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  position: relative;
+  left: 15px;
+  width: 500px
+}
+
+.cgoWNg .radio-item {
+  flex: 1 1 auto;
+}
+
+.cgoWNg input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0px;
+  height: 40px
+}
+.cgoWNg .radio-item:first-of-type label {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.kDrGZE .my-account-info-row label {
+  color: rgb(114, 114, 114);
+}
+.cgoWNg label {
+  cursor: pointer;
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  padding: 10px;
+}
+
+.cgoWNg input[type="radio"]:checked + label {
+  background-color: rgb(255, 90, 0);
+  border-color: rgb(255, 90, 0);
+  color: rgb(255, 255, 255);
+  height: 40px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.form-footer{
+  display: inline-flex;
+}
+.form-footer .btn-success{
+  position: relative;
+  left: 327px;
+}
+.btn{
+  box-shadow: none;
+    font-size: 14px;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    line-height: 1.42857;
+    border-radius: 4px;
+}
+
+.btn-success{
+  background-color: rgb(0, 165, 60);
+  color: rgb(255, 255, 255);
+  border: none;
+  width: 120px;
+  height: 40px;
+}
+
+.control-label{
+  text-align: left;
+  font-weight: 500 !important;
+  color: rgb(114, 114, 114);
+  font-size: 13px;
+}
+.form-check-label{
+  font-weight: 400 !important;
+  color: rgb(114, 114, 114);
+  font-size: 13px;
+}
+.form-control{
+  width: 500px;
+}
