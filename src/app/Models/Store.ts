@@ -1,4 +1,4 @@
-export class Stores {
+export class Store {
   
     constructor(
         

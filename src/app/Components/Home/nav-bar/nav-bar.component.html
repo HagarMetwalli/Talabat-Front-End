@@ -1,1 +1,51 @@
-<p>nav-bar works!</p>
+<nav class="navbar navbar-default" *ngIf="nav.visible" id="navbar">
+  <div class="container-fluid">
+    <div>
+      <div id="navbar-align" class="row">
+        <div class="col-lg-3" id="talbat-logo">
+          <a routerLink="">
+            <img src="../../../../assets/talbat-logo.png" width="160" height="45" />
+          </a>
+        </div>
+        <div class="col-lg-7 ">
+          <ul class="nav navbar-nav home-tabs">
+            <li><a routerLink="/offers">Offers</a></li>
+            <li><a routerLink="/partener">Become a Partner</a></li>
+            <li><a routerLink="/all-resturant"> All Restaurants </a></li>
+
+            <li><a href="#"> العربية </a></li>
+            <li>
+              <a href="#">
+                <img src="../../../../assets/Egypt-Flag.png" width="25" height="25" />
+              </a>
+            </li>
+            <li>
+              <button *ngIf="!loggedIn()" class="btn-login btn btn-slide-up" (click)="openModal()">
+                Login
+              </button>
+            </li>
+            <li>
+              <button *ngIf="!loggedIn()" class="btn-register" (click)="register()">
+                Register
+              </button>
+            </li>
+
+            <li *ngIf="loggedIn()">
+              
+              <button mat-button [matMenuTriggerFor]="menu">My account</button>
+              <mat-menu #menu=matMenu >
+               
+                <button mat-menu-item  >My Orders</button>
+                <button mat-menu-item [routerLink]="['profile/account-info']" routerLinkActive="active" >Account Info</button>
+                <button mat-menu-item [routerLink]="['profile/saved-addresses']" routerLinkActive="active">Saved Address</button>
+                <button class="btn btn-danger" (click)="logout()" mat-menu-item>
+                  Logout
+                </button> 
+               </mat-menu>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

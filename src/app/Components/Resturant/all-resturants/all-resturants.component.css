@@ -1,0 +1,209 @@
+html,body{
+    overflow-x: hidden;
+    display: none;
+}
+.ss{
+    max-width: 100vw;
+}
+#search{
+    border-color:rgb(255, 90, 0);
+    width: 350px;
+    height: 40px;
+    font-size: 16px;
+    position: relative;
+    top: 9px;
+    right: 190px;
+    float: right;
+}
+
+.searchdiv{
+   height: 60px;
+}
+
+.search-restaurant {
+  display: flex;
+  width: 360px;
+  position: relative;
+  left: 905px;
+  padding-top: 10px;
+}
+
+.search-restaurant input {
+  border-radius: 8px;
+  border: 2px solid #ff5a00;
+  outline: none;
+  padding: 10px;
+  width: 300px;
+}
+
+.search-restaurant .search-icon {
+  width: 30px;
+  height: 45px;
+  background-color: #ff5a00;
+  position: relative;
+  left: -32px;
+  border: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.search-restaurant .svg-inline--fa {
+  top: 10px;
+  font-size: 20px;
+  color: #fff;
+}
+
+#Header{
+    width: 1140px;
+    height: 350px; 
+    background: url(../../../../assets/pizza-3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    margin: 0 auto;
+    color: rgb(255, 90, 0);
+    /* position: absolute;
+    right: 160px; */
+}
+#info{
+    margin-top: 40px;
+    margin-bottom: 60px;
+    height: 300px;
+    padding: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+h2{
+    font-family: Roboto;
+    font-weight: 600;
+    font-size: 40px;
+    position: relative;
+    top: 175px;
+    left: 796px;
+    width: 25rem;
+    line-height: 1.1;
+    letter-spacing: 2px;
+}
+p{
+    position: relative;
+    top: 172px;
+    left: 796px;
+    width: 30rem;
+    font-size: 17px;
+    line-height:1.4
+}
+#imgf{
+   width: 300px;
+   height: 250px;
+}
+.restaurant-box {
+    background: #fff none repeat scroll 0 0;
+    border-bottom: 1px solid #d0d0d0;
+    box-shadow: 0 10px 22px #d0d0d0;
+    display: inline-block;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    font-family: 'Calibri', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    transition: all 0.25s ease-in-out 0s;
+    width: 275px;
+    cursor: pointer;
+}
+
+.restaurant-box .restaurant-thumb {
+    position: relative;
+    overflow: hidden;
+    /* display: block; */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    
+}
+
+.restaurant-box .restaurant-overlay {
+    background-position: 40% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    /* display: block; */
+    border-radius: 0;
+    transition: all 0.25s ease-in-out 0s;
+}
+
+.restaurant-box:hover {
+    transform: scale(1.06);
+}
+
+.restaurant-box .restaurant-caption {
+    width: 100%;
+    padding: 10px;
+    /* display: block; */
+}
+.restaurant-box .restaurant-caption a {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ff5a00;
+    text-decoration: none;
+}
+
+.restaurant-caption .restaurant-review-box {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-size: 12px;
+    color: #fff;
+    font-family: poppins;
+    font-weight: 500;
+    padding: 1px 10px;
+    letter-spacing: 1px;
+    z-index: 1;
+    display: block;
+}
+
+.restaurant-caption .restaurant-review-box .review{
+    padding: 8px;
+    background-color: #ff5a00;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.restaurant-caption .restaurant-review-box .review .review-icon { 
+    font-size: 15px; 
+    font-family: 'Calibri', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+.main-recipe {
+    clear: both;
+    display: block;
+}
+
+.main-recipe-icon { 
+    color: #ff5a00; 
+    margin-right: 10px;
+}
+
+.main-recipe-name {
+    margin-left: 5px;
+    font-size: 18px;
+    color: #222;
+}
+
+.main-recipe, .restaurant-info {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 15px;
+}
+
+.main-recipe, .restaurant-info span {
+    font-size: 15px;
+    color: #222;
+}
+

@@ -1,1 +1,307 @@
-<p>partener works!</p>
+<header class="video-header" id="top-page">
+    <div class="overlay">
+        <!-- <video src="https://css-tricks-post-videos.s3.us-east-1.amazonaws.com/Island%20-%204141.mp4" autoplay loop playsinline muted></video> -->
+        <video src="../../assets/partner/production ID-4253721**.mp4" autoplay loop playsinline muted
+            poster="../../assets/partner/pexels-cottonbro-4252146.jpg"></video>
+    </div>
+    <div class="viewport-header">
+        <div class="container">
+            <nav>
+                <a routerLink="">
+                    <img class="tlb-logo" src="../../assets/partner/logo-tlb.png" alt="talabatlogo">
+                </a>
+                <div>
+                    <span><img class="site-lang" src="../../assets/partner/iconfinder_Egypt-Flag_32209.png"
+                            alt="arabic-language"></span>
+                    <a routerLink="/partener-login"><button class="btnvendorportal">Vendor Portal</button></a>
+                </div>
+            </nav>
+
+            <div class="row under-nav">
+                <div class="col-lg-6 header-left">
+                    <h1>Reach New Customers, <br>Get More Sales</h1>
+                    <h3>Join Talabat, the Middle East's <br>largest delivery platform.</h3>
+                </div>
+                <div class="col-lg-6 header-right">
+                    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                        <mat-step [stepControl]="firstFormGroup">
+                            <form [formGroup]="firstFormGroup">
+                                <ng-template matStepLabel>Basic Details</ng-template>
+                                <mat-form-field>
+                                    <mat-label>First Name</mat-label>
+                                    <input matInput placeholder="First Name" formControlName="firstName" required>
+                                </mat-form-field>
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Last Name</mat-label>
+                                    <input matInput type="text" placeholder="Last Name" formControlName="lastName"
+                                        required>
+                                </mat-form-field>
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Phone Number</mat-label>
+                                    <input matInput placeholder="Phone Number" formControlName="phoneNumber" required>
+                                </mat-form-field>
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Email Address</mat-label>
+                                    <input matInput placeholder="Email Address" formControlName="emailAddress" required>
+                                </mat-form-field>
+                                <br />
+                                <!-- <mat-form-field>
+                            <mat-label>--Contact Role--</mat-label>
+                            <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
+                              <mat-option value="Owner">Owner</mat-option>
+                              <mat-option value="Co-Owner">Co-Owner</mat-option>
+                              <mat-option value="Manager">Manager</mat-option>
+                              <mat-option value="Employee">Employee</mat-option>
+                            </mat-select>
+                            <mat-hint>Errors appear instantly!</mat-hint>
+                            <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+                            </mat-error>
+                          </mat-form-field> -->
+                                <div>
+                                    <button mat-button matStepperNext>Next</button>
+                                </div>
+                            </form>
+                        </mat-step>
+                        <mat-step [stepControl]="secondFormGroup">
+                            <form [formGroup]="secondFormGroup">
+                                <ng-template matStepLabel>Store Details</ng-template>
+                                <mat-form-field>
+                                    <mat-label>Store Name</mat-label>
+                                    <input matInput placeholder="Store Name" formControlName="storeName" required>
+                                </mat-form-field>
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Number Of Branches</mat-label>
+                                    <input matInput placeholder="Number Of Branches" formControlName="numBranchNo"
+                                        required>
+                                </mat-form-field>
+                                <br />
+                                <!-- <mat-form-field>
+                                    <mat-label>--Store Type--</mat-label>
+                                    <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
+                            <mat-option value="Restaurant">Restaurant</mat-option>
+                            <mat-option value="Grocery">Grocery</mat-option>
+                            <mat-option value="Pharmacy">Pharmacy</mat-option>
+                            </mat-select>
+                                    <mat-hint>Errors appear instantly!</mat-hint>
+                                    <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+                            </mat-error>
+                                </mat-form-field> -->
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Website/Social Contact</mat-label>
+                                    <input matInput placeholder="Website/Social Contact" formControlName="contacts"
+                                        required>
+                                </mat-form-field>
+                                <br />
+                                <!-- <mat-form-field>
+                            <mat-label>--Store location--</mat-label>
+                            <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
+                            <mat-option value="UAE">United Arabia Emirates/mat-option>
+                            <mat-option value="Egypt">Egypt</mat-option>
+                            <mat-option value="Qatar">Qatar</mat-option>
+                            <mat-option value="Jordan">Jordan</mat-option>
+                            <mat-option value="Kuwait">Kuwait</mat-option>
+                            <mat-option value="Oman">Oman</mat-option>
+                            <mat-option value="Iraq">Iraq</mat-option>
+                            <mat-option value="Bahrain">Bahrain</mat-option>
+                            </mat-select>
+                            <mat-hint>Errors appear instantly!</mat-hint>
+                            <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+                            </mat-error>
+                          </mat-form-field> -->
+                                <br />
+                                <mat-form-field>
+                                    <mat-label>Store Address</mat-label>
+                                    <input matInput type="text" class="form-control empty" name="search-bar"
+                                        placeholder="&#xf041;  Store Address" formControlName="storeAddress"
+                                        (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off"
+                                        spellcheck="off" type="text" #search required>
+                                </mat-form-field>
+                                <div>
+                                    <button mat-button matStepperPrevious>Back</button>
+                                    <button mat-button matStepperNext>Next</button>
+                                </div>
+                            </form>
+                        </mat-step>
+                        <mat-step>
+                            <ng-template matStepLabel>Done</ng-template>
+                            <p>You are now done.</p>
+
+                            <!-- <mat-list>
+                        <mat-list-item> <strong>Name:</strong> {{ this.firstFormGroup.value.name }}</mat-list-item>
+                        <mat-list-item> <strong>Description:</strong> {{ this.firstFormGroup.value.description }}</mat-list-item>
+                        <mat-list-item> <strong>Amount:</strong> {{ this.secondFormGroup.value.amount }}</mat-list-item>
+                        <mat-list-item> <strong>Stock:</strong> {{ this.secondFormGroup.value.stock }}</mat-list-item>
+                        </mat-list> -->
+
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button (click)="stepper.reset()">Reset</button>
+                                <button mat-button (click)="submit()">Submit</button>
+                            </div>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<section id="partner-benefits">
+    <div class="container">
+        <div class="partner-benefits">
+            <h1>Benefits of being a Talabat partner</h1>
+            <img src="../../assets/partner/partner-benefits.png" alt="partner-benefits">
+            <div class="row">
+                <div class="col-lg-4 first-benefit">
+                    <h3>Additional revenue stream</h3>
+                    <br><span>Get more orders</span>
+                </div>
+                <div class="col-lg-4 seconde-benefit">
+                    <h3>New customers</h3>
+                    <br><span>More visibility through the <br>Talabat platform</span>
+                </div>
+                <div class="col-lg-4 third-benefit">
+                    <h3>Delivery, done</h3>
+                    <br><span>No more driver headaches</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="delivery-benefits">
+    <div class="container">
+        <div class="delivery-benefits">
+            <h1>Benefits of our own delivery</h1>
+            <div class="row delivery-group-benefits">
+                <div class="col-lg-4 first-dbenefit">
+                    <img src="../../assets/partner/img-hiring@2x.png" alt="delivery-hiring-img">
+                    <h3>No hiring headaches</h3>
+                    <br><span>Dont worry about sourcing drivers to deliver your orders. Leave the logistics to us, so
+                        you can focus on making great food!</span>
+                </div>
+                <div class="col-lg-4 seconde-dbenefit">
+                    <img src="../../assets/partner/img-delivery@3x.png" alt="delivery-delivered-img">
+                    <h3>Great delivery prices</h3>
+                    <br><span>Customers pay a low delivery fee for orders delivered with Talabat.</span>
+                </div>
+                <div class="col-lg-4 third-dbenefit">
+                    <img src="../../assets/partner/img-live@2x.png" alt="delivery-live-img">
+                    <h3>Live tracking</h3>
+                    <br><span>Customers can enjoy live tracking of their orders to their doorsteps, giving them an even
+                        better experience.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container talabtRiders-in-number">
+    <img class="fleet-img" src="../../assets/partner/fleet-new.png" alt="fleet-new">
+    <h1 class="fleet-txt" style="font-size: 30px;line-height:1.5; color: #000;;">Fleet of over
+        <span style="display: block; color: #ff5a00;">16000
+            <span style="color: #000;">riders and growing</span>
+        </span>
+    </h1>
+</div>
+
+<section id="talabat-pipline">
+    <div class="container">
+        <div class="talabat-pipline">
+            <h1>How it works?</h1>
+            <div class="row talabat-group-pipline">
+                <div class="col-lg-4 first-pipline">
+                    <img src="../../assets/partner/order_placed.svg" alt="delivery-hiring-img">
+                    <h3>Order Placed</h3>
+                </div>
+                <div class="col-lg-4 seconde-pipline">
+                    <img src="../../assets/partner/prep.svg" alt="delivery-delivered-img">
+                    <h3>Prep</h3>
+                </div>
+                <div class="col-lg-4 third-pipline">
+                    <img src="../../assets/partner/delivered.svg" alt="delivery-live-img">
+                    <h3>Delivered</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="join-action">
+    <h1>Ready to join us ?</h1>
+    <button><a href="#top-page">Join Now</a></button>
+</div>
+<footer>
+    <div class="container">
+        <div class="row footer-upperline grid-footer">
+            <div class="col-lg-3">
+                <img src="../../assets/partner/logo-tlb.png" alt="talabat-logo" class="footer-logo">
+            </div>
+            <div class="col-lg-3">
+                <div class="link-header">Know abouts us</div>
+                <div>
+                    <a href="#" rel="noopener noreferrer" target="_blank">About Us</a>
+                </div>
+                <div>
+                    <a href="#" rel="noopener noreferrer" target="_blank">Terms</a>
+                </div>
+                <div>
+                    <a href="#" rel="noopener noreferrer" target="_blank">FAQ</a>
+                </div>
+                <div>
+                    <a href="#" rel="noopener noreferrer" target="_blank">Social Responsibility</a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="link-header">Contact with us</div>
+                <div>
+                    <a href="#" rel="noopener noreferrer" target="_blank">Feedback</a>
+                </div>
+                <div>
+                    <a href="#" rel="noopener noreferrer" target="_blank">Contact Us</a>
+                </div>
+            </div>
+            <div class="col-lg-3 appStores">
+                <a href="https://play.google.com/store/apps/details?id=com.talabat" rel="noopener noreferrer"
+                    target="_blank">
+                    <img alt="Android Store" src="../../assets/partner/google_play.svg" height="44" width="157">
+                </a>
+                <a href="https://itunes.apple.com/kw/app/talabat/id451001072?mt=8" rel="noopener noreferrer"
+                    target="_blank">
+                    <img alt="Apple Store" src="../../assets/partner/appstore.svg" height="44" width="157">
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-underline grid-footer">
+            <span>@2021 Talabat.com</span>
+            <div class="social-media grid-footer">
+                <a href="https://www.facebook.com/Talabat" rel="noopener noreferrer" target="_blank"
+                    class="sc-fzoLsD fYZyZu">
+                    <img alt="Talabat Facebook" src="../../assets/partner/facebook.svg">
+                </a>
+                <a href="https://twitter.com/Talabat" rel="noopener noreferrer" target="_blank"
+                    class="sc-fzoLsD fYZyZu">
+                    <img alt="Talabat Twitter" src="../../assets/partner/twitter.svg">
+                </a>
+                <a href="https://instagram.com/Talabat" rel="noopener noreferrer" target="_blank"
+                    class="sc-fzoLsD fYZyZu">
+                    <img alt="Talabat instagram" src="../../assets/partner/instagram.svg">
+                </a>
+                <a href="https://www.linkedin.com/company/3604171" rel="noopener noreferrer" target="_blank"
+                    class="sc-fzoLsD fYZyZu">
+                    <img alt="Talabat Linkedin" src="../../assets/partner/linkedin.svg">
+                </a>
+                <a href="https://www.youtube.com/TalabatGTC" rel="noopener noreferrer" target="_blank"
+                    class="sc-fzoLsD fYZyZu">
+                    <img alt="Talabat Youtube" src="../../assets/partner/youtube.svg">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</footer>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
 
 @Component({
   selector: 'app-partener-login',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PartenerLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(public nav:NavbarService) { }
 
   ngOnInit(): void {
+    this.nav.hide();
   }
 
 }

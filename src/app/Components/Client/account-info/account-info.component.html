@@ -1,1 +1,91 @@
-<p>account-info works!</p>
+<div class="tab-pane active" id="profile">
+
+  <form>
+
+    <div class="form-group d-flex mb-4">
+      <label for="email" class="col-2 m-auto">Email</label>
+      <input type="email" class="form-control" id="email" aria-describedby="fullNameHelp"
+        placeholder="ex: blabla@bla.bla" [value]="c.clientEmail" disabled />
+    </div>
+
+    <div class="form-group d-flex mb-4">
+      <label for="fname" class="col-2 m-auto">First Name</label>
+      <input type="text" class="form-control" id="fname" aria-describedby="fullNameHelp"
+        placeholder="ex: blabla@bla.bla" name="fname" [(ngModel)]="c.clientFname" />
+    </div>
+
+    <div class="form-group d-flex mb-4">
+      <label for="lname" class="col-2 m-auto">Last Name</label>
+      <input type="text" class="form-control" id="lname" aria-describedby="fullNameHelp"
+        placeholder="ex: blabla@bla.bla" [(ngModel)]="c.clientLname" />
+    </div>
+
+    <div class="form-group d-flex mb-3">
+      <label for="gender" class="col-2">Gender</label>
+      <label for="gender" class="col-2">{{this.getClientGender()}}</label>
+      <!-- <button class="btn btn-light" disabled>Male</button> -->
+      <!-- <button class="btn btn-dark">Female</button> -->
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="genderMale" id="genderMale">
+        <label class="form-check-label" for="genderMale">
+          Male
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input m-1" type="radio" name="genderFemale" id="genderFemale">
+        <label class="form-check-label" for="genderFemale">
+          Female
+        </label>
+      </div> -->
+    </div>
+
+    <div class="form-group d-flex mb-4">
+      <label for="dob" class="col-2 m-auto">Date of birth</label>
+      <!-- <input type="date" class="form-control" id="dob" aria-describedby="fullNameHelp" /> -->
+      <label class="form-control">{{this.c.clientDateOfBirth}}</label>
+    </div>
+
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" name="getSubNewsValue" [(ngModel)]="getSubNewsValue"
+        id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        Subscribe to our Newsletter
+      </label>
+    </div>
+
+    <div class="form-check mb-4">
+      <!-- <input class="form-check-input" type="checkbox" [checked]="getSubSMSValue" id="flexCheckDefault"> -->
+      <input class="form-check-input" type="checkbox" name="getSubSMSValue" [(ngModel)]="getSubSMSValue"
+        id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        Subscribe to SMS
+      </label>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update Confirmation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Updated Successfully!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" (click)="onSubmit(modalOpen)" class="btn btn-success ml-5">Update
+      <button type="button" #modalOpen class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        hidden>
+      </button>
+
+    </button> <br /><br />
+
+  </form>
+</div>
