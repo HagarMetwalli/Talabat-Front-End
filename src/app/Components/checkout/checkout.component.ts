@@ -3,6 +3,8 @@ import { Component, ElementRef, NgZone, OnInit, TemplateRef, ViewChild } from '@
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { GooglemapService } from 'src/app/Services/google-map.service';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
+import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 
 interface Coordinates {
   address: string,
@@ -32,8 +34,11 @@ export class CheckoutComponent implements OnInit {
   @ViewChild('pop')
   public LocationsearchElementRef!: ElementRef;
 
-  @ViewChild('template')
+  @ViewChild('template', {static: true})
   public templateRef!: TemplateRef<any>;
+
+
+  btnDisabled = false;
 
   constructor(
     private _Activatedroute: ActivatedRoute,
@@ -41,7 +46,8 @@ export class CheckoutComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private modalService: BsModalService,
-    private _googlemapservice: GooglemapService
+    private _googlemapservice: GooglemapService,
+    public nav:NavbarService,
     )
     {
       this.coordinates = {} as Coordinates;
@@ -76,14 +82,16 @@ export class CheckoutComponent implements OnInit {
     keyboard: false,
     backdrop: true,
     ignoreBackdropClick: true,
-  };
+    };
+
 
   openAddressModalOnClick(){
-    this.bsModalRef = this.modalService.show(this.templateRef)
+    this.bsModalRef = this.modalService.show(this.templateRef, this.config)
   }
 
   ngOnInit(): void {
-    this.bsModalRef = this.modalService.show(this.templateRef);
+    this.nav.show();
+    this.bsModalRef = this.modalService.show(this.templateRef, this.config);
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
@@ -141,6 +149,21 @@ export class CheckoutComponent implements OnInit {
       }
 
     });
-
   }
+
+  // CheckAddressInZone(id: number, storeName: string) {
+
+  //   this._googlemapservice.getstoreMenu(storeName, this.latitude, this.longitude).subscribe(
+  //     _res => {
+  //       if(_res[0].status==200){
+  //         console.log("Good, Your Address In Store Zone !");
+  //       }else{
+  //         this.btnDisabled = true;
+  //         console.log("Sorry, Your Address Out Store Zone !");
+          
+  //       }
+
+  //     })
+
+  // }
 }
