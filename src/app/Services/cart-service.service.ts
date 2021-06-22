@@ -17,7 +17,7 @@ export class CartServiceService {
     this.locals.store('cart', JSON.stringify([]));
   }
   addProduct(product: Product) {
-    product.count = 0;
+    product.count = 1;
     if (this.locals.retrieve('cart')) {
       const arr: Array<any> = JSON.parse(this.locals.retrieve('cart'));
       if (arr.find(e => e.itemId === product.itemId)) {
@@ -25,11 +25,12 @@ export class CartServiceService {
         return;
       }
 
-      arr.push(product);
+      arr.push({itemId:product.itemId,itemName:product.itemName,itemPrice:product.itemPrice,value:product.value,count:product.count});
+
       this.locals.store('cart', JSON.stringify(arr));
     } else {
       const arr = [];
-      arr.push(product);
+      arr.push({itemId:product.itemId,itemName:product.itemName,itemPrice:product.itemPrice,value:product.value,count:product.count});
       this.locals.store('cart', JSON.stringify(arr));
     }
   }
