@@ -140,8 +140,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem(
             'currentClient',
             JSON.stringify(this.loggedClient)
+
           );
-          // localStorage.setItem('token', JSON.stringify(data));
+          localStorage.setItem('token', JSON.stringify(data));
         }
         sessionStorage.setItem('token', JSON.stringify(data));
         //console.log('token', data);

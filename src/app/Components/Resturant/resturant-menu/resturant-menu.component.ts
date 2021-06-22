@@ -53,6 +53,7 @@ export class ResturantMenuComponent implements OnInit {
     this._StoreprofileService.getStoreById(this.id).subscribe((store) => {
       console.log(store);
       this._store = store;
+      // localStorage.setItem('storeobj', this._store);
     });
 
     this._StoreprofileService.getmenu(this.menu).subscribe((item) => {
@@ -78,5 +79,8 @@ export class ResturantMenuComponent implements OnInit {
   removeItem(id: any) {
     this.cartServ.deleteProduct(id);
     this.getCartItems();
+  }
+  checkout(id?: number) {
+    this._router.navigate(['/checkout/', id]);
   }
 }

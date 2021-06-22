@@ -16,7 +16,15 @@ import { GooglemapService } from 'src/app/Services/google-map.service';
 import { Order } from 'src/app/Models/Order';
 import { Store } from './../../Models/Store';
 import { StoreprofileService } from 'src/app/Services/Stores/store-profile.service';
-
+import { VoucherService } from 'src/app/Services/voucher.service';
+import { Client } from 'src/app/Models/Client';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+  FormsModule,
+} from '@angular/forms';
 interface Coordinates {
   address: string;
   latitude: string;
@@ -28,6 +36,8 @@ interface Coordinates {
   styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
+
+
   coordinates: Coordinates;
   bsModalRef?: BsModalRef;
 
@@ -55,7 +65,10 @@ export class CheckoutComponent implements OnInit {
   store!: Store;
   id: any;
   arr: any = { itemId: 0, itemName: '', itemPrice: 0, count: 0, value: 0 };
-
+//voucher
+couponId?:number;
+client?:Client;
+voucherForm!: FormGroup;
   //form inputs
   order: Order = {
     orderId: 0,
@@ -76,37 +89,14 @@ export class CheckoutComponent implements OnInit {
     private ngZone: NgZone,
     private modalService: BsModalService,
     private _googlemapservice: GooglemapService,
-    private _StoreprofileService: StoreprofileService
+    private _StoreprofileService: StoreprofileService,
+    private formBuilder: FormBuilder,
+    private voucherservice:VoucherService,
   ) {
     this.coordinates = {} as Coordinates;
-    // this.calcTotals();
   }
 
-  //calculate order
-  // calcTotals() {
-  //   this.VoucherDiscount = 0;
-  //   this.subtotalPrice = 0;
-  //   this.DeliverFees = 0;
-  //   this.totalPrice = 0;
-  //   if (this.locals.retrieve('cart')) {
-  //     const arr: Array<Product> = JSON.parse(this.locals.retrieve('cart'));
-  //     arr.map((e) => {
-  //       this.subtotalPrice += e.itemPrice! * e.count!;
-  //       this.VoucherDiscount += e.discount || 0;
-  //       this.totalPrice += this.subtotalPrice + 19 || 0;
-  //     });
-  //   }
-  // }
-  //get items in  muenu from local storage
-  // getProducts(): Array<any> {
-  //   if (this.locals.retrieve('cart')) {
-  //     const arr: Array<any> = JSON.parse(this.locals.retrieve('cart'));
-  //     this.calcTotals();
-  //     return arr;
-  //   } else {
-  //     return [];
-  //   }
-  // }
+  
 
   onfig = {
     animated: true,
@@ -118,7 +108,7 @@ export class CheckoutComponent implements OnInit {
   openAddressModalOnClick() {
     this.bsModalRef = this.modalService.show(this.templateRef);
   }
-
+//ngOnInit
   ngOnInit(): void {
     this.bsModalRef = this.modalService.show(this.templateRef);
 
@@ -149,24 +139,30 @@ export class CheckoutComponent implements OnInit {
     });
 
     // order works
-    // this.sub = this._Activatedroute.paramMap.subscribe((params) => {
-    //   console.log(params);
-    //   this.id = params.get('storeid');
-    //   this.id = +this.id;
-    //   console.log('IIIID', params.get('storeid'));
-    // });
+    this.sub = this._Activatedroute.paramMap.subscribe((params) => {
+      console.log(params);
+      this.id = params.get('storeid');
+      this.id = +this.id;
+      console.log('StoreID', params.get('storeid'));
+    });
 
-    // this._StoreprofileService.getStoreById(this.id).subscribe((store) => {
-    //   console.log(store);
-    //   this.store = store;
-    // });
+    this._StoreprofileService.getStoreById(this.id).subscribe((store) => {
+      console.log('theStore', store);
+      this.store = store;
+    });
     console.log('memmm', localStorage.getItem('ngx-webstorage|cart'));
     // this.myarr = localStorage.getItem('ngx-webstorage|cart');
     this.arr = JSON.parse(this.locals.retrieve('cart'))[0];
 
     // console.log('array', this.myarr);
     console.log('tanyarrr', this.arr);
-  }
+
+   this.voucherForm = this.formBuilder.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+  });
+
+  }//end of ngOnInt
 
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
@@ -200,4 +196,16 @@ export class CheckoutComponent implements OnInit {
       }
     );
   }
-}
+  get fieldget() {
+    return this.voucherForm.controls;
+  }
+
+//  voucher(){
+//    this.voucherservice.GetVoucher(this.couponId,this.client.clientId,).subscribe((data) => {
+//      console.log(data);
+//   });
+//  }
+
+
+  
+};

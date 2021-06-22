@@ -4,81 +4,79 @@
       <!-- <order revieweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee> -->
 
       <div class="col-md-4 order-md-2 mb-4">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-muted">Your Order</span>
-          <span class="text-muted">Modify Order</span>
+        <mat-card class="example-card">
+          <mat-card-header class="text-center">
+            <mat-card-title>
+              <span style="display: inline">
+                your order
+                <span class="label label-success">{{ arr.count }}</span>
+              </span>
 
-          <span class="badge badge-secondary badge-pill">num</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <li
-            class="list-group-item d-flex justify-content-between lh-condensed"
-          >
-            <!-- <div *ngFor="let myarray of arr">
-              <h2 class="my-0">{{ myarray.itemPrice }}</h2>
-            </div> -->
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between lh-condensed"
-          >
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-muted">Details</small>
-            </div>
-            <span class="text-muted">$12</span>
-            <span class="text-muted">Special Request</span>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between lh-condensed"
-          >
-            <div>
-              <h6 class="my-0">Second product</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$8</span>
-            <span class="text-muted">Special Request</span>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between lh-condensed"
-          >
-            <div>
-              <h6 class="my-0">Third item</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$5</span>
-            <span class="text-muted">Special Request</span>
-          </li>
+              <a
+                style="padding-inline-start: 4rem"
+                [routerLink]="['/storemenu/', id]"
+                >Modify order
+              </a>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <hr class="mb-3" />
 
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
+            <h2>{{ store.storeName }}</h2>
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Item(s)</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ arr.itemName }}</td>
+                  <td>{{ arr.count }}</td>
+                  <td>{{ arr.itemPrice }}</td>
+                  <td>{{ arr.value }} (EGP)</td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- <ending order summary></ending> -->
+        <hr class="mb-3" />
         <mat-card class="example-card">
           <mat-card-header class="text-center">
             <mat-card-title>Add voucher code</mat-card-title>
           </mat-card-header>
           <mat-card-content>
             <hr class="mb-3" />
-            <form class="form-inline">
+            <form class="form-inline"
+            name="formGroup"
+            #voucher="ngForm"
+            [formGroup]="voucherForm"
+            >
               <div class="form-row align-items-center">
                 <mat-form-field>
                   <input
-                    type="text"
+                    type="number"
                     matInput
                     placeholder="Enter voucher code"
+                    formControlName="email"
+                    class="form-control"
+                    [(ngModel)]="couponId"
                   />
-                  <!-- [(ngModel)]=""
-              name="vouchercode"
-              #vouchercode="ngModel" -->
                   <!-- <mat-error *ngIf="vouchercode.hasError('pattern')">
-                voucher code isn't valid (pleace check it's ending date)
-              </mat-error> -->
+                  voucher code isn't valid (pleace check it's ending date)
+                </mat-error> -->
                 </mat-form-field>
               </div>
-              <div class="col-auto">
-                <button type="submit">REDEEM</button>
-              </div>
+              <button class="voucher" type="submit" 
+              (click)="voucher()"
+         
+              >REDEEM</button>
             </form>
           </mat-card-content>
         </mat-card>
@@ -237,9 +235,7 @@
               </mat-card-content>
             </mat-card>
           </div>
-          <div>
-            <h2 class="my-0">{{ arr.count }}</h2>
-          </div>
+
           <hr class="mb-4" />
           <button class="btn" type="submit">Place order</button>
         </form>

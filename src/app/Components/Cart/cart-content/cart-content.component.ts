@@ -31,7 +31,7 @@ export class CartContentComponent implements OnInit {
   removeitem() {
     this.remove.emit(this.productItem.itemId);
   }
-  checkout() {
-    this.router.navigate(['/checkout']);
-  }
+  // checkout(id: number) {
+  //   this.router.navigate(['/checkout/', id]);
+  // }
 }
