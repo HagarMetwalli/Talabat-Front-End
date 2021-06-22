@@ -17,22 +17,24 @@ const StoresLocAsyncAPI ="https://localhost:44311/api/Stores/GetStoreInLocationA
 })
 export class GooglemapService {
   nearStores = Store;
+  nstore=Store;
 
   constructor(private http: HttpClient) { }
 
   getstores(latitude: number, longitude: number): Observable<any> {
 
-    return this.http.get<Store[]>(API + latitude + '/' + longitude, { observe: 'response' })
+    return this.http.get<Store[]>(API + latitude + '/' + longitude , { observe: 'response' })
       .pipe(map(res => {
         if (res) {
-          if (res.status === 201) {
-            return [{ status: res.status, nearStores: res }]
-          }
-          else if (res.status === 200) {
+          // if (res.status === 201) {
+          //   return [{ status: res.status, nearStores: res }]
+          // }
+         // else 
+          if (res.status === 200) {
             return [{ status: res.status, nearStores: res }]
           }
         }
-        return this.nearStores;
+        return [{ status: res.status, nearStores: res }];
 
       }), catchError((error: any) => {
         if (error.status < 400 || error.status === 500) {
@@ -46,25 +48,26 @@ export class GooglemapService {
   }
 
 
-  getstoreMenu(storeName: string , latitude: number, longitude: number):Observable<any>{
+  getstoreMenu(storeId: number, latitude: number, longitude: number):Observable<any>{
 
-    return this.http.get<Store[]>(StoresLocAsyncAPI + storeName + '/' +latitude + '/' + longitude, { observe: 'response' })
+    return this.http.get(StoresLocAsyncAPI +storeId + '/' +latitude + '/' + longitude, { observe: 'response' })
         .pipe(map(res => {
           if (res) {
-            if (res.status === 201) {
-                return [{ status: res.status, nearStores: res }]
-            }
-            else if (res.status === 200) {
-                return [{ status: res.status, nearStores: res }]
+            // if (res.status === 201) {
+            //     return [{ status: res.status, nearStores: res }]
+            // }
+            // else 
+            if (res.status === 200) {
+                return [{ status: res.status, nstore: res }]
             }
           }
-          return this.nearStores;
+          return [{ status: res.status, nstore: res }];
 
         }),catchError((error: any) => {
-            if (error.status < 400 ||  error.status ===500) {
-                return Observable.throw(new Error(error.status));
-            }
-            return status;
+          if (error.status > 400 || error.status === 500) {
+            return [{ status: error.status }];
+          }
+          return error.status;
 
           })
 

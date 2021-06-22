@@ -33,7 +33,7 @@ export class GoogleMapsComponent implements OnInit {
     backdrop: 'static'
   };
 
-  btnText = 'Sorry, we don deliver here';
+  btnText = "Sorry, we don't deliver here";
   btnDisabled = true;
   loading = false;
 
@@ -61,19 +61,25 @@ export class GoogleMapsComponent implements OnInit {
 
   public mapReady(map: { addListener: (arg0: string, arg1: () => void) => void; }) {
     map.addListener("dragend", () => {
-      this.loading = true
+      this.loading = true;
+      this.btnDisabled=true;
+      this.btnText = "Sorry, we don't deliver here";
       console.log(this.centerLatitude, this.centerLongitude);
       //-----------------------------------------------------
-      this._googlemapservice.getstores(this.centerLatitude, this.centerLongitude).subscribe(
-        _stores => {
-          if(_stores[0].status==200)
+       this._googlemapservice.getstores(this.centerLatitude, this.centerLongitude).subscribe(
+
+         _stores => {
+         // console.log("the stut", _stores[0].status);
+         if(_stores[0].status==200)
           {
             this.loading = false;
             this.btnDisabled = false;
             this.btnText = 'Deliver here';
           }
 
-        })
+           
+
+         })
     });
   }
   // this.loading = false;
@@ -154,16 +160,16 @@ export class GoogleMapsComponent implements OnInit {
 
   GetAllNearStores() {
 
-    this._googlemapservice.getstores(this.latitude, this.longitude).subscribe(
+    this._googlemapservice.getstores(this.latitude,this.longitude).subscribe(
       _stores => {
-
         console.log("<<<<<", _stores);
         this.stores = _stores;
         console.log(">>>>>", this.stores);
 
         this.btnDisabled = false;
         this.btnText = 'Deliver here';
-        // this.router.navigate(['/RestInArea', this.stores]);
+        this.router.navigate(['/RestInArea/', this.latitude,this.longitude]);
+        this.modalService.hide();
 
       })
 

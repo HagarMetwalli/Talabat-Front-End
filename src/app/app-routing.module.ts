@@ -88,7 +88,7 @@ const routes: Routes = [
   { path: 'system-review', component: SystemReviewComponent },
 
   //store
-  { path: 'nearest-stores', component: StoresInAreaComponent },
+  { path: 'RestInArea/:latitude/:longitude', component: StoresInAreaComponent },
 
   //order
 
