@@ -44,7 +44,7 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['register']);
   }
   loggedIn() {
-    let token = sessionStorage.getItem('token');
+    let token = sessionStorage.getItem('token') && localStorage.getItem('token');
     if (token != '' && token != null) {
       //console.log('from nav bar token here', token);
 
@@ -59,6 +59,10 @@ export class NavBarComponent implements OnInit {
   logout() {
     console.log('clear all');
     sessionStorage.setItem('token', '');
+    localStorage.setItem('token', '');
+    sessionStorage.clear();
+
+
   }
   ngOnInit(): void {}
 }

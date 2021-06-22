@@ -145,7 +145,7 @@
                           <span>Total</span>&nbsp;<span>{{cartServ.totalPrice || 0}}</span>
                         </div>
                         <div class="text-center mx-auto" >
-                          <button class="btn btn-success" id="button">Execute Request</button>
+                          <button class="btn btn-success" id="button" (click)="checkout(_store.storeId)">Execute Request</button>
                       </div>
               </div>
               <img class="col-lg-3 d-lg-block d-none" width="300" height="500" src="../../assets/forkfood.png" id="forkphoto"/>

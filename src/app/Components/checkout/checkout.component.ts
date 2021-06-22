@@ -23,6 +23,7 @@ import {
 } from '@angular/forms';
 
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
+import { CartServiceService } from 'src/app/Services/cart-service.service';
 
 
 
@@ -37,8 +38,6 @@ interface Coordinates {
   styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
-
-
   coordinates: Coordinates;
   bsModalRef?: BsModalRef;
 
@@ -57,10 +56,7 @@ export class CheckoutComponent implements OnInit {
   @ViewChild('template', { static: true })
   public templateRef!: TemplateRef<any>;
 
-  subtotalPrice = 0;
-  VoucherDiscount = 0;
-  DeliverFees = 0;
-  totalPrice = 0;
+
 
   //store
   //objects to store
@@ -68,10 +64,17 @@ export class CheckoutComponent implements OnInit {
   store!: Store;
   id: any;
   arr: any = { itemId: 0, itemName: '', itemPrice: 0, count: 0, value: 0 };
+  //order
+  numcount?:number;
+  //lesa
+  subtotalPrice = 0;
+  VoucherDiscount = 0;
+  DeliverFees = 0;
+  totalPrice = 0;
 //voucher
 couponId?:number;
 client?:Client;
-voucherForm!: FormGroup;
+voucherkey:any;
   //form inputs
   order: Order = {
     orderId: 0,
@@ -105,6 +108,7 @@ voucherForm!: FormGroup;
     private _StoreprofileService: StoreprofileService,
     private formBuilder: FormBuilder,
     private voucherservice:VoucherService,
+    public cartservice:CartServiceService,
   ) {
     this.coordinates = {} as Coordinates;
   }
@@ -113,7 +117,6 @@ voucherForm!: FormGroup;
 
 
  
-
 
 
   centerLatitude = this.latitude;
@@ -155,6 +158,9 @@ voucherForm!: FormGroup;
   }
 //ngOnInit
   ngOnInit(): void {
+
+ 
+
     this.nav.show();
     this.bsModalRef = this.modalService.show(this.templateRef, this.config);
 
@@ -197,16 +203,16 @@ voucherForm!: FormGroup;
       this.store = store;
     });
     console.log('memmm', localStorage.getItem('ngx-webstorage|cart'));
-    // this.myarr = localStorage.getItem('ngx-webstorage|cart');
-    this.arr = JSON.parse(this.locals.retrieve('cart'))[0];
 
-    // console.log('array', this.myarr);
+    this.arr = JSON.parse(this.locals.retrieve('cart'));
     console.log('tanyarrr', this.arr);
 
-   this.voucherForm = this.formBuilder.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required],
-  });
+//calc total 
+  let mycount:number=0;
+  for( let item of this.arr) {
+ mycount+=item.count;
+         }
+   this.numcount=mycount;
 
   }//end of ngOnInt
 
@@ -246,15 +252,19 @@ voucherForm!: FormGroup;
 
   }
 
-  get fieldget() {
-    return this.voucherForm.controls;
-  }
 
-//  voucher(){
-//    this.voucherservice.GetVoucher(this.couponId,this.client.clientId,).subscribe((data) => {
-//      console.log(data);
-//   });
-//  }
+
+
+ voucher(){
+  //  this.voucherservice.GetVoucher(this.couponId,this.client.clientId,).subscribe((data) => {
+  //    console.log(data);
+  // });
+
+
+
+// console.log("item list",);
+  console.log("elvoucherrrrrrr",this.voucherkey)
+ }
 
 
   

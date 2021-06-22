@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { Client } from '../Models/Client';
 const API_URL = 'https://localhost:44311/api/Clients';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ClientService {
+  client=Client;
   constructor(private http: HttpClient) {}
   //on progress
   getPublicContent(): Observable<any> {
@@ -26,10 +28,11 @@ export class ClientService {
             if (res.status === 201) {
               return [{ status: res.status }];
             } else if (res.status === 200) {
-              return [{ status: res.status }];
+              return [{ status: res.status ,client:res}];
             }
           }
-          return res.status;
+          return [{ status: res.status ,client:res}];
+
         }),
         catchError((error: any) => {
           if (error.status > 400 || error.status === 500) {
@@ -39,4 +42,10 @@ export class ClientService {
         })
       );
   }
+
+
+  getByemailtwo(email: string) {
+    return this.http.get(`${API_URL}/getClientByEmail/${email}`);
+  }
+
 }
