@@ -24,7 +24,7 @@
 ul li a
 {
     color: white;
-    font-size: 15px ;
+    font-size: 16px ;
 }
 #navbar-align
 {
@@ -138,4 +138,17 @@ button:active {
   width: 400px;
   margin-top: 50px;
   z-index: 9999
+}
+
+.icon i,.text{
+  display: inline-block;
+}
+
+.text {
+  font-size: 16px ;
+  margin-left: 10px;
+}
+button .mat-focus-indicator {
+  background-color:lightgray;
+  color: #FF5A00;
 }

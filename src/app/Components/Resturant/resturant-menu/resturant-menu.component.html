@@ -1,237 +1,156 @@
 <div class="mm">
-  <div id="header">
-    <img src="../../assets/Capture.PNG" />
-  </div>
-  <div id="bg">
-    <img src="../../assets/turkey.PNG" id="back" />
-  </div>
-  <div *ngIf="_store" id="resname">
-    <p>{{ _store?.storeName }}</p>
-    <p>{{ _store.storeAddress }}</p>
-    <p>Minimum order : {{ _store.storeMinOrder }}</p>
-  </div>
 
-  <mat-icon
-    fontSet="fa"
-    fontIcon=" fa-info-circle"
-    style="
-      font-size: 6em;
-      color: #ff5a00;
-      position: relative;
-      left: 19rem;
-      bottom: 13.5rem;
-    "
-  ></mat-icon>
-  <mat-icon
-    fontSet="fa"
-    fontIcon="fa-comments"
-    style="
-      font-size: 6em;
-      color: #ff5a00;
-      position: relative;
-      left: 53rem;
-      bottom: 13.5rem;
-    "
-  ></mat-icon>
-  <mat-icon
-    fontSet="fa"
-    fontIcon="fa-cart-plus"
-    style="
-      font-size: 6em;
-      color: #ff5a00;
-      position: relative;
-      left: 88rem;
-      bottom: 13.5rem;
-    "
-  ></mat-icon>
-
-  <mat-tab-group *ngIf="_store" class="my-tab-class">
-    <mat-tab label="Restaurant info">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>Description</td>
-            <td>{{ _store.storeDescription }}</td>
-          </tr>
-          <tr>
-            <td>Minimum order</td>
-            <td>{{ _store.storeMinOrder }}</td>
-          </tr>
-          <tr>
-            <td>Delivery time</td>
-            <td>{{ _store.storeDeliveryTime }}</td>
-          </tr>
-          <tr>
-            <td>Service fee</td>
-            <td>{{ _store.storeDeliveryFee }}</td>
-          </tr>
-          <tr>
-            <td>Pre-order</td>
-            <td>{{ _store.storePreOrder }}</td>
-          </tr>
-          <tr>
-            <td>Cuisine</td>
-            <td>{{ _store.storeCuisine }}</td>
-          </tr>
-          <tr>
-            <td>PaymentVisa</td>
-            <td>{{ _store.storePaymentVisa }}</td>
-          </tr>
-          <tr>
-            <td>OrdersNumber</td>
-            <td>{{ _store.storeOrdersNumber }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </mat-tab>
-
-    <mat-tab label="Restaurant Review">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <img
-              src="../../../../assets/davies.jpg"
-              alt="Los Angeles"
-              style="width: 100%"
-            />
-            <div class="carousel-caption">
-              <div class="media" id="commentphoto">
-                <div class="media-body text-left">
-                  <h4 class="media-heading">John Doe</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet,consectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet,consectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet,consectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="item">
-            <img
-              src="../../../../assets/davies.jpg"
-              alt="Chicago"
-              style="width: 100%"
-            />
-            <div class="carousel-caption">
-              <div class="media" id="commentphoto">
-                <div class="media-body">
-                  <h4 class="media-heading">Ola</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Left and right controls -->
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a
-            class="right carousel-control"
-            href="#myCarousel"
-            data-slide="next"
-          >
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </mat-tab>
-
-    <mat-tab label="Food Menu">
-      <div class="row" style="margin: 5rem">
-        <img
-          class="col-lg-3 d-lg-block d-none"
-          width="300"
-          height="500"
-          src="../../assets/foodknief.png"
-          id="kniefphoto"
-        />
-        <div class="col-lg-3 pt-3 col-md-6">
-          <div id="menu">
-            <mat-accordion>
-              <mat-expansion-panel
-                (opened)="panelOpenState = true"
-                (closed)="panelOpenState = false"
-              >
-                <mat-expansion-panel-header>
-                  <mat-panel-title> Catigory 1 </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div
-                  id="collapscontent"
-                  *ngFor="let c of myitem"
-                  class="flex-container"
-                >
-                  <div class="it">
-                    <p>{{ c.itemName }}</p>
-                    <p>{{ c.itemPrice }}</p>
+    <div id="header">
+        <img src="../../assets/Capture.PNG"/>
+    </div>
+    <div id="bg">
+        <img src="../../assets/turkey.PNG" id="back"/>
+    </div>
+    <div *ngIf="_store" id="resname">
+     <p>{{_store?.storeName}}</p>
+     <p>{{_store.storeAddress}}</p>
+     <p>Minimum order : {{_store.storeMinOrder}}</p>
+    </div>
+    
+    <mat-icon fontSet="fa" fontIcon=" fa-info-circle" style="font-size: 6em; color: #FF5A00; position: relative;left:19rem;bottom:13.5rem;"></mat-icon>    
+    <mat-icon fontSet="fa" fontIcon="fa-comments" style="font-size: 6em; color: #FF5A00; position: relative;left:53rem;bottom:13.5rem;"></mat-icon>
+    <mat-icon fontSet="fa" fontIcon="fa-cart-plus" style="font-size: 6em; color: #FF5A00; position: relative;left:88rem;bottom:13.5rem;"></mat-icon>
+    
+    <mat-tab-group *ngIf="_store" class="my-tab-class">
+       
+        <mat-tab label="Restaurant info">
+         <table class="table-am table">
+             <tbody>
+                 <tr>
+                    <td>Description</td>
+                    <td>{{_store.storeDescription}}</td>
+                 </tr>
+                 <tr>
+                     <td>Minimum order</td>
+                     <td>{{_store.storeMinOrder}}</td>
+                 </tr>
+                <tr>
+                    <td>Delivery time</td>
+                    <td>{{_store.storeDeliveryTime}}</td>
+                </tr>
+                <tr>
+                    <td>Service fee</td>
+                    <td>{{_store.storeDeliveryFee}}</td>
+                </tr>
+                <tr>
+                    <td>Pre-order</td>
+                    <td>{{_store.storePreOrder}}</td>
+                </tr>
+                <tr>
+                    <td>Cuisine</td>
+                    <td>{{_store.storeCuisine}}</td>
+                </tr>
+                <tr>
+                    <td>PaymentVisa</td>
+                    <td>{{_store.storePaymentVisa}}</td>
+                </tr>
+                <tr>
+                    <td>OrdersNumber</td>
+                    <td>{{_store.storeOrdersNumber}}</td>
+                </tr>
+             </tbody>
+         </table>
+        </mat-tab>
+    
+        <mat-tab label="Restaurant Review">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                </ol>
+            
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <img src="../../../../assets/davies.jpg" alt="Los Angeles" style="width:100%;">
+                    <div class="carousel-caption">
+                        <div class="media" id="commentphoto">
+                            <div class="media-body text-left">
+                                <h4 class="media-heading">John Doe</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
+                                    dolor sit amet,consectetur adipiscing elit. Lorem ipsum dolor sit
+                                    amet,consectetur adipiscing elit. Lorem ipsum dolor sit amet,consectetur
+                                    adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing
+                                    elit.</p>
+                            </div>
+                        </div>
+                    </div>
                   </div>
-                  <div class="bt">
-                    <button
-                      class="btn btn-success"
-                      id="addbutton"
-                      (click)="onpress(c)"
-                    >
-                      +
-                    </button>
+            
+                  <div class="item">
+                    <img src="../../../../assets/davies.jpg" alt="Chicago" style="width:100%;">
+                    <div class="carousel-caption">
+                        <div class="media" id="commentphoto">
+                            <div class="media-body">
+                                <h4 class="media-heading">Ola</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                 </p>
+                            </div>
+                        </div>
+                    </div>
                   </div>
-                </div>
-              </mat-expansion-panel>
-
-              <mat-expansion-panel
-                (opened)="panelOpenState = true"
-                (closed)="panelOpenState = false"
-              >
-                <mat-expansion-panel-header>
-                  <mat-panel-title> Catigory 2 </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="collapscontent">
-                  <p>item 2</p>
-                  <p>Price</p>
-                  <button class="btn btn-success">+</button>
-                </div>
-              </mat-expansion-panel>
-            </mat-accordion>
+            
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
           </div>
-        </div>
-        <div class="col-lg-3 pt-3 col-md-6">
-          <app-cart-content
-            (remove)="removeItem($event)"
-            [product]="item"
-            *ngFor="let item of cartItems"
-          ></app-cart-content>
-        </div>
-        <img
-          class="col-lg-3 d-lg-block d-none"
-          width="300"
-          height="500"
-          src="../../assets/forkfood.png"
-          id="forkphoto"
-        />
-      </div>
-      <div style="width: 30rem">
-        <button
-          class="btn btn-success"
-          id="button"
-          (click)="checkout(_store.storeId)"
-        >
-          Execute Request
-        </button>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-</div>
+        </mat-tab>
+    
+        <mat-tab label="Food Menu">
+          <div class="row" style="margin: 5rem;">
+            <img  class="col-lg-3 d-lg-block d-none" width="300" height="500" src="../../assets/foodknief.png" id="kniefphoto"/>
+              <div class="col-lg-3 pt-3 col-md-6">
+                <div id="menu">
+                    <mat-accordion>
+                          <mat-expansion-panel  (opened)="chooseCat(cat);panelOpenState =true"
+                                               (closed)="panelOpenState = false"
+                                               *ngFor="let cat of categories">
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                              {{cat}}
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div id="collapscontent" *ngFor="let c of _item" class="flex-container">
+                                <div class="it">
+                                    <p>{{c.itemName}}</p>
+                                    <p>{{c.itemPrice}}</p>
+                                </div>
+                                <div class="bt">
+                                    <button class="btn btn-success" id="addbutton" (click)="onpress(c)">+</button>
+                                </div>
+                            </div>
+                          </mat-expansion-panel>
+            
+                         
+                        </mat-accordion>
+                  </div>
+              </div>
+              <div class="col-lg-3 pt-3 col-md-6">
+                <h3 class="card-title">Your Cart</h3>
+                        <app-cart-content (remove)="removeItem($event)" [product]="item" *ngFor="let item of cartItems"></app-cart-content>
+                        <div>
+                          <span>Total</span>&nbsp;<span>{{cartServ.totalPrice || 0}}</span>
+                        </div>
+                        <div class="text-center mx-auto" >
+                          <button class="btn btn-success" id="button">Execute Request</button>
+                      </div>
+              </div>
+              <img class="col-lg-3 d-lg-block d-none" width="300" height="500" src="../../assets/forkfood.png" id="forkphoto"/>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+

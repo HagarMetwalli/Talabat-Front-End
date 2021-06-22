@@ -12,20 +12,12 @@
             <div class="topheading">
               <h3 class="register-heading">Create an account</h3>
               <div class="text-center social-btn">
-                <a class="btn btn-secondary" (click)="signInWithFB()"
-                  ><i
-                    class="fab fa-facebook"
-                    style="font-size: 18px; vertical-align: middle"
-                  ></i>
-                  Sign up with Facebook</a
-                >
-                <a class="btn btn-danger" (click)="signInWithGoogle()"
-                  ><i
-                    class="fab fa-google"
-                    style="font-size: 18px; vertical-align: middle"
-                  ></i>
-                  Sign up with Google</a
-                >
+                <a class="btn btn-secondary" (click)="signInWithFB()"><i class="fab fa-facebook"
+                    style="font-size: 18px; vertical-align: middle"></i>
+                  Sign up with Facebook</a>
+                <a class="btn btn-danger" (click)="signInWithGoogle()"><i class="fab fa-google"
+                    style="font-size: 18px; vertical-align: middle"></i>
+                  Sign up with Google</a>
               </div>
               <h5>OR</h5>
             </div>
@@ -35,18 +27,9 @@
                 <div class="form-group">
                   <mat-form-field>
                     <mat-label>First name</mat-label>
-                    <input
-                      type="text"
-                      matInput
-                      placeholder="Enter first name"
-                      [(ngModel)]="client.clientFname"
-                      name="clientFname"
-                      #clientFname="ngModel"
-                      minLength="3"
-                      maxLength="20"
-                      pattern="^[A-Z]{1}[a-z]*$"
-                      required
-                    />
+                    <input type="text" matInput placeholder="Enter first name" [(ngModel)]="client.clientFname"
+                      name="clientFname" #clientFname="ngModel" minLength="3" maxLength="20" pattern="^[A-Z]{1}[a-z]*$"
+                      required />
                     <mat-error *ngIf="clientFname.hasError('pattern')">
                       Please enter a valid name(only alphabetic characters
                       EX-Ahmed)
@@ -61,14 +44,8 @@
                 <div class="form-group">
                   <mat-form-field>
                     <mat-label>Email</mat-label>
-                    <input
-                      matInput
-                      placeholder="example.pat@example.com"
-                      [(ngModel)]="client.clientEmail"
-                      name="clientEmail"
-                      #clientEmail="ngModel"
-                      required
-                    />
+                    <input matInput placeholder="example.pat@example.com" [(ngModel)]="client.clientEmail"
+                      name="clientEmail" #clientEmail="ngModel" required />
                     <!-- pattern="[a-zA-Z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})" -->
                     <mat-error *ngIf="clientEmail.hasError('required')">
                       Email is <strong>required</strong>
@@ -82,30 +59,15 @@
                 <div class="form-group">
                   <mat-form-field>
                     <mat-label>Password</mat-label>
-                    <input
-                      matInput
-                      [type]="hide ? 'password' : 'text'"
-                      type="password"
-                      matInput
-                      placeholder="Enter password"
-                      [(ngModel)]="client.clientPassword"
-                      name="clientPassword"
-                      #clientPassword="ngModel"
-                      required
-                      minLength="8"
-                      maxLength="100"
-                      pattern="^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$"
-                    />
-                    <button
-                      mat-icon-button
-                      matSuffix
-                      (click)="hide = !hide"
-                      [attr.aria-label]="'Hide password'"
-                      [attr.aria-pressed]="hide"
-                    >
+                    <input matInput [type]="hide ? 'password' : 'text'" type="password" matInput
+                      placeholder="Enter password" [(ngModel)]="client.clientPassword" name="clientPassword"
+                      #clientPassword="ngModel" required minLength="8" maxLength="100"
+                      pattern="^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$" />
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide">
                       <mat-icon>{{
                         hide ? "visibility_off" : "visibility"
-                      }}</mat-icon>
+                        }}</mat-icon>
                     </button>
                     <mat-error *ngIf="clientPassword.hasError('pattern')">
                       Password have to minimum 8 characters, at least 1
@@ -121,13 +83,8 @@
                 <div class="form-group">
                   <mat-form-field>
                     <mat-label>Gender</mat-label>
-                    <mat-select
-                      [(ngModel)]="client.clientGenderIsMale"
-                      name="clientGenderIsMale"
-                      #clientGenderIsMale="ngModel"
-                      required
-                      matNativeControl
-                    >
+                    <mat-select [(ngModel)]="client.clientGenderIsMale" name="clientGenderIsMale"
+                      #clientGenderIsMale="ngModel" required matNativeControl>
                       <mat-option value="1">Male</mat-option>
                       <mat-option value="2">Female</mat-option>
                     </mat-select>
@@ -141,18 +98,9 @@
               <div class="inputes2">
                 <mat-form-field>
                   <mat-label>Last name</mat-label>
-                  <input
-                    type="text"
-                    matInput
-                    placeholder="Enter last name"
-                    [(ngModel)]="client.clientLname"
-                    name="clientLname"
-                    #clientLname="ngModel"
-                    minLength="3"
-                    maxLength="20"
-                    pattern="^[A-Z]{1}[a-z]*$"
-                    required
-                  />
+                  <input type="text" matInput placeholder="Enter last name" [(ngModel)]="client.clientLname"
+                    name="clientLname" #clientLname="ngModel" minLength="3" maxLength="20" pattern="^[A-Z]{1}[a-z]*$"
+                    required />
                   <mat-error *ngIf="clientLname.hasError('pattern')">
                     Please enter a valid name(only alphabetic characters
                     EX:Amin)
@@ -165,16 +113,9 @@
                 <div class="form-group">
                   <mat-form-field>
                     <mat-label>Date of birth</mat-label>
-                    <input
-                      matInput
-                      [min]="minDate"
-                      [max]="maxDate"
-                      [matDatepicker]="minmaxvalidation"
-                      [(ngModel)]="client.clientDateOfBirth"
-                      name="clientDateOfBirth"
-                      #clientDateOfBirth="ngModel"
-                      required
-                    />
+                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="minmaxvalidation"
+                      [(ngModel)]="client.clientDateOfBirth" name="clientDateOfBirth" #clientDateOfBirth="ngModel"
+                      required />
                     <mat-datepicker-toggle matSuffix [for]="minmaxvalidation">
                     </mat-datepicker-toggle>
                     <mat-datepicker #minmaxvalidation></mat-datepicker>
@@ -222,32 +163,19 @@
 
                 <div class="form-group subscribe">
                   <div class="form-check form-check-inline">
-                    <mat-checkbox
-                      [(ngModel)]="client.clientNewsletterSubscribe"
-                      name="clientNewsletterSubscribe"
-                      class="example-margin"
-                      >Subscribe to our Nwesletter</mat-checkbox
-                    >
+                    <mat-checkbox [(ngModel)]="client.clientNewsletterSubscribe" name="clientNewsletterSubscribe"
+                      class="example-margin">Subscribe to our Nwesletter</mat-checkbox>
                   </div>
                   <div class="form-check form-check-inline">
-                    <mat-checkbox
-                      [(ngModel)]="client.clientSmsSubscribe"
-                      name="clientSmsSubscribe"
-                      class="example-margin"
-                      >Subscribe to our SMS</mat-checkbox
-                    >
+                    <mat-checkbox [(ngModel)]="client.clientSmsSubscribe" name="clientSmsSubscribe"
+                      class="example-margin">Subscribe to our SMS</mat-checkbox>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <input
-            type="submit"
-            (click)="register()"
-            class="btnRegister btn btn-cont"
-            value="Create your account"
-          />
+          <input type="submit" (click)="register()" class="btnRegister btn btn-cont" value="Create your account" />
           <p class="text-center">
             Already have an account?
             <a id="login" (click)="openModal()">Log In</a>
@@ -262,7 +190,7 @@
     <div class="container">
       <div class="footer-container">
         <div class="footer-links">
-          <a href="#">Feedback</a>
+          <a [routerLink]="['/system-review']" routerLinkActive="router-link-active">Feedback</a>
           <a href="#">Careers</a>
           <a href="#">Terms</a>
           <a href="#">FAQ</a>
@@ -272,9 +200,7 @@
         </div>
         <hr />
         <div class="footer-underline grid-footer">
-          <span class="grid-footer"
-            >For any support or help you can contact us via our Live Chat</span
-          >
+          <span class="grid-footer">For any support or help you can contact us via our Live Chat</span>
           <span>@2021 Talabat.com</span>
         </div>
       </div>

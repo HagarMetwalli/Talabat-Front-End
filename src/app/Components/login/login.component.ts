@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
     private tokenService: TokenService,
     private modalService: BsModalService,
     private clientservice: ClientService
-  ) {}
+  ) { }
 
   closeModal() {
     this.modalService.hide();
@@ -128,33 +128,54 @@ export class LoginComponent implements OnInit {
             title: 'Oops...',
             text: 'Email is not Exist Please Register First!',
           });
+
         }
       });
     //login
     this.authService
       .login(this.fieldget.email.value, this.fieldget.password.value)
-      .subscribe((data) => {
-        // Save value to local storage
-        if (this.rememberMe) {
-          //localStorage.setItem('rememberMe', 'yes');
-          localStorage.setItem(
-            'currentClient',
-            JSON.stringify(this.loggedClient)
+      .subscribe(
+        (data) => {
+          // Save value to local storage
+          if (this.rememberMe) {
+            //localStorage.setItem('rememberMe', 'yes');
+            localStorage.setItem(
+              'currentClient',
+              JSON.stringify(this.loggedClient)
+            );
+             localStorage.setItem('token', JSON.stringify(data));
+          }
+          sessionStorage.setItem('token', JSON.stringify(data));
+          //console.log('token', data);
+          this.router.navigate(['']);
+          this.closeModal();
+        },
 
-          );
-          localStorage.setItem('token', JSON.stringify(data));
+        //error
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Email or Password in falid!',
+          });
+
         }
-        sessionStorage.setItem('token', JSON.stringify(data));
-        //console.log('token', data);
-        this.router.navigate(['']);
-        this.closeModal();
-      });
+
+
+
+
+
+
+
+      );
     //console.log('before getting email');
 
     //store client id in session
-    this.clientservice.getByemail(this.loggedClient.email).subscribe((data) => {
-      console.log('getbyemail', data);
-      sessionStorage.setItem('client id', JSON.stringify(data));
-    });
+    this.clientservice.getByemail(this.loggedClient.email).subscribe(
+      (data) => {
+        console.log('getbyemail', data);
+        sessionStorage.setItem('client id', JSON.stringify(data));
+      });
+
   }
 }

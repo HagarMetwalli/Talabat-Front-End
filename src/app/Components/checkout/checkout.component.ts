@@ -1,18 +1,14 @@
+
 import { LocalStorageService } from 'ngx-webstorage';
 import { Product } from '../../Models/Product';
 
-import { MapsAPILoader } from '@agm/core';
-import {
-  Component,
-  ElementRef,
-  NgZone,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { MapsAPILoader, LatLngLiteral } from '@agm/core';
+import { Component, ElementRef, NgZone, OnInit, TemplateRef, ViewChild } from '@angular/core';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { GooglemapService } from 'src/app/Services/google-map.service';
+
 import { Order } from 'src/app/Models/Order';
 import { Store } from './../../Models/Store';
 import { StoreprofileService } from 'src/app/Services/Stores/store-profile.service';
@@ -25,6 +21,11 @@ import {
   FormControl,
   FormsModule,
 } from '@angular/forms';
+
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
+
+
+
 interface Coordinates {
   address: string;
   latitude: string;
@@ -53,12 +54,14 @@ export class CheckoutComponent implements OnInit {
   @ViewChild('pop')
   public LocationsearchElementRef!: ElementRef;
 
-  @ViewChild('template')
+  @ViewChild('template', { static: true })
   public templateRef!: TemplateRef<any>;
+
   subtotalPrice = 0;
   VoucherDiscount = 0;
   DeliverFees = 0;
   totalPrice = 0;
+
   //store
   //objects to store
   sub: any;
@@ -81,6 +84,14 @@ voucherForm!: FormGroup;
     isDelivered: '',
     deliveryStatusInString: '',
   };
+
+
+
+
+  btnDisabled = false;
+
+
+
   constructor(
     private locals: LocalStorageService,
     private _Activatedroute: ActivatedRoute,
@@ -89,6 +100,8 @@ voucherForm!: FormGroup;
     private ngZone: NgZone,
     private modalService: BsModalService,
     private _googlemapservice: GooglemapService,
+    public nav: NavbarService,
+
     private _StoreprofileService: StoreprofileService,
     private formBuilder: FormBuilder,
     private voucherservice:VoucherService,
@@ -98,19 +111,52 @@ voucherForm!: FormGroup;
 
   
 
-  onfig = {
+
+ 
+
+
+
+  centerLatitude = this.latitude;
+  centerLongitude = this.longitude;
+
+  // initialZoom = 5;
+
+  public centerChanged(coords: LatLngLiteral) {
+    this.centerLatitude = coords.lat;
+    this.centerLongitude = coords.lng;
+  }
+
+  public mapReady(map: { addListener: (arg0: string, arg1: () => void) => void; }) {
+    map.addListener("dragend", () => {
+      console.log(this.centerLatitude, this.centerLongitude);
+    });
+  }
+
+
+  closeModal() {
+    this.modalService.hide();
+  };
+
+
+
+  config = {
+
     animated: true,
     keyboard: false,
     backdrop: true,
     ignoreBackdropClick: true,
   };
 
+
+
   openAddressModalOnClick() {
-    this.bsModalRef = this.modalService.show(this.templateRef);
+    this.bsModalRef = this.modalService.show(this.templateRef, this.config)
+
   }
 //ngOnInit
   ngOnInit(): void {
-    this.bsModalRef = this.modalService.show(this.templateRef);
+    this.nav.show();
+    this.bsModalRef = this.modalService.show(this.templateRef, this.config);
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
@@ -194,8 +240,12 @@ voucherForm!: FormGroup;
           // window.alert('Geocoder failed due to: ' + status);
         }
       }
+
+
     );
+
   }
+
   get fieldget() {
     return this.voucherForm.controls;
   }
@@ -209,3 +259,4 @@ voucherForm!: FormGroup;
 
   
 };
+

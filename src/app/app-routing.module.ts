@@ -51,8 +51,8 @@ import { NotFoundPageComponent } from './Components/not-found-page/not-found-pag
 import { ThankyouComponent } from './Components/thankyou/thankyou.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomepageComponent },
+  // { path: '', redirectTo: '', pathMatch: 'full' },
+  // { path: 'home', component: HomepageComponent },
   { path: '', component: HomepageComponent },
   { path: 'register', component: RegisterationComponent },
   { path: 'login', component: LoginComponent },
@@ -75,34 +75,21 @@ const routes: Routes = [
     children: [
       { path: '', component: AccountInfoComponent, outlet: 'subOutlet' },
       { path: 'my-orders', component: MyOrdersComponent, outlet: 'subOutlet' },
-      {
-        path: 'account-info',
-        component: AccountInfoComponent,
-        outlet: 'subOutlet',
-      },
-      {
-        path: 'saved-addresses',
-        component: SavedAddressesComponent,
-        outlet: 'subOutlet',
-      },
-      {
-        path: 'saved-cards',
-        component: SavedCardsComponent,
-        outlet: 'subOutlet',
-      },
-      {
-        path: 'system-review',
-        component: SystemReviewComponent,
-        outlet: 'subOutlet',
-      },
-    ],
+
+      { path: 'account-info', component: AccountInfoComponent, outlet: 'subOutlet' },
+      { path: 'saved-addresses', component: SavedAddressesComponent, outlet: 'subOutlet' },
+      { path: 'saved-cards', component: SavedCardsComponent, outlet: 'subOutlet' },
+
+    ]
+
+
   },
 
   //system review
   { path: 'system-review', component: SystemReviewComponent },
 
   //store
-  { path: 'nearest-stores', component: StoresInAreaComponent },
+  { path: 'RestInArea/:latitude/:longitude', component: StoresInAreaComponent },
 
   //order
 
@@ -111,11 +98,9 @@ const routes: Routes = [
 
   //partener
 
-  {
-    path: 'partener-login',
-    component: PartenerLoginComponent,
-    data: { navbar: false },
-  },
+
+  { path: 'partener-login', component: PartenerLoginComponent, data: { navbar: false } },
+
 
   { path: 'partener', component: PartenerComponent, data: { navbar: false } },
 
@@ -137,4 +122,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

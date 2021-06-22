@@ -35,6 +35,6 @@
   <div class="modal-footer">
     <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button> -->
     <button type="button" class="btn btn-primary navigate" [disabled]="btnDisabled" [class.spinner]="loading"
-      [ngStyle]="{'background-color': (btnDisabled)? '#ff5a00': 'gray'}" routerLink="/nearest-stores">{{btnText}}</button>
+      [ngStyle]="{'background-color': (btnDisabled)? '#ff5a00': 'gray'}" (click)="GetAllNearStores()">{{btnText}}</button>
   </div>
 </div>

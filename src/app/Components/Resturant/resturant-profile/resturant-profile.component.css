@@ -254,4 +254,7 @@ agm-map {
   font-weight: bold;
   position: relative;
   left: 190px;
-}
+} 
+.map{
+    width: 598px;
+  }

@@ -9,8 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../../Models/Product';
 import { StoreprofileService } from '../../../Services/Stores/store-profile.service';
 import { CartServiceService } from '../../../Services/cart-service.service';
+
 import { Router } from '@angular/router';
 import { Store } from 'src/app/Models/Store';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
+
 
 @Component({
   selector: 'app-resturant-menu',
@@ -21,15 +24,20 @@ import { Store } from 'src/app/Models/Store';
 export class ResturantMenuComponent implements OnInit {
   panelOpenState = false;
   cartItems: Array<any> = [];
+
   constructor(
     private _Activatedroute: ActivatedRoute,
     private _router: Router,
     private cartServ: CartServiceService,
-
+    public nav: NavbarService,
     private _StoreprofileService: StoreprofileService
-  ) {}
+  ) { }
+
   sub: any;
-  _store!: Store;
+
+  categories: any[] = [];
+  _store: Store | undefined;
+
   id: any;
   display: boolean = false;
   displayimg: boolean = true;
@@ -42,24 +50,45 @@ export class ResturantMenuComponent implements OnInit {
   ];
   cart!: Product;
   ngOnInit() {
+    this.nav.show();
     this.getCartItems();
     this.sub = this._Activatedroute.paramMap.subscribe((params) => {
       console.log(params);
       this.id = params.get('storeid');
-      this.id = +this.id;
-      console.log('IIIID', params.get('storeid'));
+
+
+      this.id = + this.id;
+      console.log("IIIID", params.get('storeid'));
+
+
+
+      this._StoreprofileService.getStoreById(this.id).subscribe(
+        (store: any) => {
+          console.log(store);
+          this._store = store || undefined;
+          this.initialize();
+        }
+      )
     });
 
-    this._StoreprofileService.getStoreById(this.id).subscribe((store) => {
-      console.log(store);
-      this._store = store;
-      // localStorage.setItem('storeobj', this._store);
-    });
 
-    this._StoreprofileService.getmenu(this.menu).subscribe((item) => {
-      console.log(item);
-      this._item = item;
-    });
+
+
+  }
+
+  initialize() {
+    this._StoreprofileService.getAllCategory(this._store?.storeName || '').subscribe(res => {
+      this.categories = res;
+    })
+  }
+  chooseCat(cat: string) {
+    this._StoreprofileService.getItemsByCategory(this._store?.storeName || '', cat).subscribe(
+      items => {
+        console.log(items);
+        this._item = items;
+      }
+    )
+
   }
   itemincart!: Product;
   onpress(cartitem: Product) {
@@ -80,7 +109,10 @@ export class ResturantMenuComponent implements OnInit {
     this.cartServ.deleteProduct(id);
     this.getCartItems();
   }
+
   checkout(id?: number) {
     this._router.navigate(['/checkout/', id]);
   }
-}
+
+
+};

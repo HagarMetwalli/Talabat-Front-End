@@ -8,6 +8,7 @@ import { LatLngLiteral, MapsAPILoader } from '@agm/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { GooglemapService } from 'src/app/Services/google-map.service';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
 
 interface Coordinates {
   address: string,
@@ -23,7 +24,7 @@ export class ResturantProfileComponent implements OnInit {
 
   coordinates: Coordinates;
 
-  bsModalRef?: BsModalRef;
+  bsModalRef !: BsModalRef;
 
   title: string = 'AGM project';
   latitude!: number;
@@ -48,7 +49,7 @@ export class ResturantProfileComponent implements OnInit {
   mapMarkactive = true;
   closeMarkactive = false;
 
-  btnText = 'Sorry, we don deliver here';
+  btnText = "Sorry, we don't deliver here";
   btnDisabled = true;
   loading = false;
 
@@ -61,16 +62,17 @@ export class ResturantProfileComponent implements OnInit {
     private ngZone: NgZone,
     private modalService: BsModalService,
     private toolTipModule: TooltipModule,
-    private storeTypeService: StoretypeService,
-    private _googlemapservice: GooglemapService
-    )
-    {
-      this.coordinates = {} as Coordinates;
-    }
+    private _googlemapservice: GooglemapService,
+    public nav: NavbarService,
+  ) {
+    this.coordinates = {} as Coordinates;
+  }
+
 
   sub: any;
   _store: any;
   id: any;
+
 
 
   centerLatitude = this.latitude;
@@ -86,9 +88,9 @@ export class ResturantProfileComponent implements OnInit {
       this.closeMarkactive = true;
       // this.mapMarkactive = false;
       //this.message="Textbox is empty !!!";
-    }else{
-    this.mapMarkactive = true;
-  }
+    } else {
+      this.mapMarkactive = true;
+    }
 
   }
 
@@ -105,8 +107,29 @@ export class ResturantProfileComponent implements OnInit {
 
   public mapReady(map: { addListener: (arg0: string, arg1: () => void) => void; }) {
     map.addListener("dragend", () => {
-      this.loading = true
+      this.loading = true;
+      this.btnDisabled = true;
+      this.btnText = "Sorry, we don't deliver here";
       console.log(this.centerLatitude, this.centerLongitude);
+      //----------------------------------------------------
+      this._googlemapservice.getstoreMenu(this._store.storeId, this.centerLatitude, this.centerLongitude).subscribe(
+        _menu => {
+
+          console.log("--------------------hhhhhh", _menu);
+
+          if (_menu[0].status == 200) {
+            this.loading = false;
+            console.log("rr", this.loading);
+            this.btnDisabled = false;
+            this.btnText = 'Deliver here';
+          }
+          this.loading = true;
+          this.btnDisabled = true;
+          this.btnText = "Sorry, we don't deliver here";
+
+
+
+        })
 
     });
   }
@@ -129,7 +152,7 @@ export class ResturantProfileComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.nav.show();
     this.sub = this._Activatedroute.paramMap.subscribe(params => {
       console.log(params);
       this.id = params.get('storeid');
@@ -143,7 +166,7 @@ export class ResturantProfileComponent implements OnInit {
         console.log(store);
         this._store = store;
 
-    });
+      });
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
@@ -164,21 +187,17 @@ export class ResturantProfileComponent implements OnInit {
           //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
+
           this.zoom = 12;
         });
       });
+
     });
+
+
   }
 
-  public getAllStoreIn(event: any, type: any) {
-    this.storeTypeService.getStoreTypeById(type.storeTypeId).subscribe(
-      res => {
-        console.log(res);
-        this._router.navigate(['/all-resturants/', type.storeTypeName])
-      }
-    )
-  }
-
+  // Get Current Location Coordinates
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -190,9 +209,11 @@ export class ResturantProfileComponent implements OnInit {
     }
   }
 
+
   getAddress(latitude: number, longitude: number) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      console.log(results);
+      // console.log(results);
+
       console.log(status);
       if (status === 'OK') {
         if (results[0]) {
@@ -203,20 +224,22 @@ export class ResturantProfileComponent implements OnInit {
           // window.alert('No results found');
         }
       } else {
-        console.log('Geocoder failed due to: ' + status)
+        console.log('Geocoder failed due to: ' + status);
         // window.alert('Geocoder failed due to: ' + status);
       }
 
     });
   }
 
-  // showmenu(_id?: number) {
-  //   this._router.navigate(['storemenu/', _id]);
-  // }
 
-  GetStoreMenu(id: number, storeName: string) {
 
-    this._googlemapservice.getstoreMenu(storeName, this.latitude, this.longitude).subscribe(
+  showmenu(_id?: number) {
+    this._router.navigate(['storemenu/', _id]);
+  }
+
+  GetStoreMenu(id: number) {
+
+    this._googlemapservice.getstoreMenu(id, this.latitude, this.longitude).subscribe(
       _menu => {
 
         console.log("<<<<<", _menu);
@@ -224,6 +247,7 @@ export class ResturantProfileComponent implements OnInit {
         this.btnDisabled = false;
         this.btnText = 'Deliver here';
         this._router.navigate(['storemenu/', id]);
+        this.bsModalRef.hide();
 
       })
   }

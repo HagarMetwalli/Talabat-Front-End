@@ -4,22 +4,19 @@
     <div id="Header">
       <div class="text-center offers">Offers</div>
     </div>
-</div>
+  </div>
 
-<!-- <mat-icon aria-label="Example home icon">ballot</mat-icon>
+  <!-- <mat-icon aria-label="Example home icon">ballot</mat-icon>
 <mat-icon aria-label="Example home icon">local_offer</mat-icon> -->
 
-<div class="container">
-  <img src="../../../assets/icon_promotions.webp" class="promo-img">
+  <div class="container">
+    <img src="../../../assets/icon_promotions.webp" class="promo-img">
 
-  <mat-tab-group class="my-tab-class" (selectedIndexChange)="tabClick($event)">
-    <mat-tab label="Promotions">
-      <!-- <div class="container">-->
+    <mat-tab-group class="my-tab-class" (selectedIndexChange)="tabClick($event)">
+      <mat-tab label="Promotions">
+        <!-- <div class="container">-->
         <div class="row">
-          <div
-            class="col-sm-6 col-md-3 col-lg-3"
-            *ngFor="let store of PromsStores"
-          >
+          <div class="col-sm-6 col-md-3 col-lg-3" *ngFor="let store of PromsStores">
             <a (click)="openModalprom(template, store.storeId)">
               <div class="restaurant-box">
                 <ng-template #template>
@@ -27,16 +24,11 @@
                     <h4 class="modal-title pull-left">
                       Offers from {{ store.storeName }}
                     </h4>
-                    <button
-                      type="button"
-                      class="close pull-right"
-                      aria-label="Close"
-                      (click)="modalRef.hide()"
-                    >
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                       <span aria-hidden="true">×</span>
                     </button>
                   </div>
-                  
+
                   <div class="modal-body">
                     <table class="table table-striped">
                       <thead>
@@ -61,20 +53,13 @@
                   </div>
 
                   <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-default"
-                      (click)="modalRef.hide()"
-                    >
+                    <button type="button" class="btn btn-default" (click)="modalRef.hide()">
                       Close
                     </button>
                   </div>
                 </ng-template>
                 <div class="restaurant-thumb">
-                  <div
-                    class="restaurant-overlay"
-                    style="background-image: url('../../assets/dounkin.jpg')"
-                  ></div>
+                  <div class="restaurant-overlay" style="background-image: url('../../assets/dounkin.jpg')"></div>
                 </div>
                 <div class="restaurant-caption">
                   <a href="#">{{ store.storeName }}</a>
@@ -83,82 +68,71 @@
             </a>
           </div>
         </div>
-      <!-- </div> -->
-    </mat-tab>
+        <!-- </div> -->
+      </mat-tab>
 
-    <mat-tab label="Coupons">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3" *ngFor="let store of CoupStores">
-            <a (click)="openModalcoup(template, store.storeId)">
-              <div class="restaurant-box">
-                <ng-template #template>
-                  <div class="modal-header">
-                    <h4 class="modal-title pull-left">
-                      Offers from {{ store.storeName }}
-                    </h4>
-                    <button
-                      type="button"
-                      class="close pull-right"
-                      aria-label="Close"
-                      (click)="modalRef.hide()"
-                    >
-                      <span aria-hidden="true">×</span>
-                    </button>
+      <mat-tab label="Coupons">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3" *ngFor="let store of CoupStores">
+              <a (click)="openModalcoup(template, store.storeId)">
+                <div class="restaurant-box">
+                  <ng-template #template>
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">
+                        Offers from {{ store.storeName }}
+                      </h4>
+                      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                          </tr>
+                        </thead>
+                        <!-- <a routerLink="store-profile/:+" store.storeId> -->
+                        <tbody>
+                          <tr *ngFor="let items of Coupitems">
+                            <td>{{ items.item.itemImage }}</td>
+                            <td>{{ items.item.itemName }}</td>
+                            <td>{{ items.item.itemDescription }}</td>
+                            <td>{{ items.item.itemPrice }}</td>
+                          </tr>
+                        </tbody>
+                        <!-- </a> -->
+                      </table>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+                        Close
+                      </button>
+                    </div>
+                  </ng-template>
+                  <div class="restaurant-thumb">
+                    <div class="restaurant-overlay" style="background-image: url('../../assets/mac.jpg')"></div>
                   </div>
-                  <div class="modal-body">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>Image</th>
-                          <th>Name</th>
-                          <th>Description</th>
-                          <th>Price</th>
-                        </tr>
-                      </thead>
-                      <!-- <a routerLink="store-profile/:+" store.storeId> -->
-                      <tbody>
-                        <tr *ngFor="let items of Coupitems">
-                          <td>{{ items.item.itemImage }}</td>
-                          <td>{{ items.item.itemName }}</td>
-                          <td>{{ items.item.itemDescription }}</td>
-                          <td>{{ items.item.itemPrice }}</td>
-                        </tr>
-                      </tbody>
-                      <!-- </a> -->
-                    </table>
+                  <div class="restaurant-caption">
+                    <a href="#">{{ store.storeName }}</a>
                   </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-default"
-                      (click)="modalRef.hide()"
-                    >
-                      Close
-                    </button>
-                  </div>
-                </ng-template>
-                <div class="restaurant-thumb">
-                  <div
-                    class="restaurant-overlay"
-                    style="background-image: url('../../assets/mac.jpg')"
-                  ></div>
                 </div>
-                <div class="restaurant-caption">
-                  <a href="#">{{ store.storeName }}</a>
-                </div>
-              </div>
-            </a>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-  <img src="../../../assets/icon_coupons.webp" class="coupon-img">
+      </mat-tab>
+    </mat-tab-group>
+    <img src="../../../assets/icon_coupons.webp" class="coupon-img">
 
-</div>
+  </div>
   <!-- <pagination-controls
     class="text-center current"
     (pageChange)="page = $event"
   ></pagination-controls> -->
 </div>
+<app-footer></app-footer>
