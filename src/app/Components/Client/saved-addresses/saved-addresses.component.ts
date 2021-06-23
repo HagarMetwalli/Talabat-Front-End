@@ -11,6 +11,8 @@ import { AddressesService } from 'src/app/Services/Profile/Addresses.service';
 })
 export class SavedAddressesComponent implements OnInit {
 
+  savedAddrressFlag= true;
+
   constructor(private addressService: AddressesService, private router: Router) { }
 
   addresses: ClientAddress[] = [];
@@ -45,6 +47,7 @@ export class SavedAddressesComponent implements OnInit {
 
         this.addressService.getAddressByClientId(1).subscribe(
           (result: any) => {
+            this.savedAddrressFlag= false;
             console.log("Result: ", result);
             this.addresses = result;
             this.ngOnInit();
@@ -97,6 +100,7 @@ export class SavedAddressesComponent implements OnInit {
   ngOnInit(): void {
     this.addressService.getAddressByClientId(1).subscribe(
       (result: any) => {
+
         console.log("Result: ", result);
         this.addresses = result;
       },
