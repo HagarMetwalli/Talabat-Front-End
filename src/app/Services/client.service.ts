@@ -21,4 +21,7 @@ export class ClientService {
   getByemail(email: string) {
     return this.http.get(`${API_URL}/getClientByEmail/${email}`);
   }
+  getbyid(id : number): Observable<any>{
+    return this.http.get(`${API_URL}/${id}`);
+  }
 }

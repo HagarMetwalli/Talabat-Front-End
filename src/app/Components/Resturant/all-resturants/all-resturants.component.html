@@ -13,31 +13,32 @@
                     </p>
                 </div>
             </div>
-           <div class="flex-container">
-              <div class="col-lg-12" *ngFor="
-              let img of stores
-               | filter: filterTerm
-               | paginate: { itemsPerPage: 4, currentPage: p }
-               "[routerLink]="['/store-profile/',img.storeId]" (click)="storeprofileshow(img.storeId)">
-                <div class="restaurant-box">
-                    <div class="restaurant-thumb">
-                        <div class="restaurant-overlay" style="background-image: url('../../assets/turkey.PNG')"></div>
-                    </div>
-                    <div class="restaurant-caption">
-                        <a href="#">{{ img.storeName }}</a>
-                        <div class="main-recipe">
-                            <div class="main-recipe-name">{{ img.storeDescription }}</div>
-                        </div>
-                    </div>
-                </div>
-             </div>
-        </div>
-           
+                    <div class="col-lg-3" *ngFor="
+                    let img of stores
+                     | filter: filterTerm
+                     | paginate: { itemsPerPage: 12, currentPage: p }
+                     "[routerLink]="['/store-profile/',img.storeId]" (click)="storeprofileshow(img.storeId)">
+                      <div class="restaurant-box">
+                          <div class="restaurant-thumb">
+                              <div class="restaurant-overlay" style="background-image: url('../../assets/turkey.PNG')"></div>
+                          </div>
+                          <div class="restaurant-caption">
+                              <a href="#">{{ img.storeName }}</a>
+                              <div class="main-recipe">
+                                  <div class="main-recipe-name">{{ img.storeDescription }}</div>
+                              </div>
+                          </div>
+                      </div>
+                   </div>
+                       
           <!--pagination-->
-         <div class="pag">
-            <pagination-controls class="text-center current" (pageChange)="p = $event"></pagination-controls>
-         </div>
         </div>
     </div>
+    <div class="pag">
+        <pagination-controls class="text-center current" (pageChange)="p = $event"></pagination-controls>
+     </div>
 
+     <div class="footer">
+        <app-footer></app-footer>
+     </div>
 </div>

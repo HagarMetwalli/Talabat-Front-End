@@ -13,7 +13,5 @@ export class Product {
         public discount?: number,
         public count?: number,
         public value?: number
-
-
     ) { }
 }
