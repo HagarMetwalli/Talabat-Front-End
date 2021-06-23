@@ -2,6 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '../../../Models/Store';
 import { Component, OnInit, Input } from '@angular/core';
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
+import { GooglemapService } from 'src/app/Services/google-map.service';
 
 @Component({
   selector: 'app-stores-in-area',
@@ -14,16 +15,29 @@ export class StoresInAreaComponent implements OnInit {
   filterTerm?: string;
   page !: number;
   store!: Store;
+  latitude!: any;
+  longitude!: any;
 
-    constructor(private router: Router, private activeroute: ActivatedRoute, public nav: NavbarService) { }
+    constructor(
+      private router: Router,
+      private activatedroute: ActivatedRoute,
+      public nav: NavbarService,
+      private _googlemapservice: GooglemapService) { }
 
   ngOnInit(): void {
     this.nav.show();
-    this.activeroute.paramMap.subscribe(params => {
-      this.nearStores.forEach((s: Store) => {
-        this.store = s;
-      });
+    this.activatedroute.paramMap.subscribe(params => {
+      this.latitude= params.get('latitude');
+      this.longitude= params.get('longitude');
     });
+
+    this._googlemapservice.getstores(this.latitude,this.longitude).subscribe(
+      _stores => {
+        console.log("<<<<<", _stores);
+        this.store = _stores;
+        console.log(">>>>>", this.store);
+      })
+
 
   }
 
