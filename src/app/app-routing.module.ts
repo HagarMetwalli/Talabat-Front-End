@@ -92,7 +92,7 @@ const routes: Routes = [
 
   //order
 
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout/:storeid', component: CheckoutComponent },
   { path: 'Payment', component: PaymentCardComponent },
 
   //partener
