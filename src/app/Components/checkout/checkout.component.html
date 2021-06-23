@@ -87,6 +87,11 @@
                       <hr class="mb-3" />
 
                       <p>bind here adress details</p>
+                      <div>Address Name: {{city}}</div>
+                      <div>Address: {{streetName}} St, Building: {{buildingNo}},
+                        Floor: {{floorNo}}, Apartment: {{apartmentNo}}</div>
+                      <div>Mobile: +20 {{mobileNumber}}</div>
+
                     </mat-card-content>
                     <mat-card-actions>
                       <button
@@ -136,23 +141,60 @@
                                     <img src="../../assets/home/map-marker.svg" width="30" height="30">
                                   </div>
                                 <div>
-                                    <button mat-button matStepperNext [disabled]="btnDisabled">Next</button>
+                                    <button mat-button matStepperNext [disabled]="btnDisabled" (click)="CheckAddressInZone()">Next</button>
                                 </div>
                             </form>
                         </mat-step>
                         <mat-step [stepControl]="secondFormGroup">
-                            <form [formGroup]="secondFormGroup">
+                            <form [formGroup]="secondAddressFormGroup" (ngSubmit)="submitAddress()">
                                 <ng-template matStepLabel>Address Details</ng-template>
                                 <mat-form-field>
-                                    <mat-label>Store Name</mat-label>
-                                    <input matInput placeholder="Store Name" formControlName="storeName" required>
+                                    <mat-label>Mobile Number</mat-label>
+                                    <input matInput placeholder="Mobile Number" formControlName="mobileNumber"
+                                    [(ngModel)]="clientAddress.clientAddressMobileNumber"
+                                    name="mobileNumber" #clientAddressMobileNumber="ngModel" required>
                                 </mat-form-field>
                                 <br />
-
-                             
-
-
-
+                                <mat-form-field>
+                                  <mat-label>landLine Number</mat-label>
+                                  <input matInput placeholder="LandLine Number" formControlName="landLine"
+                                  [(ngModel)]="clientAddress.clientAddressLandLine"
+                                    name="landLine" #clientAddressLandLine="ngModel">
+                                  </mat-form-field>
+                                  <br />
+                                  <mat-form-field>
+                                    <mat-label>City</mat-label>
+                                    <input matInput placeholder="City" formControlName="city" required>
+                                  </mat-form-field>
+                                  <br />
+                                  <mat-form-field>
+                                    <mat-label>Street Name</mat-label>
+                                    <input matInput placeholder="Street Name" formControlName="streetName"
+                                    [(ngModel)]="clientAddress.clientAddressStreet"
+                                    name="streetName" #clientAddressStreet="ngModel" required>
+                                  </mat-form-field>
+                                  <br />
+                                  <mat-form-field>
+                                    <mat-label>Building No</mat-label>
+                                    <input matInput placeholder="Building No" formControlName="buildingNo"
+                                    [(ngModel)]="clientAddress.clientAddressBuilding"
+                                    name="buildingNo" #clientAddressBuilding="ngModel" required>
+                                  </mat-form-field>
+                                  <br />
+                                  <mat-form-field>
+                                    <mat-label>Floor No</mat-label>
+                                    <input matInput placeholder="Floor No" formControlName="floorNo"
+                                    [(ngModel)]="clientAddress.clientAddressFloor"
+                                    name="floorNo" #clientAddressFloor="ngModel" required>
+                                  </mat-form-field>
+                                  <br />
+                                  <mat-form-field>
+                                    <mat-label>Apartment No</mat-label>
+                                    <input matInput placeholder="Apartment No" formControlName="apartmentNo"
+                                    [(ngModel)]="clientAddress.clientAddressApartmentNumber"
+                                    name="apartmentNo" #clientAddressApartmentNumber="ngModel" required>
+                                  </mat-form-field>
+                                  <br />
                                 <div>
                                     <button mat-button matStepperPrevious>Back</button>
                                     <button mat-button matStepperNext>Next</button>
@@ -162,23 +204,26 @@
                         <mat-step>
                             <ng-template matStepLabel>Done</ng-template>
                             <p>You are now done.</p>
-
-                            <!-- <mat-list>
-                        <mat-list-item> <strong>Name:</strong> {{ this.firstFormGroup.value.name }}</mat-list-item>
-                        <mat-list-item> <strong>Description:</strong> {{ this.firstFormGroup.value.description }}</mat-list-item>
-                        <mat-list-item> <strong>Amount:</strong> {{ this.secondFormGroup.value.amount }}</mat-list-item>
-                        <mat-list-item> <strong>Stock:</strong> {{ this.secondFormGroup.value.stock }}</mat-list-item>
-                        </mat-list> -->
+                          <!-- For Testing -->
+                        <mat-list>
+                          <mat-list-item> <strong>Mobile Number:</strong> {{ this.secondAddressFormGroup.value.mobileNumber }}</mat-list-item>
+                          <mat-list-item> <strong>LandLine:</strong> {{ this.secondAddressFormGroup.value.landLine }}</mat-list-item>
+                          <mat-list-item> <strong>City:</strong> {{ this.secondAddressFormGroup.value.city }}</mat-list-item>
+                          <mat-list-item> <strong>Street Name:</strong> {{ this.secondAddressFormGroup.value.streetName }}</mat-list-item>
+                          <mat-list-item> <strong>Building No:</strong> {{ this.secondAddressFormGroup.value.buildingNo }}</mat-list-item>
+                          <mat-list-item> <strong>Floor No:</strong> {{ this.secondAddressFormGroup.value.floorNo }}</mat-list-item>
+                          <mat-list-item> <strong>Apartment No:</strong> {{ this.secondAddressFormGroup.value.apartmentNo }}</mat-list-item>
+                        </mat-list>
 
                             <div>
                                 <button mat-button matStepperPrevious>Back</button>
-                                <button mat-button (click)="submit()">Conirm</button>
+                                <!-- <button mat-button (click)="submit()">Submit</button> -->
                             </div>
                         </mat-step>
                       </mat-horizontal-stepper>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-primary navigate" (click)="getClientAddress()">Confirm</button>
+                      <input type="submit" class="btn btn-primary navigate" (click)="getClientAddress()">Confirm
                       <!-- <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button> -->
                     </div>
                   </div>

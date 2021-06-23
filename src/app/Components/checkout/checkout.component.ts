@@ -10,6 +10,9 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { GooglemapService } from 'src/app/Services/google-map.service';
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AddressesService } from 'src/app/Services/Profile/Addresses.service';
+import Swal from 'sweetalert2';
+import { ClientAddress } from 'src/app/Models/ClientAddress';
 
 interface Coordinates {
   address: string;
@@ -45,11 +48,26 @@ export class CheckoutComponent implements OnInit {
   VoucherDiscount = 0;
   DeliverFees = 0;
   totalPrice = 0;
+  sub:any;
+  storeid!: any;
+  secondAddressFormGroup!: FormGroup;
+  btnDisabled = true;
 
-
-
-  btnDisabled = false;
-
+  clientAddress: ClientAddress = {
+    clientAddressId: 0,
+    clientAddressMobileNumber: '',
+    clientAddressLandLine: 0,
+    clientAddressAddressTitle: '',
+    clientAddressStreet: '',
+    clientAddressBuilding: 0,
+    clientAddressFloor: 0,
+    clientAddressApartmentNumber: 0,
+    clientAddressTypeId: 0,
+    cityId: 0,
+    clientId: 0,
+    regionId: 0,
+    clientAddressOptionalDirections: ''
+  };
 
   constructor(
     private locals: LocalStorageService,
@@ -60,7 +78,8 @@ export class CheckoutComponent implements OnInit {
     private modalService: BsModalService,
     private _googlemapservice: GooglemapService,
     public nav: NavbarService,
-
+    private AddressesService: AddressesService,
+    public fb: FormBuilder
   ) {
     this.coordinates = {} as Coordinates;
   }
@@ -83,28 +102,21 @@ export class CheckoutComponent implements OnInit {
   }
 
 
-  closeModal() {
-    this.modalService.hide();
-  };
-
-
-
+  closeModal() { this.modalService.hide();};
   config = {
-
     animated: true,
     keyboard: false,
     backdrop: true,
     ignoreBackdropClick: true,
   };
 
-
-
   openAddressModalOnClick() {
     this.bsModalRef = this.modalService.show(this.templateRef, this.config)
-
   }
 
   ngOnInit(): void {
+    this.reactiveForm();
+
     this.nav.show();
     this.bsModalRef = this.modalService.show(this.templateRef, this.config);
 
@@ -133,6 +145,12 @@ export class CheckoutComponent implements OnInit {
         });
       });
     });
+
+    this.sub = this._Activatedroute.paramMap.subscribe((params) => {
+      console.log(params);
+      this.storeid = params.get('storeid');
+    });
+
   }
 
   private setCurrentLocation() {
@@ -148,8 +166,7 @@ export class CheckoutComponent implements OnInit {
 
   getAddress(latitude: number, longitude: number) {
     this.geoCoder.geocode(
-      { location: { lat: latitude, lng: longitude } },
-      (results, status) => {
+      { location: { lat: latitude, lng: longitude } },(results, status) => {
         console.log(results);
         console.log(status);
         if (status === 'OK') {
@@ -165,25 +182,51 @@ export class CheckoutComponent implements OnInit {
           // window.alert('Geocoder failed due to: ' + status);
         }
       }
+    )}
 
+  CheckAddressInZone() {
+    this._googlemapservice.getstoreMenu(this.storeid, this.latitude, this.longitude).subscribe(
+      _res => {
+        if(_res[0].status==200){
+          this.btnDisabled = false;
+          console.log("Good, Your Address In Store Zone !");
+        }else{
+          this.btnDisabled = true;
+          console.log("Sorry, Your Address Out Store Zone !");
+          Swal.fire({
+            icon: 'error',
+            title: 'OutZone...',
+            text: 'Sorry, Your Address Out Store Zone !',
+        })
+      }
+    }
+  )}
 
-    );
+  reactiveForm() {
+    this.secondAddressFormGroup = this.fb.group({
 
+      mobileNumber: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      streetName: ['', [Validators.required]],
+      buildingNo: ['', [Validators.required]],
+      floorNo: ['', [Validators.required]],
+      apartmentNo: ['', [Validators.required]],
+
+    })
+}
+
+  submitForm() {
+    console.log(this.myFormAddress.value)
   }
 
-  // CheckAddressInZone(id: number, storeName: string) {
 
-  //   this._googlemapservice.getstoreMenu(storeName, this.latitude, this.longitude).subscribe(
-  //     _res => {
-  //       if(_res[0].status==200){
-  //         console.log("Good, Your Address In Store Zone !");
-  //       }else{
-  //         this.btnDisabled = true;
-  //         console.log("Sorry, Your Address Out Store Zone !");
+  getClientAddress(address: ClientAddress ){
+    address= this.clientAddress;
+    this.AddressesService.addAddress(address).subscribe(
+      (res) => {
+        console.log("Address Result: ", res);
+      }
+    )}
 
-  //       }
 
-  //     })
-
-  // }
 }
