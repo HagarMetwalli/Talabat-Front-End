@@ -12,9 +12,11 @@ export class VoucherService {
   constructor(private http: HttpClient) {}
   GetVoucher( couponKey:string ,clientId?:number){
     let params = new HttpParams();
-    params.set('itemsIdList', 2);
-    params.set('itemsIdList', 3);
-    return this.http.get(CoupApi+ couponKey+'/'+clientId,{params: params});
+    let arr=[2,3];
+    arr.forEach((itemsIdList:number) =>{
+      params = params.append(`itemsIdList`, itemsIdList);
+    });
+    return this.http.get(CoupApi+ couponKey+'/'+clientId,{ params: params });
     }
   
 
