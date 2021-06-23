@@ -66,15 +66,12 @@ export class CheckoutComponent implements OnInit {
   arr: any = { itemId: 0, itemName: '', itemPrice: 0, count: 0, value: 0 };
   //order
   numcount?:number;
-  //lesa
-  subtotalPrice = 0;
-  VoucherDiscount = 0;
-  DeliverFees = 0;
-  totalPrice = 0;
+
 //voucher
 couponId?:number;
-client?:Client;
+client:any;
 voucherkey:any;
+arraylist:number[]=[];
   //form inputs
   order: Order = {
     orderId: 0,
@@ -206,6 +203,8 @@ voucherkey:any;
 
     this.arr = JSON.parse(this.locals.retrieve('cart'));
     console.log('tanyarrr', this.arr);
+    this.client=sessionStorage.getItem('clientId');
+    console.log('el client bta3na',this.client);
 
 //calc total 
   let mycount:number=0;
@@ -256,14 +255,16 @@ voucherkey:any;
 
 
  voucher(){
-  //  this.voucherservice.GetVoucher(this.couponId,this.client.clientId,).subscribe((data) => {
-  //    console.log(data);
-  // });
+   this.voucherservice.GetVoucher(this.voucherkey,this.client).subscribe((data) => {
+     console.log(data);
+  console.log("elvoucherrrrrrr",this.voucherkey);
+  console.log("client id bta3 el voucher",this.client)
+  },
+  (error)=>{
+  console.log('ghalatattattattaa')
+  }
+  );
 
-
-
-// console.log("item list",);
-  console.log("elvoucherrrrrrr",this.voucherkey)
  }
 
 

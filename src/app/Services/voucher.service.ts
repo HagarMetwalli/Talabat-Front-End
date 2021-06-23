@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Client } from '../Models/Client';
 const CoupApi='https://localhost:44311/api/Coupons/GetCouponDiscount/';
 
@@ -8,20 +8,14 @@ const CoupApi='https://localhost:44311/api/Coupons/GetCouponDiscount/';
 })
 
 export class VoucherService {
+ 
   constructor(private http: HttpClient) {}
-  GetVoucher( couponKey:string ,clientId:number,itemIDs:Array<number>)
-     {
-    return this.http.get(CoupApi+ couponKey+'/'+clientId+'/'+itemIDs);
-     };
-
-
-
-
-
-
-
-
-
-
+  GetVoucher( couponKey:string ,clientId?:number){
+    let params = new HttpParams();
+    params.set('itemsIdList', 2);
+    params.set('itemsIdList', 3);
+    return this.http.get(CoupApi+ couponKey+'/'+clientId,{params: params});
+    }
+  
 
 }

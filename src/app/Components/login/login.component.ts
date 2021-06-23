@@ -56,7 +56,6 @@ export class LoginComponent implements OnInit {
     authorizationCode: '',
     response: '',
   };
-
   constructor(
     private formBuilder: FormBuilder,
     private socialService: SocialAuthService,
