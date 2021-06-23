@@ -10,7 +10,11 @@ import { ProfileService } from 'src/app/Services/Profile/Profile.service';
   templateUrl: './my-orders.component.html',
   styleUrls: ['./my-orders.component.css']
 })
+
 export class MyOrdersComponent implements OnInit {
+
+  ordersFlag= true;
+
 
   constructor(private profService: ProfileService, private router: Router) { }
 
@@ -62,6 +66,7 @@ export class MyOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.profService.getClientOrders(1).subscribe(
       (result: any) => {
+        this.ordersFlag= false;
         console.log("Result: ", result);
         this.clientOrders = result;
 
