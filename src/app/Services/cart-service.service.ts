@@ -19,6 +19,7 @@ export class CartServiceService {
   }
   addProduct(product: Product) {
     product.count = 1;
+    product.value = product.itemPrice;
     if (this.locals.retrieve('cart')) {
       const arr: Array<any> = JSON.parse(this.locals.retrieve('cart'));
       if(arr.find(e => e.itemId === product.itemId)){
