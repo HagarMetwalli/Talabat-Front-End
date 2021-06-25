@@ -29,11 +29,12 @@ export class NavBarComponent implements OnInit {
   numcount?:number;
   cartFlag= false;
 
+
   constructor(
     private authService: SocialAuthService,
     private modalService: BsModalService,
     private router: Router,
-    public nav: NavbarService
+    public nav: NavbarService,
   ) {}
 
   config = {
@@ -68,21 +69,21 @@ export class NavBarComponent implements OnInit {
     sessionStorage.setItem('token', '');
   }
   ngOnInit(): void {
-    this.arr = JSON.parse(this.locals.retrieve('cart'));
-    console.log('tanyarrr', this.arr);
+  //   this.arr = JSON.parse(this.locals.retrieve('cart'));
+  //   console.log('tanyarrr', this.arr);
 
-  //calc total
-    let mycount:number=0;
-    for( let item of this.arr) {
-      mycount+=item.count;
-    }
-    this.numcount=mycount;
+  // //calc total
+  //   let mycount:number=0;
+  //   for( let item of this.arr) {
+  //     mycount+=item.count;
+  //   }
+  //   this.numcount=mycount;
 
-    if(this.numcount > 0){
-      this.cartFlag= true;
-    }else{
-      this.cartFlag= false;
-    }
+  //   if(this.numcount > 0){
+  //     this.cartFlag= true;
+  //   }else{
+  //     this.cartFlag= false;
+  //   }
 
   }
 }
