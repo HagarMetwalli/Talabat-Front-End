@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
     private tokenService: TokenService,
     private modalService: BsModalService,
     private clientservice: ClientService
-  ) { }
+  ) {}
 
   closeModal() {
     this.modalService.hide();
@@ -103,8 +103,6 @@ export class LoginComponent implements OnInit {
     console.log(FacebookLoginProvider.PROVIDER_ID);
     (this.loggedClient.email = this.user.email),
       (this.loggedClient.password = this.user.firstName + this.user.id);
-    //console.log('data from google', this.user);
-    //console.log('client', this.loggedClient);
   }
 
   // convenience getter for easy access to form fields
@@ -118,10 +116,8 @@ export class LoginComponent implements OnInit {
     this.clientservice
       .getByemail(this.fieldget.email.value)
       .subscribe((data) => {
-
         console.log('data from mail', data);
         console.log('status', data.status);
-        
 
         if (data.status == 404) {
           Swal.fire({
@@ -131,14 +127,15 @@ export class LoginComponent implements OnInit {
           });
         }
       });
-  // store client id in session
-  this.clientservice.getByemailtwo(this.loggedClient.email).subscribe((data) => {
-    console.log('getbyemailnow', data);
-    sessionStorage.setItem('client', JSON.stringify(data));
-    sessionStorage.setItem('clientId', JSON.stringify(data.clientId));
+    // store client id in session
+    this.clientservice
+      .getByemailtwo(this.loggedClient.email)
+      .subscribe((data) => {
+        console.log('getbyemailnow', data);
+        sessionStorage.setItem('client', JSON.stringify(data));
+        // sessionStorage.setItem('clientId', JSON.stringify(data.clientId));
+      });
 
-  });
-      
     //login
     this.authService
       .login(this.fieldget.email.value, this.fieldget.password.value)
@@ -151,7 +148,7 @@ export class LoginComponent implements OnInit {
               'currentClient',
               JSON.stringify(this.loggedClient)
             );
-             localStorage.setItem('token', JSON.stringify(data));
+            localStorage.setItem('token', JSON.stringify(data));
           }
           sessionStorage.setItem('token', JSON.stringify(data));
           //console.log('token', data);
@@ -166,10 +163,7 @@ export class LoginComponent implements OnInit {
             title: 'Oops...',
             text: 'Email or Password in falid!',
           });
-
         }
       );
-
   }
-
 }
