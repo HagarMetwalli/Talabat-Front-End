@@ -216,7 +216,7 @@ export class CheckoutComponent implements OnInit {
 }
 
   submitForm() {
-    console.log(this.myFormAddress.value)
+    // console.log(this.reactiveForm.value)
   }
 
 
