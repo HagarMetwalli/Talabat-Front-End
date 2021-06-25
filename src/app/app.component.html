@@ -1,3 +1,11 @@
+<mat-progress-bar
+  *ngIf="loading | async" color="accent" mode="indeterminate"
+  style="position: absolute; top: 0; z-index: 5000;">
+</mat-progress-bar>
+<div class="my-overlay" *ngIf="loading">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+</div>
 <app-nav-bar></app-nav-bar>
 <router-outlet></router-outlet>
+
 
