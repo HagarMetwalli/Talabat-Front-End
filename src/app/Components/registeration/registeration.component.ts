@@ -79,7 +79,7 @@ export class RegisterationComponent implements OnInit {
     private authService: AuthService,
     private clientservice: ClientService,
     public nav: NavbarService
-  ) {}
+  ) { }
   //toOpenLoginModal
   openModal() {
     this.bsmodalRef = this.modalService.show(LoginComponent);
@@ -140,7 +140,8 @@ export class RegisterationComponent implements OnInit {
     console.log('hi', this.client);
     this.authService.register(this.client).subscribe((a) => {
       console.log('subscribed', this.client);
-      this.openModal();
+      //this.openModal();
+      this.router.navigate(['/home']);
     });
 
     console.log(this.client);

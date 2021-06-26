@@ -52,7 +52,7 @@ import { ThankyouComponent } from './Components/thankyou/thankyou.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '', pathMatch: 'full' },
-  // { path: 'home', component: HomepageComponent },
+  { path: 'home', component: HomepageComponent },
   { path: '', component: HomepageComponent },
   { path: 'register', component: RegisterationComponent },
   { path: 'login', component: LoginComponent },

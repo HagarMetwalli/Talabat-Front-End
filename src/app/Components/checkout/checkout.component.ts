@@ -24,6 +24,8 @@ import {
 
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
 import { CartServiceService } from 'src/app/Services/cart-service.service';
+import { OrderItem } from 'src/app/Models/order-item';
+import { OrderSubmitData } from 'src/app/Models/OrderSubmitData';
 
 
 
@@ -65,30 +67,27 @@ export class CheckoutComponent implements OnInit {
   id: any;
   arr: any = { itemId: 0, itemName: '', itemPrice: 0, count: 0, value: 0 };
   //order
-  numcount?:number;
+  numcount?: number;
+  itemarr: number[] = [];
 
-//voucher
-couponId?:number;
-client:any;
-voucherkey:any;
-arraylist:number[]=[];
+  //voucher
+  couponId?: number;
+  client: any;
+  voucherkey: any;
+  arraylist: number[] = [];
+  speciall: any = "non";
   //form inputs
-  order: Order = {
-    orderId: 0,
-    orderCost: 0,
-    orderSpecialRequest: '',
-    orderTime: '',
-    addressDetails: '',
-    clientId: 0,
-    storeId: 0,
-    isDelivered: '',
-    deliveryStatusInString: '',
-  };
+
+  Discount: any = 0;
+  public msg = false;
+  public msg2 = false;
 
 
 
-
+  ordersub: OrderSubmitData | undefined;
   btnDisabled = false;
+  itemList: OrderItem[] = [];
+
 
 
 
@@ -104,16 +103,16 @@ arraylist:number[]=[];
 
     private _StoreprofileService: StoreprofileService,
     private formBuilder: FormBuilder,
-    private voucherservice:VoucherService,
-    public cartservice:CartServiceService,
+    private voucherservice: VoucherService,
+    public cartservice: CartServiceService,
   ) {
     this.coordinates = {} as Coordinates;
   }
 
-  
 
 
- 
+
+
 
 
   centerLatitude = this.latitude;
@@ -153,10 +152,10 @@ arraylist:number[]=[];
     this.bsModalRef = this.modalService.show(this.templateRef, this.config)
 
   }
-//ngOnInit
+  //ngOnInit
   ngOnInit(): void {
 
- 
+
 
     this.nav.show();
     this.bsModalRef = this.modalService.show(this.templateRef, this.config);
@@ -203,15 +202,41 @@ arraylist:number[]=[];
 
     this.arr = JSON.parse(this.locals.retrieve('cart'));
     console.log('tanyarrr', this.arr);
-    this.client=sessionStorage.getItem('clientId');
-    console.log('el client bta3na',this.client);
 
-//calc total 
-  let mycount:number=0;
-  for( let item of this.arr) {
- mycount+=item.count;
-         }
-   this.numcount=mycount;
+    //get item array to subscribe 
+    for (let item of this.arr) {
+      this.itemarr.push(item.itemId);
+    }
+    console.log("this items", this.itemarr);
+
+    //get clint id
+    this.client = sessionStorage.getItem('clientId');
+    console.log('el client bta3na', this.client);
+
+    //calc total 
+    let mycount: number = 0;
+    for (let item of this.arr) {
+      mycount += item.count;
+    }
+    this.numcount = mycount;
+
+
+
+
+    //submited order obj
+
+
+    for (let item of this.arr) {
+
+      this.itemList.push
+        ({
+          OrderId: 0,
+          ItemId: item.itemId,
+          OrderItemQty: item.count
+
+        })
+
+    }
 
   }//end of ngOnInt
 
@@ -254,20 +279,65 @@ arraylist:number[]=[];
 
 
 
- voucher(){
-   this.voucherservice.GetVoucher(this.voucherkey,this.client).subscribe((data) => {
-     console.log(data);
-  console.log("elvoucherrrrrrr",this.voucherkey);
-  console.log("client id bta3 el voucher",this.client)
-  },
-  (error)=>{
-  console.log('ghalatattattattaa')
+  voucher() {
+    this.msg = false;
+    this.msg2 = false;
+    this.voucherservice.GetVoucher(this.voucherkey, this.itemarr, this.client).subscribe((data) => {
+
+      if (data != null) {
+        this.Discount = data;
+        this.msg = true;
+
+        // console.log(data);
+        // console.log("elvoucherrrrrrr", this.voucherkey);
+        // console.log("client id bta3 el voucher", this.client)
+
+      }
+      else if (data == null) {
+        this.msg2 = true;
+      }
+
+    },
+      (error) => {
+        console.log('ghalatattattattaa');
+        this.msg2 = true;
+      }
+    );
+
   }
-  );
 
- }
+  placeOrder() {
 
 
-  
+    this.ordersub = {
+      order: {
+        orderCost: this.cartservice.totalPrice - this.Discount,
+        orderSpecialRequest: this.speciall,
+        orderTime: new Date(),
+        addressDetails: "text",
+        clientId: 1,
+        storeId: this.id,
+        isDelivered: 0,
+
+      },
+      orderItemsList: this.itemList
+
+    }
+    console.log(this.ordersub);
+    this.voucherservice.postOrder(this.ordersub).subscribe((data) => {
+
+      console.log(data);
+
+
+    },
+      (error) => {
+        console.log('order error', error);
+
+      }
+    );
+
+  }
+
+
 };
 

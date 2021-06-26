@@ -121,7 +121,7 @@ export class LoginComponent implements OnInit {
 
         console.log('data from mail', data);
         console.log('status', data.status);
-        
+
 
         if (data.status == 404) {
           Swal.fire({
@@ -131,14 +131,14 @@ export class LoginComponent implements OnInit {
           });
         }
       });
-  // store client id in session
-  this.clientservice.getByemailtwo(this.loggedClient.email).subscribe((data) => {
-    console.log('getbyemailnow', data);
-    sessionStorage.setItem('client', JSON.stringify(data));
-    sessionStorage.setItem('clientId', JSON.stringify(data.clientId));
+    // store client id in session
+    this.clientservice.getByemailtwo(this.loggedClient.email).subscribe((data) => {
+      console.log('getbyemailnow', data);
+      sessionStorage.setItem('client', JSON.stringify(data));
+      sessionStorage.setItem('clientId', JSON.stringify(data.clientId));
 
-  });
-      
+    });
+
     //login
     this.authService
       .login(this.fieldget.email.value, this.fieldget.password.value)
@@ -151,7 +151,7 @@ export class LoginComponent implements OnInit {
               'currentClient',
               JSON.stringify(this.loggedClient)
             );
-             localStorage.setItem('token', JSON.stringify(data));
+            localStorage.setItem('token', JSON.stringify(data));
           }
           sessionStorage.setItem('token', JSON.stringify(data));
           //console.log('token', data);

@@ -76,6 +76,7 @@ import { ThankyouComponent } from './Components/thankyou/thankyou.component';
 
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,6 +108,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     OrderReviewComponent,
     RatingComponent,
     OrderItemsReviewComponent,
+
   ],
   imports: [
     AppRoutingModule,
@@ -180,4 +182,4 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {}
+export class AppModule { }
