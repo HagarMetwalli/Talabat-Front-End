@@ -381,3 +381,26 @@ textarea.mat-input-element {
   /* box-shadow: 0 5px gray;
   transform: translateY(2px); */
 }
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #FF5A00;
+}
+.mat-radio-outer-circle {
+    border-color: #FF5A00;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: #FF5A00;
+}
+.mat-radio-button {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-expansion-panel-header[aria-disabled=true] {
+    color:black;
+}
+.mat-expansion-pane2-header[aria-disabled=true] {
+    color:black;
+}
+.mat-expansion-panel-header {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}

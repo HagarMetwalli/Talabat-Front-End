@@ -25,6 +25,8 @@ import {
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
 import { CartServiceService } from 'src/app/Services/cart-service.service';
 
+import { MatRadioChange } from "@angular/material/radio";
+import { MatExpansionPanel } from "@angular/material/expansion";
 
 
 interface Coordinates {
@@ -89,7 +91,12 @@ arraylist:number[]=[];
 
 
   btnDisabled = false;
+//occardion works 
+  panelOpenState = false;
 
+  onChange(radio: MatRadioChange, panel: MatExpansionPanel) {
+    panel.open();
+  }
 
 
   constructor(
