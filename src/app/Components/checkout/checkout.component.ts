@@ -292,7 +292,7 @@ export class CheckoutComponent implements OnInit {
   voucher() {
     this.msg = false;
     this.msg2 = false;
-    this.voucherservice.GetVoucher(this.voucherkey, this.itemarr, this.client).subscribe((data) => {
+    this.voucherservice.GetVoucher(this.voucherkey, this.itemarr, 1).subscribe((data) => {
 
       if (data != null) {
         this.Discount = data;

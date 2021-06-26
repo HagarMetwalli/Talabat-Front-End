@@ -9,7 +9,7 @@ body {
 }
 
 
-#header {
+/* #header {
   /* background-color: lightgray;
     height: 30rem;
 
@@ -19,8 +19,8 @@ body {
 
     max-width:100vw;
     position: relative;
-    overflow: hidden; */
-}
+    overflow: hidden; 
+} */
 
 #headerbg{
     width: 152rem;

@@ -68,7 +68,7 @@ export class ResturantProfileComponent implements OnInit {
     private ngZone: NgZone,
     private modalService: BsModalService,
     private toolTipModule: TooltipModule,
-
+    private nav: NavbarService,
     private storeTypeService: StoretypeService,
     private _googlemapservice: GooglemapService,
     private OrderService: OrderService,
