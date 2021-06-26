@@ -27,6 +27,8 @@ import { CartServiceService } from 'src/app/Services/cart-service.service';
 import { OrderItem } from 'src/app/Models/order-item';
 import { OrderSubmitData } from 'src/app/Models/OrderSubmitData';
 
+import { MatRadioChange } from "@angular/material/radio";
+import { MatExpansionPanel } from "@angular/material/expansion";
 
 
 interface Coordinates {
@@ -86,9 +88,17 @@ export class CheckoutComponent implements OnInit {
 
   ordersub: OrderSubmitData | undefined;
   btnDisabled = false;
+
   itemList: OrderItem[] = [];
 
 
+  //occardion works 
+  panelOpenState = false;
+
+
+  onChange(radio: MatRadioChange, panel: MatExpansionPanel) {
+    panel.open();
+  }
 
 
   constructor(

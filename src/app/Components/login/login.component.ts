@@ -103,8 +103,6 @@ export class LoginComponent implements OnInit {
     console.log(FacebookLoginProvider.PROVIDER_ID);
     (this.loggedClient.email = this.user.email),
       (this.loggedClient.password = this.user.firstName + this.user.id);
-    //console.log('data from google', this.user);
-    //console.log('client', this.loggedClient);
   }
 
   // convenience getter for easy access to form fields
@@ -118,7 +116,6 @@ export class LoginComponent implements OnInit {
     this.clientservice
       .getByemail(this.fieldget.email.value)
       .subscribe((data) => {
-
         console.log('data from mail', data);
         console.log('status', data.status);
 
@@ -132,12 +129,14 @@ export class LoginComponent implements OnInit {
         }
       });
     // store client id in session
+
     this.clientservice.getByemailtwo(this.loggedClient.email).subscribe((data) => {
       console.log('getbyemailnow', data);
       sessionStorage.setItem('client', JSON.stringify(data));
       sessionStorage.setItem('clientId', JSON.stringify(data.clientId));
 
     });
+
 
     //login
     this.authService
@@ -166,10 +165,7 @@ export class LoginComponent implements OnInit {
             title: 'Oops...',
             text: 'Email or Password in falid!',
           });
-
         }
       );
-
   }
-
 }

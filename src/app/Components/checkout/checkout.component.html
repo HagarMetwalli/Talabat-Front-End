@@ -155,36 +155,41 @@
           </div>
 
           <hr class="mb-3" />
-
+          <!-- <occrdion> -->
           <!-- <olineeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee payment> -->
+          <mat-accordion class="fix-radio-position" hideToggle="true">
+            <mat-expansion-panel #panel1 disabled>
+              <mat-expansion-panel-header style="align-items: center">
+                <mat-panel-description>
+                  <mat-radio-button (change)="onChange($event, panel1)" name="services" id="service1" value="service1">
+                    Online Payment
+                  </mat-radio-button>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title>Online Payment</mat-card-title>
+                </mat-card-header>
 
-          <div class="mb-3">
-            <mat-card class="example-card">
-              <mat-card-header>
-                <mat-card-title>Online Payment</mat-card-title>
-              </mat-card-header>
+                <mat-card-content class="text-center">
+                  <hr class="mb-3" />
+                  <app-payment-card class="text-center"></app-payment-card>
+                </mat-card-content>
+              </mat-card>
+            </mat-expansion-panel>
+            <mat-expansion-panel #panel2 disabled>
+              <mat-expansion-panel-header>
+                <mat-panel-description>
+                  <mat-radio-button (change)="onChange($event, panel2)" name="services" id="service2" value="service2"
+                    style="line-height: 2">
+                    Cash On delivery</mat-radio-button>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <h3> You will pay on delivery </h3>
+            </mat-expansion-panel>
+          </mat-accordion>
 
-              <mat-card-content class="text-center">
-                <hr class="mb-3" />
-                <app-payment-card class="text-center"></app-payment-card>
-              </mat-card-content>
-            </mat-card>
-          </div>
 
-          <!-- <CASHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH> -->
-          <hr class="mb-3" />
-          <div class="mb-3">
-            <mat-card class="example-card">
-              <mat-card-header>
-                <mat-card-title>Cash On delivery</mat-card-title>
-              </mat-card-header>
-              <mat-card-content class="text-center">
-                <hr class="mb-3" />
-
-                <mat-checkbox name="Cashondelivery" class="example-margin">Cash on delivery</mat-checkbox>
-              </mat-card-content>
-            </mat-card>
-          </div>
 
           <hr class="mb-4" />
           <button class="btn" type="submit" (click)="placeOrder()">Place order</button>
