@@ -3,6 +3,7 @@ import { OrderReview } from './../Models/OrderReview';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { OrderItemReview } from '../Models/OrderItemReview';
+import { Observable } from 'rxjs';
 
 const API ="https://localhost:44311/api/OrderReviews";
 const API_Items ="https://localhost:44311/api/Orders/GetItemsInOrder";
@@ -44,4 +45,10 @@ export class OrderService {
       return error;
     }
   }
+
+  storecomments(id : number): Observable<any>{
+    return this.http.get(`${API}/allStoreReview/${id}`);
+  }
+
+
 }

@@ -1,4 +1,5 @@
 export class OrderReview {
+    [x: string]: any;
     constructor(
   
       public orderReviewId?: number,

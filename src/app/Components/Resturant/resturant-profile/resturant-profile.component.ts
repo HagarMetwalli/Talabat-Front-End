@@ -8,7 +8,13 @@ import { LatLngLiteral, MapsAPILoader } from '@agm/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { GooglemapService } from 'src/app/Services/google-map.service';
+
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
+
+import { OrderService } from 'src/app/Services/order.service';
+import { ClientService } from './../../../Services/client.service';
+import { OrderReview } from './../../../Models/OrderReview';
+
 
 interface Coordinates {
   address: string,
@@ -62,8 +68,11 @@ export class ResturantProfileComponent implements OnInit {
     private ngZone: NgZone,
     private modalService: BsModalService,
     private toolTipModule: TooltipModule,
+
+    private storeTypeService: StoretypeService,
     private _googlemapservice: GooglemapService,
-    public nav: NavbarService,
+    private OrderService: OrderService,
+    private ClientService: ClientService
   ) {
     this.coordinates = {} as Coordinates;
   }
@@ -73,7 +82,10 @@ export class ResturantProfileComponent implements OnInit {
   _store: any;
   id: any;
 
-
+  _comment: any = [];
+  _name: any = [];
+  nid: any;
+  _bestselling: any;
 
   centerLatitude = this.latitude;
   centerLongitude = this.longitude;
@@ -168,6 +180,18 @@ export class ResturantProfileComponent implements OnInit {
 
       });
 
+    this.OrderService.storecomments(this.id).subscribe(
+      comment => {
+        console.log(comment);
+        this._comment = comment;
+        this.clientname(this._comment);
+      });
+
+    this._StoreprofileService.gettopitem(this.id).subscribe(bestselling => {
+      console.log("the best", bestselling);
+      this._bestselling = bestselling;
+    });
+
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -229,6 +253,18 @@ export class ResturantProfileComponent implements OnInit {
       }
 
     });
+  }
+  clientname(rev: Array<any>) {
+    for (let i = 0; i < rev.length; i++) {
+      this.ClientService.getbyid(rev[i].clientId).subscribe((name) => {
+        console.log("name", name);
+        this._name.push(name);
+        console.log("_name", this._name);
+
+      });
+    }
+    console.log("_name", this._name);
+
   }
 
 

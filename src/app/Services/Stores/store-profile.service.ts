@@ -22,5 +22,8 @@ export class StoreprofileService {
     return this.http.get(`${API}${store}/Categories`);
   }
 
+  gettopitem(id : number): Observable<any>{
+    return this.http.get(`${API}GetTopItemsBystoreId/${id}`);
+  }
 
 }

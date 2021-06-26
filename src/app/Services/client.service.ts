@@ -9,8 +9,8 @@ const API_URL = 'https://localhost:44311/api/Clients';
   providedIn: 'root',
 })
 export class ClientService {
-  client=Client;
-  constructor(private http: HttpClient) {}
+  client = Client;
+  constructor(private http: HttpClient) { }
   //on progress
   getPublicContent(): Observable<any> {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
@@ -28,10 +28,10 @@ export class ClientService {
             if (res.status === 201) {
               return [{ status: res.status }];
             } else if (res.status === 200) {
-              return [{ status: res.status ,client:res}];
+              return [{ status: res.status, client: res }];
             }
           }
-          return [{ status: res.status ,client:res}];
+          return [{ status: res.status, client: res }];
 
         }),
         catchError((error: any) => {
@@ -46,6 +46,10 @@ export class ClientService {
 
   getByemailtwo(email: string) {
     return this.http.get(`${API_URL}/getClientByEmail/${email}`);
+  }
+
+  getbyid(id: number): Observable<any> {
+    return this.http.get(`${API_URL}/${id}`);
   }
 
 }
