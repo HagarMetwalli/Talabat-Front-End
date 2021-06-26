@@ -330,9 +330,8 @@ export class CheckoutComponent implements OnInit {
 
 
     },
-      (error) => {
-        console.log('order error', error);
-
+      (e) => {
+        this._router.navigate(['/Thankyou']);
       }
     );
 
