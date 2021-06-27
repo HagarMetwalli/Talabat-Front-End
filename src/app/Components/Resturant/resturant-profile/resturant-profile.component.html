@@ -90,13 +90,12 @@
          <div class="container">
           <div class="row">
               <div class="col-md-8">
-                 <div class="comments-list" style="margin-top: 7rem;margin-bottom: 4rem;">
-                     <div class="media" *ngFor="let com of _comment;let name of _name">
+                 <div class="comments-list" style="margin-top: 7rem;margin-bottom: 4rem;"  *ngFor="let com of _comment;let i=index">
+                     <div class="media">
                         <a class="media-left" href="#">
                           <img src="http://lorempixel.com/40/40/people/1/">
                         </a>
                         <div class="media-body">                              
-                         <h4 class="media-heading user_name">{{name.clientFname}}</h4>
                           {{com.orderReviewComment}}
                         </div>
                         </div>

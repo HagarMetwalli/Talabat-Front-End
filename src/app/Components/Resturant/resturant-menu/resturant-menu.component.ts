@@ -4,6 +4,7 @@ import { Product } from '../../../Models/Product';
 import { StoreprofileService } from '../../../Services/Stores/store-profile.service';
 import { CartServiceService } from '../../../Services/cart-service.service';
 import { Store } from 'src/app/Models/Store';
+import { OrderService } from 'src/app/Services/order.service';
 
 @Component({
   selector: 'app-resturant-menu',
@@ -16,7 +17,7 @@ export class ResturantMenuComponent implements OnInit {
   cartItems: Array<any> = [];
   constructor(private _Activatedroute: ActivatedRoute,
     public cartServ: CartServiceService,
-
+    private OrderService :OrderService,
     private _StoreprofileService: StoreprofileService) { }
   sub: any;
   categories:any[] = [];
@@ -26,6 +27,8 @@ export class ResturantMenuComponent implements OnInit {
   displayimg: boolean = true;
   menu: any;
   _item !: Product;
+  _comment :any=[];
+  _bestselling : any;
   myitem: Product[] = [
     { itemId: 1, itemName: 'item 1', itemPrice: 1, discount: 5 },
     { itemId: 2, itemName: 'item 2', itemPrice: 2, discount: 5 },
@@ -51,7 +54,17 @@ export class ResturantMenuComponent implements OnInit {
       )
     });
 
-
+    this.OrderService.storecomments(this.id).subscribe(
+      comment=>{
+        console.log(comment);
+        this._comment = comment;
+        console.log("_comment",this._comment);
+      }); 
+     
+    this._StoreprofileService.gettopitem(this.id).subscribe(bestselling=>{
+      console.log("the best",bestselling);
+      this._bestselling = bestselling;
+    });
   
 
   }

@@ -239,3 +239,7 @@ body{
     text-align: center;
     width: 35rem;
  }
+ .comments-list .media{
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 1rem;
+  }
