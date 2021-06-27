@@ -17,7 +17,7 @@ html, body { height: 100%; }
         background-repeat: no-repeat;
         background-size: cover;
         background-position: bottom center;
-        margin: 0;   
+        margin: 0;
     }
 
     .home-header img {
@@ -80,7 +80,7 @@ html, body { height: 100%; }
         margin-bottom: 15px;
         margin-left: 20px;
     }
-    
+
     .search-box input[type=text],.locate-map {
         display: inline-flex;
         vertical-align: middle;
@@ -126,7 +126,7 @@ html, body { height: 100%; }
       vertical-align: middle;
       border: 0;
       background-color: #fff;
-      z-index: 9999;  
+      z-index: 9999;
     }
 
     .search-action {
@@ -149,7 +149,7 @@ html, body { height: 100%; }
         top: 150px;
         /* left: 7%; */
         /* width: 1267px; */
-        
+
     }
 
     .left-cards {
@@ -199,7 +199,7 @@ html, body { height: 100%; }
     }
 
     .store-card .store-def {
-        
+
         margin-left: 25px;
     }
 
@@ -355,5 +355,4 @@ html, body { height: 100%; }
         max-width: 393px;
         margin-left: 50px;
     }
-    
-   
+

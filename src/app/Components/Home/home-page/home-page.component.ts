@@ -26,7 +26,7 @@ export class HomepageComponent implements OnInit {
   coordinates: Coordinates;
 
   bsModalRef?: BsModalRef;
-
+  loading!: false;
   title: string = 'AGM project';
   latitude!: number;
   longitude!: number;
