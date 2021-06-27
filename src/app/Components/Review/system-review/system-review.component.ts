@@ -16,7 +16,7 @@ import { SystemReviewService } from '../../../Services/system-review.service';
 
 export class SystemReviewComponent implements OnInit {
 
-  nSystemReview: SystemReview = new SystemReview(1, 1, 1, 1, "test", 1);
+  nSystemReview: SystemReview = new SystemReview(1, 1, 1, 1, "", 1);
 
   constructor(private SystemReviewService: SystemReviewService, private router: Router, public nav: NavbarService) { }
 
