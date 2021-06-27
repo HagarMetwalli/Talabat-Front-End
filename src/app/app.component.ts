@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { 
-  Event,
+import {
+  Event as RouterEvent,
   NavigationCancel,
   NavigationEnd,
   NavigationError,
   NavigationStart,
-  Router } from '@angular/router';
+  Router,
+  } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +14,15 @@ import {
   styleUrls: ['./app.component.css']
 })
 
+
 export class AppComponent {
   title = 'Talabat';
-  loading = false;
+  loading: boolean= false;
 
-  constructor(private router: Router) {
-    this.router.events.subscribe((event: Event) => {
-     this.navigationInterceptor(event)
+
+  constructor(private _router: Router) {
+    this._router.events.subscribe((event: RouterEvent) => {
+      this.navigationInterceptor(event);
   });
 }
 
@@ -40,3 +43,4 @@ export class AppComponent {
       this.loading = false;
     }
   }
+}
