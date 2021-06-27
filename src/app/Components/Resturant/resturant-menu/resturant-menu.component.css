@@ -16,15 +16,15 @@ body {
 #header{
     background-color: lightgray;
     height: 66rem;
-
+    height: 50rem;
     max-width:100vw;
     position: relative;
     overflow: hidden; 
 } */
 
 #headerbg{
-    width: 152rem;
-    height: 66rem;
+    width: 120rem;
+    height: 50rem;
 }
 #back{
     height: 30rem;
@@ -212,7 +212,7 @@ body {
 }
 
 .table-am{
-    width: 100rem;
+    width: 90rem;
     margin-left: 25rem; 
     margin-top: 8rem; 
 
@@ -286,3 +286,39 @@ p {
   text-align: center;
   width: 35rem;
 }
+
+/* .it{
+    width: 20rem;
+}
+.flex-container{
+    display: flex;
+    justify-content: center;
+}
+#myCarousel{
+    width: 90rem;
+    height: 60rem;
+    margin-top: 8rem;
+    margin-left: 30rem;
+  }
+  .carousel-inner {
+    width: 100%;
+    overflow: hidden;
+  }
+  p {
+    color: darkslategray;
+  }
+  .media-heading{
+    font-size: 3rem;
+  }
+  .card-title{
+    background-color: #FF5A00 ; 
+    color: white; 
+    padding: 2rem 0;
+    text-align: center;
+    width: 35rem;
+ }
+ .comments-list .media{
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 1rem;
+  } */
+
