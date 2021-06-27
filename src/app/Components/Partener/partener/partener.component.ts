@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, HostListener } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
+import { DOCUMENT } from '@angular/common';
 
 declare var OnNextClick: any;
 // declare var Onload: any;
@@ -16,7 +17,32 @@ export class PartenerComponent implements OnInit {
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, public nav: NavbarService) { }
+  windowScrolled!: boolean;
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    public nav: NavbarService,
+    @Inject(DOCUMENT) private document: Document
+  ) { }
+
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+      if (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop > 100) {
+          this.windowScrolled = true;
+      } 
+     else if (this.windowScrolled && window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop < 10) {
+          this.windowScrolled = false;
+      }
+  }
+  scrollToTop() {
+      (function smoothscroll() {
+          var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+          if (currentScroll > 0) {
+              window.requestAnimationFrame(smoothscroll);
+              window.scrollTo(0, currentScroll - (currentScroll / 8));
+          }
+      })();
+  }
 
   ngOnInit(): void {
     // new Onload();

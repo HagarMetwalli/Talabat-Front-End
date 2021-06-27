@@ -1,3 +1,4 @@
+
 <header class="video-header" id="top-page">
     <div class="overlay">
         <!-- <video src="https://css-tricks-post-videos.s3.us-east-1.amazonaws.com/Island%20-%204141.mp4" autoplay loop playsinline muted></video> -->
@@ -13,7 +14,9 @@
                 <div>
                     <span><img class="site-lang" src="../../assets/partner/iconfinder_Egypt-Flag_32209.png"
                             alt="arabic-language"></span>
-                    <a routerLink="/partener-login"><button class="btnvendorportal">Vendor Portal</button></a>
+                    <a routerLink="/partener-login"><button class="btnvendorportal pLoginEffect">
+                        Vendor Portal
+                    </button></a>
                 </div>
             </nav>
 
@@ -233,8 +236,9 @@
 </section>
 <div class="join-action">
     <h1>Ready to join us ?</h1>
-    <button><a href="#top-page">Join Now</a></button>
+    <a (click)="scrollToTop()"><button>Join Now</button></a>
 </div>
+
 <footer>
     <div class="container">
         <div class="row footer-upperline grid-footer">
