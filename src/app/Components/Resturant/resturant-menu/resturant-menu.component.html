@@ -11,9 +11,9 @@
      <p>Minimum order : {{_store.storeMinOrder}}</p>
     </div>
     
-    <mat-icon fontSet="fa" fontIcon=" fa-info-circle" style="font-size: 6em; color: #FF5A00;margin-left: 15rem;margin-bottom: -2.5rem;"></mat-icon>    
-    <mat-icon fontSet="fa" fontIcon="fa-comments" style="font-size: 6em; color: #FF5A00;margin-left: 28rem;margin-bottom: -2.5rem;"></mat-icon>
-    <mat-icon fontSet="fa" fontIcon="fa-cart-plus" style="font-size: 6em; color: #FF5A00;margin-left: 100rem;margin-bottom: 13.5rem;"></mat-icon>
+    <mat-icon fontSet="fa" fontIcon=" fa-info-circle" style="font-size: 6em; color: #FF5A00;margin-left: 10rem;margin-bottom: -2.5rem;"></mat-icon>    
+    <mat-icon fontSet="fa" fontIcon="fa-comments" style="font-size: 6em; color: #FF5A00;margin-left: 26rem;margin-bottom: -2.5rem;"></mat-icon>
+    <mat-icon fontSet="fa" fontIcon="fa-cart-plus" style="font-size: 6em; color: #FF5A00;margin-left: 84rem;margin-bottom: 13.5rem;"></mat-icon>
     
     <mat-tab-group *ngIf="_store" class="my-tab-class">
        
@@ -57,7 +57,7 @@
         </mat-tab>
     
         <mat-tab label="Restaurant Review">
-          <div class="container">
+          <div class="container" style="width: 74rem;margin-left: 14rem;margin-top: 7rem;">
             <div class="row">
                 <div class="col-md-8">
                    <div class="comments-list" style="margin-top: 7rem;margin-bottom: 4rem;"  *ngFor="let com of _comment;let i=index">
