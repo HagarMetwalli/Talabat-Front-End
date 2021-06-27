@@ -133,7 +133,7 @@ export class LoginComponent implements OnInit {
     this.clientservice.getByemailtwo(this.loggedClient.email).subscribe((data) => {
       console.log('getbyemailnow', data);
       sessionStorage.setItem('client', JSON.stringify(data));
-      sessionStorage.setItem('clientId', JSON.stringify(data.clientId));
+      // sessionStorage.setItem('clientId', JSON.stringify(data.clientId));
 
     });
 

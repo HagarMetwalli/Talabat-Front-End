@@ -75,6 +75,7 @@ export class CheckoutComponent implements OnInit {
   //voucher
   couponId?: number;
   client: any;
+  clientid?: number;
   voucherkey: any;
   arraylist: number[] = [];
   speciall: any = "non";
@@ -83,6 +84,7 @@ export class CheckoutComponent implements OnInit {
   Discount: any = 0;
   public msg = false;
   public msg2 = false;
+  public ordermsg = false;
 
 
 
@@ -220,8 +222,10 @@ export class CheckoutComponent implements OnInit {
     console.log("this items", this.itemarr);
 
     //get clint id
-    this.client = sessionStorage.getItem('clientId');
+    this.client = JSON.parse(sessionStorage.client);
     console.log('el client bta3na', this.client);
+    this.clientid = this.client.clientId;
+    console.log("this.clientid", this.clientid);
 
     //calc total 
     let mycount: number = 0;
@@ -292,7 +296,7 @@ export class CheckoutComponent implements OnInit {
   voucher() {
     this.msg = false;
     this.msg2 = false;
-    this.voucherservice.GetVoucher(this.voucherkey, this.itemarr, 1).subscribe((data) => {
+    this.voucherservice.GetVoucher(this.voucherkey, this.itemarr, this.clientid).subscribe((data) => {
 
       if (data != null) {
         this.Discount = data;
@@ -325,7 +329,7 @@ export class CheckoutComponent implements OnInit {
         orderSpecialRequest: this.speciall,
         orderTime: new Date(),
         addressDetails: "text",
-        clientId: 1,
+        clientId: this.clientid,
         storeId: this.id,
         isDelivered: 0,
 
@@ -333,6 +337,7 @@ export class CheckoutComponent implements OnInit {
       orderItemsList: this.itemList
 
     }
+    this.ordermsg = false;
     console.log(this.ordersub);
     this.voucherservice.postOrder(this.ordersub).subscribe((data) => {
 
@@ -341,7 +346,9 @@ export class CheckoutComponent implements OnInit {
 
     },
       (e) => {
-        this._router.navigate(['/Thankyou']);
+        console.log(e.status);
+        if (e.status == 200) { this._router.navigate(['/Thankyou']); }
+        this.ordermsg = true;
       }
     );
 
