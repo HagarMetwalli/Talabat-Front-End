@@ -1,18 +1,18 @@
 <div class="top">
-  <div id="header">
-    <img src="../../../../assets/madie-hamilton.jpg" class="bgimg" />
-  </div>
-  <div id="bg"></div>
-  <div class="d-flex flex-column" style="width: 50rem; 
+    <div id="header">
+        <img src="../../../../assets/madie-hamilton.jpg" class="bgimg"/>
+     </div>
+     <div id="bg"></div>
+     <div class="d-flex flex-column" style="width: 50rem; 
      position: relative;
      bottom: 60rem;
      left: 10rem;">
-    <div class="textbg">
-      <h4>Choose Your Area To View Restaurant Menu</h4>
-      <img src="../../../../assets/arrow.png" id="emoji" />
-    </div>
-
-    <div class="search-bar">
+        <div class="textbg">
+            <h4>Choose Your Area To View Restaurant Menu</h4>
+            <img src="../../../../assets/arrow.png" id="emoji" />
+         </div>
+         
+ <div class="search-bar">
       <div class="search-box">
         <input type="text" class="form-control empty" name="search-bar" [value]='txtValue'
           placeholder="&#xf041;   ...Find an area,street,landmark" (keydown.enter)="$event.preventDefault()"
@@ -74,50 +74,12 @@
         </div>
       </div>
     </ng-template>
-  </div>
-  <div class="d-flex bd-highlight">
-    <div id="description" class="col-sm-6 d-flex bd-highlight">
-      <h5>Description</h5>
-      <p class="text-left" style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
-      <h5>Best Selling</h5>
-      <div class="col-lg-3" id="res">
-        <button data-toggle="tooltip" data-placement="bottom" title="Best Selling" id="tooltipbtn">
-          <img src="../../assets/Capture.PNG" id="tooltip" />
-        </button>
-      </div>
-      <h5>Reviews</h5>
-    </div>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-      </ol>
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="../../../../assets/davies.jpg" alt="Los Angeles" style="width:100%;">
-          <div class="carousel-caption">
-            <div class="media" id="commentphoto">
-              <div class="media-body text-left">
-                <h4 class="media-heading">John Doe</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-                  dolor sit amet,consectetur adipiscing elit. Lorem ipsum dolor sit
-                  amet,consectetur adipiscing elit. Lorem ipsum dolor sit amet,consectetur
-                  adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit.</p>
-              </div>
-            </div>
-
-
-          </div>
-          <div class="d-flex bd-highlight">
+     </div>
+       <div class="d-flex bd-highlight">
             <div id="description" class="col-sm-6 d-flex bd-highlight">
               <h5>Description</h5>
               <p class="text-left" style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
               <h5>Best Selling</h5>
-
               <div class="col-lg-4" id="res" *ngFor="let best of _bestselling">
                   <button data-toggle="tooltip" data-placement="bottom" title="Best Selling" id="tooltipbtn">
                       <img src="../../assets/Capture.PNG" id="tooltip" />
@@ -143,23 +105,8 @@
                   
                   
                   
-
               </div>
-
-            </div>
           </div>
-
-          <!-- Left and right controls -->
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
       </div>
-
-    </div>
-    <app-footer></app-footer>
+                       
+</div>

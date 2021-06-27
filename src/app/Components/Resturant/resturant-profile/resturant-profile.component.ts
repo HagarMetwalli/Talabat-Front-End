@@ -55,7 +55,7 @@ export class ResturantProfileComponent implements OnInit {
   mapMarkactive = true;
   closeMarkactive = false;
 
-  btnText = "Sorry, we don't deliver here";
+   btnText = "Sorry, we don't deliver here";
   btnDisabled = true;
   loading = false;
 
@@ -130,16 +130,11 @@ export class ResturantProfileComponent implements OnInit {
           console.log("--------------------hhhhhh", _menu);
 
           if (_menu[0].status == 200) {
-            this.loading = false;
-            console.log("rr", this.loading);
+             this.loading = false;
             this.btnDisabled = false;
             this.btnText = 'Deliver here';
           }
-          this.loading = true;
-          this.btnDisabled = true;
-          this.btnText = "Sorry, we don't deliver here";
-
-
+         
 
         })
 
