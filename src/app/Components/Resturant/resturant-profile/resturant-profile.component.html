@@ -78,7 +78,7 @@
               <h5>Description</h5>
               <p class="text-left" style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
               <h5>Best Selling</h5>
-              <div class="col-lg-3" id="res" *ngFor="let best of _bestselling">
+              <div class="col-lg-4" id="res" *ngFor="let best of _bestselling">
                   <button data-toggle="tooltip" data-placement="bottom" title="Best Selling" id="tooltipbtn">
                       <img src="../../assets/Capture.PNG" id="tooltip" />
                   </button>
@@ -87,7 +87,7 @@
               <h5>Reviews</h5>
             </div>
          </div>
-         <div class="container">
+         <div class="container" style="width: 74rem;margin-left: 14rem;margin-top: 7rem;">
           <div class="row">
               <div class="col-md-8">
                  <div class="comments-list" style="margin-top: 7rem;margin-bottom: 4rem;"  *ngFor="let com of _comment;let i=index">
