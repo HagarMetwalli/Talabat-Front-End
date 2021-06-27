@@ -8,14 +8,14 @@ body{
 }
 #header{
     background-color: lightgray;
-    height: 66rem;
+    height: 50rem;
     max-width:100vw;
     position: relative;
     overflow: hidden;
 }
 #headerbg{
-    width: 152rem;
-    height: 66rem;
+    width: 120rem;
+    height: 50rem;
 }
 #back{
     height: 30rem;

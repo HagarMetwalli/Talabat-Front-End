@@ -8,18 +8,14 @@ body{
 }
 #header{
     height: 60rem;
-    width:144rem;
-    /* width: 100%; */
+    width:113rem;
     margin: 4rem;
-    /* margin-bottom: 4rem; */
     overflow: hidden;
     border-radius: 4rem;
-    /* border: none; */
 }
 .bgimg{
     border-radius: 4rem; 
-     width:144rem;
-    /* width: 100%; */
+     width:113rem;
 }
 h4{
    color: #ff5a00;
@@ -57,7 +53,7 @@ h4{
     text-align: right;
 }
 #description{
-    width: 140rem;
+    width: 107rem;
     height: 50rem;
     padding: 5rem;
     justify-content: center;
