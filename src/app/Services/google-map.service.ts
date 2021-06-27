@@ -37,10 +37,10 @@ export class GooglemapService {
         return [{ status: res.status, nearStores: res }];
 
       }), catchError((error: any) => {
-        if (error.status < 400 || error.status === 500) {
-          return Observable.throw(new Error(error.status));
-        }
-        return status;
+        if (error.status > 400 || error.status === 500) {
+            return [{ status: error.status }];
+          }
+        return error.status;
 
       })
 

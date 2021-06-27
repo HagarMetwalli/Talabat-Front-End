@@ -23,12 +23,19 @@ import {
 } from '@angular/forms';
 
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
+
 import { CartServiceService } from 'src/app/Services/cart-service.service';
 import { OrderItem } from 'src/app/Models/order-item';
 import { OrderSubmitData } from 'src/app/Models/OrderSubmitData';
 
 import { MatRadioChange } from "@angular/material/radio";
 import { MatExpansionPanel } from "@angular/material/expansion";
+
+
+
+import { AddressesService } from 'src/app/Services/Profile/Addresses.service';
+import Swal from 'sweetalert2';
+import { ClientAddress } from 'src/app/Models/ClientAddress';
 
 
 interface Coordinates {
@@ -62,9 +69,10 @@ export class CheckoutComponent implements OnInit {
 
 
 
+
   //store
   //objects to store
-  sub: any;
+
   store!: Store;
   id: any;
   arr: any = { itemId: 0, itemName: '', itemPrice: 0, count: 0, value: 0 };
@@ -89,7 +97,7 @@ export class CheckoutComponent implements OnInit {
 
 
   ordersub: OrderSubmitData | undefined;
-  btnDisabled = false;
+
 
   itemList: OrderItem[] = [];
 
@@ -103,6 +111,32 @@ export class CheckoutComponent implements OnInit {
   }
 
 
+  subtotalPrice = 0;
+  VoucherDiscount = 0;
+  DeliverFees = 0;
+  totalPrice = 0;
+  sub: any;
+  storeid!: any;
+  secondAddressFormGroup!: FormGroup;
+  btnDisabled = true;
+
+  clientAddress: ClientAddress = {
+    clientAddressId: 0,
+    clientAddressMobileNumber: '',
+    clientAddressLandLine: 0,
+    clientAddressAddressTitle: '',
+    clientAddressStreet: '',
+    clientAddressBuilding: 0,
+    clientAddressFloor: 0,
+    clientAddressApartmentNumber: 0,
+    clientAddressTypeId: 0,
+    cityId: 0,
+    clientId: 0,
+    regionId: 0,
+    clientAddressOptionalDirections: ''
+  };
+
+
   constructor(
     private locals: LocalStorageService,
     private _Activatedroute: ActivatedRoute,
@@ -112,11 +146,14 @@ export class CheckoutComponent implements OnInit {
     private modalService: BsModalService,
     private _googlemapservice: GooglemapService,
     public nav: NavbarService,
-
     private _StoreprofileService: StoreprofileService,
     private formBuilder: FormBuilder,
     private voucherservice: VoucherService,
     public cartservice: CartServiceService,
+
+    private AddressesService: AddressesService,
+    public fb: FormBuilder
+
   ) {
     this.coordinates = {} as Coordinates;
   }
@@ -144,31 +181,20 @@ export class CheckoutComponent implements OnInit {
   }
 
 
-  closeModal() {
-    this.modalService.hide();
-  };
-
-
-
+  closeModal() { this.modalService.hide(); };
   config = {
-
     animated: true,
     keyboard: false,
     backdrop: true,
     ignoreBackdropClick: true,
   };
 
-
-
   openAddressModalOnClick() {
     this.bsModalRef = this.modalService.show(this.templateRef, this.config)
-
   }
   //ngOnInit
   ngOnInit(): void {
-
-
-
+    this.reactiveForm();
     this.nav.show();
     this.bsModalRef = this.modalService.show(this.templateRef, this.config);
 
@@ -197,6 +223,7 @@ export class CheckoutComponent implements OnInit {
         });
       });
     });
+
 
     // order works
     this.sub = this._Activatedroute.paramMap.subscribe((params) => {
@@ -254,6 +281,7 @@ export class CheckoutComponent implements OnInit {
 
   }//end of ngOnInt
 
+
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -267,8 +295,7 @@ export class CheckoutComponent implements OnInit {
 
   getAddress(latitude: number, longitude: number) {
     this.geoCoder.geocode(
-      { location: { lat: latitude, lng: longitude } },
-      (results, status) => {
+      { location: { lat: latitude, lng: longitude } }, (results, status) => {
         console.log(results);
         console.log(status);
         if (status === 'OK') {
@@ -284,14 +311,40 @@ export class CheckoutComponent implements OnInit {
           // window.alert('Geocoder failed due to: ' + status);
         }
       }
-
-
-    );
-
+    )
   }
 
+  CheckAddressInZone() {
+    this._googlemapservice.getstoreMenu(this.storeid, this.latitude, this.longitude).subscribe(
+      _res => {
+        if (_res[0].status == 200) {
+          this.btnDisabled = false;
+          console.log("Good, Your Address In Store Zone !");
+        } else {
+          this.btnDisabled = true;
+          console.log("Sorry, Your Address Out Store Zone !");
+          Swal.fire({
+            icon: 'error',
+            title: 'OutZone...',
+            text: 'Sorry, Your Address Out Store Zone !',
+          })
+        }
+      }
+    )
+  }
 
+  reactiveForm() {
+    this.secondAddressFormGroup = this.fb.group({
 
+      mobileNumber: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      streetName: ['', [Validators.required]],
+      buildingNo: ['', [Validators.required]],
+      floorNo: ['', [Validators.required]],
+      apartmentNo: ['', [Validators.required]],
+
+    })
+  }
 
   voucher() {
     this.msg = false;
@@ -352,6 +405,24 @@ export class CheckoutComponent implements OnInit {
       }
     );
 
+  }
+
+
+
+
+
+  submitAddress() {
+    // console.log(this.reactiveForm.value)
+  }
+
+
+  getClientAddress(address: ClientAddress) {
+    address = this.clientAddress;
+    this.AddressesService.addAddress(address).subscribe(
+      (res) => {
+        console.log("Address Result: ", res);
+      }
+    )
   }
 
 

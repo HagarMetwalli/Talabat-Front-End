@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -12,6 +13,10 @@ import { Router } from '@angular/router';
 import { ViewChild, ElementRef, NgZone } from '@angular/core';
 import { LatLngLiteral, MapsAPILoader } from '@agm/core';
 import { TempPartnerService } from 'src/app/Services/Partner/temp-partner.service';
+
+import { DOCUMENT } from '@angular/common';
+
+
 declare var OnNextClick: any;
 // declare var Onload: any;
 declare var OnPrevious: any;
@@ -49,14 +54,38 @@ export class PartenerComponent implements OnInit {
   };
   submitted = false;
 
+
+  windowScrolled!: boolean;
+
   constructor(
     private _formBuilder: FormBuilder,
-    private partnerservice: TempPartnerService,
     private router: Router,
+    private partnerservice: TempPartnerService,
     public nav: NavbarService,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
-  ) {}
+    private ngZone: NgZone,
+    @Inject(DOCUMENT) private document: Document
+  ) { }
+
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    if (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop > 100) {
+      this.windowScrolled = true;
+    }
+    else if (this.windowScrolled && window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop < 10) {
+      this.windowScrolled = false;
+    }
+  }
+  scrollToTop() {
+    (function smoothscroll() {
+      var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      if (currentScroll > 0) {
+        window.requestAnimationFrame(smoothscroll);
+        window.scrollTo(0, currentScroll - (currentScroll / 8));
+      }
+    })();
+  }
+
 
   ngOnInit(): void {
     // new Onload();

@@ -5,6 +5,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { SocialUser, SocialAuthService } from 'angularx-social-login';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
+import { LocalStorageService } from 'ngx-webstorage';
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -22,11 +24,17 @@ export class NavBarComponent implements OnInit {
   public searchElementRef!: ElementRef;
   bsmodalRef?: BsModalRef;
   user?: SocialUser;
+  arr: any = { itemId: 0, itemName: '', itemPrice: 0, count: 0, value: 0 };
+  //order
+  numcount?:number;
+  cartFlag= false;
+
+
   constructor(
     private authService: SocialAuthService,
     private modalService: BsModalService,
     private router: Router,
-    public nav: NavbarService
+    public nav: NavbarService,
   ) {}
 
   config = {
@@ -64,5 +72,22 @@ export class NavBarComponent implements OnInit {
 
 
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  //   this.arr = JSON.parse(this.locals.retrieve('cart'));
+  //   console.log('tanyarrr', this.arr);
+
+  // //calc total
+  //   let mycount:number=0;
+  //   for( let item of this.arr) {
+  //     mycount+=item.count;
+  //   }
+  //   this.numcount=mycount;
+
+  //   if(this.numcount > 0){
+  //     this.cartFlag= true;
+  //   }else{
+  //     this.cartFlag= false;
+  //   }
+
+  }
 }

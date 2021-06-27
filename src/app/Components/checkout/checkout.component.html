@@ -75,12 +75,13 @@
         </mat-card>
       </div>
 
+      <!-- <ADRESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS> -->
+
+
+
+
       <div class="col-md-8 order-md-1">
-        <!-- <formmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm> -->
-
         <form>
-          <!-- <ADRESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS> -->
-
           <div class="mb-3 text-center">
             <mat-card class="example-card">
               <mat-card-header class="text-center">
@@ -91,9 +92,14 @@
                 <hr class="mb-3" />
 
                 <p>bind here adress details</p>
+                <div>Address Name: {{city}}</div>
+                <div>Address: {{streetName}} St, Building: {{buildingNo}},
+                  Floor: {{floorNo}}, Apartment: {{apartmentNo}}</div>
+                <div>Mobile: +20 {{mobileNumber}}</div>
+
               </mat-card-content>
               <mat-card-actions>
-                <button mat-button style="background-color: blue; color: white">
+                <button mat-button style="background-color: blue; color: white" (click)="openAddressModalOnClick()">
                   edit
                 </button>
 
@@ -105,38 +111,129 @@
           </div>
 
           <ng-template #template>
-            <div class="modal-header">
-              <span class="modalheader">Delivery Address</span>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bsModalRef?.hide()">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-group">
-                <input type="text" class="form-control empty" name="search-bar" value=""
-                  placeholder="Search Nearest Location" (keydown.enter)="$event.preventDefault()" autocorrect="off"
-                  autocapitalize="off" spellcheck="off" type="text" #search />
-              </div>
+            <div class="modal-content map">
+              <div class="modal-header">
 
-              <agm-map style="width: 565px; height: 400px" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
-                [usePanning]="true" (centerChange)="centerChanged($event)" (mapReady)="mapReady($event)">
-              </agm-map>
-              <div class="map-center-overlay">
-                <img src="../../assets/home/map-marker.svg" width="30" height="30" />
+                <span class="modalheader">Delivery Address</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bsModalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-            </div>
-            <div class="modal-footer">
-              <!-- <button type="button" class="btn btn-primary navigate" [disabled]="btnDisabled" [class.spinner]="loading"
-                [ngStyle]="{
-                  'background-color': btnDisabled ? '#ff5a00' : 'gray'
-                }" (click)="getstoreMenu(_store.storeId, _store.storeName)">
-                Confirm
-              </button> -->
-              <button type="button" class="btn btn-default" (click)="bsModalRef?.hide()">
-                Close
-              </button>
+              <div class="modal-body">
+                <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                  <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                      <ng-template matStepLabel> Address Map</ng-template>
+                      <div class="form-group">
+                        <input type="text" class="form-control empty" name="search-bar" value=""
+                          placeholder="Search Nearest Location" (keydown.enter)="$event.preventDefault()"
+                          autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+                      </div>
+
+                      <agm-map style="width: 518px; height: 400px;" [latitude]="latitude" [longitude]="longitude"
+                        [zoom]="zoom" [usePanning]="true" (centerChange)="centerChanged($event)"
+                        (mapReady)="mapReady($event)">
+
+                      </agm-map>
+                      <div class="map-center-overlay">
+                        <img src="../../assets/home/map-marker.svg" width="30" height="30">
+                      </div>
+                      <div>
+                        <button mat-button matStepperNext [disabled]="btnDisabled"
+                          (click)="CheckAddressInZone()">Next</button>
+                      </div>
+                    </form>
+                  </mat-step>
+                  <mat-step [stepControl]="secondAddressFormGroup">
+                    <form [formGroup]="secondAddressFormGroup" (ngSubmit)="submitAddress()">
+                      <ng-template matStepLabel>Address Details</ng-template>
+                      <mat-form-field>
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput placeholder="Mobile Number" formControlName="mobileNumber"
+                          [(ngModel)]="clientAddress.clientAddressMobileNumber" name="mobileNumber" required>
+                      </mat-form-field>
+                      <br />
+                      <mat-form-field>
+                        <mat-label>landLine Number</mat-label>
+                        <input matInput placeholder="LandLine Number" formControlName="landLine"
+                          [(ngModel)]="clientAddress.clientAddressLandLine" name="landLine">
+                      </mat-form-field>
+                      <br />
+                      <mat-form-field>
+                        <mat-label>City</mat-label>
+                        <input matInput placeholder="City" formControlName="city" required>
+                      </mat-form-field>
+                      <br />
+                      <mat-form-field>
+                        <mat-label>Street Name</mat-label>
+                        <input matInput placeholder="Street Name" formControlName="streetName"
+                          [(ngModel)]="clientAddress.clientAddressStreet" name="streetName" required>
+                      </mat-form-field>
+                      <br />
+                      <mat-form-field>
+                        <mat-label>Building No</mat-label>
+                        <input matInput placeholder="Building No" formControlName="buildingNo"
+                          [(ngModel)]="clientAddress.clientAddressBuilding" name="buildingNo" required>
+                      </mat-form-field>
+                      <br />
+                      <mat-form-field>
+                        <mat-label>Floor No</mat-label>
+                        <input matInput placeholder="Floor No" formControlName="floorNo"
+                          [(ngModel)]="clientAddress.clientAddressFloor" name="floorNo" required>
+                      </mat-form-field>
+                      <br />
+                      <mat-form-field>
+                        <mat-label>Apartment No</mat-label>
+                        <input matInput placeholder="Apartment No" formControlName="apartmentNo"
+                          [(ngModel)]="clientAddress.clientAddressApartmentNumber" name="apartmentNo" required>
+                      </mat-form-field>
+                      <br />
+                      <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                      </div>
+                    </form>
+                  </mat-step>
+                  <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    <p>You are now done.</p>
+                    <!-- For Testing -->
+                    <mat-list>
+                      <mat-list-item> <strong>Mobile Number:</strong> {{ this.secondAddressFormGroup.value.mobileNumber
+                        }}</mat-list-item>
+                      <mat-list-item> <strong>LandLine:</strong> {{ this.secondAddressFormGroup.value.landLine }}
+                      </mat-list-item>
+                      <mat-list-item> <strong>City:</strong> {{ this.secondAddressFormGroup.value.city }}
+                      </mat-list-item>
+                      <mat-list-item> <strong>Street Name:</strong> {{ this.secondAddressFormGroup.value.streetName }}
+                      </mat-list-item>
+                      <mat-list-item> <strong>Building No:</strong> {{ this.secondAddressFormGroup.value.buildingNo }}
+                      </mat-list-item>
+                      <mat-list-item> <strong>Floor No:</strong> {{ this.secondAddressFormGroup.value.floorNo }}
+                      </mat-list-item>
+                      <mat-list-item> <strong>Apartment No:</strong> {{ this.secondAddressFormGroup.value.apartmentNo }}
+                      </mat-list-item>
+                    </mat-list>
+
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <!-- <button mat-button (click)="submit()">Submit</button> -->
+                    </div>
+                  </mat-step>
+                </mat-horizontal-stepper>
+              </div>
+              <div class="modal-footer">
+                <input type="submit" class="btn btn-primary navigate" (click)="getClientAddress(clientAddress)">Confirm
+                <!-- <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button> -->
+              </div>
             </div>
           </ng-template>
+
+
+
+          <hr class="mb-3" />
+
+
 
           <hr class="mb-3" />
           <!-- <speciall requesssssssssssssssssssssssssssssssssssst> -->
@@ -153,6 +250,7 @@
               </mat-card-content>
             </mat-card>
           </div>
+
 
           <hr class="mb-3" />
           <!-- <occrdion> -->

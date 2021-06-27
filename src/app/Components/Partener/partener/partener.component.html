@@ -1,35 +1,19 @@
 <header class="video-header" id="top-page">
   <div class="overlay">
     <!-- <video src="https://css-tricks-post-videos.s3.us-east-1.amazonaws.com/Island%20-%204141.mp4" autoplay loop playsinline muted></video> -->
-    <video
-      src="../../assets/partner/production ID-4253721**.mp4"
-      autoplay
-      loop
-      playsinline
-      muted
-      poster="../../assets/partner/pexels-cottonbro-4252146.jpg"
-    ></video>
+    <video src="../../assets/partner/production ID-4253721**.mp4" autoplay loop playsinline muted
+      poster="../../assets/partner/pexels-cottonbro-4252146.jpg"></video>
   </div>
   <div class="viewport-header">
     <div class="container">
       <nav>
         <a routerLink="">
-          <img
-            class="tlb-logo"
-            src="../../assets/partner/logo-tlb.png"
-            alt="talabatlogo"
-          />
+          <img class="tlb-logo" src="../../assets/partner/logo-tlb.png" alt="talabatlogo" />
         </a>
         <div>
-          <span
-            ><img
-              class="site-lang"
-              src="../../assets/partner/iconfinder_Egypt-Flag_32209.png"
-              alt="arabic-language"
-          /></span>
-          <a routerLink="/partener-login"
-            ><button class="btnvendorportal">Vendor Portal</button></a
-          >
+          <span><img class="site-lang" src="../../assets/partner/iconfinder_Egypt-Flag_32209.png"
+              alt="arabic-language" /></span>
+          <a routerLink="/partener-login"><button class="btnvendorportal">Vendor Portal</button></a>
         </div>
       </nav>
 
@@ -47,88 +31,51 @@
                 <ng-template matStepLabel>Basic Details</ng-template>
                 <mat-form-field>
                   <mat-label>First Name</mat-label>
-                  <input
-                    matInput
-                    placeholder="First Name"
-                    [(ngModel)]="partner.partnerFname"
-                    formControlName="partnerFname"
-                    minLength="3"
-                    maxLength="20"
-                  />
-                  <mat-error
-                    *ngIf="fieldgetfirstForm.partnerFname.hasError('required')"
-                  >
+                  <input matInput placeholder="First Name" [(ngModel)]="partner.partnerFname"
+                    formControlName="partnerFname" minLength="3" maxLength="20" />
+                  <mat-error *ngIf="fieldgetfirstForm.partnerFname.hasError('required')">
                     First name is <strong>required</strong>
                   </mat-error>
                 </mat-form-field>
                 <br />
                 <mat-form-field>
                   <mat-label>Last Name</mat-label>
-                  <input
-                    matInput
-                    type="text"
-                    placeholder="Last Name"
-                    [(ngModel)]="partner.partnerLname"
-                    formControlName="partnerLname"
-                    required
-                  />
-                  <mat-error
-                    *ngIf="fieldgetfirstForm.partnerFname.hasError('required')"
-                  >
+                  <input matInput type="text" placeholder="Last Name" [(ngModel)]="partner.partnerLname"
+                    formControlName="partnerLname" required />
+                  <mat-error *ngIf="fieldgetfirstForm.partnerFname.hasError('required')">
                     Last name is <strong>required</strong>
                   </mat-error>
                 </mat-form-field>
                 <br />
                 <mat-form-field>
                   <mat-label>Phone Number</mat-label>
-                  <input
-                    matInput
-                    type="number"
-                    placeholder="Phone Number"
-                    [(ngModel)]="partner.PartnerPhoneNo"
-                    formControlName="PartnerPhoneNo"
-                    required
-                  />
-                  <mat-error
-                    *ngIf="
+                  <input matInput type="number" placeholder="Phone Number" [(ngModel)]="partner.PartnerPhoneNo"
+                    formControlName="PartnerPhoneNo" required />
+                  <mat-error *ngIf="
                       fieldgetfirstForm.PartnerPhoneNo.hasError('required')
-                    "
-                  >
+                    ">
                     Phone Number is <strong>required</strong>
                   </mat-error>
                 </mat-form-field>
                 <br />
 
+
                 <mat-form-field>
                   <mat-label>Email Address</mat-label>
-                  <input
-                    matInput
-                    placeholder="Email Address"
-                    [(ngModel)]="partner.partnerEmail"
-                    formControlName="partnerEmail"
-                    required
-                  />
-                  <mat-error
-                    *ngIf="fieldgetfirstForm.partnerEmail.hasError('required')"
-                  >
+                  <input matInput placeholder="Email Address" [(ngModel)]="partner.partnerEmail"
+                    formControlName="partnerEmail" required />
+                  <mat-error *ngIf="fieldgetfirstForm.partnerEmail.hasError('required')">
                     Email Address is <strong>required</strong>
                   </mat-error>
                 </mat-form-field>
                 <br />
                 <mat-form-field>
                   <mat-label> Contact Role</mat-label>
-                  <input
-                    matInput
-                    placeholder="Owner, Co-Owner, Manger"
-                    [(ngModel)]="partner.partnerContactRole"
-                    formControlName="partnerContactRole"
-                    required
-                  />
-                  <mat-error
-                    *ngIf="
+                  <input matInput placeholder="Owner, Co-Owner, Manger" [(ngModel)]="partner.partnerContactRole"
+                    formControlName="partnerContactRole" required />
+                  <mat-error *ngIf="
                       fieldgetfirstForm.partnerContactRole.hasError('required')
-                    "
-                  >
+                    ">
                     Contact Role is <strong>required</strong>
                   </mat-error>
                 </mat-form-field>
@@ -144,35 +91,20 @@
                 <ng-template matStepLabel>Store Details</ng-template>
                 <mat-form-field>
                   <mat-label>Store Name</mat-label>
-                  <input
-                    matInput
-                    placeholder="Store Name"
-                    [(ngModel)]="partner.StoreName"
-                    formControlName="StoreName"
-                    required
-                  />
-                  <mat-error
-                    *ngIf="fieldgetsecondForm.StoreName.hasError('required')"
-                  >
+                  <input matInput placeholder="Store Name" [(ngModel)]="partner.StoreName" formControlName="StoreName"
+                    required />
+                  <mat-error *ngIf="fieldgetsecondForm.StoreName.hasError('required')">
                     Store Name is <strong>required</strong>
                   </mat-error>
                 </mat-form-field>
                 <br />
                 <mat-form-field>
                   <mat-label>Number Of Branches</mat-label>
-                  <input
-                    matInput
-                    type="number"
-                    placeholder="Number Of Branches"
-                    [(ngModel)]="partner.storeBranchesNo"
-                    formControlName="storeBranchesNo"
-                    required
-                  />
-                  <mat-error
-                    *ngIf="
+                  <input matInput type="number" placeholder="Number Of Branches" [(ngModel)]="partner.storeBranchesNo"
+                    formControlName="storeBranchesNo" required />
+                  <mat-error *ngIf="
                       fieldgetsecondForm.storeBranchesNo.hasError('required')
-                    "
-                  >
+                    ">
                     Number Of Branches is <strong>required</strong>
                   </mat-error>
                 </mat-form-field>
@@ -191,16 +123,9 @@
                 <br />
                 <mat-form-field>
                   <mat-label>Website/Social Contact</mat-label>
-                  <input
-                    matInput
-                    placeholder="Website/Social Contact"
-                    [(ngModel)]="partner.storeWebSite"
-                    formControlName="storeWebSite"
-                    required
-                  />
-                  <mat-error
-                    *ngIf="fieldgetsecondForm.storeWebSite.hasError('required')"
-                  >
+                  <input matInput placeholder="Website/Social Contact" [(ngModel)]="partner.storeWebSite"
+                    formControlName="storeWebSite" required />
+                  <mat-error *ngIf="fieldgetsecondForm.storeWebSite.hasError('required')">
                     Website/Social Contact is <strong>required</strong>
                   </mat-error>
                 </mat-form-field>
@@ -224,17 +149,9 @@
                 <br />
                 <mat-form-field>
                   <mat-label>Store Address</mat-label>
-                  <input
-                    matInput
-                    type="text"
-                    placeholder="&#xf041;  Store Address"
-                    formControlName="storeAddress"
-                    [(ngModel)]="partner.storeAddress"
-                    required
-                  />
-                  <mat-error
-                    *ngIf="fieldgetsecondForm.storeAddress.hasError('required')"
-                  >
+                  <input matInput type="text" placeholder="&#xf041;  Store Address" formControlName="storeAddress"
+                    [(ngModel)]="partner.storeAddress" required />
+                  <mat-error *ngIf="fieldgetsecondForm.storeAddress.hasError('required')">
                     Store Address is <strong>required</strong>
                   </mat-error>
                 </mat-form-field>
@@ -272,10 +189,7 @@
   <div class="container">
     <div class="partner-benefits">
       <h1>Benefits of being a Talabat partner</h1>
-      <img
-        src="../../assets/partner/partner-benefits.png"
-        alt="partner-benefits"
-      />
+      <img src="../../assets/partner/partner-benefits.png" alt="partner-benefits" />
       <div class="row">
         <div class="col-lg-4 first-benefit">
           <h3>Additional revenue stream</h3>
@@ -300,52 +214,32 @@
       <h1>Benefits of our own delivery</h1>
       <div class="row delivery-group-benefits">
         <div class="col-lg-4 first-dbenefit">
-          <img
-            src="../../assets/partner/img-hiring@2x.png"
-            alt="delivery-hiring-img"
-          />
+          <img src="../../assets/partner/img-hiring@2x.png" alt="delivery-hiring-img" />
           <h3>No hiring headaches</h3>
-          <br /><span
-            >Dont worry about sourcing drivers to deliver your orders. Leave the
-            logistics to us, so you can focus on making great food!</span
-          >
+          <br /><span>Dont worry about sourcing drivers to deliver your orders. Leave the
+            logistics to us, so you can focus on making great food!</span>
         </div>
         <div class="col-lg-4 seconde-dbenefit">
-          <img
-            src="../../assets/partner/img-delivery@3x.png"
-            alt="delivery-delivered-img"
-          />
+          <img src="../../assets/partner/img-delivery@3x.png" alt="delivery-delivered-img" />
           <h3>Great delivery prices</h3>
-          <br /><span
-            >Customers pay a low delivery fee for orders delivered with
-            Talabat.</span
-          >
+          <br /><span>Customers pay a low delivery fee for orders delivered with
+            Talabat.</span>
         </div>
         <div class="col-lg-4 third-dbenefit">
-          <img
-            src="../../assets/partner/img-live@2x.png"
-            alt="delivery-live-img"
-          />
+          <img src="../../assets/partner/img-live@2x.png" alt="delivery-live-img" />
           <h3>Live tracking</h3>
-          <br /><span
-            >Customers can enjoy live tracking of their orders to their
-            doorsteps, giving them an even better experience.</span
-          >
+          <br /><span>Customers can enjoy live tracking of their orders to their
+            doorsteps, giving them an even better experience.</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 <div class="container talabtRiders-in-number">
-  <img
-    class="fleet-img"
-    src="../../assets/partner/fleet-new.png"
-    alt="fleet-new"
-  />
+  <img class="fleet-img" src="../../assets/partner/fleet-new.png" alt="fleet-new" />
   <h1 class="fleet-txt" style="font-size: 30px; line-height: 1.5; color: #000">
     Fleet of over
-    <span style="display: block; color: #ff5a00"
-      >16000
+    <span style="display: block; color: #ff5a00">16000
       <span style="color: #000">riders and growing</span>
     </span>
   </h1>
@@ -357,24 +251,15 @@
       <h1>How it works?</h1>
       <div class="row talabat-group-pipline">
         <div class="col-lg-4 first-pipline">
-          <img
-            src="../../assets/partner/order_placed.svg"
-            alt="delivery-hiring-img"
-          />
+          <img src="../../assets/partner/order_placed.svg" alt="delivery-hiring-img" />
           <h3>Order Placed</h3>
         </div>
         <div class="col-lg-4 seconde-pipline">
-          <img
-            src="../../assets/partner/prep.svg"
-            alt="delivery-delivered-img"
-          />
+          <img src="../../assets/partner/prep.svg" alt="delivery-delivered-img" />
           <h3>Prep</h3>
         </div>
         <div class="col-lg-4 third-pipline">
-          <img
-            src="../../assets/partner/delivered.svg"
-            alt="delivery-live-img"
-          />
+          <img src="../../assets/partner/delivered.svg" alt="delivery-live-img" />
           <h3>Delivered</h3>
         </div>
       </div>
@@ -382,18 +267,19 @@
   </div>
 </section>
 <div class="join-action">
-  <h1>Ready to join us ?</h1>
-  <button><a href="#top-page">Join Now</a></button>
+  <<<<<<< HEAD <h1>Ready to join us ?</h1>
+    <button><a href="#top-page">Join Now</a></button>
+    =======
+    <h1>Ready to join us ?</h1>
+    <a (click)="scrollToTop()"><button>Join Now</button></a>
+    >>>>>>> ahmed-branch
 </div>
+
 <footer>
   <div class="container">
     <div class="row footer-upperline grid-footer">
       <div class="col-lg-3">
-        <img
-          src="../../assets/partner/logo-tlb.png"
-          alt="talabat-logo"
-          class="footer-logo"
-        />
+        <img src="../../assets/partner/logo-tlb.png" alt="talabat-logo" class="footer-logo" />
       </div>
       <div class="col-lg-3">
         <div class="link-header">Know abouts us</div>
@@ -407,9 +293,7 @@
           <a href="#" rel="noopener noreferrer" target="_blank">FAQ</a>
         </div>
         <div>
-          <a href="#" rel="noopener noreferrer" target="_blank"
-            >Social Responsibility</a
-          >
+          <a href="#" rel="noopener noreferrer" target="_blank">Social Responsibility</a>
         </div>
       </div>
       <div class="col-lg-3">
@@ -422,29 +306,11 @@
         </div>
       </div>
       <div class="col-lg-3 appStores">
-        <a
-          href="https://play.google.com/store/apps/details?id=com.talabat"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <img
-            alt="Android Store"
-            src="../../assets/partner/google_play.svg"
-            height="44"
-            width="157"
-          />
+        <a href="https://play.google.com/store/apps/details?id=com.talabat" rel="noopener noreferrer" target="_blank">
+          <img alt="Android Store" src="../../assets/partner/google_play.svg" height="44" width="157" />
         </a>
-        <a
-          href="https://itunes.apple.com/kw/app/talabat/id451001072?mt=8"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <img
-            alt="Apple Store"
-            src="../../assets/partner/appstore.svg"
-            height="44"
-            width="157"
-          />
+        <a href="https://itunes.apple.com/kw/app/talabat/id451001072?mt=8" rel="noopener noreferrer" target="_blank">
+          <img alt="Apple Store" src="../../assets/partner/appstore.svg" height="44" width="157" />
         </a>
       </div>
     </div>
@@ -452,47 +318,20 @@
     <div class="footer-underline grid-footer">
       <span>@2021 Talabat.com</span>
       <div class="social-media grid-footer">
-        <a
-          href="https://www.facebook.com/Talabat"
-          rel="noopener noreferrer"
-          target="_blank"
-          class="sc-fzoLsD fYZyZu"
-        >
+        <a href="https://www.facebook.com/Talabat" rel="noopener noreferrer" target="_blank" class="sc-fzoLsD fYZyZu">
           <img alt="Talabat Facebook" src="../../assets/partner/facebook.svg" />
         </a>
-        <a
-          href="https://twitter.com/Talabat"
-          rel="noopener noreferrer"
-          target="_blank"
-          class="sc-fzoLsD fYZyZu"
-        >
+        <a href="https://twitter.com/Talabat" rel="noopener noreferrer" target="_blank" class="sc-fzoLsD fYZyZu">
           <img alt="Talabat Twitter" src="../../assets/partner/twitter.svg" />
         </a>
-        <a
-          href="https://instagram.com/Talabat"
-          rel="noopener noreferrer"
-          target="_blank"
-          class="sc-fzoLsD fYZyZu"
-        >
-          <img
-            alt="Talabat instagram"
-            src="../../assets/partner/instagram.svg"
-          />
+        <a href="https://instagram.com/Talabat" rel="noopener noreferrer" target="_blank" class="sc-fzoLsD fYZyZu">
+          <img alt="Talabat instagram" src="../../assets/partner/instagram.svg" />
         </a>
-        <a
-          href="https://www.linkedin.com/company/3604171"
-          rel="noopener noreferrer"
-          target="_blank"
-          class="sc-fzoLsD fYZyZu"
-        >
+        <a href="https://www.linkedin.com/company/3604171" rel="noopener noreferrer" target="_blank"
+          class="sc-fzoLsD fYZyZu">
           <img alt="Talabat Linkedin" src="../../assets/partner/linkedin.svg" />
         </a>
-        <a
-          href="https://www.youtube.com/TalabatGTC"
-          rel="noopener noreferrer"
-          target="_blank"
-          class="sc-fzoLsD fYZyZu"
-        >
+        <a href="https://www.youtube.com/TalabatGTC" rel="noopener noreferrer" target="_blank" class="sc-fzoLsD fYZyZu">
           <img alt="Talabat Youtube" src="../../assets/partner/youtube.svg" />
         </a>
       </div>

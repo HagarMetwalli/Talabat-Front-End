@@ -75,6 +75,9 @@ import { ThankyouComponent } from './Components/thankyou/thankyou.component';
 
 
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { SplashScreenComponent } from './Components/splash-screen/splash-screen.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { TopPageScrollComponent } from './Components/top-page-scroll/top-page-scroll.component'
 
 
 @NgModule({
@@ -108,6 +111,9 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     OrderReviewComponent,
     RatingComponent,
     OrderItemsReviewComponent,
+    SplashScreenComponent,
+    TopPageScrollComponent,
+
 
   ],
   imports: [
@@ -152,6 +158,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     NgxWebstorageModule.forRoot(),
 
     MatStepperModule,
+    MatProgressBarModule,
   ],
 
   providers: [

@@ -3,18 +3,20 @@
 
         <header class='header text-center'>
             <span class="border-end-0">
-                <h1 class="display-1 "><i class="align-left" aria-hidden="true">Feedback</i></h1>
+              <span class="smile-face-icon"><i class="far fa-smile" aria-hidden="true" style="margin-right: 18px; color:#14892c"></i></span>
+              <h1 class="display-1 ">Feedback</h1>
+              <span class="sad-face-icon"><i class="far fa-frown" aria-hidden="true" style="margin-left: 18px; color: red"></i></span>
             </span>
         </header>
 
         <div class="wrap">
-            <h1 class="likert-header">Feedback</h1>
+            <!-- <h1 class="likert-header">Feedback</h1> -->
             <form action="">
                 <label class="statement">How would you rate your overall Talabat.com experience?</label>
                 <ul class='likert'>
                     <li>
                         <input type="radio" name="likert" [(ngModel)]="nSystemReview.rateTalabatExperience" value="5">
-                        <label>Extremely Satisfied </label>
+                        <label class="special">Extremely Satisfied </label>
                     </li>
                     <li>
                         <input type="radio" name="likert"  [(ngModel)]="nSystemReview.rateTalabatExperience"value="4">
@@ -30,7 +32,7 @@
                     </li>
                     <li>
                         <input type="radio" name="likert" value="1">
-                        <label>Not at all Satisfied</label>
+                        <label class="special">Not at all Satisfied</label>
                     </li>
                 </ul>
                 <label class="statement">How much effort did you personally have to put forth to get your service
@@ -38,11 +40,11 @@
                 <ul class='likert'>
                     <li>
                         <input type="radio" name="likert2" [(ngModel)]="nSystemReview.effortMadeToOrderFood" value="5">
-                        <label>Very high effort </label>
+                        <label class="special">Very high effort </label>
                     </li>
                     <li>
                         <input type="radio" name="likert2" [(ngModel)]="nSystemReview.effortMadeToOrderFood" value="4">
-                        <label>high effort</label>
+                        <label>High effort</label>
                     </li>
                     <li>
                         <input type="radio" name="likert2" [(ngModel)]="nSystemReview.effortMadeToOrderFood" value="3">
@@ -50,11 +52,11 @@
                     </li>
                     <li>
                         <input type="radio" name="likert2" [(ngModel)]="nSystemReview.effortMadeToOrderFood" value="2">
-                        <label>low effort</label>
+                        <label>Low effort</label>
                     </li>
                     <li>
                         <input type="radio" name="likert2" value="1">
-                        <label>Very low effort</label>
+                        <label class="special">Very low effort</label>
                     </li>
                 </ul>
                 <label class="statement">How likely are you to recommend Talabat.com to friend, family or
@@ -62,7 +64,7 @@
                 <ul class='likert'>
                     <li>
                         <input type="radio" name="likert3" [(ngModel)]="nSystemReview.recommendToFriend" value="5">
-                        <label>Extremely likely</label>
+                        <label class="special">Extremely likely</label>
                     </li>
                     <li>
                         <input type="radio" name="likert3"  [(ngModel)]="nSystemReview.recommendToFriend"value="4">
@@ -74,21 +76,22 @@
                     </li>
                     <li>
                         <input type="radio" name="likert3" [(ngModel)]="nSystemReview.recommendToFriend" value="2">
-                        <label>Not That Match <i class="fas fa-mailchimp"></i></label>
+                        <label>Not That Match</label>
                     </li>
                     <li>
                         <input type="radio" name="likert3"[(ngModel)]="nSystemReview.recommendToFriend" value="1">
-                        <label>Not at all likely</label>
+                        <label class="special">Not at all likely</label>
                     </li>
                 </ul>
                 <label class="statement">Please provide any other feedback on your Talabat.com experience.</label>
                 <div class="input-group">
-                    <textarea class="form-control" aria-label="With textarea" name="SystemReviewComment" rows="4"
+                    <textarea class="form-control" aria-label="With textarea" name="SystemReviewComment" rows="10" placeholder="plz, write other feedback on your Talabat.com experience here."
                         cols="50" [(ngModel)]="nSystemReview.systemReviewComment"></textarea>
                 </div>
                 <div class="buttons Center">
 
-                    <button type="button" class="btn btn-success submit" (click)="save()">submit</button>
+                    <!-- <button type="button" class="btn btn-success submit" (click)="save()">submit</button> -->
+                    <button id="submit-feedback" type="button" class="btn btn-default m-y-md feedback-btn p-x-lg text-uppercase" (click)="save()">Submit your feedback</button>
                 </div>
             </form>
         </div>
