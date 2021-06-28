@@ -10,6 +10,7 @@
               <span style="display: inline">
                 your order
                 <span class="label label-success">{{numcount }}</span>
+
               </span>
 
               <a style="padding-inline-start: 4rem" [routerLink]="['/storemenu/', id]">Modify order
@@ -33,10 +34,11 @@
               <tbody>
                 <tr *ngFor="let item of arr">
                   <td>{{ item.itemName }}</td>
-                  <td>{{ item.count}}</td>
+                  <td>{{ item.count }}</td>
                   <td>{{ item.itemPrice }}</td>
                   <td>{{ item.value }} (EGP)</td>
                 </tr>
+
                 <hr class="mb-2" />
                 <h3> Total: {{cartservice.totalPrice }}(EGP)</h3>
                 <hr class="mb-2" *ngIf="msg">
@@ -60,16 +62,20 @@
             <form class="form-inline">
               <div class="form-row align-items-center">
                 <mat-form-field>
+
                   <input type="text" matInput placeholder="Enter voucher code" name="voucherkey"
                     [(ngModel)]="voucherkey" />
+
                   <!-- <mat-error *ngIf="vouchercode.hasError('pattern')">
                   voucher code isn't valid (pleace check it's ending date)
                 </mat-error> -->
                 </mat-form-field>
               </div>
+
               <button class="voucher" type="submit" (click)="voucher()">REDEEM</button>
               <h3 class="massage" *ngIf="msg"> You will have a {{Discount}}(EGP) discount</h3>
               <h3 class="massage2" *ngIf="msg2"> This is a not valid voucher</h3>
+
             </form>
           </mat-card-content>
         </mat-card>
@@ -80,9 +86,11 @@
 
 
 
+
       <div class="col-md-8 order-md-1">
         <form>
           <div class="mb-3 text-center">
+
             <mat-card class="example-card">
               <mat-card-header class="text-center">
                 <mat-card-title>Address</mat-card-title>
@@ -237,7 +245,7 @@
 
           <hr class="mb-3" />
           <!-- <speciall requesssssssssssssssssssssssssssssssssssst> -->
-          <div class="mb-3">
+          <div>
             <mat-card class="example-card">
               <mat-card-header>
                 <mat-card-title>Add special Request</mat-card-title>
@@ -259,7 +267,9 @@
             <mat-expansion-panel #panel1 disabled>
               <mat-expansion-panel-header style="align-items: center">
                 <mat-panel-description>
+
                   <mat-radio-button (change)="onChange($event, panel1)" name="services" id="service1" value="service1">
+
                     Online Payment
                   </mat-radio-button>
                 </mat-panel-description>
@@ -278,6 +288,7 @@
             <mat-expansion-panel #panel2 disabled>
               <mat-expansion-panel-header>
                 <mat-panel-description>
+
                   <mat-radio-button (change)="onChange($event, panel2)" name="services" id="service2" value="service2"
                     style="line-height: 2">
                     Cash On delivery</mat-radio-button>
@@ -289,6 +300,7 @@
 
 
 
+
           <hr class="mb-4" />
           <button class="btn" type="submit" (click)="placeOrder()">Place order</button>
           <h3 class="massage2" *ngIf="ordermsg"> This order can't be Completed !!</h3>
@@ -296,4 +308,6 @@
       </div>
     </div>
   </div>
+
 </section>
+

@@ -87,10 +87,7 @@ export class RegisterationComponent implements OnInit {
 
   ngOnInit(): void {
     this.nav.show();
-    //login in with social works
-    this.socialService.authState.subscribe((user) => {
-      this.user = user;
-    });
+
     this.registerForm = this.formBuilder.group({
       //   clientPassword:['', Validators.compose([Validators.required, this.cs.patternValidator()])],
 
@@ -148,13 +145,20 @@ export class RegisterationComponent implements OnInit {
   }
 
   signInWithGoogle(): void {
+    // this.clintFname.disabled
+    // x:HTMLElement
     console.log(GoogleLoginProvider.PROVIDER_ID);
     this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    (this.client.clientFname = this.user.firstName),
-      (this.client.clientLname = this.user.lastName),
-      (this.client.clientEmail = this.user.email),
-      (this.client.clientPassword = this.user.firstName + this.user.id),
-      console.log('data from google', this.user);
+    //login in with social works
+    this.socialService.authState.subscribe((user) => {
+      this.user = user;
+      (this.client.clientFname = this.user.firstName),
+        (this.client.clientLname = this.user.lastName),
+        (this.client.clientEmail = this.user.email),
+        (this.client.clientPassword = this.user.firstName + this.user.id);
+    });
+
+    console.log('data from google', this.user);
 
     console.log('client', this.client);
   }
@@ -162,11 +166,16 @@ export class RegisterationComponent implements OnInit {
   signInWithFB(): void {
     this.socialService.signIn(FacebookLoginProvider.PROVIDER_ID);
     console.log(FacebookLoginProvider.PROVIDER_ID);
-    (this.client.clientFname = this.user.firstName),
-      (this.client.clientLname = this.user.lastName),
-      (this.client.clientEmail = this.user.email),
-      (this.client.clientPassword = this.user.firstName + this.user.id),
-      console.log('data from google', this.user);
+
+    //login in with social works
+    this.socialService.authState.subscribe((user) => {
+      this.user = user;
+      (this.client.clientFname = this.user.firstName),
+        (this.client.clientLname = this.user.lastName),
+        (this.client.clientEmail = this.user.email),
+        (this.client.clientPassword = this.user.firstName + this.user.id);
+    });
+    console.log('data from google', this.user);
     console.log('client', this.client);
   }
 }

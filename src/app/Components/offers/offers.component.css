@@ -38,9 +38,8 @@
 }
 
 .coupon-img {
-  position: relative;
-  top: -70px;
-  left: 769px;
+   position: relative;
+   left: 75rem;
 }
 .mat-tab-labels {
    display: flex;
@@ -210,3 +209,11 @@
 }
 
 
+.mat-tab-body-content {
+   height: 100%;
+   overflow: hidden;
+}
+body{
+   overflow-x: hidden;
+
+}

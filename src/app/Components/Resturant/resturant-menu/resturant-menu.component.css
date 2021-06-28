@@ -287,6 +287,7 @@ p {
   width: 35rem;
 }
 
+
 /* .it{
     width: 20rem;
 }
@@ -321,4 +322,16 @@ p {
     border-bottom: 1px dotted #ccc;
     padding-bottom: 1rem;
   } */
+
+
+#error {
+  margin-top: 2rem;
+	color: #8f151b;
+	background-color: #f1f0f0;
+  font-family: emoji;
+}
+a:active, a:hover {
+  outline: 0;
+  cursor: pointer;
+}
 
