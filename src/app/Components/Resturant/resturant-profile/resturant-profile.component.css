@@ -8,14 +8,14 @@ body{
 }
 #header{
     height: 60rem;
-    width:113rem;
+    width:134rem;
     margin: 4rem;
     overflow: hidden;
     border-radius: 4rem;
 }
 .bgimg{
     border-radius: 4rem; 
-     width:113rem;
+     width:134rem;
 }
 h4{
    color: #ff5a00;
@@ -39,7 +39,7 @@ h4{
     height: 26rem;
     background-color: gray;
     border-radius: 4rem;
-    opacity: 60%;
+    opacity: 82%;
     position: relative;
     bottom: 35rem;
     left: 10rem;
