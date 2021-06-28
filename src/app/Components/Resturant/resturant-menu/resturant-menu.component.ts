@@ -6,6 +6,9 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { LoginComponent } from 'src/app/Components/login/login.component';
+
 import { Product } from '../../../Models/Product';
 import { StoreprofileService } from '../../../Services/Stores/store-profile.service';
 import { CartServiceService } from '../../../Services/cart-service.service';
@@ -13,7 +16,6 @@ import { CartServiceService } from '../../../Services/cart-service.service';
 import { Router } from '@angular/router';
 import { Store } from 'src/app/Models/Store';
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
-
 
 @Component({
   selector: 'app-resturant-menu',
@@ -24,14 +26,18 @@ import { NavbarService } from 'src/app/Services/Home/navbar.service';
 export class ResturantMenuComponent implements OnInit {
   panelOpenState = false;
   cartItems: Array<any> = [];
-
+  //checkout guard
+  click: boolean = true;
+  //login modal
+  bsmodalRef?: BsModalRef;
   constructor(
     private _Activatedroute: ActivatedRoute,
     private _router: Router,
+    private modalService: BsModalService,
     private cartServ: CartServiceService,
     public nav: NavbarService,
     private _StoreprofileService: StoreprofileService
-  ) { }
+  ) {}
 
   sub: any;
 
@@ -56,39 +62,33 @@ export class ResturantMenuComponent implements OnInit {
       console.log(params);
       this.id = params.get('storeid');
 
+      this.id = +this.id;
+      console.log('IIIID', params.get('storeid'));
 
-      this.id = + this.id;
-      console.log("IIIID", params.get('storeid'));
-
-
-
-      this._StoreprofileService.getStoreById(this.id).subscribe(
-        (store: any) => {
+      this._StoreprofileService
+        .getStoreById(this.id)
+        .subscribe((store: any) => {
           console.log(store);
           this._store = store || undefined;
           this.initialize();
-        }
-      )
+        });
     });
-
-
-
-
   }
 
   initialize() {
-    this._StoreprofileService.getAllCategory(this._store?.storeName || '').subscribe(res => {
-      this.categories = res;
-    })
+    this._StoreprofileService
+      .getAllCategory(this._store?.storeName || '')
+      .subscribe((res) => {
+        this.categories = res;
+      });
   }
   chooseCat(cat: string) {
-    this._StoreprofileService.getItemsByCategory(this._store?.storeName || '', cat).subscribe(
-      items => {
+    this._StoreprofileService
+      .getItemsByCategory(this._store?.storeName || '', cat)
+      .subscribe((items) => {
         console.log(items);
         this._item = items;
-      }
-    )
-
+      });
   }
   itemincart!: Product;
   onpress(cartitem: Product) {
@@ -110,9 +110,33 @@ export class ResturantMenuComponent implements OnInit {
     this.getCartItems();
   }
 
-  checkout(id?: number) {
-    this._router.navigate(['/checkout/', id]);
+  // checkout guard
+  loggedIn() {
+    let token =
+      sessionStorage.getItem('token') && localStorage.getItem('token');
+    if (token != '' && token != null) {
+      //console.log('from nav bar token here', token);
+
+      return true;
+    } else {
+      // console.log('from nav bar no token ');
+
+      return false;
+    }
   }
+  //toOpenLoginModal
+  openModal() {
+    this.bsmodalRef = this.modalService.show(LoginComponent);
+  }
+  checkout(id?: number) {
+    // let token =
+    //   sessionStorage.getItem('token') && localStorage.getItem('token');
 
-
-};
+    // if (token != '' && token != null) {
+    //   console.log('not logged');
+    //   this.click = !this.click;
+    // } else {
+    this._router.navigate(['/checkout/', id]);
+    // }
+  }
+}

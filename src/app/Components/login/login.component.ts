@@ -28,7 +28,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
   bsmodalRef?: BsModalRef;
   loading = false;
-  loginForm!: FormGroup;
+  // loginForm!: FormGroup;
   submitted = false;
   rememberMe: boolean = true;
   loggedClient = {
@@ -65,68 +65,62 @@ export class LoginComponent implements OnInit {
     private modalService: BsModalService,
     private clientservice: ClientService
   ) {}
-
-  closeModal() {
-    this.modalService.hide();
-  }
-  ngOnInit(): void {
-    //login in with social works
-    this.socialService.authState.subscribe((user) => {
-      this.user = user;
-    });
-    //check staute
-    console.log('remember me : ', this.rememberMe);
-
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-
-    if (this.tokenService.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenService.getClient().roles;
-    }
-  } //end of onit
-
-  signInWithGoogle(): void {
-    console.log(GoogleLoginProvider.PROVIDER_ID);
-    this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    (this.loggedClient.email = this.user.email),
-      (this.loggedClient.password = this.user.firstName + this.user.id),
-      console.log('data from google', this.user);
-
-    console.log('client', this.loggedClient);
-  }
-
-  signInWithFB(): void {
-    this.socialService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    console.log(FacebookLoginProvider.PROVIDER_ID);
-    (this.loggedClient.email = this.user.email),
-      (this.loggedClient.password = this.user.firstName + this.user.id);
-  }
-
+  loginForm = this.formBuilder.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+  });
   // convenience getter for easy access to form fields
   get fieldget() {
     return this.loginForm.controls;
   }
 
-  onSubmit() {
-    console.log('hena', this.fieldget.email.value);
-    //check if user is exist
-    this.clientservice
-      .getByemail(this.fieldget.email.value)
-      .subscribe((data) => {
-        console.log('data from mail', data);
-        console.log('status', data.status);
+  closeModal() {
+    this.modalService.hide();
+  }
 
-        if (data.status == 404) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Email is not Exist Please Register First!',
-          });
-        }
-      });
+  ngOnInit(): void {} //end of onit
+
+  signInWithGoogle(): void {
+    // console.log(GoogleLoginProvider.PROVIDER_ID);
+    this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    //login in with social works
+    this.socialService.authState.subscribe((user) => {
+      this.user = user;
+      (this.loggedClient.email = this.user.email),
+        (this.loggedClient.password = this.user.firstName + this.user.id);
+    });
+    setTimeout(() => {
+      this.onSubmit();
+    }, 11000);
+
+    // console.log('data from google', this.user);
+
+    // console.log('clienttt', this.loggedClient);
+  }
+
+  signInWithFB(): void {
+    this.socialService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.socialService.authState.subscribe((user) => {
+      this.user = user;
+      (this.loggedClient.email = this.user.email),
+        (this.loggedClient.password = this.user.firstName + this.user.id);
+    });
+  }
+
+  onSubmit() {
+    //check if user is exist
+    this.clientservice.getByemail(this.loggedClient.email).subscribe((data) => {
+      console.log('data from mail', data);
+      console.log('status', data.status);
+
+      if (data.status == 404) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Email is not Exist Please Register First!',
+        });
+      }
+    });
     // store client id in session
     this.clientservice
       .getByemailtwo(this.loggedClient.email)
@@ -138,12 +132,11 @@ export class LoginComponent implements OnInit {
 
     //login
     this.authService
-      .login(this.fieldget.email.value, this.fieldget.password.value)
+      .login(this.loggedClient.email, this.loggedClient.password)
       .subscribe(
         (data) => {
           // Save value to local storage
           if (this.rememberMe) {
-            //localStorage.setItem('rememberMe', 'yes');
             localStorage.setItem(
               'currentClient',
               JSON.stringify(this.loggedClient)
@@ -151,7 +144,6 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('token', JSON.stringify(data));
           }
           sessionStorage.setItem('token', JSON.stringify(data));
-          //console.log('token', data);
           this.router.navigate(['']);
           this.closeModal();
         },

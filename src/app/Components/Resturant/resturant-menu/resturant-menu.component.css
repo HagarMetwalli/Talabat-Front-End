@@ -272,3 +272,13 @@ p {
   text-align: center;
   width: 35rem;
 }
+#error {
+  margin-top: 2rem;
+	color: #8f151b;
+	background-color: #f1f0f0;
+  font-family: emoji;
+}
+a:active, a:hover {
+  outline: 0;
+  cursor: pointer;
+}
