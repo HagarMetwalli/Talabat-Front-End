@@ -22,7 +22,10 @@
         <div class="row">
           <div
             class="col-sm-6 col-md-3 col-lg-3"
-            *ngFor="let store of PromsStores"
+            *ngFor="
+              let store of PromsStores
+                | paginate: { itemsPerPage: 4, currentPage: p }
+            "
           >
             <a (click)="openModalprom(template, store.storeId)">
               <div class="restaurant-box">
@@ -87,13 +90,24 @@
             </a>
           </div>
         </div>
-        <!-- </div> -->
+        <div class="pag">
+          <pagination-controls
+            class="text-center current"
+            (pageChange)="p = $event"
+          ></pagination-controls>
+        </div>
       </mat-tab>
 
       <mat-tab label="Coupons">
         <div class="container">
           <div class="row">
-            <div class="col-lg-3" *ngFor="let store of CoupStores">
+            <div
+              class="col-lg-3"
+              *ngFor="
+                let store of CoupStores
+                  | paginate: { itemsPerPage: 4, currentPage: p }
+              "
+            >
               <a (click)="openModalcoup(template, store.storeId)">
                 <div class="restaurant-box">
                   <ng-template #template>
@@ -156,12 +170,14 @@
             </div>
           </div>
         </div>
+        <div class="pag">
+          <pagination-controls
+            class="text-center current"
+            (pageChange)="p = $event"
+          ></pagination-controls>
+        </div>
       </mat-tab>
     </mat-tab-group>
   </div>
-  <!-- <pagination-controls
-    class="text-center current"
-    (pageChange)="page = $event"
-  ></pagination-controls> -->
 </div>
 <app-footer></app-footer>
