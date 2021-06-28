@@ -10,13 +10,20 @@
 <mat-icon aria-label="Example home icon">local_offer</mat-icon> -->
 
   <div class="container">
-    <img src="../../../assets/icon_promotions.webp" class="promo-img">
+    <img src="../../../assets/icon_promotions.webp" class="promo-img" />
+    <img src="../../../assets/icon_coupons.webp" class="coupon-img" />
 
-    <mat-tab-group class="my-tab-class" (selectedIndexChange)="tabClick($event)">
+    <mat-tab-group
+      class="my-tab-class"
+      (selectedIndexChange)="tabClick($event)"
+    >
       <mat-tab label="Promotions">
         <!-- <div class="container">-->
         <div class="row">
-          <div class="col-sm-6 col-md-3 col-lg-3" *ngFor="let store of PromsStores">
+          <div
+            class="col-sm-6 col-md-3 col-lg-3"
+            *ngFor="let store of PromsStores"
+          >
             <a (click)="openModalprom(template, store.storeId)">
               <div class="restaurant-box">
                 <ng-template #template>
@@ -24,7 +31,12 @@
                     <h4 class="modal-title pull-left">
                       Offers from {{ store.storeName }}
                     </h4>
-                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <button
+                      type="button"
+                      class="close pull-right"
+                      aria-label="Close"
+                      (click)="modalRef.hide()"
+                    >
                       <span aria-hidden="true">×</span>
                     </button>
                   </div>
@@ -53,13 +65,20 @@
                   </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+                    <button
+                      type="button"
+                      class="btn btn-default"
+                      (click)="modalRef.hide()"
+                    >
                       Close
                     </button>
                   </div>
                 </ng-template>
                 <div class="restaurant-thumb">
-                  <div class="restaurant-overlay" style="background-image: url('../../assets/dounkin.jpg')"></div>
+                  <div
+                    class="restaurant-overlay"
+                    style="background-image: url('../../assets/dounkin.jpg')"
+                  ></div>
                 </div>
                 <div class="restaurant-caption">
                   <a href="#">{{ store.storeName }}</a>
@@ -82,7 +101,12 @@
                       <h4 class="modal-title pull-left">
                         Offers from {{ store.storeName }}
                       </h4>
-                      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                      <button
+                        type="button"
+                        class="close pull-right"
+                        aria-label="Close"
+                        (click)="modalRef.hide()"
+                      >
                         <span aria-hidden="true">×</span>
                       </button>
                     </div>
@@ -109,13 +133,20 @@
                       </table>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+                      <button
+                        type="button"
+                        class="btn btn-default"
+                        (click)="modalRef.hide()"
+                      >
                         Close
                       </button>
                     </div>
                   </ng-template>
                   <div class="restaurant-thumb">
-                    <div class="restaurant-overlay" style="background-image: url('../../assets/mac.jpg')"></div>
+                    <div
+                      class="restaurant-overlay"
+                      style="background-image: url('../../assets/mac.jpg')"
+                    ></div>
                   </div>
                   <div class="restaurant-caption">
                     <a href="#">{{ store.storeName }}</a>
@@ -127,8 +158,6 @@
         </div>
       </mat-tab>
     </mat-tab-group>
-    <img src="../../../assets/icon_coupons.webp" class="coupon-img">
-
   </div>
   <!-- <pagination-controls
     class="text-center current"
