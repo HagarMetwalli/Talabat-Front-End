@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 import { Store } from 'src/app/Models/Store';
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
 import { OrderService } from 'src/app/Services/order.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { LoginComponent } from 'src/app/Components/login/login.component';
 
 
 @Component({
@@ -24,6 +26,10 @@ import { OrderService } from 'src/app/Services/order.service';
 export class ResturantMenuComponent implements OnInit {
   panelOpenState = false;
   cartItems: Array<any> = [];
+  //checkout guard
+  click: boolean = true;
+  //login modal
+  bsmodalRef?: BsModalRef;
 
 
   constructor(
@@ -31,7 +37,8 @@ export class ResturantMenuComponent implements OnInit {
     private _router: Router,
     private cartServ: CartServiceService,
     public nav: NavbarService,
-    private OrderService :OrderService,
+    private modalService: BsModalService,
+    private OrderService: OrderService,
     private _StoreprofileService: StoreprofileService
   ) { }
 
@@ -45,8 +52,8 @@ export class ResturantMenuComponent implements OnInit {
   displayimg: boolean = true;
   menu: any;
   _item !: Product;
-  _comment :any=[];
-  _bestselling : any;
+  _comment: any = [];
+  _bestselling: any;
 
   myitem: Product[] = [
     { itemId: 1, itemName: 'item 1', itemPrice: 1 },
@@ -78,17 +85,17 @@ export class ResturantMenuComponent implements OnInit {
 
 
     this.OrderService.storecomments(this.id).subscribe(
-      comment=>{
+      comment => {
         console.log(comment);
         this._comment = comment;
-        console.log("_comment",this._comment);
-      }); 
-     
-    this._StoreprofileService.gettopitem(this.id).subscribe(bestselling=>{
-      console.log("the best",bestselling);
+        console.log("_comment", this._comment);
+      });
+
+    this._StoreprofileService.gettopitem(this.id).subscribe(bestselling => {
+      console.log("the best", bestselling);
       this._bestselling = bestselling;
     });
-  
+
 
 
   }
@@ -129,6 +136,25 @@ export class ResturantMenuComponent implements OnInit {
 
   checkout(id?: number) {
     this._router.navigate(['/checkout/', id]);
+  }
+
+  // checkout guard
+  loggedIn() {
+    let token =
+      sessionStorage.getItem('token') && localStorage.getItem('token');
+    if (token != '' && token != null) {
+      //console.log('from nav bar token here', token);
+
+      return true;
+    } else {
+      // console.log('from nav bar no token ');
+
+      return false;
+    }
+  }
+  //toOpenLoginModal
+  openModal() {
+    this.bsmodalRef = this.modalService.show(LoginComponent);
   }
 
 

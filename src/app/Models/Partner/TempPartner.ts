@@ -1,6 +1,6 @@
 export class TemPartner {
   constructor(
-    public TempPartnerStoreId: number,
+    //public TempPartnerStoreId: number,
     public partnerFname: string,
     public partnerLname: string,
     public storeCountryId: number,
@@ -13,5 +13,5 @@ export class TemPartner {
     public storeAddress: string,
     // public StoreId: number,
     public storeTypeId: number
-  ) {}
+  ) { }
 }

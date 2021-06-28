@@ -176,7 +176,23 @@ export class CheckoutComponent implements OnInit {
 
   public mapReady(map: { addListener: (arg0: string, arg1: () => void) => void; }) {
     map.addListener("dragend", () => {
+      this.btnDisabled = true;
+      console.log("Sorry, Your Address Out Store Zone !");
+      Swal.fire({
+        icon: 'error',
+        title: 'OutZone...',
+        text: 'Sorry, Your Address Out Store Zone !', });
       console.log(this.centerLatitude, this.centerLongitude);
+      this._googlemapservice.getstoreMenu(this.id, this.centerLatitude, this.centerLongitude).subscribe(
+        _res => {
+          console.log("vvvv",_res);
+          if (_res[0].status == 200) {
+            this.btnDisabled = false;
+            console.log("Good, Your Address In Store Zone !");
+           
+          }
+        }
+      )
     });
   }
 
@@ -317,6 +333,7 @@ export class CheckoutComponent implements OnInit {
   CheckAddressInZone() {
     this._googlemapservice.getstoreMenu(this.storeid, this.latitude, this.longitude).subscribe(
       _res => {
+        console.log("vvvv",_res);
         if (_res[0].status == 200) {
           this.btnDisabled = false;
           console.log("Good, Your Address In Store Zone !");
@@ -418,6 +435,7 @@ export class CheckoutComponent implements OnInit {
 
   getClientAddress(address: ClientAddress) {
     address = this.clientAddress;
+    console.log("addreeeeeeee",address);
     this.AddressesService.addAddress(address).subscribe(
       (res) => {
         console.log("Address Result: ", res);

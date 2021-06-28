@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
 
   ) { }
 
-  ) {}
+
   loginForm = this.formBuilder.group({
     email: ['', Validators.required],
     password: ['', Validators.required],
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
     this.modalService.hide();
   }
 
-  ngOnInit(): void {} //end of onit
+  ngOnInit(): void { } //end of onit
 
   signInWithGoogle(): void {
     // console.log(GoogleLoginProvider.PROVIDER_ID);
@@ -118,14 +118,14 @@ export class LoginComponent implements OnInit {
       console.log('status', data.status);
 
 
-        if (data.status == 404) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Email is not Exist Please Register First!',
-          });
-        }
-      });
+      if (data.status == 404) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Email is not Exist Please Register First!',
+        });
+      }
+    });
 
     // store client id in session
 

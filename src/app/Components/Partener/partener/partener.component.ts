@@ -39,7 +39,6 @@ export class PartenerComponent implements OnInit {
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
   partner: TemPartner = {
-    TempPartnerStoreId: 23,
     partnerFname: '',
     partnerLname: '',
     PartnerPhoneNo: 0,
