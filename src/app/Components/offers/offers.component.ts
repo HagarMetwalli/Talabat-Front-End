@@ -20,7 +20,7 @@ import { NavbarService } from 'src/app/Services/Home/navbar.service';
 })
 export class OffersComponent implements OnInit {
   modalRef!: BsModalRef;
-
+  p!: number;
   PromsStores: any;
   CoupStores: any;
   Coupitems: any;
@@ -33,7 +33,7 @@ export class OffersComponent implements OnInit {
     private offersService: OffersServiceService,
     private modalService: BsModalService,
     public nav: NavbarService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.nav.show();

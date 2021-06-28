@@ -211,9 +211,9 @@
 
 .mat-tab-body-content {
    height: 100%;
-   overflow: hidden;
+   overflow: hidden!important;
 }
-body{
-   overflow-x: hidden;
-
+.pag{
+   width: 300px;
+   margin-left:430px;
 }
