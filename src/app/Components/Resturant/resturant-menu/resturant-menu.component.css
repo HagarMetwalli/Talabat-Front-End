@@ -25,22 +25,23 @@ body {
 #headerbg{
     width: 120rem;
     height: 50rem;
+    margin-left: 10rem;
 }
 #back{
-    height: 30rem;
-    width: 30rem;
-    position: relative;
-    bottom: 20rem;
-    left: 10rem;
-    border-radius: 50%;
+  height: 15rem;
+  width: 15rem;
+  position: relative;
+  bottom: 10rem;
+  left: 13rem;
+  border-radius: 50%;
 }
 #resname{
-    width: 24rem;
-    margin-top: -18rem;
-    margin-left: 20rem;
-    font-size: 1.6rem;
-    color: lightgray;
-    opacity: 50%;
+  width: 24rem;
+  margin-top: -8rem;
+  margin-left: 25rem;
+  font-size: 3.6rem;
+  color: lightgray;
+  opacity: 50%;
 
 }
 
