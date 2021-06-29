@@ -11,6 +11,7 @@ import { GooglemapService } from 'src/app/Services/google-map.service';
 import { OrderService } from 'src/app/Services/order.service';
 import { ClientService } from './../../../Services/client.service';
 import { OrderReview } from './../../../Models/OrderReview';
+import { Commentdetails } from 'src/app/Models/commentdetails';
 
 interface Coordinates {
   address: string,
@@ -78,6 +79,7 @@ export class ResturantProfileComponent implements OnInit {
   id: any;
   _comment :any=[];
   _name :any=[];
+  all :Array<Commentdetails> | undefined;
   nid : any ;
   _bestselling : any;
   centerLatitude = this.latitude;
