@@ -14,6 +14,7 @@ import { NavbarService } from 'src/app/Services/Home/navbar.service';
 import { OrderService } from 'src/app/Services/order.service';
 import { ClientService } from './../../../Services/client.service';
 import { OrderReview } from './../../../Models/OrderReview';
+import { Commentdetails } from 'src/app/Models/commentdetails';
 
 
 interface Coordinates {
@@ -84,6 +85,7 @@ export class ResturantProfileComponent implements OnInit {
 
   _comment: any = [];
   _name: any = [];
+  all: Array<Commentdetails> | undefined;
   nid: any;
   _bestselling: any;
 
