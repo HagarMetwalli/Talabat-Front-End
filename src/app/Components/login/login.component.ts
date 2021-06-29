@@ -64,10 +64,10 @@ export class LoginComponent implements OnInit {
     private tokenService: TokenService,
     private modalService: BsModalService,
     private clientservice: ClientService
+  ) {}
 
-  ) { }
-
-
+  disableSelect: boolean = false;
+  disableSelecto: boolean = false;
   loginForm = this.formBuilder.group({
     email: ['', Validators.required],
     password: ['', Validators.required],
@@ -77,12 +77,11 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-
   closeModal() {
     this.modalService.hide();
   }
 
-  ngOnInit(): void { } //end of onit
+  ngOnInit(): void {} //end of onit
 
   signInWithGoogle(): void {
     // console.log(GoogleLoginProvider.PROVIDER_ID);
@@ -93,6 +92,8 @@ export class LoginComponent implements OnInit {
       (this.loggedClient.email = this.user.email),
         (this.loggedClient.password = this.user.firstName + this.user.id);
     });
+    this.disableSelect = true;
+    this.disableSelecto = true;
     setTimeout(() => {
       this.onSubmit();
     }, 11000);
@@ -109,6 +110,7 @@ export class LoginComponent implements OnInit {
       (this.loggedClient.email = this.user.email),
         (this.loggedClient.password = this.user.firstName + this.user.id);
     });
+    this.disableSelect = true;
   }
 
   onSubmit() {
@@ -116,7 +118,6 @@ export class LoginComponent implements OnInit {
     this.clientservice.getByemail(this.loggedClient.email).subscribe((data) => {
       console.log('data from mail', data);
       console.log('status', data.status);
-
 
       if (data.status == 404) {
         Swal.fire({
@@ -129,13 +130,13 @@ export class LoginComponent implements OnInit {
 
     // store client id in session
 
-    this.clientservice.getByemailtwo(this.loggedClient.email).subscribe((data) => {
-      console.log('getbyemailnow', data);
-      sessionStorage.setItem('client', JSON.stringify(data));
-      // sessionStorage.setItem('clientId', JSON.stringify(data.clientId));
-
-    });
-
+    this.clientservice
+      .getByemailtwo(this.loggedClient.email)
+      .subscribe((data) => {
+        console.log('getbyemailnow', data);
+        sessionStorage.setItem('client', JSON.stringify(data));
+        // sessionStorage.setItem('clientId', JSON.stringify(data.clientId));
+      });
 
     //login
     this.authService
