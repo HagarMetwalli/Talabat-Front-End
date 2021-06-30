@@ -325,6 +325,7 @@ p {
 
 
 #error {
+  width: 32rem;
   margin-top: 2rem;
   background-color: black;
   color:white;
