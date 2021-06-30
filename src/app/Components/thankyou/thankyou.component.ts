@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
 
 @Component({
   selector: 'app-thankyou',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./thankyou.component.css']
 })
 export class ThankyouComponent implements OnInit {
-
-  constructor() { }
+  constructor(public nav: NavbarService) { }
 
   ngOnInit(): void {
+    this.nav.show();
   }
+
 
 }

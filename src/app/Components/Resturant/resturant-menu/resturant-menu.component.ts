@@ -143,12 +143,9 @@ export class ResturantMenuComponent implements OnInit {
     let token =
       sessionStorage.getItem('token') && localStorage.getItem('token');
     if (token != '' && token != null) {
-      //console.log('from nav bar token here', token);
 
       return true;
     } else {
-      // console.log('from nav bar no token ');
-
       return false;
     }
   }
