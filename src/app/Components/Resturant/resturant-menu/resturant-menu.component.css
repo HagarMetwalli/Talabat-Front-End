@@ -326,12 +326,20 @@ p {
 
 #error {
   margin-top: 2rem;
-	color: #8f151b;
-	background-color: #f1f0f0;
-  font-family: emoji;
+  background-color: black;
+  color:white;
+
 }
 a:active, a:hover {
   outline: 0;
   cursor: pointer;
 }
 
+a {
+  color:#FF5A00;  
+  font-size: 2rem;
+}
+#h{
+  font-size: 2rem;
+  margin: 0.7rem;
+}

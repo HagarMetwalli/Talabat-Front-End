@@ -6,71 +6,100 @@
     <img src="../../assets/turkey.PNG" id="back" />
   </div>
   <div *ngIf="_store" id="resname">
-    <p>{{_store?.storeName}}</p>
-    <p>{{_store.storeAddress}}</p>
-    <p>Minimum order : {{_store.storeMinOrder}}</p>
+    <p>{{ _store?.storeName }}</p>
+    <p>{{ _store.storeAddress }}</p>
+    <p>Minimum order : {{ _store.storeMinOrder }}</p>
   </div>
 
-  <mat-icon fontSet="fa" fontIcon=" fa-info-circle"
-    style="font-size: 6em; color: #FF5A00;margin-left: 10rem;margin-bottom: -2.5rem;"></mat-icon>
-  <mat-icon fontSet="fa" fontIcon="fa-comments"
-    style="font-size: 6em; color: #FF5A00;margin-left: 26rem;margin-bottom: -2.5rem;"></mat-icon>
-  <mat-icon fontSet="fa" fontIcon="fa-cart-plus"
-    style="font-size: 6em; color: #FF5A00;margin-left: 84rem;margin-bottom: 13.5rem;"></mat-icon>
+  <mat-icon
+    fontSet="fa"
+    fontIcon=" fa-info-circle"
+    style="
+      font-size: 6em;
+      color: #ff5a00;
+      margin-left: 10rem;
+      margin-bottom: -2.5rem;
+    "
+  ></mat-icon>
+  <mat-icon
+    fontSet="fa"
+    fontIcon="fa-comments"
+    style="
+      font-size: 6em;
+      color: #ff5a00;
+      margin-left: 26rem;
+      margin-bottom: -2.5rem;
+    "
+  ></mat-icon>
+  <mat-icon
+    fontSet="fa"
+    fontIcon="fa-cart-plus"
+    style="
+      font-size: 6em;
+      color: #ff5a00;
+      margin-left: 84rem;
+      margin-bottom: 13.5rem;
+    "
+  ></mat-icon>
 
   <mat-tab-group *ngIf="_store" class="my-tab-class">
-
     <mat-tab label="Restaurant info">
       <table class="table-am table">
         <tbody>
           <tr>
             <td>Description</td>
-            <td>{{_store.storeDescription}}</td>
+            <td>{{ _store.storeDescription }}</td>
           </tr>
           <tr>
             <td>Minimum order</td>
-            <td>{{_store.storeMinOrder}}</td>
+            <td>{{ _store.storeMinOrder }}</td>
           </tr>
           <tr>
             <td>Delivery time</td>
-            <td>{{_store.storeDeliveryTime}}</td>
+            <td>{{ _store.storeDeliveryTime }}</td>
           </tr>
           <tr>
             <td>Service fee</td>
-            <td>{{_store.storeDeliveryFee}}</td>
+            <td>{{ _store.storeDeliveryFee }}</td>
           </tr>
           <tr>
             <td>Pre-order</td>
-            <td>{{_store.storePreOrder}}</td>
+            <td>{{ _store.storePreOrder }}</td>
           </tr>
           <tr>
             <td>Cuisine</td>
-            <td>{{_store.storeCuisine}}</td>
+            <td>{{ _store.storeCuisine }}</td>
           </tr>
           <tr>
             <td>PaymentVisa</td>
-            <td>{{_store.storePaymentVisa}}</td>
+            <td>{{ _store.storePaymentVisa }}</td>
           </tr>
           <tr>
             <td>OrdersNumber</td>
-            <td>{{_store.storeOrdersNumber}}</td>
+            <td>{{ _store.storeOrdersNumber }}</td>
           </tr>
         </tbody>
       </table>
     </mat-tab>
 
     <mat-tab label="Restaurant Review">
-      <div class="container" style="width: 74rem;margin-left: 14rem;margin-top: 7rem;">
+      <div
+        class="container"
+        style="width: 74rem; margin-left: 14rem; margin-top: 7rem"
+      >
         <div class="row">
           <div class="col-md-8">
-            <div class="comments-list" style="margin-top: 7rem;margin-bottom: 4rem;"
-              *ngFor="let com of _comment;let i=index">
+            <div
+              class="comments-list"
+              style="margin-top: 7rem; margin-bottom: 4rem"
+              *ngFor="let com of _comment; let i = index"
+            >
               <div class="media">
                 <a class="media-left" href="#">
-                  <img src="http://lorempixel.com/40/40/people/1/">
+                  <img src="http://lorempixel.com/40/40/people/1/" />
                 </a>
                 <div class="media-body">
-                  {{com.orderReviewComment}}
+                  {{ com.orderReviewComment }}
                 </div>
               </div>
             </div>
@@ -80,54 +109,85 @@
     </mat-tab>
 
     <mat-tab label="Food Menu">
-      <div class="row" style="margin: 5rem;">
-        <img class="col-lg-3 d-lg-block d-none" width="300" height="500" src="../../assets/foodknief.png"
-          id="kniefphoto" />
+      <div class="row" style="margin: 5rem">
+        <img
+          class="col-lg-3 d-lg-block d-none"
+          width="300"
+          height="500"
+          src="../../assets/foodknief.png"
+          id="kniefphoto"
+        />
         <div class="col-lg-3 pt-3 col-md-6">
           <div id="menu">
             <mat-accordion>
-              <mat-expansion-panel (opened)="chooseCat(cat);panelOpenState =true" (closed)="panelOpenState = false"
-                *ngFor="let cat of categories">
+              <mat-expansion-panel
+                (opened)="chooseCat(cat); panelOpenState = true"
+                (closed)="panelOpenState = false"
+                *ngFor="let cat of categories"
+              >
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    {{cat}}
+                    {{ cat }}
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-                <div id="collapscontent" *ngFor="let c of _item" class="flex-container">
+                <div
+                  id="collapscontent"
+                  *ngFor="let c of _item"
+                  class="flex-container"
+                >
                   <div class="it">
-                    <p>{{c.itemName}}</p>
-                    <p>{{c.itemPrice}}</p>
+                    <p>{{ c.itemName }}</p>
+                    <p>{{ c.itemPrice }}</p>
                   </div>
                   <div class="bt">
-                    <button class="btn btn-success" id="addbutton" (click)="onpress(c)">+</button>
+                    <button
+                      class="btn btn-success"
+                      id="addbutton"
+                      (click)="onpress(c)"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
               </mat-expansion-panel>
-
-
             </mat-accordion>
           </div>
         </div>
         <div class="col-lg-3 pt-3 col-md-6">
           <h3 class="card-title">Your Cart</h3>
-          <app-cart-content (remove)="removeItem($event)" [product]="item" *ngFor="let item of cartItems">
+          <app-cart-content
+            (remove)="removeItem($event)"
+            [product]="item"
+            *ngFor="let item of cartItems"
+          >
           </app-cart-content>
           <div>
-            <span>Total</span>&nbsp;<span>{{cartServ.totalPrice || 0}}</span>
+            <span>Total</span>&nbsp;<span>{{ cartServ.totalPrice || 0 }}</span>
           </div>
 
           <div class="text-center mx-auto">
-            <button [disabled]="!loggedIn()" class="btn btn-success" id="button" (click)="checkout(_store.storeId)">
+            <button
+              [disabled]="!loggedIn()"
+              class="btn btn-success"
+              id="button"
+              (click)="checkout(_store.storeId)"
+            >
               Execute Request
             </button>
             <div id="error" class *ngIf="!loggedIn()">
-              <h2>you Should log in first to submit your order</h2>
+              <h5 id="h">you Should log in first to submit your order</h5>
+
               <a (click)="openModal()">Log In</a>
             </div>
           </div>
         </div>
-        <img class="col-lg-3 d-lg-block d-none" width="300" height="500" src="../../assets/forkfood.png"
-          id="forkphoto" />
+        <img
+          class="col-lg-3 d-lg-block d-none"
+          width="300"
+          height="500"
+          src="../../assets/forkfood.png"
+          id="forkphoto"
+        />
       </div>
     </mat-tab>
   </mat-tab-group>
