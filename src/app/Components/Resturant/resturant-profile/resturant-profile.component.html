@@ -1,18 +1,18 @@
 <div class="top">
-    <div id="header">
-        <img src="../../../../assets/madie-hamilton.jpg" class="bgimg"/>
-     </div>
-     <div id="bg"></div>
-     <div class="d-flex flex-column" style="width: 50rem; 
+  <div id="header">
+    <img src="../../../../assets/madie-hamilton.jpg" class="bgimg" />
+  </div>
+  <div id="bg"></div>
+  <div class="d-flex flex-column" style="width: 50rem; 
      position: relative;
      bottom: 60rem;
      left: 10rem;">
-        <div class="textbg">
-            <h4>Choose Your Area To View Restaurant Menu</h4>
-            <img src="../../../../assets/arrow.png" id="emoji" />
-         </div>
-         
- <div class="search-bar">
+    <div class="textbg">
+      <h4>Choose Your Area To View Restaurant Menu</h4>
+      <img src="../../../../assets/arrow.png" id="emoji" />
+    </div>
+
+    <div class="search-bar">
       <div class="search-box">
         <input type="text" class="form-control empty" name="search-bar" [value]='txtValue'
           placeholder="&#xf041;   ...Find an area,street,landmark" (keydown.enter)="$event.preventDefault()"
@@ -74,39 +74,42 @@
         </div>
       </div>
     </ng-template>
-     </div>
-       <div class="d-flex bd-highlight">
-            <div id="description" class="col-sm-6 d-flex bd-highlight">
-              <h5>Description</h5>
-              <p class="text-left" style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
-              <h5>Best Selling</h5>
-              <div class="col-lg-4" id="res" *ngFor="let best of _bestselling">
-                  <button data-toggle="tooltip" data-placement="bottom" title="Best Selling" id="tooltipbtn">
-                      <img src="../../assets/Capture.PNG" id="tooltip" />
-                  </button>
-                 <h4 style="width: 10rem;">{{best.itemName}}</h4>
-              </div>
-              <h5>Reviews</h5>
-            </div>
-         </div>
-         <div class="container" style="width: 74rem;margin-left: 14rem;margin-top: 7rem;">
-          <div class="row">
-              <div class="col-md-8">
-                 <div class="comments-list" style="margin-top: 7rem;margin-bottom: 4rem;"  *ngFor="let com of _comment;let i=index">
-                     <div class="media">
-                        <a class="media-left" href="#">
-                          <img src="http://lorempixel.com/40/40/people/1/">
-                        </a>
-                        <div class="media-body">                              
-                          {{com.orderReviewComment}}
-                        </div>
-                        </div>
-                   </div>
-                  
-                  
-                  
-              </div>
-          </div>
+  </div>
+  <div class="d-flex bd-highlight">
+    <div id="description" class="col-sm-6 d-flex bd-highlight">
+      <h5>Description</h5>
+      <p class="text-left" style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
+      <h5>Best Selling</h5>
+      <div class="col-lg-4" id="res" *ngFor="let best of _bestselling">
+        <button data-toggle="tooltip" data-placement="bottom" title="Best Selling" id="tooltipbtn">
+          <img src="../../assets/Capture.PNG" id="tooltip" />
+        </button>
+        <h4 style="width: 10rem;">{{best.itemName}}</h4>
       </div>
-                       
+      <h5>Reviews</h5>
+    </div>
+  </div>
+  <div class="container" style="width: 74rem;margin-left: 14rem;margin-top: 7rem;">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="comments-list" style="margin-top: 7rem;margin-bottom: 4rem;" *ngFor="let com of _comment">
+          <div class="media">
+            <a class="media-left" href="#">
+              <img src="http://lorempixel.com/40/40/people/1/">
+            </a>
+            <div class="media-body">
+              {{com.client.clientFname +" "+com.client.clientLname}}
+            </div>
+            <div>
+              {{com.orderReviewComment}}
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
 </div>

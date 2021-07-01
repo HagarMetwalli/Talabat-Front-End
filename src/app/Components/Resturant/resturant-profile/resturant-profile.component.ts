@@ -85,7 +85,8 @@ export class ResturantProfileComponent implements OnInit {
 
   _comment: any = [];
   _name: any = [];
-  all: Array<Commentdetails> | undefined;
+  commentsWithName: Commentdetails[] = [];
+
   nid: any;
   _bestselling: any;
 
@@ -178,20 +179,7 @@ export class ResturantProfileComponent implements OnInit {
       });
 
 
-    this.OrderService.storecomments(this.id).subscribe(
-      comment => {
-        console.log(comment);
-        this._comment = comment;
-        //console.log(this._comment.length);
-        for (var i = 0; i < this._comment.length; i++) {
-          console.log("_comment", this._comment[i].clientId);
-          //subscribe client by id
-
-          //array comment and the names create new model for comment (Fname  Lname  comment)
-        }
-
-      });
-
+    // console.log("array+++", this.commentsWithName);
     this._StoreprofileService.gettopitem(this.id).subscribe(bestselling => {
       console.log("the best", bestselling);
       this._bestselling = bestselling;
@@ -223,6 +211,47 @@ export class ResturantProfileComponent implements OnInit {
       });
 
     });
+    let a: any;
+    let b: any;
+    let c: any;
+
+
+    this.OrderService.storecomments(this.id).subscribe(
+      comment => {
+        console.log(comment);
+        this._comment = comment;
+        //console.log(this._comment.length);
+        // for (var i = 0; i < this._comment.length; i++) {
+        //   console.log("_comment", this._comment[i].clientId);
+        //   console.log("review", this._comment[i].orderReviewComment);
+        //   a= this._comment[i].orderReviewComment;
+
+        //   //subscribe client by id
+        //   this.ClientService.getbyid(this._comment[i].clientId).subscribe(
+        //     client => {
+        //       console.log("client name", client);
+        //       console.log("info_______", client.clientFname);
+        //       b=client.clientFname;
+        //       c=client.clientLname;
+
+
+        //     //   setTimeout(() => {
+        //     //     console.log("info_______", client.clientFname);
+        //     //     //comment[i].orderReviewComment,
+        //     //     this.commentsWithName.push({
+        //     //       "firstname": client.clientFname,
+        //     //       "lastname": client.clientLname,
+        //     //       "comment": this._comment[i].orderReviewComment
+        //     //     })
+        //     //   }, 3000);
+        //     });
+
+
+        //   //array comment and the names create new model for comment (Fname  Lname  comment)
+        // }
+
+      });
+
 
 
   }
