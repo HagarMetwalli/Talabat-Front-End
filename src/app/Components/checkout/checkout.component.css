@@ -247,7 +247,7 @@
 
 
 button.btn {
-  width: 48rem;
+  width: 71rem;
   height: 4rem;
   background: green;
   color: #fff;
@@ -286,10 +286,7 @@ p {
   font-family: Lato;
 }
 
-.example-card {
-  max-width: 500px;
-  margin: 4px
-}
+
 
 mat-card-subtitle {
   font-size: 30px
@@ -332,11 +329,6 @@ textarea {
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: #2f00ff !important;
-}
-
-.example-card[_ngcontent-xuw-c100] {
-  max-width: 70rem;
-  margin: 4rem;
 }
 
 textarea.mat-input-element {

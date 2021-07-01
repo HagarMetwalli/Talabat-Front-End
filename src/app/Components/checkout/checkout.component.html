@@ -1,6 +1,6 @@
 <section id="checkout-container">
   <div class="container">
-    <div class="row py-5">
+    <div class="row">
       <!-- <order revieweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee> -->
 
       <div class="col-md-4 order-md-2 mb-4">
@@ -9,11 +9,13 @@
             <mat-card-title>
               <span style="display: inline">
                 your order
-                <span class="label label-success">{{numcount }}</span>
-
+                <span class="label label-success">{{ numcount }}</span>
               </span>
 
-              <a style="padding-inline-start: 4rem" [routerLink]="['/storemenu/', id]">Modify order
+              <a
+                style="padding-inline-start: 4rem"
+                [routerLink]="['/storemenu/', id]"
+                >Modify order
               </a>
             </mat-card-title>
           </mat-card-header>
@@ -40,12 +42,13 @@
                 </tr>
 
                 <hr class="mb-2" />
-                <h3> Total: {{cartservice.totalPrice }}(EGP)</h3>
-                <hr class="mb-2" *ngIf="msg">
-                <h3 *ngIf="msg">Discount: -{{Discount}}</h3>
+                <h3>Total: {{ cartservice.totalPrice }}(EGP)</h3>
                 <hr class="mb-2" *ngIf="msg" />
-                <h3 *ngIf="msg">Net Total: {{cartservice.totalPrice-Discount }}(EGP)</h3>
-
+                <h3 *ngIf="msg">Discount: -{{ Discount }}</h3>
+                <hr class="mb-2" *ngIf="msg" />
+                <h3 *ngIf="msg">
+                  Net Total: {{ cartservice.totalPrice - Discount }}(EGP)
+                </h3>
               </tbody>
             </table>
           </mat-card-content>
@@ -62,9 +65,13 @@
             <form class="form-inline">
               <div class="form-row align-items-center">
                 <mat-form-field>
-
-                  <input type="text" matInput placeholder="Enter voucher code" name="voucherkey"
-                    [(ngModel)]="voucherkey" />
+                  <input
+                    type="text"
+                    matInput
+                    placeholder="Enter voucher code"
+                    name="voucherkey"
+                    [(ngModel)]="voucherkey"
+                  />
 
                   <!-- <mat-error *ngIf="vouchercode.hasError('pattern')">
                   voucher code isn't valid (pleace check it's ending date)
@@ -72,10 +79,13 @@
                 </mat-form-field>
               </div>
 
-              <button class="voucher" type="submit" (click)="voucher()">REDEEM</button>
-              <h3 class="massage" *ngIf="msg"> You will have a {{Discount}}(EGP) discount</h3>
-              <h3 class="massage2" *ngIf="msg2"> This is a not valid voucher</h3>
-
+              <button class="voucher" type="submit" (click)="voucher()">
+                REDEEM
+              </button>
+              <h3 class="massage" *ngIf="msg">
+                You will have a {{ Discount }}(EGP) discount
+              </h3>
+              <h3 class="massage2" *ngIf="msg2">This is a not valid voucher</h3>
             </form>
           </mat-card-content>
         </mat-card>
@@ -83,14 +93,9 @@
 
       <!-- <ADRESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS> -->
 
-
-
-
-
       <div class="col-md-8 order-md-1">
         <form>
-          <div class="mb-3 text-center">
-
+          <div class="text-center">
             <mat-card class="example-card">
               <mat-card-header class="text-center">
                 <mat-card-title>Address</mat-card-title>
@@ -100,18 +105,27 @@
                 <hr class="mb-3" />
 
                 <p>bind here adress details</p>
-                <div>Address Name: {{city}}</div>
-                <div>Address: {{streetName}} St, Building: {{buildingNo}},
-                  Floor: {{floorNo}}, Apartment: {{apartmentNo}}</div>
-                <div>Mobile: +20 {{mobileNumber}}</div>
-
+                <div>Address Name: {{ city }}</div>
+                <div>
+                  Address: {{ streetName }} St, Building: {{ buildingNo }},
+                  Floor: {{ floorNo }}, Apartment: {{ apartmentNo }}
+                </div>
+                <div>Mobile: +20 {{ mobileNumber }}</div>
               </mat-card-content>
               <mat-card-actions>
-                <button mat-button style="background-color: blue; color: white" (click)="openAddressModalOnClick()">
+                <button
+                  mat-button
+                  style="background-color: blue; color: white"
+                  (click)="openAddressModalOnClick()"
+                >
                   edit
                 </button>
 
-                <button mat-button style="background-color: green; color: white" (click)="openAddressModalOnClick()">
+                <button
+                  mat-button
+                  style="background-color: green; color: white"
+                  (click)="openAddressModalOnClick()"
+                >
                   add
                 </button>
               </mat-card-actions>
@@ -121,9 +135,14 @@
           <ng-template #template>
             <div class="modal-content map">
               <div class="modal-header">
-
                 <span class="modalheader">Delivery Address</span>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bsModalRef.hide()">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  (click)="bsModalRef.hide()"
+                >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -133,67 +152,137 @@
                     <form [formGroup]="firstFormGroup">
                       <ng-template matStepLabel> Address Map</ng-template>
                       <div class="form-group">
-                        <input type="text" class="form-control empty" name="search-bar" value=""
-                          placeholder="Search Nearest Location" (keydown.enter)="$event.preventDefault()"
-                          autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+                        <input
+                          type="text"
+                          class="form-control empty"
+                          name="search-bar"
+                          value=""
+                          placeholder="Search Nearest Location"
+                          (keydown.enter)="$event.preventDefault()"
+                          autocorrect="off"
+                          autocapitalize="off"
+                          spellcheck="off"
+                          type="text"
+                          #search
+                        />
                       </div>
 
-                      <agm-map style="width: 518px; height: 400px;" [latitude]="latitude" [longitude]="longitude"
-                        [zoom]="zoom" [usePanning]="true" (centerChange)="centerChanged($event)"
-                        (mapReady)="mapReady($event)">
-
+                      <agm-map
+                        style="width: 518px; height: 400px"
+                        [latitude]="latitude"
+                        [longitude]="longitude"
+                        [zoom]="zoom"
+                        [usePanning]="true"
+                        (centerChange)="centerChanged($event)"
+                        (mapReady)="mapReady($event)"
+                      >
                       </agm-map>
                       <div class="map-center-overlay">
-                        <img src="../../assets/home/map-marker.svg" width="30" height="30">
+                        <img
+                          src="../../assets/home/map-marker.svg"
+                          width="30"
+                          height="30"
+                        />
                       </div>
                       <div>
-                        <button mat-button matStepperNext [disabled]="btnDisabled"
-                          (click)="CheckAddressInZone()">Next</button>
+                        <button
+                          mat-button
+                          matStepperNext
+                          [disabled]="btnDisabled"
+                          (click)="CheckAddressInZone()"
+                        >
+                          Next
+                        </button>
                       </div>
                     </form>
                   </mat-step>
                   <mat-step [stepControl]="secondAddressFormGroup">
-                    <form [formGroup]="secondAddressFormGroup" (ngSubmit)="submitAddress()">
+                    <form
+                      [formGroup]="secondAddressFormGroup"
+                      (ngSubmit)="submitAddress()"
+                    >
                       <ng-template matStepLabel>Address Details</ng-template>
                       <mat-form-field>
                         <mat-label>Mobile Number</mat-label>
-                        <input matInput placeholder="Mobile Number" formControlName="mobileNumber"
-                          [(ngModel)]="clientAddress.clientAddressMobileNumber" name="mobileNumber" required>
+                        <input
+                          matInput
+                          placeholder="Mobile Number"
+                          formControlName="mobileNumber"
+                          [(ngModel)]="clientAddress.clientAddressMobileNumber"
+                          name="mobileNumber"
+                          required
+                        />
                       </mat-form-field>
                       <br />
                       <mat-form-field>
                         <mat-label>landLine Number</mat-label>
-                        <input matInput placeholder="LandLine Number" formControlName="landLine"
-                          [(ngModel)]="clientAddress.clientAddressLandLine" name="landLine">
+                        <input
+                          matInput
+                          placeholder="LandLine Number"
+                          formControlName="landLine"
+                          [(ngModel)]="clientAddress.clientAddressLandLine"
+                          name="landLine"
+                        />
                       </mat-form-field>
                       <br />
                       <mat-form-field>
                         <mat-label>City</mat-label>
-                        <input matInput placeholder="City" formControlName="city" required>
+                        <input
+                          matInput
+                          placeholder="City"
+                          formControlName="city"
+                          required
+                        />
                       </mat-form-field>
                       <br />
                       <mat-form-field>
                         <mat-label>Street Name</mat-label>
-                        <input matInput placeholder="Street Name" formControlName="streetName"
-                          [(ngModel)]="clientAddress.clientAddressStreet" name="streetName" required>
+                        <input
+                          matInput
+                          placeholder="Street Name"
+                          formControlName="streetName"
+                          [(ngModel)]="clientAddress.clientAddressStreet"
+                          name="streetName"
+                          required
+                        />
                       </mat-form-field>
                       <br />
                       <mat-form-field>
                         <mat-label>Building No</mat-label>
-                        <input matInput placeholder="Building No" formControlName="buildingNo"
-                          [(ngModel)]="clientAddress.clientAddressBuilding" name="buildingNo" required>
+                        <input
+                          matInput
+                          placeholder="Building No"
+                          formControlName="buildingNo"
+                          [(ngModel)]="clientAddress.clientAddressBuilding"
+                          name="buildingNo"
+                          required
+                        />
                       </mat-form-field>
                       <br />
                       <mat-form-field>
                         <mat-label>Floor No</mat-label>
-                        <input matInput placeholder="Floor No" formControlName="floorNo"
-                          [(ngModel)]="clientAddress.clientAddressFloor" name="floorNo" required>
+                        <input
+                          matInput
+                          placeholder="Floor No"
+                          formControlName="floorNo"
+                          [(ngModel)]="clientAddress.clientAddressFloor"
+                          name="floorNo"
+                          required
+                        />
                       </mat-form-field>
                       <br />
                       <mat-form-field>
                         <mat-label>Apartment No</mat-label>
-                        <input matInput placeholder="Apartment No" formControlName="apartmentNo"
-                          [(ngModel)]="clientAddress.clientAddressApartmentNumber" name="apartmentNo" required>
+                        <input
+                          matInput
+                          placeholder="Apartment No"
+                          formControlName="apartmentNo"
+                          [(ngModel)]="
+                            clientAddress.clientAddressApartmentNumber
+                          "
+                          name="apartmentNo"
+                          required
+                        />
                       </mat-form-field>
                       <br />
                       <div>
@@ -207,19 +296,35 @@
                     <p>You are now done.</p>
                     <!-- For Testing -->
                     <mat-list>
-                      <mat-list-item> <strong>Mobile Number:</strong> {{ this.secondAddressFormGroup.value.mobileNumber
-                        }}</mat-list-item>
-                      <mat-list-item> <strong>LandLine:</strong> {{ this.secondAddressFormGroup.value.landLine }}
+                      <mat-list-item>
+                        <strong>Mobile Number:</strong>
+                        {{
+                          this.secondAddressFormGroup.value.mobileNumber
+                        }}</mat-list-item
+                      >
+                      <mat-list-item>
+                        <strong>LandLine:</strong>
+                        {{ this.secondAddressFormGroup.value.landLine }}
                       </mat-list-item>
-                      <mat-list-item> <strong>City:</strong> {{ this.secondAddressFormGroup.value.city }}
+                      <mat-list-item>
+                        <strong>City:</strong>
+                        {{ this.secondAddressFormGroup.value.city }}
                       </mat-list-item>
-                      <mat-list-item> <strong>Street Name:</strong> {{ this.secondAddressFormGroup.value.streetName }}
+                      <mat-list-item>
+                        <strong>Street Name:</strong>
+                        {{ this.secondAddressFormGroup.value.streetName }}
                       </mat-list-item>
-                      <mat-list-item> <strong>Building No:</strong> {{ this.secondAddressFormGroup.value.buildingNo }}
+                      <mat-list-item>
+                        <strong>Building No:</strong>
+                        {{ this.secondAddressFormGroup.value.buildingNo }}
                       </mat-list-item>
-                      <mat-list-item> <strong>Floor No:</strong> {{ this.secondAddressFormGroup.value.floorNo }}
+                      <mat-list-item>
+                        <strong>Floor No:</strong>
+                        {{ this.secondAddressFormGroup.value.floorNo }}
                       </mat-list-item>
-                      <mat-list-item> <strong>Apartment No:</strong> {{ this.secondAddressFormGroup.value.apartmentNo }}
+                      <mat-list-item>
+                        <strong>Apartment No:</strong>
+                        {{ this.secondAddressFormGroup.value.apartmentNo }}
                       </mat-list-item>
                     </mat-list>
 
@@ -231,17 +336,15 @@
                 </mat-horizontal-stepper>
               </div>
               <div class="modal-footer">
-                <input type="submit" class="btn btn-primary navigate" (click)="getClientAddress(clientAddress)">Confirm
+                <input
+                  type="submit"
+                  class="btn btn-primary navigate"
+                  (click)="getClientAddress(clientAddress)"
+                />Confirm
                 <!-- <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button> -->
               </div>
             </div>
           </ng-template>
-
-
-
-          <hr class="mb-3" />
-
-
 
           <hr class="mb-3" />
           <!-- <speciall requesssssssssssssssssssssssssssssssssssst> -->
@@ -254,11 +357,11 @@
               <mat-card-content class="text-center">
                 <hr class="mb-3" />
 
-                <textarea class="text-center" matInput [(ngModel)]="speciall"> </textarea>
+                <textarea class="text-center" matInput [(ngModel)]="speciall">
+                </textarea>
               </mat-card-content>
             </mat-card>
           </div>
-
 
           <hr class="mb-3" />
           <!-- <occrdion> -->
@@ -267,9 +370,12 @@
             <mat-expansion-panel #panel1 disabled>
               <mat-expansion-panel-header style="align-items: center">
                 <mat-panel-description>
-
-                  <mat-radio-button (change)="onChange($event, panel1)" name="services" id="service1" value="service1">
-
+                  <mat-radio-button
+                    (change)="onChange($event, panel1)"
+                    name="services"
+                    id="service1"
+                    value="service1"
+                  >
                     Online Payment
                   </mat-radio-button>
                 </mat-panel-description>
@@ -288,26 +394,30 @@
             <mat-expansion-panel #panel2 disabled>
               <mat-expansion-panel-header>
                 <mat-panel-description>
-
-                  <mat-radio-button (change)="onChange($event, panel2)" name="services" id="service2" value="service2"
-                    style="line-height: 2">
-                    Cash On delivery</mat-radio-button>
+                  <mat-radio-button
+                    (change)="onChange($event, panel2)"
+                    name="services"
+                    id="service2"
+                    value="service2"
+                    style="line-height: 2"
+                  >
+                    Cash On delivery</mat-radio-button
+                  >
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              <h3> You will pay on delivery </h3>
+              <h3>You will pay on delivery</h3>
             </mat-expansion-panel>
           </mat-accordion>
 
-
-
-
           <hr class="mb-4" />
-          <button class="btn" type="submit" (click)="placeOrder()">Place order</button>
-          <h3 class="massage2" *ngIf="ordermsg"> This order can't be Completed !!</h3>
+          <button class="btn" type="submit" (click)="placeOrder()">
+            Place order
+          </button>
+          <h3 class="massage2" *ngIf="ordermsg">
+            This order can't be Completed !!
+          </h3>
         </form>
       </div>
     </div>
   </div>
-
 </section>
-
