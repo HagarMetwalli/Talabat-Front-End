@@ -2,6 +2,7 @@ export class Store {
   constructor(
     public storeId?: number,
     public storeName?: string,
+    public storeImage?: string,
     public storeDescription?: string,
     public countryId?: number,
     public storeAddress?: string,
