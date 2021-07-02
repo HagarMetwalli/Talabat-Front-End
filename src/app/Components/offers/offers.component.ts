@@ -2,6 +2,7 @@ import {
   Component,
   Input,
   OnInit,
+  Output,
   TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
@@ -78,5 +79,8 @@ export class OffersComponent implements OnInit {
       console.log('el items ely fe el coupons ', items);
       this.Coupitems = items;
     });
+  }
+  storeprofileshow(@Output() id: number) {
+    this.router.navigate(['/store-profile', id]);
   }
 }

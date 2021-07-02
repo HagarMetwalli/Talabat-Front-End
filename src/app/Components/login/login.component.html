@@ -1,106 +1,113 @@
 <div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
-  <span aria-hidden="true">&times;</span>
-</button>
+  <button
+    type="button"
+    class="close"
+    data-dismiss="modal"
+    aria-label="Close"
+    (click)="closeModal()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <div class="login">
-    <form
-      action=""
-      class="login-form"
-      name="formGroup"
-      #log="ngForm"
-      [formGroup]="loginForm"
-      (ngSubmit)="onSubmit()"
-    >
-      <div class="form-group">
-        <h1>Login</h1>
+  <form
+    action=""
+    class="login-form"
+    name="formGroup"
+    #log="ngForm"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form-group">
+      <h1>Login</h1>
+      <input
+        formControlName="email"
+        type="email"
+        placeholder="Enter your Email"
+        class="form-control"
+        [(ngModel)]="loggedClient.email"
+        [ngClass]="{ 'is-invalid': submitted && fieldget.email.errors }"
+        required
+        [readonly]="disableSelecto"
+      />
+      <div *ngIf="submitted && fieldget.email.errors" class="invalid-feedback">
+        <div class="errormsg" *ngIf="fieldget.email.errors.required">
+          Email is <strong>required</strong>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        formControlName="password"
+        placeholder=" Enter your Password"
+        class="form-control"
+        [(ngModel)]="loggedClient.password"
+        [ngClass]="{
+          'is-invalid': submitted && fieldget.password.errors
+        }"
+        required
+        [readonly]="disableSelect"
+      />
+
+      <div
+        *ngIf="submitted && fieldget.password.errors"
+        class="invalid-feedback"
+      >
+        <div class="errormsg" *ngIf="fieldget.password.errors.required">
+          Password is <strong>required</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="remember">
+      <label class="custom-checkbox"
+        >Keep me logged in
         <input
-          formControlName="email"
-          type="email"
-          placeholder="Enter your Email"
-          class="form-control"
-          [(ngModel)]="loggedClient.email"
-          [ngClass]="{ 'is-invalid': submitted && fieldget.email.errors }"
-          required
+          type="checkbox"
+          checked="checked"
+          (change)="rememberMe = !rememberMe"
         />
-        <div *ngIf="submitted && fieldget.email.errors" class="invalid-feedback">
-          <div class="errormsg" *ngIf="fieldget.email.errors.required">
-            Email is <strong>required</strong>
-          </div>
-        </div>
+        <span class="checkmark"></span>
+      </label>
+      <!-- <a href="#" class="pull-right">Forgot Password?</a> -->
+    </div>
+    <button class="btn" type="submit">Login</button>
+
+    <div class="col-md-12">
+      <div class="login-or">
+        <hr class="hr-or" />
+        <span class="span-or">OR</span>
       </div>
-      <div class="form-group">
-        <input
-          type="password"
-          formControlName="password"
-          placeholder=" Enter your Password"
-          class="form-control"
-          [(ngModel)]="loggedClient.password"
-          [ngClass]="{
-            'is-invalid': submitted && fieldget.password.errors
-          }"
-          required
-        />
+    </div>
 
-        <div
-          *ngIf="submitted && fieldget.password.errors"
-          class="invalid-feedback"
-        >
-          <div class="errormsg" *ngIf="fieldget.password.errors.required">
-            Password is <strong>required</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="remember">
-        <label class="custom-checkbox"
-          >Keep me logged in
-          <input
-            type="checkbox"
-            checked="checked"
-            (change)="rememberMe = !rememberMe"
-          />
-          <span class="checkmark"></span>
-        </label>
-        <a href="#" class="pull-right">Forgot Password?</a>
-      </div>
-      <button class="btn" type="submit">Login</button>
-
-      <div class="col-md-12">
-        <div class="login-or">
-          <hr class="hr-or" />
-          <span class="span-or">OR</span>
-        </div>
-      </div>
-
-
-      <div class="icons">
-        <a (click)="signInWithGoogle()"><i class="fab fa-google"></i></a>
-        <a (click)="signInWithFB()"><i class="fab fa-facebook-square"></i></a>
-        <!-- <img
+    <div class="icons">
+      <a (click)="signInWithGoogle()"><i class="fab fa-google"></i></a>
+      <a (click)="signInWithFB()"><i class="fab fa-facebook-square"></i></a>
+      <!-- <img
           class="icon1 mr-2"
           (click)="signInWithGoogle()"
           src="../../assets/google.png"
         /> -->
-        <!-- <img
+      <!-- <img
           class="icon2 ml-2"
           (click)="signInWithFB()"
           src="../../assets/facebook.png"
         /> -->
-      </div>
+    </div>
 
-      <p
-        [routerLink]="['/register']"
-        routerLinkActive="router-link-active"
-        class="reg"
-      >
-        Don't have an account?
-        <a (click)="closeModal()" class="signup"> Sign Up</a>
-      </p>
-    </form>
-  </div>
-  <!-- social -->
-  <!-- <div *ngIf="user" class="card text-center">
+    <p
+      [routerLink]="['/register']"
+      routerLinkActive="router-link-active"
+      class="reg"
+    >
+      Don't have an account?
+      <a (click)="closeModal()" class="signup"> Sign Up</a>
+    </p>
+  </form>
+</div>
+<!-- social -->
+<!-- <div *ngIf="user" class="card text-center">
     <div class="card-block"></div>
     <img
       *ngIf="user.photoUrl"

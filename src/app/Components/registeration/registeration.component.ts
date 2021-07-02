@@ -20,6 +20,7 @@ import { CustomValidationService } from './../../Services/custom-validation.serv
 import { ClientService } from './../../Services/client.service';
 import Swal from 'sweetalert2';
 import { NavbarService } from 'src/app/Services/Home/navbar.service';
+import { NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-registeration',
@@ -32,6 +33,8 @@ export class RegisterationComponent implements OnInit {
   submitted = false;
   //login modal
   bsmodalRef?: BsModalRef;
+  disableSelect: boolean = false;
+  disableSelecto: boolean = false;
   hide = true;
   hide0 = true;
 
@@ -50,7 +53,6 @@ export class RegisterationComponent implements OnInit {
   };
   GoogleLoginProvider = GoogleLoginProvider;
   FacebookLoginProvider = FacebookLoginProvider;
-
   client: Client = {
     clientFname: '',
     clientLname: '',
@@ -79,7 +81,7 @@ export class RegisterationComponent implements OnInit {
     private authService: AuthService,
     private clientservice: ClientService,
     public nav: NavbarService
-  ) { }
+  ) {}
   //toOpenLoginModal
   openModal() {
     this.bsmodalRef = this.modalService.show(LoginComponent);
@@ -89,7 +91,7 @@ export class RegisterationComponent implements OnInit {
     this.nav.show();
 
     this.registerForm = this.formBuilder.group({
-      //   clientPassword:['', Validators.compose([Validators.required, this.cs.patternValidator()])],
+      clientFname: [{ value: '', disabled: true }],
 
       //   cclientPassword: ['', Validators.required]
       // },
@@ -156,6 +158,9 @@ export class RegisterationComponent implements OnInit {
         (this.client.clientLname = this.user.lastName),
         (this.client.clientEmail = this.user.email),
         (this.client.clientPassword = this.user.firstName + this.user.id);
+
+      this.disableSelect = true;
+      this.disableSelecto = true;
     });
 
     console.log('data from google', this.user);
@@ -175,7 +180,6 @@ export class RegisterationComponent implements OnInit {
         (this.client.clientEmail = this.user.email),
         (this.client.clientPassword = this.user.firstName + this.user.id);
     });
-    console.log('data from google', this.user);
-    console.log('client', this.client);
+    this.disableSelect = true;
   }
 }
