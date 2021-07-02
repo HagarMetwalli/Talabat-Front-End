@@ -41,13 +41,15 @@ html, body { margin: 0; padding: 0}
 }
 
 .discovered-area {
-    color: #ff5a00;
+    color: #ff5900c5;
+    text-decoration: underline;
 }
 
 .top-page-announc-content h1 {
     font-weight: 700;
     font-size: 33px;
     color: #fff;
+    line-height: 1.5;
 }
 
 .top-page-announc .discover-action {
@@ -139,7 +141,7 @@ hr {
     border: 1px solid #ff5a00;
 }
 
-.btn-cuisines #cuisine-type-more {
+.btn-cuisines .cuisine-type-more {
   margin-right: 20px ;
   border-radius: 5px;
   width: auto;
@@ -147,7 +149,7 @@ hr {
   padding: auto 20px;
   vertical-align: middle;
   outline: none;
-  background: none;
+
 }
 
 .bts-cuisines .cuisine-type a {
@@ -158,7 +160,12 @@ hr {
     padding: 5px 30px;
 }
 
-.bts-cuisines .cuisine-type-more a {
+#cuisines-filters .btn-cuisines .cuisine-type-more.more{
+  background: #0aa89e;
+  border: 1px solid #0aa89e;
+}
+
+.bts-cuisines a .cuisine-type-more {
   color: #000;
   text-decoration: none;
   font-size: 15px;
@@ -167,11 +174,11 @@ hr {
 }
 
 #cuisines-filters .bts-cuisines .cuisine-type.active {
-    background: #ff5a00;
-    border: 1px solid #ff5a00
+    background: #0aa89e;
+    border: 1px solid #0aa89e
 }
 
-#cuisines-filters .bts-cuisines .cuisine-type.active a{
+#cuisines-filters .bts-cuisines a .cuisine-type.active{
     color: #fff;
 }
 
@@ -191,7 +198,7 @@ hr {
 
 .search-restaurant input {
     border-radius: 8px;
-    border: 2px solid #ff5a00;
+    border: 2px solid #0aa89e;
     outline: none;
     padding: 10px;
 }
@@ -199,7 +206,7 @@ hr {
 .search-restaurant .search-icon {
     width: 30px;
     height: 45px;
-    background-color: #ff5a00;
+    background-color: #0aa89e;
     position: relative;
     left: -32px;
     border: 0;
@@ -298,12 +305,13 @@ border-radius: 50%;
     border: 1px solid rgb(117, 117, 117);
     border-left: 0;
     border-right: 0;
-    width: 83%;
+    width: 96%;
 }
 
 .sort-by .sort-by-scope {
     display: flex;
-    padding: 0px
+    padding: 0px;
+    justify-content: center;
 }
 
 .sort-by .sort-by-title {
@@ -333,7 +341,7 @@ border: 0;
 }
 
 .sort-by .sort-by-scope #sort-by-list .active{
-    color: #ff5a00;
+    color: #0aa89e;
     margin-right: 50px;
     margin-bottom: 0px;
     font-weight: 600 !important;
@@ -409,7 +417,7 @@ border: 0;
 
 .restaurant-caption .restaurant-review-box .review{
     padding: 8px;
-    background-color: #ff5a00;
+    background-color: #0aa89e;
     border-radius: 8px;
     color: #fff;
 }
@@ -445,4 +453,11 @@ border: 0;
 .main-recipe, .restaurant-info span {
     font-size: 15px;
     color: #222;
+}
+.pag{
+    width: 300px;
+    margin-left: 66rem;
+    position: relative;
+    top: 70rem;
+    font-size: 16px;
 }

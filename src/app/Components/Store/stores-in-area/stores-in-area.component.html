@@ -3,11 +3,11 @@
     <div class="top-page-announc">
         <div class="top-page-announc-content">
             <p>Order Food Online in
-                <span>6 October</span>
+                <span>Talabat</span>
             </p>
             <h1>
                 Order Food Online from Best & Nearby <br>Restaurants in
-                <span class="discovered-area">6 October</span>
+                <span class="discovered-area">Talabat</span>
             </h1>
         </div>
         <!-- <a href="#"><button class="discover-action">
@@ -18,60 +18,63 @@
 </header>
 <div class="breadcrumb">
     <p>
-        Home <i class="fa fa-chevron-right bc-dir"></i><span class="bc"> 6th of October - Haram City</span>
+        <span style="color: blue"> Home </span>
+        <i class="fa fa-chevron-right bc-dir"></i><span class="bc"> Nearest - Stores</span>
     </p>
 </div>
 <div class="pre-local-restaurants">
-    <h1>Order Online for delivery, pick up or catering from <span>Haram City</span> restaurants</h1>
-    <p><span class="discovered-area"> </span> restaurants near Haram City</p>
+    <h1>Order Online for delivery, pick up or catering from restaurants around you</h1>
+    <p><span class="discovered-area"> </span> restaurants near to your location</p>
 </div>
 <hr>
 <section id="cuisines-filters">
     <div class="bts-cuisines">
-        <button class="cuisine-type active"><a href="#">All Cuisines</a></button>
-        <button class="cuisine-type"><a href="#">African</a></button>
-        <button class="cuisine-type"><a href="#">Asian</a></button>
-        <button class="cuisine-type"><a href="#">Beverages</a></button>
-        <button class="cuisine-type"><a href="#">Breakfast</a></button>
-        <button class="cuisine-type"><a href="#">Burgers</a></button>
-        <button class="cuisine-type-more"><a href="#">More</a></button>
+        <a href="" onclick="getfilterTabs('')"><button class="cuisine-type active">All Cuisines</button></a>
+        <a href="" onclick="getfilterTabs('Italian')"><button class="cuisine-type">Italian</button></a>
+        <a href="" onclick="getfilterTabs('Egypt')"><button class="cuisine-type">Egypt</button></a>
+        <a href="" onclick="getfilterTabs('China')"><button class="cuisine-type">China</button></a>
+        <a href="" onclick="getfilterTabs('Japan')"><button class="cuisine-type">Japan</button></a>
+        <a href="" onclick="getfilterTabs('Corean')"><button class="cuisine-type">Corean</button></a>
+        <!-- <button class="cuisine-type-more more"><a href="#">More</a></button> -->
     </div>
 </section>
 <section id="under-cuisines">
     <div class="row">
         <div class="col-lg-2">
             <div class="search-restaurant">
-                <input type="text" name="search" placeholder="Search Restaurants" (ngModel)="filterTerm">
+                <input type="text" name="search" placeholder="Search Restaurants" [(ngModel)]="filterTerm">
                 <button class="search-icon"><i class="fa fa-search fa-3x"></i></button>
             </div>
+
             <div class="filter-factors">
                 <div class="filter-by">
-                    <button class="filter-by-title">Filter By</button>
+                    <button class="filter-by-title"> Filter By</button>
                     <ul id="filter-by-list">
-                        <li><label class="switch" for="checkbox">
-                                <input type="checkbox" id="checkbox" />
+                        <li><label class="switch" for="checkbox1">
+                                <input type="checkbox" id="checkbox1" [(ng-model)]="filter.Egypt" />
                                 <div class="slider round"></div>
-                            </label>Deals & Offers</li>
-                        <li><label class="switch" for="checkbox">
-                                <input type="checkbox" id="checkbox" />
+                            </label>Egypt</li>
+                        <li><label class="switch" for="checkbox2">
+                                <input type="checkbox" id="checkbox2" [(ng-model)]="filter.China"/>
                                 <div class="slider round"></div>
-                            </label>Breakfast</li>
-                        <li><label class="switch" for="checkbox">
-                                <input type="checkbox" id="checkbox" />
+                            </label>China</li>
+                        <li><label class="switch" for="checkbox3">
+                                <input type="checkbox" id="checkbox3" [(ng-model)]="filter.Muslim"/>
                                 <div class="slider round"></div>
-                            </label>Family Meals</li>
-                        <li><label class="switch" for="checkbox">
-                                <input type="checkbox" id="checkbox" />
+                            </label>Muslim</li>
+                        <li><label class="switch" for="checkbox4">
+                                <input type="checkbox" id="checkbox4" [(ng-model)]="filter.Russian"/>
                                 <div class="slider round"></div>
-                            </label>Health & Beauty</li>
-                        <li><label class="switch" for="checkbox">
-                                <input type="checkbox" id="checkbox" />
+                            </label>Russian</li>
+                        <li><label class="switch" for="checkbox5">
+                                <input type="checkbox" id="checkbox5" [(ng-model)]="filter.KSA"/>
                                 <div class="slider round"></div>
-                            </label>Free Delivery</li>
-                        <li><label class="switch" for="checkbox">
-                                <input type="checkbox" id="checkbox" />
+                            </label>KSA</li>
+                        <li><label class="switch" for="checkbox6">
+                                <input type="checkbox" id="checkbox6" [(ng-model)]="filter.Japan"/>
                                 <div class="slider round"></div>
-                            </label>Use Voucher Here</li>
+                            </label>Japan</li>
+
                     </ul>
                 </div>
             </div>
@@ -90,13 +93,14 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-4" *ngFor="let store of stores | filter: filterTerm
-              | paginate: { itemsPerPage: 3, currentPage: page } ">
+            <div class="col-lg-4" *ngFor="let store of (stores | filter : filters) | filter: filterTerm
+              | paginate: { itemsPerPage: 6, currentPage: page } ">
 
                 <div class="restaurant-box">
                     <div class="restaurant-thumb">
                         <div class="restaurant-overlay"
-                            style="background-image: url('../../assets/restaurants-in-area/burger.jpg');"></div>
+                            style="background-image: url('../../assets/restaurants-in-area/burger.jpg');">
+                        </div>
                     </div>
                     <div class="restaurant-caption">
                         <a href="#">{{store.storeName}}</a>
@@ -111,9 +115,9 @@
                         </div>
                         <div class="restaurant-info">
                             <div class="main-recipe-icon"><i class="fas fa-clock"></i></div>
-                            <span>Within: {{store.storeDeliveryTime}} mins,&nbsp;</span>
-                            <span>Delivery: {{store.storeDeliveryFee}}.00,&nbsp;</span>
-                            <span>Min: {{store.storeMinOrder}}.00.</span>
+                            <span><strong>Within:</strong> {{store.storeDeliveryTime}} mins,&nbsp;</span>
+                            <span><strong>Delivery:</strong> {{store.storeDeliveryFee}}.00,&nbsp;</span>
+                            <span><strong>Min:</strong> {{store.storeMinOrder}}.00.</span>
                         </div>
                     </div>
                 </div>
@@ -329,10 +333,14 @@
                     </div>
                 </div>
             </div> -->
-            <!--pagination-->
-            <pagination-controls style="margin-top: 50px;" class="text-center current" (pageChange)="page = $event">
-            </pagination-controls>
-
         </div>
     </div>
 </section>
+<!--pagination-->
+<div class="pag">
+  <pagination-controls class="current" (pageChange)="page = $event"></pagination-controls>
+</div>
+<div style="position: relative; top: 75rem">
+  <app-footer></app-footer>
+</div>
+<app-top-page-scroll></app-top-page-scroll>
