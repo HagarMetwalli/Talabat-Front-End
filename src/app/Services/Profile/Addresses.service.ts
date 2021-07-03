@@ -8,6 +8,7 @@ import { ClientAddress } from 'src/app/Models/ClientAddress';
 })
 export class AddressesService {
   private url: string = "https://localhost:44311/api/ClientAddresses";
+  private url2: string = "https://localhost:44311/api/ClientAddresses/AddAdress";
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -23,6 +24,10 @@ export class AddressesService {
     return this.http.get(`${this.url}/${id}`);
   }
 
+  getALLAddresses() {
+    return this.http.get(`${this.url}`);
+  }
+
   deleteAddress(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
@@ -31,5 +36,9 @@ export class AddressesService {
     console.log("aaa: ", aaa);
 
     return this.http.patch(`${this.url}/${aaa.clientAddressId}`, aaa);
+  }
+
+  addspicalAddress(address: any) {
+    return this.http.post(`${this.url2}`, address);
   }
 }

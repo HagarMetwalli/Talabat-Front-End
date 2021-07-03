@@ -36,6 +36,7 @@ import { MatExpansionPanel } from "@angular/material/expansion";
 import { AddressesService } from 'src/app/Services/Profile/Addresses.service';
 import Swal from 'sweetalert2';
 import { ClientAddress } from 'src/app/Models/ClientAddress';
+import { stringify } from '@angular/compiler/src/util';
 
 
 interface Coordinates {
@@ -120,21 +121,23 @@ export class CheckoutComponent implements OnInit {
   secondAddressFormGroup!: FormGroup;
   btnDisabled = true;
 
-  clientAddress: ClientAddress = {
-    clientAddressId: 0,
+  clientAddress: any = {
+
     clientAddressMobileNumber: '',
     clientAddressLandLine: 0,
-    clientAddressAddressTitle: '',
+    clientAddressAddressTitle: "string",
     clientAddressStreet: '',
     clientAddressBuilding: 0,
     clientAddressFloor: 0,
     clientAddressApartmentNumber: 0,
-    clientAddressTypeId: 0,
-    cityId: 0,
+    clientAddressTypeId: 1,
+    CityName: "",
     clientId: 0,
-    regionId: 0,
+    RegionName: "",
     clientAddressOptionalDirections: ''
   };
+
+  Address: ClientAddress[] = [];
 
 
   constructor(
@@ -178,18 +181,18 @@ export class CheckoutComponent implements OnInit {
     map.addListener("dragend", () => {
       this.btnDisabled = true;
       console.log("Sorry, Your Address Out Store Zone !");
-      Swal.fire({
-        icon: 'error',
-        title: 'OutZone...',
-        text: 'Sorry, Your Address Out Store Zone !', });
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'OutZone...',
+      //   text: 'Sorry, Your Address Out Store Zone !', });
       console.log(this.centerLatitude, this.centerLongitude);
       this._googlemapservice.getstoreMenu(this.id, this.centerLatitude, this.centerLongitude).subscribe(
         _res => {
-          console.log("vvvv",_res);
+          console.log("vvvv", _res);
           if (_res[0].status == 200) {
             this.btnDisabled = false;
             console.log("Good, Your Address In Store Zone !");
-           
+
           }
         }
       )
@@ -295,6 +298,25 @@ export class CheckoutComponent implements OnInit {
 
     }
 
+    this.clientAddress.clientId = this.clientid;
+
+
+    //get address
+    this.AddressesService.getALLAddresses().subscribe(
+      (data) => {
+        let parsdata = JSON.stringify(data);
+        let p = JSON.parse(parsdata);
+        console.log("____data______", p[0]);
+        for (let i = 0; i < p.length; i++) {
+
+          this.Address.push(p[i]);
+
+        }
+        //console.log("ooooo", this.Address);
+      }
+    );
+
+
   }//end of ngOnInt
 
 
@@ -333,7 +355,7 @@ export class CheckoutComponent implements OnInit {
   CheckAddressInZone() {
     this._googlemapservice.getstoreMenu(this.storeid, this.latitude, this.longitude).subscribe(
       _res => {
-        console.log("vvvv",_res);
+        console.log("vvvv", _res);
         if (_res[0].status == 200) {
           this.btnDisabled = false;
           console.log("Good, Your Address In Store Zone !");
@@ -355,6 +377,7 @@ export class CheckoutComponent implements OnInit {
 
       mobileNumber: ['', [Validators.required]],
       city: ['', [Validators.required]],
+      Region: ['', [Validators.required]],
       streetName: ['', [Validators.required]],
       buildingNo: ['', [Validators.required]],
       floorNo: ['', [Validators.required]],
@@ -435,10 +458,17 @@ export class CheckoutComponent implements OnInit {
 
   getClientAddress(address: ClientAddress) {
     address = this.clientAddress;
-    console.log("addreeeeeeee",address);
-    this.AddressesService.addAddress(address).subscribe(
+    console.log("addreeeeeeee", address);
+    this.AddressesService.addspicalAddress(address).subscribe(
       (res) => {
         console.log("Address Result: ", res);
+        Swal.fire({
+          icon: 'success',
+          title: 'success...',
+          text: 'Greate, Your adress is added !',
+        });
+        this.modalService.hide();
+
       }
     )
   }
