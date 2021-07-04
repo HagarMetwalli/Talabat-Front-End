@@ -27,8 +27,8 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="cancelModalLabel">Delete Confirmation</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="cancelModalLabel">In Progress...</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
 
         <div *ngFor="let item of orderItems;">
@@ -186,25 +186,28 @@
 
 
   <div class="d-flex flex-row-reverse" *ngIf="co.isDelivered == 1">
-    <button class="btn btn-light text-danger" (click)="openCancel(co.orderId, cancelModalOpen)">Cancel Order
+  <h5 class="modal-title" id="cancelModalLabel">In Progress...</h5>
+    <!-- <button class="btn btn-light text-danger" (click)="openCancel(co.orderId, cancelModalOpen)">Cancel Order
       <button type="button" #cancelModalOpen class="btn btn-primary" data-bs-toggle="modal"
         data-bs-target="#cancelModal" hidden>
       </button>
-    </button>
-    <button class="btn btn-light text-warning linkLike" (click)="opeEdit(DeleteModalOpen)"
+    </button> -->
+    <!-- <button class="btn btn-light text-warning linkLike" (click)="opeEdit(DeleteModalOpen)"
       style="border-right: 1px solid black; margin-right: 1em; padding-right: 1em;">EDIT
       <button type=" button" #DeleteModalOpen class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
-        (click)="getOrderItems(co.orderId)" hidden>
-      </button></button>
+        (click)="getOrderItems(co.orderId)" hidden> -->
+      <!-- </button></button> -->
 
   </div>
 
   <div class="d-flex flex-row-reverse" *ngIf="co.isDelivered == 0">
-    <button class="btn linkLike" (click)="openFeedBack()">Give Feedback?
-      <!-- <button type=" button" #DeleteModalOpen class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
+    <button class="btn linkLike" [routerLink]="['/order-review/',co.orderId]"  >Give Feedback?
+      <!-- 
+        (click)="openFeedBack()"
+        <button type=" button" #DeleteModalOpen class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
         hidden>
       </button> -->
     </button>
   </div>
   <hr />
-</div>
+<!-- </div> -->

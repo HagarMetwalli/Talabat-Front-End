@@ -27,17 +27,17 @@
     <p><span class="discovered-area"> </span> restaurants near to your location</p>
 </div>
 <hr>
-<section id="cuisines-filters">
+<!-- <section id="cuisines-filters">
     <div class="bts-cuisines">
-        <a href="" onclick="getfilterTabs('')"><button class="cuisine-type active">All Cuisines</button></a>
-        <a href="" onclick="getfilterTabs('Italian')"><button class="cuisine-type">Italian</button></a>
-        <a href="" onclick="getfilterTabs('Egypt')"><button class="cuisine-type">Egypt</button></a>
-        <a href="" onclick="getfilterTabs('China')"><button class="cuisine-type">China</button></a>
-        <a href="" onclick="getfilterTabs('Japan')"><button class="cuisine-type">Japan</button></a>
-        <a href="" onclick="getfilterTabs('Corean')"><button class="cuisine-type">Corean</button></a>
-        <!-- <button class="cuisine-type-more more"><a href="#">More</a></button> -->
+        <a><button class="cuisine-type active" (click)="getfilterTabs('')">All Cuisines</button></a>
+        <a (click)="getfilterTabs('Italian')"><button class="cuisine-type">Italian</button></a>
+        <a onclick="getfilterTabs('Egypt')"><button class="cuisine-type">Egypt</button></a>
+        <a onclick="getfilterTabs('China')"><button class="cuisine-type">China</button></a>
+        <a onclick="getfilterTabs('Japan')"><button class="cuisine-type">Japan</button></a>
+        <a onclick="getfilterTabs('Corean')"><button class="cuisine-type">Corean</button></a>
+       <button class="cuisine-type-more more"><a href="#">More</a></button>
     </div>
-</section>
+</section> -->
 <section id="under-cuisines">
     <div class="row">
         <div class="col-lg-2">
@@ -46,7 +46,7 @@
                 <button class="search-icon"><i class="fa fa-search fa-3x"></i></button>
             </div>
 
-            <div class="filter-factors">
+            <!-- <div class="filter-factors">
                 <div class="filter-by">
                     <button class="filter-by-title"> Filter By</button>
                     <ul id="filter-by-list">
@@ -77,11 +77,11 @@
 
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="col-lg-10">
             <div class="sort-by">
-                <div class="sort-by-scope">
+                <!-- <div class="sort-by-scope">
                     <button class="sort-by-title">Sort By :</button>
                     <ul id="sort-by-list">
                         <li class="active">Recommended</li>
@@ -91,7 +91,7 @@
                         <li class="sort-item">Min. Order Amount</li>
                         <li class="sort-item">Fast Delivery</li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-4" *ngFor="let store of (stores | filter : filters) | filter: filterTerm
               | paginate: { itemsPerPage: 6, currentPage: page } ">
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div class="restaurant-caption">
-                        <a href="#">{{store.storeName}}</a>
+                        <a [routerLink]="['/store-profile/',store.storeId]" >{{store.storeName}}</a>
                         <div class="restaurant-review-box">
                             <div class="review">
                                 <span class="review-icon"><i class="far fa-smile"></i> Very Good </span>

@@ -14,6 +14,7 @@ import { ProfileService } from 'src/app/Services/Profile/Profile.service';
 export class MyOrdersComponent implements OnInit {
 
   ordersFlag= true;
+ client: any;
 
 
   constructor(private profService: ProfileService, private router: Router) { }
@@ -64,12 +65,16 @@ export class MyOrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.profService.getClientOrders(1).subscribe(
+
+    this.client = JSON.parse(sessionStorage.client);
+    this.profService.getClientOrders(this.client.clientId).subscribe(
       (result: any) => {
+       if(result.length != 0)
+        {
         this.ordersFlag= false;
         console.log("Result: ", result);
         this.clientOrders = result;
-
+        }
         // this.x = this.clientOrders.forEach(element => {
         //   if (element.isDelivered == 0) {
         //     element.deliveryStatusInString = 'Not Delivered!';

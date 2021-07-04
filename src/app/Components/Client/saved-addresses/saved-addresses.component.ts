@@ -17,6 +17,9 @@ export class SavedAddressesComponent implements OnInit {
 
   addresses: ClientAddress[] = [];
 
+  client: any;
+
+
   addrs: ClientAddress = {
     clientAddressId: 11,
     clientAddressMobileNumber: "666666666",
@@ -98,9 +101,12 @@ export class SavedAddressesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.addressService.getAddressByClientId(1).subscribe(
-      (result: any) => {
 
+    this.client = JSON.parse(sessionStorage.client);
+
+
+    this.addressService.getAddressByClientId(this.client.clientId).subscribe(
+      (result: any) => {
         console.log("Result: ", result);
         this.addresses = result;
       },

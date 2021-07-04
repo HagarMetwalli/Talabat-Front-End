@@ -12,6 +12,7 @@ export class AccountInfoComponent implements OnInit {
 
   getSubNewsValue!: boolean;
   getSubSMSValue!: boolean;
+   client: any;
 
   constructor(private profileService: ProfileService, private router: Router) { }
 
@@ -37,12 +38,13 @@ export class AccountInfoComponent implements OnInit {
   }
 
 
-  onSubmit(btn: HTMLButtonElement) {
+  // onSubmit(btn: HTMLButtonElement) {
+    onSubmit() {
 
     console.log("obj: ", this.c);
 
     if (this.getSubSMSValue === true) {
-      console.log("AAAAAAAAAAAAAA");
+     console.log("AAAAAAAAAAAAAA");
 
       this.c.clientSmsSubscribe = 1;
     } else {
@@ -65,7 +67,7 @@ export class AccountInfoComponent implements OnInit {
       }
     );
 
-    btn.click();
+   // btn.click();
   }
 
   // onLoadProfile(id: number) {
@@ -85,7 +87,8 @@ export class AccountInfoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.profileService.getClient(1).subscribe(
+    this.client = JSON.parse(sessionStorage.client);
+    this.profileService.getClient(this.client.clientId).subscribe(
       (result: any) => {
         console.log("client", result);
         this.c = result;

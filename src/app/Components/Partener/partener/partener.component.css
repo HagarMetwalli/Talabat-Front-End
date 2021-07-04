@@ -11,7 +11,7 @@
     body { margin: 0; }
 
     .video-header {
-        width: 1348px ;
+        width: 1415px ;
         height: 625px;
         /* background-color: rgba(rgba(88, 85, 85, 0.288), 0.66); */
         overflow: hidden;
@@ -24,7 +24,7 @@
         object-fit: cover;
         /* width: 100vw; */
         /* height: 100vh; */
-        width: 1348px;
+        width: 1415px;
         height: 625px;
         position: relative;
         top: 0;
@@ -62,7 +62,7 @@
         -webkit-box-pack: justify;
         justify-content: space-between;
         position: relative;
-        top: -40px;
+        top: -90px;
         clear: both;
     }
 
@@ -100,7 +100,7 @@
     .header-left {
         margin-top: 60px;
         position: relative;
-        top: -100px;
+        top: -150px;
         max-width: 96%;
     }
 
@@ -126,7 +126,7 @@
     .header-right {
         margin-top: 50px;
         position: relative;
-        top: -100px;
+        top: -160px;
         left: 10px;
         border-radius: 5px;
         /* max-width: 4%; */

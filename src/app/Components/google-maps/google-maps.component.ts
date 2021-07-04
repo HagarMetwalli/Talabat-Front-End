@@ -69,9 +69,10 @@ export class GoogleMapsComponent implements OnInit {
        this._googlemapservice.getstores(this.centerLatitude, this.centerLongitude).subscribe(
 
          _stores => {
-         // console.log("the stut", _stores[0].status);
+          console.log("the stut", _stores[0].status);
          if(_stores[0].status==200)
           {
+            //console.log("EEE");
             this.loading = false;
             this.btnDisabled = false;
             this.btnText = 'Deliver here';
@@ -168,7 +169,7 @@ export class GoogleMapsComponent implements OnInit {
 
         this.btnDisabled = false;
         this.btnText = 'Deliver here';
-        this.router.navigate(['/RestInArea/', this.latitude,this.longitude]);
+        this.router.navigate(['/RestInArea/',this.centerLatitude,this.centerLongitude]);
         this.modalService.hide();
 
       })
