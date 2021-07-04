@@ -19,7 +19,7 @@ body{
 }
 h4{
    color: #ff5a00;
-   width: 36rem;
+   width: 20rem;
    font-family:Microsoft Sans Serif;
    font-size: 1.6rem;
    font-weight:bold;
@@ -95,7 +95,16 @@ h5{
 #res{
     width: 20rem;
     margin-bottom: 4rem;
-    margin-right: 4rem;
+    /* margin-right: 4rem; */
+    /* margin-left: 20px; */
+}
+
+.bestRes{
+  justify-content: center;
+    display: flex;
+    position: relative;
+    left: 131px;
+    top: 50px;
 }
 
 .search-bar {

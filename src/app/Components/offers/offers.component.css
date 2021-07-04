@@ -8,6 +8,16 @@
   font-family: 'Roboto';
   letter-spacing: 1px;
 }
+.offerBody{
+   position: relative;
+   top: 0;
+}
+.modal-content {
+    margin-top: 12rem;
+    width: 800px;
+    position: relative;
+    right: 230px;
+}
 #Header{
   width: 1140px;
   height: 350px; 

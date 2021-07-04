@@ -80,20 +80,26 @@
       <h5>Description</h5>
       <p class="text-left" style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
       <h5>Best Selling</h5>
-      <div class="col-lg-4" id="res" *ngFor="let best of _bestselling">
-        <button data-toggle="tooltip" data-placement="bottom" title="Best Selling" id="tooltipbtn">
-          <img src="../../assets/Capture.PNG" id="tooltip" />
-        </button>
-        <h4 style="width: 10rem;">{{best.itemName}}</h4>
+
+      <div class="text-center bestRes">
+        <div class="col-lg-4" id="res" *ngFor="let best of _bestselling let i=index">
+          <button data-toggle="tooltip" data-placement="bottom" *ngIf="i<4" title="Best Selling" id="tooltipbtn">
+            <img src="../../assets/Capture.PNG" id="tooltip" />
+          </button>
+          <h4 style="width: 10rem;" *ngIf="i<4">{{best.itemName}}</h4>
+        </div>
       </div>
+
+
       <h5>Reviews</h5>
     </div>
   </div>
   <div class="container" style="width: 74rem;margin-left: 14rem;margin-top: 7rem;">
     <div class="row">
       <div class="col-md-8">
-        <div class="comments-list" style="margin-top: 7rem;margin-bottom: 4rem;" *ngFor="let com of _comment">
-          <div class="media">
+        <div class="comments-list" style="margin-top: 7rem;margin-bottom: 4rem;"
+          *ngFor="let com of _comment let i=index">
+          <div class="media" *ngIf="i<4">
             <a class="media-left" href="#">
               <img src="http://lorempixel.com/40/40/people/1/">
             </a>

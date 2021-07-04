@@ -9,97 +9,76 @@
   <!-- <mat-icon aria-label="Example home icon">ballot</mat-icon>
 <mat-icon aria-label="Example home icon">local_offer</mat-icon> -->
 
-  <div class="container">
+  <div class="container offerBody">
     <img src="../../../assets/icon_promotions.webp" class="promo-img" />
     <img src="../../../assets/icon_coupons.webp" class="coupon-img" />
 
-    <mat-tab-group
-      class="my-tab-class"
-      (selectedIndexChange)="tabClick($event)"
-    >
+    <mat-tab-group class="my-tab-class" (selectedIndexChange)="tabClick($event)">
       <mat-tab label="Promotions">
         <div class="container">
           <div class="row">
-            <div
-              class="col-lg-3"
-              *ngFor="
+            <div class="col-lg-3" *ngFor="
                 let store of PromsStores
                   | paginate: { itemsPerPage: 4, currentPage: p }
-              "
-            >
+              ">
               <a (click)="openModalprom(template, store.storeId)">
-                <div class="restaurant-box">
-                  <ng-template #template>
-                    <div class="modal-header">
-                      <h4 class="modal-title pull-left">
-                        Offers from {{ store.storeName }}
-                      </h4>
-                      <button
-                        type="button"
-                        class="close pull-right"
-                        aria-label="Close"
-                        (click)="modalRef.hide()"
-                      >
-                        <span aria-hidden="true">×</span>
-                      </button>
-                    </div>
+                <div class="offer-modal-content">
 
-                    <div
-                      class="modal-body"
-                      [routerLink]="['/store-profile/', store.storeId]"
-                      (click)="storeprofileshow(store.storeId)"
-                      (click)="modalRef.hide()"
-                    >
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                          </tr>
-                        </thead>
-                        <!-- <a routerLink="store-profile/:+" store.storeId> -->
-                        <tbody>
-                          <tr *ngFor="let items of Promitems">
-                            <td>{{ items.item.itemImage }}</td>
-                            <td>{{ items.item.itemName }}</td>
-                            <td>{{ items.item.itemDescription }}</td>
-                            <td>{{ items.item.itemPrice }}</td>
-                          </tr>
-                        </tbody>
-                        <!-- </a> -->
-                      </table>
-                    </div>
+                  <div class="restaurant-box">
+                    <ng-template #template>
+                      <div class="modal-header">
+                        <h4 class="modal-title pull-left">
+                          Offers from {{ store.storeName }}
+                        </h4>
+                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
 
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-default"
-                        (click)="modalRef.hide()"
-                      >
-                        Close
-                      </button>
+                      <div class="modal-body" [routerLink]="['/store-profile/', store.storeId]"
+                        (click)="storeprofileshow(store.storeId)" (click)="modalRef.hide()">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Image</th>
+                              <th>Name</th>
+                              <th>Description</th>
+                              <th>Price</th>
+                            </tr>
+                          </thead>
+                          <!-- <a routerLink="store-profile/:+" store.storeId> -->
+                          <tbody>
+                            <tr *ngFor="let items of Promitems">
+                              <td>{{ items.item.itemImage }}</td>
+                              <td>{{ items.item.itemName }}</td>
+                              <td>{{ items.item.itemDescription }}</td>
+                              <td>{{ items.item.itemPrice }}</td>
+                            </tr>
+                          </tbody>
+                          <!-- </a> -->
+                        </table>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+                          Close
+                        </button>
+                      </div>
+
+                    </ng-template>
+                    <div class="restaurant-thumb">
+                      <div class="restaurant-overlay" style="background-image: url('../../assets/dounkin.jpg')"></div>
                     </div>
-                  </ng-template>
-                  <div class="restaurant-thumb">
-                    <div
-                      class="restaurant-overlay"
-                      style="background-image: url('../../assets/dounkin.jpg')"
-                    ></div>
-                  </div>
-                  <div class="restaurant-caption text-center">
-                    <a>{{ store.storeName }}</a>
+                    <div class="restaurant-caption text-center">
+                      <a>{{ store.storeName }}</a>
+                    </div>
                   </div>
                 </div>
               </a>
             </div>
           </div>
           <div class="pag">
-            <pagination-controls
-              class="text-center current"
-              (pageChange)="p = $event"
-            ></pagination-controls>
+            <pagination-controls class="text-center current" (pageChange)="p = $event"></pagination-controls>
           </div>
         </div>
       </mat-tab>
@@ -107,13 +86,10 @@
       <mat-tab label="Coupons">
         <div class="container">
           <div class="row">
-            <div
-              class="col-lg-3"
-              *ngFor="
+            <div class="col-lg-3" *ngFor="
                 let store of CoupStores
                   | paginate: { itemsPerPage: 12, currentPage: p }
-              "
-            >
+              ">
               <a (click)="openModalcoup(template, store.storeId)">
                 <div class="restaurant-box">
                   <ng-template #template>
@@ -121,21 +97,12 @@
                       <h4 class="modal-title pull-left">
                         Offers from {{ store.storeName }}
                       </h4>
-                      <button
-                        type="button"
-                        class="close pull-right"
-                        aria-label="Close"
-                        (click)="modalRef.hide()"
-                      >
+                      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                         <span aria-hidden="true">×</span>
                       </button>
                     </div>
-                    <div
-                      class="modal-body"
-                      [routerLink]="['/store-profile/', store.storeId]"
-                      (click)="storeprofileshow(store.storeId)"
-                      (click)="modalRef.hide()"
-                    >
+                    <div class="modal-body" [routerLink]="['/store-profile/', store.storeId]"
+                      (click)="storeprofileshow(store.storeId)" (click)="modalRef.hide()">
                       <table class="table table-striped">
                         <thead>
                           <tr>
@@ -158,20 +125,13 @@
                       </table>
                     </div>
                     <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-default"
-                        (click)="modalRef.hide()"
-                      >
+                      <button type="button" class="btn btn-default" (click)="modalRef.hide()">
                         Close
                       </button>
                     </div>
                   </ng-template>
                   <div class="restaurant-thumb">
-                    <div
-                      class="restaurant-overlay"
-                      style="background-image: url('../../assets/mac.jpg')"
-                    ></div>
+                    <div class="restaurant-overlay" style="background-image: url('../../assets/mac.jpg')"></div>
                   </div>
                   <div class="restaurant-caption text-center">
                     <a>{{ store.storeName }}</a>
@@ -182,10 +142,7 @@
           </div>
         </div>
         <div class="pag">
-          <pagination-controls
-            class="text-center current"
-            (pageChange)="p = $event"
-          ></pagination-controls>
+          <pagination-controls class="text-center current" (pageChange)="p = $event"></pagination-controls>
         </div>
       </mat-tab>
     </mat-tab-group>
