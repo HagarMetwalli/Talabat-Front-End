@@ -20,7 +20,7 @@
                      " [routerLink]="['/store-profile/',img.storeId]" (click)="storeprofileshow(img.storeId)">
                 <div class="restaurant-box">
                     <div class="restaurant-thumb">
-                        <div class="restaurant-overlay" style="background-image: url('../../assets/turkey.PNG')"></div>
+                        <div class="restaurant-overlay" style="background-image: url({{img.storeImage}})"></div>
                     </div>
                     <div class="restaurant-caption">
                         <a href="#">{{ img.storeName }}</a>

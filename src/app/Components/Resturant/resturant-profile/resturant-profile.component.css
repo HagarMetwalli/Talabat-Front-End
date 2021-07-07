@@ -64,9 +64,9 @@ h4{
     border-bottom: none;
 }
 h5{
-    width: 30rem;
-    font-size: 5rem;
-    font-family: Vladimir Script;
+    width: 29rem;
+    font-size: 3rem;
+    font-family: monospace;
     font-weight: normal;
     color: #ff5a00;
     padding-bottom: 2rem;
@@ -76,12 +76,13 @@ h5{
   width: 20rem;
   height: 13rem;
   background-color: white;
-  background-image: url(../../../../assets/Capture.PNG);
+  /* background-image: url(../../../../assets/Capture.PNG); */
   background-size: 26rem 15rem;
   background-repeat: no-repeat;
   color: #ff5a00;
   border: none;
 }
+
 #tooltipbtn:hover #tooltip{
     visibility:visible;
 }

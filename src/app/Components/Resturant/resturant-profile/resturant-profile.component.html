@@ -75,7 +75,7 @@
       </div>
     </ng-template>
   </div>
-  <div class="d-flex bd-highlight">
+  <div class="d-flex bd-highlight text-center m-auto">
     <div id="description" class="col-sm-6 d-flex bd-highlight">
       <h5>Description</h5>
       <p class="text-left" style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
@@ -83,8 +83,9 @@
 
       <div class="text-center bestRes">
         <div class="col-lg-4" id="res" *ngFor="let best of _bestselling let i=index">
-          <button data-toggle="tooltip" data-placement="bottom" *ngIf="i<4" title="Best Selling" id="tooltipbtn">
-            <img src="../../assets/Capture.PNG" id="tooltip" />
+          <button data-toggle="tooltip" data-placement="bottom" *ngIf="i<4" title="Best Selling" id="tooltipbtn"
+            style="background-image:url({{best.itemImage}});">
+            <img src="{{best.itemImage}}" id="tooltip" />
           </button>
           <h4 style="width: 10rem;" *ngIf="i<4">{{best.itemName}}</h4>
         </div>
