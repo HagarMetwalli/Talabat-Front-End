@@ -75,36 +75,36 @@
       </div>
     </ng-template>
   </div>
-  <div class="d-flex bd-highlight text-center m-auto">
+  <div class="container d-flex bd-highlight text-center m-auto">
     <div id="description" class="col-sm-6 d-flex bd-highlight">
       <h5>Description</h5>
-      <p class="text-left" style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
+      <p style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
       <h5>Best Selling</h5>
 
-      <div class="text-center bestRes">
+      <div class=" bestRes">
         <div class="col-lg-4" id="res" *ngFor="let best of _bestselling let i=index">
           <button data-toggle="tooltip" data-placement="bottom" *ngIf="i<4" title="Best Selling" id="tooltipbtn"
             style="background-image:url({{best.itemImage}});">
             <img src="{{best.itemImage}}" id="tooltip" />
           </button>
-          <h4 style="width: 10rem;" *ngIf="i<4">{{best.itemName}}</h4>
+          <h4 class="itemdesc" *ngIf="i<4">{{best.itemName}}</h4>
         </div>
       </div>
-
-
-      <h5>Reviews</h5>
     </div>
-  </div>
-  <div class="container" style="width: 74rem;margin-left: 14rem;margin-top: 7rem;">
-    <div class="row">
+
+    <div class="" style="width: 74rem; margin-top: 7rem;">
+      <!-- <div class="row"> -->
       <div class="col-md-8">
-        <div class="comments-list" style="margin-top: 7rem;margin-bottom: 4rem;"
+        <h5>Reviews</h5>
+        <div class="comments-list" style="margin-top: 2rem;margin-bottom: 4rem;"
           *ngFor="let com of _comment let i=index">
-          <div class="media" *ngIf="i<4">
-            <a class="media-left" href="#">
+          <div class="revimg" *ngIf="i<4">
+            <a class="" href="#">
               <img src="http://lorempixel.com/40/40/people/1/">
             </a>
-            <div class="media-body">
+          </div>
+          <div class="revcomm">
+            <div>
               {{com.client.clientFname +" "+com.client.clientLname}}
             </div>
             <div>
@@ -113,10 +113,8 @@
           </div>
         </div>
 
-
-
       </div>
     </div>
+    <!-- </div> -->
   </div>
-
 </div>

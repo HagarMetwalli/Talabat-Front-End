@@ -57,7 +57,7 @@ h4{
     height: 50rem;
     padding: 5rem;
     justify-content: center;
-    margin-left: 8rem;
+    /* margin-left: 8rem; */
     margin-top: -46rem;
     border-radius: 3rem;
     border-top: none;
@@ -97,7 +97,7 @@ h5{
     width: 20rem;
     margin-bottom: 4rem;
     /* margin-right: 4rem; */
-    /* margin-left: 20px; */
+    margin-left: 20px;
 }
 
 .bestRes{
@@ -260,3 +260,10 @@ agm-map {
   padding-bottom: 1rem;
 }
 
+.comments-list{
+  display: flex;
+}
+
+.revcomm{
+  text-align: left;
+}
