@@ -10,13 +10,16 @@
 }
 .btns{
     width: 3rem;
+    height: 3rem;
     background-color: white;
     color: #FF5A00 ;
     border: 0.2rem solid lightgray;
 }
 #textbox{
     width: 5rem;
+    height: 3rem;
     border: 0.2rem solid lightgray;
+    padding-left: 10px;
 }
 #tablediv{
     width: 30rem;
@@ -45,7 +48,7 @@ tr{
 }
 .v{
     text-align :right;
-    width: 23rem;
+    width: 28rem;
 }
 #button{
     width: 20rem;

@@ -26,6 +26,7 @@ body {
     width: 120rem;
     height: 50rem;
     margin-left: 10rem;
+    object-fit: cover;
 }
 #back{
   height: 15rem;
@@ -236,6 +237,10 @@ body {
 
 #addbutton {
   border-radius: 5rem;
+  position: relative;
+  left: 310px;
+  font-size: 21px;
+  outline: none;
 }
 
 #collapscontent {
@@ -251,11 +256,14 @@ body {
 
 .it {
   width: 20rem;
+  font-size: 16px;
 }
 
 .flex-container {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  padding-left: 20px;
+  margin: 10px;
 
 }
 
@@ -273,6 +281,8 @@ body {
 
 p {
   color: darkslategray;
+  font-size: 31px;
+  font-weight: 600;
 }
 
 .media-heading {
@@ -326,12 +336,13 @@ p {
 
 
 #error {
-  width: 32rem;
-  margin-top: 2rem;
-  background-color: black;
-  color:white;
-
+    width: 35rem;
+    margin-top: 2rem;
+    background-color: black;
+    color: white;
+    padding: 15px;
 }
+
 a:active, a:hover {
   outline: 0;
   cursor: pointer;
@@ -344,4 +355,31 @@ a {
 #h{
   font-size: 2rem;
   margin: 0.7rem;
+}
+
+.comments{
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.comments-list{
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+  margin-left: 100px;
+  background-color: #f7f7f7;
+  padding: 10px;
+  align-items: center;
+}
+
+.revcomm{
+  text-align: left;
+  margin-left: 20px;
+}
+
+.reviwer{ font-size: 20px;}
+.reviwerstatus{font-size: 15px;}
+
+.mat-tab-body-content {
+  height: 100%;
+  overflow: hidden!important;
 }

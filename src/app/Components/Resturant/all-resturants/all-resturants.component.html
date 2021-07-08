@@ -1,46 +1,50 @@
-<div class="ss">
-    <div class="search-restaurant">
-        <input type="text" name="search" placeholder="Search For Resturants" [(ngModel)]="filterTerm">
-        <button class="search-icon"><i class="fa fa-search fa-3x"></i></button>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div id="info">
-                <div id="Header">
-                    <h2>All Restaurants</h2>
-                    <p>
-                        Pick Your Favourite Restaurant<br />And Get Your Order Fast Now.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3" *ngFor="
-                    let img of stores
-                     | filter: filterTerm
-                     | paginate: { itemsPerPage: 12, currentPage: p }
-                     " [routerLink]="['/store-profile/',img.storeId]" (click)="storeprofileshow(img.storeId)">
-                <div class="restaurant-box">
-                    <div class="restaurant-thumb">
-                        <div class="restaurant-overlay" style="background-image: url({{img.storeImage}})"></div>
+<div style="clear: both;">
+
+    <div class="ss">
+        <div class="search-restaurant">
+            <input type="text" name="search" placeholder="Search For Resturants" [(ngModel)]="filterTerm">
+            <button class="search-icon"><i class="fa fa-search fa-3x"></i></button>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div id="info">
+                    <div id="Header">
+                        <h2>All Restaurants</h2>
+                        <p>
+                            Pick Your Favourite Restaurant<br />And Get Your Order Fast Now.
+                        </p>
                     </div>
-                    <div class="restaurant-caption">
-                        <a href="#">{{ img.storeName }}</a>
-                        <div class="main-recipe">
-                            <div class="main-recipe-name">{{ img.storeDescription }}</div>
+                </div>
+                <div class="col-lg-3" *ngFor="
+                        let img of stores
+                         | filter: filterTerm
+                         | paginate: { itemsPerPage: 12, currentPage: p }
+                         " [routerLink]="['/store-profile/',img.storeId]" (click)="storeprofileshow(img.storeId)">
+                    <div class="restaurant-box">
+                        <div class="restaurant-thumb">
+                            <div class="restaurant-overlay" style="background-image: url({{img.storeImage}})"></div>
+                        </div>
+                        <div class="restaurant-caption">
+                            <a href="#">{{ img.storeName }}</a>
+                            <div class="main-recipe">
+                                <div class="main-recipe-name">{{ img.storeDescription }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!--pagination-->
+                <!--pagination-->
+            </div>
+        </div>
+        <div class="pag">
+            <pagination-controls class="text-center current" (pageChange)="p = $event"></pagination-controls>
+        </div>
+
+        <app-top-page-scroll></app-top-page-scroll>
+
+        <div class="footer">
+            <app-footer></app-footer>
         </div>
     </div>
-    <div class="pag">
-        <pagination-controls class="text-center current" (pageChange)="p = $event"></pagination-controls>
-    </div>
 
-    <app-top-page-scroll></app-top-page-scroll>
-
-    <div class="footer">
-        <app-footer></app-footer>
-    </div>
 </div>

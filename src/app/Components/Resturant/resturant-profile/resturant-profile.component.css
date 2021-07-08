@@ -260,10 +260,24 @@ agm-map {
   padding-bottom: 1rem;
 }
 
+.comments{
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
 .comments-list{
   display: flex;
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+  margin-left: 100px;
+  background-color: #f7f7f7;
+  padding: 10px;
+  align-items: center;
 }
 
 .revcomm{
   text-align: left;
+  margin-left: 20px;
 }
+
+.reviwer{ font-size: 20px;}
+.reviwerstatus{font-size: 15px;}
