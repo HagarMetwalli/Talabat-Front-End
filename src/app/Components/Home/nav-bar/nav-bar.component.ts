@@ -26,8 +26,8 @@ export class NavBarComponent implements OnInit {
   user?: SocialUser;
   arr: any = { itemId: 0, itemName: '', itemPrice: 0, count: 0, value: 0 };
   //order
-  numcount?:number;
-  cartFlag= false;
+  numcount?: number;
+  cartFlag = false;
 
 
   constructor(
@@ -35,7 +35,8 @@ export class NavBarComponent implements OnInit {
     private modalService: BsModalService,
     private router: Router,
     public nav: NavbarService,
-  ) {}
+    private locals: LocalStorageService,
+  ) { }
 
   config = {
     animated: true,
@@ -73,21 +74,23 @@ export class NavBarComponent implements OnInit {
 
   }
   ngOnInit(): void {
-  //   this.arr = JSON.parse(this.locals.retrieve('cart'));
-  //   console.log('tanyarrr', this.arr);
+    this.arr = JSON.parse(this.locals.retrieve('cart'));
+    console.log('tanyarrr', this.arr);
 
-  // //calc total
-  //   let mycount:number=0;
-  //   for( let item of this.arr) {
-  //     mycount+=item.count;
-  //   }
-  //   this.numcount=mycount;
+    //calc total
+    let mycount: number = 0;
+    for (let item of this.arr) {
+      mycount += item.count;
+    }
+    this.numcount = mycount;
 
-  //   if(this.numcount > 0){
-  //     this.cartFlag= true;
-  //   }else{
-  //     this.cartFlag= false;
-  //   }
+    if (this.numcount > 0) {
+      this.cartFlag = true;
+    } else {
+      this.cartFlag = false;
+    }
 
   }
 }
+
+

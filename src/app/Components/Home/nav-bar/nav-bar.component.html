@@ -30,7 +30,9 @@
               </button>
             </li>
 
-            <li [ngStyle]="{'display': (cartFlag)? 'block': 'none'}"><a><i class="fa fa-cart-plus" style="font-size: 16px; cursor: pointer;"></i></a></li>
+            <li [ngStyle]="{'display': (cartFlag)? 'block': 'none'}" *ngIf="loggedIn()"><a><i class="fa fa-cart-plus"
+                  style="font-size: 16px; cursor: pointer;"></i><sup>{{numcount}}</sup></a>
+            </li>
 
             <li *ngIf="loggedIn()">
 

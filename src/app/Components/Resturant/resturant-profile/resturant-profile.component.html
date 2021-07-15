@@ -81,13 +81,15 @@
       <p style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
       <h5>Best Selling</h5>
 
-      <div class=" bestRes">
-        <div class="col-lg-4" id="res" *ngFor="let best of _bestselling let i=index">
-          <button data-toggle="tooltip" data-placement="bottom" *ngIf="i<4" title="Best Selling" id="tooltipbtn"
+      <div class=" bestRes" *ngFor="let best of _bestselling let i=index">
+        <div class="col-lg-4" id="res" *ngIf="i<4">
+          <!-- <div> -->
+          <button data-toggle="tooltip" data-placement="bottom" title="Best Selling" id="tooltipbtn"
             style="background-image:url({{best.itemImage}});">
             <img src="{{best.itemImage}}" id="tooltip" />
           </button>
-          <h4 class="itemdesc" *ngIf="i<4">{{best.itemName}}</h4>
+          <!-- </div> -->
+          <h4 class="itemdesc">{{best.itemName}}</h4>
         </div>
       </div>
     </div>

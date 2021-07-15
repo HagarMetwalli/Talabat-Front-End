@@ -98,14 +98,17 @@ h5{
     margin-bottom: 4rem;
     /* margin-right: 4rem; */
     margin-left: 20px;
+    /* display: flex; */
+
+    
 }
 
 .bestRes{
   justify-content: center;
-    display: flex;
-    position: relative;
-    left: 131px;
-    top: 50px;
+    /* display: flex; */
+  position: relative;
+  left: 131px;
+  top: 50px;
 }
 
 .search-bar {
