@@ -1,0 +1,34 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="row text-center">
+  <div class='container'>
+    <h2>Rating Order</h2>
+    <div class="panel panel-primary">
+      <div class="table-responsive m-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Order</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of itemsReview">
+              <td>
+                {{item.name}}
+              </td>
+              <td>
+                <app-rating [rating]='item.rating' [itemId]='item.id' (ratingClick)='ratingComponentClick($event)'>
+                </app-rating>
+              </td>
+              <td>
+                {{item.rating}} Stars
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button (click)="onSubmit()" class="btn-success">submit</button>
+    <!--<p *ngIf='ratingClicked'>The order {{itemIdRatingClicked}} has been given {{ratingClicked}} stars</p> -->
+  </div>

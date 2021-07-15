@@ -1,1 +1,65 @@
-<p>cart-content works!</p>
+
+<div *ngIf="productItem">
+
+  <div class="card ">
+    <div class="card-body">
+      <div id="tablediv">
+        <div class="container">
+          <div class="row">
+            <div class="pdiv col-xs-12">
+              <p>{{productItem.itemName}}</p>
+            </div>
+            <div>
+              <div class="icon col-xs-6" (click)="removeitem()">
+                <i class=" fa fa-minus-circle" id="i"></i>
+              </div>
+              <div class=" col-xs-6">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <button class="btns" (click)="changecount('minus')">-</button>
+                      </td>
+                      <td>
+                        <input [value]="productItem.count" disabled type="text" id="textbox" />
+                      </td>
+                      <td>
+                        <button class="btns" (click)="changecount('ADD')">+</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="flex-container" id="inline">
+          <div class="pricetable">
+            <table>
+              <tbody>
+                <tr>
+                  <td>{{productItem.itemPrice}}</td>
+                  <td class="v">Item Price</td>
+                </tr>
+                <tr>
+                  <td>{{productItem.value || 0}}</td>
+                  <td class="v">Total items price</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+
+        </div>
+        <hr>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+

@@ -1,0 +1,40 @@
+<div class="modal-content map">
+  <div class="modal-header">
+    <!-- <button type="button" class="close" data-dismiss="modal" (click)="bsModalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+      </button> -->
+      <span class="modalheader">Delivery Address</span>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <input type="text" class="form-control empty" name="search-bar" value="" placeholder="Search Nearest Location"
+        (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+        #search>
+    </div>
+
+    <agm-map style="width: 565px; height: 400px;" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
+    [usePanning]="true" (centerChange)="centerChanged($event)" (mapReady)="mapReady($event)">
+
+    </agm-map>
+    <div class="map-center-overlay">
+      <img src="../../assets/home/map-marker.svg" width="30" height="30">
+    </div>
+
+    <!-- <h3>
+      <p *ngIf="coordinates.address">
+          Address: {{coordinates.address}}
+      </p>
+  </h3> -->
+    <!-- <div>Latitude: {{latitude}}</div>
+      <div>Longitude: {{longitude}}</div> -->
+
+  </div>
+  <div class="modal-footer">
+    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button> -->
+    <button type="button" class="btn btn-primary navigate" [disabled]="btnDisabled" [class.spinner]="loading"
+      [ngStyle]="{'background-color': (btnDisabled)? '#ff5a00': 'gray'}" (click)="GetAllNearStores()">{{btnText}}</button>
+  </div>
+</div>

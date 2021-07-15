@@ -1,0 +1,159 @@
+#navbar
+{
+    background-color: #FF5A00;
+    width: 100%;
+    height: 72px;
+    border-radius: 0;
+}
+
+.modal-content {
+
+    border: 0;
+    border: 0;
+
+
+}
+.navbar {
+    position: relative;
+    border-radius: 0;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+}
+
+ul li a
+{
+    color: white;
+    font-size: 16px ;
+}
+#navbar-align
+{
+    margin:0 auto;
+}
+
+.home-tabs{
+  display: inline-block;
+  margin: 10px;
+}
+#talbat-logo
+{ 
+    /* margin: 6px 5px; */
+    margin-left: 155px;
+    margin-right: 55px;
+}
+#talbat-logo img {
+  position: relative;
+  top: 14px;
+}
+.btn-login,.btn-register
+{
+    width: 100px;
+    height: 30px;
+    margin:10px 5px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: white;
+ 
+
+}
+.btn-login
+{   color: white;
+    background-color:transparent;
+    width: 80px;
+    height: 40px;
+    transition: all 0.5s ease;
+}
+.btn-register
+{
+    color: #FF5A00;
+    background-color: white;
+    width: 110px;
+    height: 40px;
+    transition: all 0.5s ease;
+}
+
+
+.btn-login:active 
+{  
+/* color: #FF5A00; */
+/* background-color:white; */
+  /* box-shadow: 0 5px rgb(255, 255, 255);
+  transform: translateY(2px);
+  transition: all 0.5s; */
+}
+.btn-register:active
+{
+  /* color: #FF5A00;
+  background-color:white;
+  box-shadow: 0 5px rgb(199, 199, 199) ;
+  transition: all 0.5s;
+  transform: translateY(2px); */
+}
+.btn:hover,
+button:hover {
+  outline: 0;
+  /* color: #fff; */
+}
+.btn:active,
+button:active {
+  outline: 0;
+  color: #fff;
+}
+.btn-slide-up {
+  background: linear-gradient(to bottom, transparent 50%, #333 50%);
+  background-size: 100% 200%;
+  background-position: left top;
+}
+.btn-slide-up:hover {
+  background-position: right bottom;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+ 
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-align: center;
+    margin: 0;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    position: relative;
+    border-radius: 0;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+    outline: none;
+    color: white;
+}
+.mat-button, .mat-fab, .mat-flat-button, .mat-icon-button, .mat-mini-fab, .mat-raised-button, .mat-stroked-button {
+
+    font-weight: 0px;
+}
+
+::ng-deep .modal-dialog{
+  max-width: 400px !important;
+  width: 400px;
+  margin-top: 50px;
+  z-index: 9999
+}
+
+.icon i,.text{
+  display: inline-block;
+}
+
+.text {
+  font-size: 16px ;
+  margin-left: 10px;
+}
+button .mat-focus-indicator {
+  background-color:lightgray;
+  color: #FF5A00;
+}
+
+sup{
+  font-size: 16px ;
+  margin: 3px;
+}

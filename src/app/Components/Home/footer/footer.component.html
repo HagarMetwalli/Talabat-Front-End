@@ -1,0 +1,109 @@
+<footer>
+  <div class="container">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a
+          [routerLink]="['/system-review']"
+          routerLinkActive="router-link-active"
+          >Feedback</a
+        >
+        <a href="#">Careers</a>
+        <a href="#">Terms</a>
+        <a href="#">FAQ</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Sitemap</a>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-lg-4 restaurants-trends">
+          <p class="trend">Resturants</p>
+          <p class="trend">Most Selling</p>
+          <a *ngFor="let _stores of Stores"> {{ _stores }} </a>
+
+          <!-- <a class="more">More Resturants</a> -->
+        </div>
+        <div class="col-lg-4 cuisines-trends">
+          <p class="trend">Popular Cuisines</p>
+          <a *ngFor="let _cuisines of Cuisines"> {{ _cuisines }} </a>
+          <!-- <a class="more">More Cuisines</a> -->
+        </div>
+        <p class="trend">Follow us on</p>
+        <div class="col-lg-4 social-media grid-footer">
+          <a
+            href="https://www.facebook.com/Talabat"
+            rel="noopener noreferrer"
+            target="_blank"
+            class="sc-fzoLsD fYZyZu"
+          >
+            <img
+              width="25"
+              height="25"
+              alt="Talabat Facebook"
+              src="../../assets/partner/facebook.svg"
+            />
+          </a>
+          <a
+            href="https://twitter.com/Talabat"
+            rel="noopener noreferrer"
+            target="_blank"
+            class="sc-fzoLsD fYZyZu"
+          >
+            <img
+              width="25"
+              height="25"
+              alt="Talabat Twitter"
+              src="../../assets/partner/twitter.svg"
+            />
+          </a>
+          <a
+            href="https://instagram.com/Talabat"
+            rel="noopener noreferrer"
+            target="_blank"
+            class="sc-fzoLsD fYZyZu"
+          >
+            <img
+              width="25"
+              height="25"
+              alt="Talabat instagram"
+              src="../../assets/partner/instagram.svg"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/3604171"
+            rel="noopener noreferrer"
+            target="_blank"
+            class="sc-fzoLsD fYZyZu"
+          >
+            <img
+              width="25"
+              height="25"
+              alt="Talabat Linkedin"
+              src="../../assets/partner/linkedin.svg"
+            />
+          </a>
+          <a
+            href="https://www.youtube.com/TalabatGTC"
+            rel="noopener noreferrer"
+            target="_blank"
+            class="sc-fzoLsD fYZyZu"
+          >
+            <img
+              width="25"
+              height="25"
+              alt="Talabat Youtube"
+              src="../../assets/partner/youtube.svg"
+            />
+          </a>
+        </div>
+      </div>
+      <hr />
+      <div class="footer-underline grid-footer">
+        <span class="grid-footer"
+          >For any support or help you can contact us via our Live Chat</span
+        >
+        <span>@2021 Talabat.com</span>
+      </div>
+    </div>
+  </div>
+</footer>

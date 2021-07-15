@@ -1,1 +1,213 @@
-<p>my-orders works!</p>
+
+<div style="text-align: center;" *ngIf="ordersFlag">
+  <img src="../../../../assets/Client-Profile/no-orders.svg" alt="no-orders" style="margin-bottom: 15px;" width="120" height="120">
+  <p style="font-size: 22px; color: rgb(114, 114, 114) !important;">There are no orders to display</p>
+</div>
+
+<div *ngFor="let co of clientOrders;">
+
+  <div class="d-flex">
+    <div class="m-2">
+      <div>Ordering Date</div>
+      <div>Address Details</div>
+      <div>Store Name</div>
+      <div>Delivery Status</div>
+    </div>
+    <div class="m-2">
+      <div>{{co.orderTime}}</div>
+      <div>{{co.addressDetails}}</div>
+      <div>{{co.storeId}}</div>
+      <div>{{co.isDelivered}}</div>
+    </div>
+  </div>
+
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cancelModalLabel">In Progress...</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+
+        <div *ngFor="let item of orderItems;">
+
+          <div class="d-flex">
+            <div class="m-2">
+              <img width="100em"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo2x7i3ue-hE2DrML5yXNZUESAtJbA4FPxOg&usqp=CAU"
+                alt="item img">
+            </div>
+            <div class="m-2">
+              <div>{{item.itemName}}</div>
+              <div>{{item.itemDescription}}</div>
+              <div>{{item.itemPrice}}</div>
+              <div>Quantity 10</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-body text-center text-danger">
+          Are you sure you want to delete order that contains the current items?
+        </div>
+
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-danger" (click)="candelOrder(co.orderId)">Yes, Cancel this
+            order!</button>
+          <button type=" button" id="BtnCloseModal" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Delete Modal -->
+
+  <!-- Update Modal
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+
+        <div class="modal-body text-center d-flex">
+          <div>
+
+            <div class="d-flex">
+
+              <div class="form-group m-2">
+                <label for="phonenumber" class="m-auto">Phone number</label>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="phonenumberHelp">+20</span>
+                  </div>
+                  <input type="number" class="form-control" id="phonenumber" aria-describedby="phonenumberHelp"
+                    placeholder="010011111111" [value]="ca.clientAddressMobileNumber" aria-label="phonenumber" />
+                </div>
+              </div>
+
+              <div class="form-group m-2">
+                <label for="landLine" class="m-auto">Lind line</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="landLine">+40</span>
+                  </div>
+                  <input type="number" class="form-control" id="landLine" aria-describedby="landlineHelp"
+                    placeholder="3503333" [value]="ca.clientAddressLandLine" aria-label="landLine" />
+                </div>
+              </div>
+
+            </div>
+
+            <div class="d-flex">
+
+              <div class="form-group m-2">
+                <label class="m-auto" for="city">City</label>
+                <input type="text" class="form-control" id="city" aria-describedby="cityHelper"
+                  placeholder="City ex: tanta..." [value]="ca.clientAddressAddressTitle" />
+              </div>
+              <div class="form-group m-2">
+                <label class="m-auto" for="floor">Floor number</label>
+                <input type="number" class="form-control" id="floor" aria-describedby="floorHelp"
+                  placeholder="Floor ex: 3" [value]="ca.clientAddressFloor" />
+              </div>
+
+            </div>
+
+            <div class="d-flex">
+
+              <div class="form-group m-2">
+                <label class="m-auto" for="street">Street name</label>
+                <input type="text" class="form-control" id="street" aria-describedby="streetHelper"
+                  placeholder="Street ex: elnasr..." [value]="ca.clientAddressStreet" />
+              </div>
+              <div class="form-group m-2">
+                <label class="m-auto" for="apartment">Floor name</label>
+                <input type="number" class="form-control" id="apartment" aria-describedby="apartmentHelp"
+                  placeholder="Apartment ex: 3" [value]="ca.clientAddressApartmentNumber" />
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+           <div class="form-group mb-4">
+            <label for="phonenumber" class="m-auto">Building number</label>
+            <input type="number" class="form-control" id="building" aria-describedby="buildingHelp" placeholder="Building ex: 2"
+              [value]="ca.clientAddressBuilding" />
+          </div>
+
+
+</div>
+
+<div class="modal-footer d-flex justify-content-center">
+  <button type="button" class="btn btn-success" (click)="onEdit(ca, confirmation)">Save
+    Changes
+    <button type="button" #confirmation class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updatedModal"
+      hidden>
+    </button>
+  </button>
+  <button type=" button" id="BtnCloseModal" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+</div>
+</div>
+</div>
+</div> -->
+  <!-- End Update Modal -->
+
+  <!-- Confirm Modal -->
+  <div class="modal fade" id="updatedModal" tabindex="-1" aria-labelledby="updatedModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updatedModalLabel">Delete Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center d-flex">
+          Address Updated Successfully!
+        </div>
+
+        <div class="modal-footer d-flex justify-content-center">
+          <button type=" button" id="BtnCloseModal" class="btn btn-secondary" data-bs-dismiss="modal"
+            (click)="reload()">Close<button type="button" #confirmation class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#updatedModal" hidden>
+            </button></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Confirm Modal -->
+
+
+  <div class="d-flex flex-row-reverse" *ngIf="co.isDelivered == 1">
+  <h5 class="modal-title" id="cancelModalLabel">In Progress...</h5>
+    <!-- <button class="btn btn-light text-danger" (click)="openCancel(co.orderId, cancelModalOpen)">Cancel Order
+      <button type="button" #cancelModalOpen class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#cancelModal" hidden>
+      </button>
+    </button> -->
+    <!-- <button class="btn btn-light text-warning linkLike" (click)="opeEdit(DeleteModalOpen)"
+      style="border-right: 1px solid black; margin-right: 1em; padding-right: 1em;">EDIT
+      <button type=" button" #DeleteModalOpen class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
+        (click)="getOrderItems(co.orderId)" hidden> -->
+      <!-- </button></button> -->
+
+  </div>
+
+  <div class="d-flex flex-row-reverse" *ngIf="co.isDelivered == 0">
+    <button class="btn linkLike" [routerLink]="['/order-review/',co.orderId]"  >Give Feedback?
+      <!-- 
+        (click)="openFeedBack()"
+        <button type=" button" #DeleteModalOpen class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
+        hidden>
+      </button> -->
+    </button>
+  </div>
+  <hr />
+<!-- </div> -->

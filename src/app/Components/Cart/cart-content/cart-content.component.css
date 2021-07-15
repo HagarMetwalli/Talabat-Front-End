@@ -1,0 +1,76 @@
+.cartcontent{
+    position: relative;
+    left:90rem;
+    bottom: 60rem;
+    width: 30rem;
+}
+#imgcart{
+    opacity: 30%;
+    width: 18rem;
+}
+.btns{
+    width: 3rem;
+    height: 3rem;
+    background-color: white;
+    color: #FF5A00 ;
+    border: 0.2rem solid lightgray;
+}
+#textbox{
+    width: 5rem;
+    height: 3rem;
+    border: 0.2rem solid lightgray;
+    padding-left: 10px;
+}
+#tablediv{
+    width: 30rem;
+}
+.pdiv{
+    width: 30rem;
+    font-size: 16px;
+    font-weight: 600;
+}
+#i{
+    background-color: gray;
+    border-radius: 1rem;
+}
+#i:hover{
+    background-color: darkred;
+    color: white;
+    cursor: pointer;
+}
+hr{
+   width: 32rem;
+   border: 0.1rem solid gray;
+}
+.pricetable{
+    width: 50rem;
+}
+tr{
+    padding: 3rem;
+}
+.v{
+    text-align :right;
+    width: 28rem;
+}
+#button{
+    width: 20rem;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.card-title{
+   background-color: #FF5A00 ; 
+   color: white; 
+   height: 4rem;
+   text-align: center;
+   width: 35rem;
+}
+#inline {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}

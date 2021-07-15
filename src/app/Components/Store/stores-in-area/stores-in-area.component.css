@@ -1,0 +1,463 @@
+html, body { margin: 0; padding: 0}
+
+#top-page .top-page-img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    left:0;
+    right:0
+}
+
+.top-page-announc {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(
+        rgba(161, 151, 151, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+    url('../../../../assets/restaurants-in-area/restaurant-loc.jpg');
+    background-size: cover;
+    background-position:bottom center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    top: -1px;
+}
+
+.top-page-announc .top-page-announc-content {
+    margin: 0 auto;
+    padding: 30px ;
+    text-align: center;
+    opacity: 1;
+}
+
+.top-page-announc-content p {
+    font-size: 24px;
+    font-family: 'Calibri', 'Trebuchet MS', sans-serif;
+    line-height: 30px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.discovered-area {
+    color: #ff5900c5;
+    text-decoration: underline;
+}
+
+.top-page-announc-content h1 {
+    font-weight: 700;
+    font-size: 33px;
+    color: #fff;
+    line-height: 1.5;
+}
+
+.top-page-announc .discover-action {
+    /* margin-left: 50px; */
+    width: auto;
+    height: 40px;
+    background: #0aa89e none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 50px;
+    color: #fff;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 600;
+    position: relative;
+    left: 35px;
+    padding: 6px 15px;
+    opacity: 1;
+}
+
+.breadcrumb {
+    width: 100%;
+    height: 40px;
+    background-color: #eee;
+    border: 0;
+    border-radius: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.breadcrumb p {
+    width: 30%;
+    color: #000;
+    position: relative;
+    left: 35px;
+    padding: auto 30px;
+    word-spacing: 3px;
+}
+
+.bc-dir {
+    color: #ff5a00;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.pre-local-restaurants { width: 90%; }
+
+.pre-local-restaurants h1{
+    font-family: 'Calibri', 'Trebuchet MS', sans-serif;
+    line-height: 30px;
+    font-weight: 700;
+    font-size: 33px;
+    position: relative;
+    left: 35px;
+}
+
+.pre-local-restaurants p{
+    font-family: 'Calibri', 'Trebuchet MS', sans-serif;
+    line-height: 30px;
+    font-size: 24px;
+    position: relative;
+    left: 35px;
+}
+
+hr {
+    width: 95%;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+#cuisines-filters {
+    width: 90%;
+    position: relative;
+    left: 35px;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+.bts-cuisines .cuisine-type{
+    margin-right: 20px ;
+    border-radius: 5px;
+    width: auto;
+    height: 35px;
+    padding: auto 20px;
+    vertical-align: middle;
+    outline: none;
+    background: none;
+    border: 1px solid #ff5a00;
+}
+
+.btn-cuisines .cuisine-type-more {
+  margin-right: 20px ;
+  border-radius: 5px;
+  width: auto;
+  height: 35px;
+  padding: auto 20px;
+  vertical-align: middle;
+  outline: none;
+
+}
+
+.bts-cuisines .cuisine-type a {
+    color: #000;
+    text-decoration: none;
+    font-size: 15px;
+    width: 100%;
+    padding: 5px 30px;
+}
+
+#cuisines-filters .btn-cuisines .cuisine-type-more.more{
+  background: #0aa89e;
+  border: 1px solid #0aa89e;
+}
+
+.bts-cuisines a .cuisine-type-more {
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+  width: 100%;
+  padding: 5px 30px;
+}
+
+#cuisines-filters .bts-cuisines .cuisine-type.active {
+    background: #0aa89e;
+    border: 1px solid #0aa89e
+}
+
+#cuisines-filters .bts-cuisines a .cuisine-type.active{
+    color: #fff;
+}
+
+#under-cuisines {
+    width: 95%;
+    height: 100px;
+    position: relative;
+    left: 35px;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.search-restaurant {
+    display: flex;
+    width: 100%;
+}
+
+.search-restaurant input {
+    border-radius: 8px;
+    border: 2px solid #0aa89e;
+    outline: none;
+    padding: 10px;
+}
+
+.search-restaurant .search-icon {
+    width: 30px;
+    height: 45px;
+    background-color: #0aa89e;
+    position: relative;
+    left: -32px;
+    border: 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.search-restaurant .svg-inline--fa {
+    top: 10px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.filter-factors {
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    color: rgb(117, 117, 117) !important;
+}
+
+.filter-by #filter-by-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.filter-by #filter-by-list li {
+    display: flex;
+    padding: 3px;
+}
+
+.filter-by .filter-by-title {
+    background: #fff none repeat scroll 0 0;
+    color: #222;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 5px 0px 20px;
+    border: 0;
+}
+
+.switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    margin-right: 10px;
+    width: 45px;
+}
+
+.switch input {
+display:none;
+}
+
+.slider {
+background-color: #ccc;
+bottom: 0;
+cursor: pointer;
+left: 0;
+position: absolute;
+right: 0;
+top: 0;
+transition: .4s;
+}
+
+.slider:before {
+background-color: #fff;
+bottom: 4px;
+content: "";
+height: 20px;
+top: 2px;
+left: 4px;
+position: absolute;
+transition: .4s;
+width: 20px;
+}
+
+input:checked + .slider {
+background-color: #ff5a00;
+}
+
+input:checked + .slider:before {
+transform: translateX(15px);
+}
+
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+
+.sort-by {
+    margin-left: 10px;
+    margin-bottom: 40px;
+    border: 1px solid rgb(117, 117, 117);
+    border-left: 0;
+    border-right: 0;
+    width: 96%;
+}
+
+.sort-by .sort-by-scope {
+    display: flex;
+    padding: 0px;
+    justify-content: center;
+}
+
+.sort-by .sort-by-title {
+background: #fff none repeat scroll 0 0;
+color: rgb(33, 33, 33);
+font-size: 16px;
+font-weight: 500;
+text-transform: capitalize;
+/* padding: 10px 0px 20px; */
+border: 0;
+}
+
+.sort-by #sort-by-list {
+    list-style-type: none;
+    display: flex;
+    padding-top: 6px;
+}
+
+.sort-by #sort-by-list .sort-item{
+    /* margin-top: 25px; */
+    margin-right: 50px;
+    margin-bottom: 0px;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    color: rgb(117, 117, 117) !important;
+    cursor: pointer;
+}
+
+.sort-by .sort-by-scope #sort-by-list .active{
+    color: #0aa89e;
+    margin-right: 50px;
+    margin-bottom: 0px;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    cursor: pointer;
+}
+
+.restaurant-box {
+    background: #fff none repeat scroll 0 0;
+    border-bottom: 1px solid #d0d0d0;
+    box-shadow: 0 10px 22px #d0d0d0;
+    display: block;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    font-family: 'Calibri', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+.restaurant-box .restaurant-thumb {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+}
+
+.restaurant-box .restaurant-overlay {
+    background-position: 40% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    border-radius: 0;
+    transition: all 0.25s ease-in-out 0s;
+}
+
+.restaurant-box .restaurant-overlay:hover {
+    transform: scale(1.06);
+}
+
+.restaurant-box .restaurant-caption {
+    width: 100%;
+    padding: 10px;
+    display: block;
+}
+.restaurant-box .restaurant-caption a {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ff5a00;
+    text-decoration: none;
+}
+
+.restaurant-caption .restaurant-review-box {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-size: 12px;
+    color: #fff;
+    font-family: poppins;
+    font-weight: 500;
+    padding: 1px 10px;
+    letter-spacing: 1px;
+    z-index: 1;
+    display: block;
+}
+
+.restaurant-caption .restaurant-review-box .review{
+    padding: 8px;
+    background-color: #0aa89e;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.restaurant-caption .restaurant-review-box .review .review-icon {
+    font-size: 15px;
+    font-family: 'Calibri', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+.main-recipe {
+    clear: both;
+    display: block;
+}
+
+.main-recipe-icon {
+    color: #ff5a00;
+    margin-right: 10px;
+}
+
+.main-recipe-name {
+    margin-left: 5px;
+    font-size: 18px;
+    color: #222;
+}
+
+.main-recipe, .restaurant-info {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 15px;
+}
+
+.main-recipe, .restaurant-info span {
+    font-size: 15px;
+    color: #222;
+}
+.pag{
+    width: 300px;
+    margin-left: 66rem;
+    position: relative;
+    top: 70rem;
+    font-size: 16px;
+}

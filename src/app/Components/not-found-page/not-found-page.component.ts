@@ -1,3 +1,4 @@
+import { NavbarService } from 'src/app/Services/Home/navbar.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotFoundPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public nav: NavbarService) { }
 
   ngOnInit(): void {
+    this.nav.show();
   }
 
 }

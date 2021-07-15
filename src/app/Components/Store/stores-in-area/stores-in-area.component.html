@@ -1,1 +1,346 @@
-<p>stores-in-area works!</p>
+<header id="top-page">
+
+    <div class="top-page-announc">
+        <div class="top-page-announc-content">
+            <p>Order Food Online in
+                <span>Talabat</span>
+            </p>
+            <h1>
+                Order Food Online from Best & Nearby <br>Restaurants in
+                <span class="discovered-area">Talabat</span>
+            </h1>
+        </div>
+        <!-- <a href="#"><button class="discover-action">
+                <img src="../../assets/restaurants-in-area/discover-nearby.png" width="24" height="24">
+                Discover Nearby Restaurants
+            </button></a> -->
+    </div>
+</header>
+<div class="breadcrumb">
+    <p>
+        <span style="color: blue"> Home </span>
+        <i class="fa fa-chevron-right bc-dir"></i><span class="bc"> Nearest - Stores</span>
+    </p>
+</div>
+<div class="pre-local-restaurants">
+    <h1>Order Online for delivery, pick up or catering from restaurants around you</h1>
+    <p><span class="discovered-area"> </span> restaurants near to your location</p>
+</div>
+<hr>
+<!-- <section id="cuisines-filters">
+    <div class="bts-cuisines">
+        <a><button class="cuisine-type active" (click)="getfilterTabs('')">All Cuisines</button></a>
+        <a (click)="getfilterTabs('Italian')"><button class="cuisine-type">Italian</button></a>
+        <a onclick="getfilterTabs('Egypt')"><button class="cuisine-type">Egypt</button></a>
+        <a onclick="getfilterTabs('China')"><button class="cuisine-type">China</button></a>
+        <a onclick="getfilterTabs('Japan')"><button class="cuisine-type">Japan</button></a>
+        <a onclick="getfilterTabs('Corean')"><button class="cuisine-type">Corean</button></a>
+       <button class="cuisine-type-more more"><a href="#">More</a></button>
+    </div>
+</section> -->
+<section id="under-cuisines">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="search-restaurant">
+                <input type="text" name="search" placeholder="Search Restaurants" [(ngModel)]="filterTerm">
+                <button class="search-icon"><i class="fa fa-search fa-3x"></i></button>
+            </div>
+
+            <!-- <div class="filter-factors">
+                <div class="filter-by">
+                    <button class="filter-by-title"> Filter By</button>
+                    <ul id="filter-by-list">
+                        <li><label class="switch" for="checkbox1">
+                                <input type="checkbox" id="checkbox1" [(ng-model)]="filter.Egypt" />
+                                <div class="slider round"></div>
+                            </label>Egypt</li>
+                        <li><label class="switch" for="checkbox2">
+                                <input type="checkbox" id="checkbox2" [(ng-model)]="filter.China"/>
+                                <div class="slider round"></div>
+                            </label>China</li>
+                        <li><label class="switch" for="checkbox3">
+                                <input type="checkbox" id="checkbox3" [(ng-model)]="filter.Muslim"/>
+                                <div class="slider round"></div>
+                            </label>Muslim</li>
+                        <li><label class="switch" for="checkbox4">
+                                <input type="checkbox" id="checkbox4" [(ng-model)]="filter.Russian"/>
+                                <div class="slider round"></div>
+                            </label>Russian</li>
+                        <li><label class="switch" for="checkbox5">
+                                <input type="checkbox" id="checkbox5" [(ng-model)]="filter.KSA"/>
+                                <div class="slider round"></div>
+                            </label>KSA</li>
+                        <li><label class="switch" for="checkbox6">
+                                <input type="checkbox" id="checkbox6" [(ng-model)]="filter.Japan"/>
+                                <div class="slider round"></div>
+                            </label>Japan</li>
+
+                    </ul>
+                </div>
+            </div> -->
+        </div>
+        <div class="col-lg-10">
+            <div class="sort-by">
+                <!-- <div class="sort-by-scope">
+                    <button class="sort-by-title">Sort By :</button>
+                    <ul id="sort-by-list">
+                        <li class="active">Recommended</li>
+                        <li class="sort-item">Rating</li>
+                        <li class="sort-item">Newest</li>
+                        <li class="sort-item">A to Z</li>
+                        <li class="sort-item">Min. Order Amount</li>
+                        <li class="sort-item">Fast Delivery</li>
+                    </ul>
+                </div> -->
+            </div>
+            <div class="col-lg-4" *ngFor="let store of (stores | filter : filters) | filter: filterTerm
+              | paginate: { itemsPerPage: 6, currentPage: page } ">
+
+                <div class="restaurant-box">
+                    <div class="restaurant-thumb">
+                        <div class="restaurant-overlay"
+                            style="background-image: url('../../assets/restaurants-in-area/burger.jpg');">
+                        </div>
+                    </div>
+                    <div class="restaurant-caption">
+                        <a [routerLink]="['/store-profile/',store.storeId]" >{{store.storeName}}</a>
+                        <div class="restaurant-review-box">
+                            <div class="review">
+                                <span class="review-icon"><i class="far fa-smile"></i> Very Good </span>
+                            </div>
+                        </div>
+                        <div class="main-recipe">
+                            <div class="main-recipe-icon"><i class="fa fa-utensils"></i></div>
+                            <div class="main-recipe-name">{{store.storeCuisine}}</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <div class="main-recipe-icon"><i class="fas fa-clock"></i></div>
+                            <span><strong>Within:</strong> {{store.storeDeliveryTime}} mins,&nbsp;</span>
+                            <span><strong>Delivery:</strong> {{store.storeDeliveryFee}}.00,&nbsp;</span>
+                            <span><strong>Min:</strong> {{store.storeMinOrder}}.00.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-4">
+                <div class="restaurant-box">
+                    <div class="restaurant-thumb">
+                        <div class="restaurant-overlay"
+                            style="background-image: url('../../assets/restaurants-in-area/sweet.jpg');"></div>
+                    </div>
+                    <div class="restaurant-caption">
+                        <a href="#">Laziz Pizza</a>
+                        <div class="restaurant-review-box">
+                            <div class="review">
+                                <span class="review-icon"><i class="far fa-smile"></i> Very Good </span>
+                            </div>
+                        </div>
+                        <div class="main-recipe">
+                            <div class="main-recipe-icon"><i class="fa fa-utensils"></i></div>
+                            <div class="main-recipe-name">Pizza</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <div class="main-recipe-icon"><i class="fas fa-clock"></i></div>
+                            <span>Within: 24 mins,&nbsp;</span>
+                            <span>Service: 4.00,&nbsp;</span>
+                            <span>Min: 15.00.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="restaurant-box">
+                    <div class="restaurant-thumb">
+                        <div class="restaurant-overlay"
+                            style="background-image: url('../../assets/restaurants-in-area/pizza-1.jpg');"></div>
+                    </div>
+                    <div class="restaurant-caption">
+                        <a href="#">Laziz Pizza</a>
+                        <div class="restaurant-review-box">
+                            <div class="review">
+                                <span class="review-icon"><i class="far fa-smile"></i> Very Good </span>
+                            </div>
+                        </div>
+                        <div class="main-recipe">
+                            <div class="main-recipe-icon"><i class="fa fa-utensils"></i></div>
+                            <div class="main-recipe-name">Pizza</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <div class="main-recipe-icon"><i class="fas fa-clock"></i></div>
+                            <span>Within: 24 mins,&nbsp;</span>
+                            <span>Service: 4.00,&nbsp;</span>
+                            <span>Min: 15.00.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4">
+                <div class="restaurant-box">
+                    <div class="restaurant-thumb">
+                        <div class="restaurant-overlay"
+                            style="background-image: url('../../assets/restaurants-in-area/pizza-1.jpg');"></div>
+                    </div>
+                    <div class="restaurant-caption">
+                        <a href="#">Laziz Pizza</a>
+                        <div class="restaurant-review-box">
+                            <div class="review">
+                                <span class="review-icon"><i class="far fa-smile"></i> Very Good </span>
+                            </div>
+                        </div>
+                        <div class="main-recipe">
+                            <div class="main-recipe-icon"><i class="fa fa-utensils"></i></div>
+                            <div class="main-recipe-name">Pizza</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <div class="main-recipe-icon"><i class="fas fa-clock"></i></div>
+                            <span>Within: 24 mins,&nbsp;</span>
+                            <span>Service: 4.00,&nbsp;</span>
+                            <span>Min: 15.00.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="restaurant-box">
+                    <div class="restaurant-thumb">
+                        <div class="restaurant-overlay"
+                            style="background-image: url('../../assets/restaurants-in-area/burger.jpg');"></div>
+                    </div>
+                    <div class="restaurant-caption">
+                        <a href="#">Laziz Pizza</a>
+                        <div class="restaurant-review-box">
+                            <div class="review">
+                                <span class="review-icon"><i class="far fa-smile"></i> Very Good </span>
+                            </div>
+                        </div>
+                        <div class="main-recipe">
+                            <div class="main-recipe-icon"><i class="fa fa-utensils"></i></div>
+                            <div class="main-recipe-name">Pizza</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <div class="main-recipe-icon"><i class="fas fa-clock"></i></div>
+                            <span>Within: 24 mins,&nbsp;</span>
+                            <span>Service: 4.00,&nbsp;</span>
+                            <span>Min: 15.00.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="restaurant-box">
+                    <div class="restaurant-thumb">
+                        <div class="restaurant-overlay"
+                            style="background-image: url('../../assets/restaurants-in-area/sweet.jpg');"></div>
+                    </div>
+                    <div class="restaurant-caption">
+                        <a href="#">Laziz Pizza</a>
+                        <div class="restaurant-review-box">
+                            <div class="review">
+                                <span class="review-icon"><i class="far fa-smile"></i> Very Good </span>
+                            </div>
+                        </div>
+                        <div class="main-recipe">
+                            <div class="main-recipe-icon"><i class="fa fa-utensils"></i></div>
+                            <div class="main-recipe-name">Pizza</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <div class="main-recipe-icon"><i class="fas fa-clock"></i></div>
+                            <span>Within: 24 mins,&nbsp;</span>
+                            <span>Service: 4.00,&nbsp;</span>
+                            <span>Min: 15.00.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="restaurant-box">
+                    <div class="restaurant-thumb">
+                        <div class="restaurant-overlay"
+                            style="background-image: url('../../assets/restaurants-in-area/pizza-1.jpg');"></div>
+                    </div>
+                    <div class="restaurant-caption">
+                        <a href="#">Laziz Pizza</a>
+                        <div class="restaurant-review-box">
+                            <div class="review">
+                                <span class="review-icon"><i class="far fa-smile"></i> Very Good </span>
+                            </div>
+                        </div>
+                        <div class="main-recipe">
+                            <div class="main-recipe-icon"><i class="fa fa-utensils"></i></div>
+                            <div class="main-recipe-name">Pizza</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <div class="main-recipe-icon"><i class="fas fa-clock"></i></div>
+                            <span>Within: 24 mins,&nbsp;</span>
+                            <span>Service: 4.00,&nbsp;</span>
+                            <span>Min: 15.00.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="restaurant-box">
+                    <div class="restaurant-thumb">
+                        <div class="restaurant-overlay"
+                            style="background-image: url('../../assets/restaurants-in-area/sweet.jpg');"></div>
+                    </div>
+                    <div class="restaurant-caption">
+                        <a href="#">Laziz Pizza</a>
+                        <div class="restaurant-review-box">
+                            <div class="review">
+                                <span class="review-icon"><i class="far fa-smile"></i> Very Good </span>
+                            </div>
+                        </div>
+                        <div class="main-recipe">
+                            <div class="main-recipe-icon"><i class="fa fa-utensils"></i></div>
+                            <div class="main-recipe-name">Pizza</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <div class="main-recipe-icon"><i class="fas fa-clock"></i></div>
+                            <span>Within: 24 mins,&nbsp;</span>
+                            <span>Service: 4.00,&nbsp;</span>
+                            <span>Min: 15.00.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="restaurant-box">
+                    <div class="restaurant-thumb">
+                        <div class="restaurant-overlay"
+                            style="background-image: url('../../assets/restaurants-in-area/burger.jpg');"></div>
+                    </div>
+                    <div class="restaurant-caption">
+                        <a href="#">Laziz Pizza</a>
+                        <div class="restaurant-review-box">
+                            <div class="review">
+                                <span class="review-icon"><i class="far fa-smile"></i> Very Good </span>
+                            </div>
+                        </div>
+                        <div class="main-recipe">
+                            <div class="main-recipe-icon"><i class="fa fa-utensils"></i></div>
+                            <div class="main-recipe-name">Pizza</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <div class="main-recipe-icon"><i class="fas fa-clock"></i></div>
+                            <span>Within: 24 mins,&nbsp;</span>
+                            <span>Service: 4.00,&nbsp;</span>
+                            <span>Min: 15.00.</span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+<!--pagination-->
+<div class="pag">
+  <pagination-controls class="current" (pageChange)="page = $event"></pagination-controls>
+</div>
+<div style="position: relative; top: 75rem">
+  <app-footer></app-footer>
+</div>
+<app-top-page-scroll></app-top-page-scroll>

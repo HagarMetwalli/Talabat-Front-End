@@ -1,1 +1,129 @@
-<p>system-review works!</p>
+<div class="container .mt-3 ">
+    <div class="border border-dark ">
+
+        <header class='header text-center'>
+            <span class="border-end-0">
+                <span class="smile-face-icon"><i class="far fa-smile" aria-hidden="true"
+                        style="margin-right: 18px; color:#14892c"></i></span>
+                <h1 class="display-1 ">Feedback</h1>
+                <span class="sad-face-icon"><i class="far fa-frown" aria-hidden="true"
+                        style="margin-left: 18px; color: red"></i></span>
+            </span>
+        </header>
+
+        <div class="wrap">
+            <!-- <h1 class="likert-header">Feedback</h1> -->
+            <form action="">
+                <label class="statement">How would you rate your overall Talabat.com experience?</label>
+                <ul class='likert'>
+                    <li>
+                        <input type="radio" name="likert" [(ngModel)]="nSystemReview.rateTalabatExperience" value="5">
+                        <label class="special">Extremely Satisfied </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert" [(ngModel)]="nSystemReview.rateTalabatExperience" value="4">
+                        <label>Quite Satisfied</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert" [(ngModel)]="nSystemReview.rateTalabatExperience" value="3">
+                        <label>Moderately Satisfied</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert" [(ngModel)]="nSystemReview.rateTalabatExperience" value="2">
+                        <label>Slightly Satisfied</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert" value="1">
+                        <label class="special">Not at all Satisfied</label>
+                    </li>
+                </ul>
+                <label class="statement">How much effort did you personally have to put forth to get your service
+                    done?</label>
+                <ul class='likert'>
+                    <li>
+                        <input type="radio" name="likert2" [(ngModel)]="nSystemReview.effortMadeToOrderFood" value="5">
+                        <label class="special">Very high effort </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert2" [(ngModel)]="nSystemReview.effortMadeToOrderFood" value="4">
+                        <label>High effort</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert2" [(ngModel)]="nSystemReview.effortMadeToOrderFood" value="3">
+                        <label>Neutral</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert2" [(ngModel)]="nSystemReview.effortMadeToOrderFood" value="2">
+                        <label>Low effort</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert2" value="1">
+                        <label class="special">Very low effort</label>
+                    </li>
+                </ul>
+                <label class="statement">How likely are you to recommend Talabat.com to friend, family or
+                    colleagues?</label>
+                <ul class='likert'>
+                    <li>
+                        <input type="radio" name="likert3" [(ngModel)]="nSystemReview.recommendToFriend" value="5">
+                        <label class="special">Extremely likely</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert3" [(ngModel)]="nSystemReview.recommendToFriend" value="4">
+                        <label>likely</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert3" [(ngModel)]="nSystemReview.recommendToFriend" value="3">
+                        <label>Neutral</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert3" [(ngModel)]="nSystemReview.recommendToFriend" value="2">
+                        <label>Not That Match</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="likert3" [(ngModel)]="nSystemReview.recommendToFriend" value="1">
+                        <label class="special">Not at all likely</label>
+                    </li>
+                </ul>
+                <label class="statement">Please provide any other feedback on your Talabat.com experience.</label>
+                <div class="input-group">
+                    <textarea class="form-control" aria-label="With textarea" name="SystemReviewComment" rows="10"
+                        placeholder="plz, write other feedback on your Talabat.com experience here." cols="50"
+                        style="width: 879px; height: 283px; resize:null"
+                        [(ngModel)]="nSystemReview.systemReviewComment"></textarea>
+                </div>
+                <div class="buttons Center">
+
+                    <!-- <button type="button" class="btn btn-success submit" (click)="save()">submit</button> -->
+                    <button id="submit-feedback" type="button"
+                        class="btn btn-default m-y-md feedback-btn p-x-lg text-uppercase" (click)="save()">Submit your
+                        feedback</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+<!-- footer -->
+
+<footer>
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a [routerLink]="['/system-review']" routerLinkActive="router-link-active">Feedback</a>
+                <a href="#">Careers</a>
+                <a href="#">Terms</a>
+                <a href="#">FAQ</a>
+                <a href="#">Privacy</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Sitemap</a>
+            </div>
+            <hr />
+            <div class="footer-underline grid-footer">
+                <span class="grid-footer">For any support or help you can contact us via our Live Chat</span>
+                <span>@2021 Talabat.com</span>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,148 @@
+body {
+  margin-top: 20px;
+  color: #1a202c;
+  text-align: left;
+  background-color: #e2e8f0;
+}
+.main-body {
+  padding: 15px;
+}
+
+.nav-link {
+  color: #4a5568;
+}
+.card {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
+}
+
+.gutters-sm {
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.gutters-sm > .col,
+.gutters-sm > [class*="col-"] {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.mb-3,
+.my-3 {
+  margin-bottom: 1rem !important;
+}
+
+.bg-gray-300 {
+  background-color: #e2e8f0;
+}
+.h-100 {
+  height: 100% !important;
+}
+.shadow-none {
+  box-shadow: none !important;
+}
+
+.cgoWNg {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  position: relative;
+  left: 15px;
+  width: 500px
+}
+
+.cgoWNg .radio-item {
+  flex: 1 1 auto;
+}
+
+.cgoWNg input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0px;
+  height: 40px
+}
+.cgoWNg .radio-item:first-of-type label {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.kDrGZE .my-account-info-row label {
+  color: rgb(114, 114, 114);
+}
+.cgoWNg label {
+  cursor: pointer;
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  padding: 10px;
+}
+
+.cgoWNg input[type="radio"]:checked + label {
+  background-color: rgb(255, 90, 0);
+  border-color: rgb(255, 90, 0);
+  color: rgb(255, 255, 255);
+  height: 40px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.form-footer{
+  display: inline-flex;
+}
+.form-footer .btn-success{
+  position: relative;
+  left: 327px;
+}
+.btn{
+  box-shadow: none;
+    font-size: 14px;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    line-height: 1.42857;
+    border-radius: 4px;
+}
+
+.btn-success{
+  background-color: rgb(0, 165, 60);
+  color: rgb(255, 255, 255);
+  border: none;
+  width: 120px;
+  height: 40px;
+}
+
+.control-label{
+  text-align: left;
+  font-weight: 500 !important;
+  color: rgb(114, 114, 114);
+  font-size: 13px;
+}
+.form-check-label{
+  font-weight: 400 !important;
+  color: rgb(114, 114, 114);
+  font-size: 13px;
+}
+.form-control{
+  width: 500px;
+}

@@ -1,1 +1,124 @@
-<p>resturant-profile works!</p>
+<div class="top">
+  <div id="header">
+    <img src="../../../../assets/madie-hamilton.jpg" class="bgimg" />
+  </div>
+  <div id="bg"></div>
+  <div class="d-flex flex-column" style="width: 50rem; 
+     position: relative;
+     bottom: 60rem;
+     left: 10rem;">
+    <div class="textbg">
+      <h4>Choose Your Area To View Restaurant Menu</h4>
+      <img src="../../../../assets/arrow.png" id="emoji" />
+    </div>
+
+    <div class="search-bar">
+      <div class="search-box">
+        <input type="text" class="form-control empty" name="search-bar" [value]='txtValue'
+          placeholder="&#xf041;   ...Find an area,street,landmark" (keydown.enter)="$event.preventDefault()"
+          autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search [(ngModel)]="txtValue"
+          (ngModelChange)="onTextChange($event)" required>
+
+        <!-- (keyup.enter)='openGoogleMapsModalOnClick($event)' -->
+
+        <button class="locate-map" *ngIf="mapMarkactive" (click)="openGoogleMapsModalOnClick()">
+          <img src="../../assets/home/locate-map.svg" width="24" height="24">
+        </button>
+        <button class="locate-map close" *ngIf="closeMarkactive" (click)="clearInputControl()">
+          <img src="../../assets/home/close-circle-map.svg" width="24" height="24">
+        </button>
+        <p>
+          <span tooltip="Enter your full delivery address" triggers="" #pop="bs-tooltip">
+            Enter your full delivery address
+          </span>
+        </p>
+      </div>
+      <div>
+        <button class="search-action" (click)="openGoogleMapsModalOnClick()">Food Menu</button>
+
+      </div>
+    </div>
+
+
+    <ng-template #template>
+      <div class="modal-content map">
+        <div class="modal-header">
+          <span class="modalheader">Delivery Address</span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bsModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <input type="text" class="form-control empty" name="search-bar" value=""
+              placeholder="Search Nearest Location" (keydown.enter)="$event.preventDefault()" autocorrect="off"
+              autocapitalize="off" spellcheck="off" type="text" #search>
+          </div>
+
+          <agm-map style="width: 565px; height: 400px;" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
+            [usePanning]="true" (centerChange)="centerChanged($event)" (mapReady)="mapReady($event)">
+
+          </agm-map>
+          <div class="map-center-overlay">
+            <img src="../../assets/home/map-marker.svg" width="30" height="30">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary navigate" [disabled]="btnDisabled" [class.spinner]="loading"
+            [ngStyle]="{'background-color': (btnDisabled)? '#ff5a00': 'gray'}"
+            (click)="GetStoreMenu(_store.storeId)">{{btnText}}</button>
+
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="container d-flex bd-highlight text-center m-auto">
+    <div id="description" class="col-sm-6 d-flex bd-highlight">
+      <h5>Description</h5>
+      <p style="padding-bottom: 8rem;">{{_store.storeDescription}}</p>
+      <h5>Best Selling</h5>
+
+      <div class=" bestRes" *ngFor="let best of _bestselling let i=index">
+        <div class="col-lg-4" id="res" *ngIf="i<4">
+          <!-- <div> -->
+          <button data-toggle="tooltip" data-placement="bottom" title="Best Selling" id="tooltipbtn"
+            style="background-image:url({{best.itemImage}});">
+            <img src="{{best.itemImage}}" id="tooltip" />
+          </button>
+          <!-- </div> -->
+          <h4 class="itemdesc">{{best.itemName}}</h4>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="comments">
+      <h5>Reviews</h5>
+      <div *ngFor="let com of _comment let i=index" class="" style="width: 100rem;">
+        <!-- <div class="row"> -->
+        <!-- <div class=""> -->
+        <div class="comments-list" *ngIf="i<4">
+          <div class="revimg">
+            <a class="" href="#">
+              <img src="http://lorempixel.com/40/40/people/1/" width="80" height="80">
+            </a>
+          </div>
+          <div class="revcomm">
+            <div class="reviwer">
+              {{com.client.clientFname +" "+com.client.clientLname}}
+            </div>
+            <div class="reviwerstatus">
+              {{com.orderReviewComment}}
+            </div>
+          </div>
+        </div>
+
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

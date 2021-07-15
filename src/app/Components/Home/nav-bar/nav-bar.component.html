@@ -1,1 +1,88 @@
-<p>nav-bar works!</p>
+<nav class="navbar navbar-default" *ngIf="nav.visible" id="navbar">
+  <div class="container-fluid">
+    <div>
+      <div id="navbar-align" class="row">
+        <div class="col-lg-3" id="talbat-logo">
+          <a routerLink="">
+            <img src="../../../../assets/talbat-logo.png" width="160" height="45" />
+          </a>
+        </div>
+        <div class="col-lg-7">
+          <ul class="nav navbar-nav home-tabs">
+            <li><a routerLink="/offers">Offers</a></li>
+            <li><a routerLink="/partener">Become a Partner</a></li>
+            <li><a routerLink="/all-resturant"> All Restaurants </a></li>
+
+            <li><a href="#"> العربية </a></li>
+            <li>
+              <a href="#">
+                <img src="../../../../assets/Egypt-Flag.png" width="25" height="25" />
+              </a>
+            </li>
+            <li>
+              <button *ngIf="!loggedIn()" class="btn-login btn btn-slide-up" (click)="openModal()">
+                Login
+              </button>
+            </li>
+            <li>
+              <button *ngIf="!loggedIn()" class="btn-register" (click)="register()">
+                Register
+              </button>
+            </li>
+
+            <li [ngStyle]="{'display': (cartFlag)? 'block': 'none'}" *ngIf="loggedIn()"><a><i class="fa fa-cart-plus"
+                  style="font-size: 16px; cursor: pointer;"></i><sup>{{numcount}}</sup></a>
+            </li>
+
+            <li *ngIf="loggedIn()">
+
+
+              <button mat-button [matMenuTriggerFor]="menu">My Account</button>
+
+              <mat-menu #menu=matMenu>
+                <button mat-menu-item>
+                  <a href="/profile/(suOutlet:my-orders)">
+                    <span>
+                      <i class="fas fa-cart-plus" style="font-size: 18px"></i>
+                      <span class="text">Orders</span>
+                    </span>
+                  </a>
+                </button>
+                <button mat-menu-item>
+                  <a href="/profile/(suOutlet:account-info)">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-user mr-2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                      <span class="text">Account Info</span>
+                    </span>
+                  </a>
+                </button>
+                <button mat-menu-item>
+                  <a href="/profile/(suOutlet:saved-addresses)">
+                    <span>
+                      <i class="fas fa-location-arrow" style="font-size: 18px"></i>
+                      <span class="text">Saved Address</span>
+                    </span>
+                  </a>
+                </button>
+
+                <button mat-menu-item mat-focus-indicator (click)="logout()">
+                  <span class="icon">
+                    <i class="fas fa-sign-out-alt " style="font-size: 18px"></i>
+                    <span class="text">Logout</span>
+                  </span>
+
+                </button>
+              </mat-menu>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

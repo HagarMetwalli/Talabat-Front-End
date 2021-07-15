@@ -1,0 +1,235 @@
+.offers{
+
+  font-weight: bold;
+  font-size: 45px;
+  color: #FFF;
+  height: 50px;
+  padding: 55px;
+  font-family: 'Roboto';
+  letter-spacing: 1px;
+}
+.offerBody{
+   position: relative;
+   top: 0;
+}
+.modal-content {
+    margin-top: 12rem;
+    width: 800px;
+    position: relative;
+    right: 230px;
+}
+#Header{
+  width: 1140px;
+  height: 350px; 
+  background: url(../../../assets/offers.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  margin: 0 auto;
+  color: rgb(255, 90, 0);
+  /* position: absolute;
+  right: 160px; */
+}
+#info{
+  margin-top: 60px;
+  margin-bottom: 60px;
+  height: 300px;
+  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+.promo-img {
+  position: relative;
+    top: 0px;
+    left: 332px;
+}
+
+.coupon-img {
+   position: relative;
+   left: 75rem;
+}
+.mat-tab-labels {
+   display: flex;
+   justify-content: space-evenly;
+}
+.mat-tab-label .mat-tab-label-content {
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   white-space: nowrap;
+   color: black;
+   font-size: 20px;
+   font-style: normal;
+   font-weight: 30px;
+}
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+   background-color:#FF5A00;
+}
+.image{
+   width: 150px;
+   height: 150px;
+   border-radius: 100px;
+}
+.mat-h4, .mat-subheading-1, .mat-typography h4 {
+   font: 400 15px/24px Roboto, "Helvetica Neue", sans-serif;
+   margin-left: 33px;
+}
+.parent{
+   width: 200px;
+   height: 190px;
+   position:relative;
+   display: inline-block;
+   margin: 20px;
+   align-items: center;
+   align-content: center;
+   margin-left: 50px;
+}
+.child {
+   transition: all .5s;
+   
+}
+.parent:hover{
+   transform: scale(1.2);
+   cursor: pointer;
+}
+
+
+
+
+.restaurant-box {
+   background: #fff none repeat scroll 0 0;
+   border-bottom: 1px solid #d0d0d0;
+   box-shadow: 0 10px 22px #d0d0d0;
+   display: inline-block;
+   margin-bottom: 30px;
+   margin-top: 30px;
+   padding-bottom: 10px;
+   border-radius: 15px;
+   font-family: 'Calibri', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+   transition: all 0.25s ease-in-out 0s;
+   width: 275px;
+   cursor: pointer;
+}
+.restaurant-box .restaurant-thumb {
+   position: relative;
+   overflow: hidden;
+   /* display: block; */
+   border-top-left-radius: 15px;
+   border-top-right-radius: 15px;
+   
+}
+
+.restaurant-box .restaurant-overlay {
+   background-position: 40% center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   width: 100%;
+   height: 180px;
+   position: relative;
+   overflow: hidden;
+   border-radius: 0;
+   transition: all 0.25s ease-in-out 0s;
+}
+
+
+.restaurant-box:hover {
+   transform: scale(1.06);
+}
+
+.restaurant-box .restaurant-caption {
+   width: 100%;
+   padding: 10px;
+   /* display: block; */
+}
+.restaurant-box .restaurant-caption a {
+   width: 100%;
+   font-size: 2rem;
+   font-weight: 600;
+   color: #ff5a00;
+   text-decoration: none; 
+}
+.restaurant-caption .restaurant-review-box {
+   position: absolute;
+   left: 20px;
+   top: 10px;
+   font-size: 12px;
+   color: #fff;
+   font-family: poppins;
+   font-weight: 500;
+   padding: 1px 10px;
+   letter-spacing: 1px;
+   z-index: 1;
+   display: block;
+}
+
+.restaurant-caption .restaurant-review-box .review{
+   padding: 8px;
+   background-color: #ff5a00;
+   border-radius: 8px;
+   color: #fff;
+}
+
+.restaurant-caption .restaurant-review-box .review .review-icon { 
+   font-size: 15px; 
+   font-family: 'Calibri', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+.main-recipe {
+   clear: both;
+   display: block;
+}
+
+.main-recipe-icon { 
+   color: #ff5a00; 
+   margin-right: 10px;
+}
+
+.main-recipe-name {
+   margin-left: 5px;
+   font-size: 18px;
+   color: #222;
+}
+
+.main-recipe, .restaurant-info {
+   display: flex;
+   padding-top: 10px;
+   padding-bottom: 5px;
+   font-size: 15px;
+}
+
+.main-recipe, .restaurant-info span {
+   font-size: 15px;
+   color: #222;
+} 
+
+
+.hidenbtn{
+   display: none;
+}
+
+
+.modal-content {
+   margin-top: 12rem;
+}
+
+
+.mat-tab-body-content {
+   height: 100%;
+   overflow: hidden!important;
+}
+.pag{
+   width: 300px;
+   margin-left:430px;
+}
+.mat-h4, .mat-subheading-1, .mat-typography h4 {
+
+   font-size: 2rem;
+   color: #FF5A00; 
+   margin: 0px;
+}
+.modal-body:hover{
+   cursor: pointer;
+}

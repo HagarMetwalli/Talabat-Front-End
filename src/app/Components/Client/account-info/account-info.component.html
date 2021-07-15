@@ -1,1 +1,123 @@
-<p>account-info works!</p>
+<div class="tab-pane active" id="profile">
+
+  <form class="form-horizontal">
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="ex: blabla@bla.bla" 
+        [value]="c.clientEmail" disabled>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fname" class="col-sm-2 control-label">First Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="fname" placeholder="ex: ahmed" 
+        name="fname" [(ngModel)]="c.clientFname">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lname" class="col-sm-2 control-label">Last Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="lname" placeholder="ex: atef" 
+        [(ngModel)]="c.clientLname" >
+      </div>
+    </div>
+
+   <div class="form-group">
+    <label for="lname" class="col-sm-2 control-label">Gender</label>
+    <div class="toggle-radio-buttonstyles__RadioButtonsContainer-wc2gzj-0 cgoWNg">
+      <div class="radio-item">
+        <input type="radio" class="form-control" id="radioMale" name="gender" value="male">
+        <label class="m-0 f-14 text-center py-2 px-4 b-a" for="radioMale">Male</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" class="form-control" id="radioFemale" name="gender" value="female" checked="">
+        <label class="m-0 f-14 text-center py-2 px-4 b-a" for="radioFemale">Female</label>
+      </div>
+    </div>
+   </div>
+
+    <!-- <div class="form-group d-flex mb-3">
+      <label for="gender" class="col-2">Gender</label>
+      <label for="gender" class="col-2">{{this.getClientGender()}}</label> -->
+      <!-- <button class="btn btn-light" disabled>Male</button> -->
+      <!-- <button class="btn btn-dark">Female</button> -->
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="genderMale" id="genderMale">
+        <label class="form-check-label" for="genderMale">
+          Male
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input m-1" type="radio" name="genderFemale" id="genderFemale">
+        <label class="form-check-label" for="genderFemale">
+          Female
+        </label>
+      </div> -->
+    <!-- </div> -->
+
+    <div class="form-group">
+      <label for="dob" class="col-sm-2 control-label">Date of birth</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="lname" placeholder="ex: 21/6/2021" 
+        [(ngModel)]="c.clientDateOfBirth" disabled >
+      </div>
+    </div>
+
+    <!-- <div class="form-group d-flex mb-4">
+      <label for="dob" class="col-2 m-auto">Date of birth</label> -->
+      <!-- <input type="date" class="form-control" id="dob" aria-describedby="fullNameHelp" /> -->
+      <!-- <label class="form-control">{{this.c.clientDateOfBirth}}</label>
+    </div> -->
+
+    <div class="form-footer">
+      <div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" name="getSubNewsValue" [(ngModel)]="getSubNewsValue"
+            id="flexCheckDefault" checked>
+          <label class="form-check-label" for="flexCheckDefault" style="margin-left: 10px;">
+            Subscribe to our Newsletter
+          </label>
+        </div>
+
+        <div class="form-check mb-4">
+          <!-- <input class="form-check-input" type="checkbox" [checked]="getSubSMSValue" id="flexCheckDefault"> -->
+          <input class="form-check-input" type="checkbox" name="getSubSMSValue" [(ngModel)]="getSubSMSValue"
+            id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault" style="margin-left: 10px;">
+            Subscribe to SMS
+          </label>
+        </div>
+      </div>
+      <button type="submit" (click)="onSubmit(modalOpen)" class="btn btn-success ml-5">UPDATE
+        <!-- <button type="button" #modalOpen class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          hidden>
+        </button> -->
+      </button> 
+
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update Confirmation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Updated Successfully!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </form>
+</div>

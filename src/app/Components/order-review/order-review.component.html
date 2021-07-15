@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="row text-center">
+  <div class='container'>
+    <h2>Rating Order</h2>
+    <div class="panel panel-primary">
+      <div class="table-responsive m-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Order</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td>
+                {{item.Quest}}
+              </td>
+              <td>
+                <app-rating [rating]='item.rating' [itemId]='item.id' (ratingClick)='ratingComponentClick($event)'>
+                </app-rating>
+              </td>
+              <td>
+                {{item.rating}} Stars
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <textarea [(ngModel)]="comment"></textarea>
+      </div>
+    </div>
+    <button (click)="onSubmit()" class="btn-success" *ngIf="flag">submit</button>
+    <p *ngIf='ratingClicked'>The order {{itemIdRatingClicked}} has been given {{ratingClicked}} stars</p>
+    <p>If you want to review order Items <a [routerLink]="['/review-orderitems',orderId,orderReviewId]"
+        routerLinkActive="router-link-active">click here!</a></p>
+  </div>
+</div>

@@ -1,0 +1,583 @@
+
+    html, body { height: 100%; }
+
+    html {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 150%;
+        line-height: 1.4;
+        outline: none
+    }
+
+    body { margin: 0; }
+
+    .video-header {
+        width: 1415px ;
+        height: 625px;
+        /* background-color: rgba(rgba(88, 85, 85, 0.288), 0.66); */
+        overflow: hidden;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    video {
+        object-fit: cover;
+        /* width: 100vw; */
+        /* height: 100vh; */
+        width: 1415px;
+        height: 625px;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .video-header .overlay {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 2;
+        background: rgb(89, 90, 89);
+        /* opacity: 0.88; */
+    }
+
+    .viewport-header {
+        position: relative;
+        height: 100vh;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    nav {
+        background: 0 0;
+        font-size: 16px;
+        padding: 0px 0;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        position: relative;
+        top: -90px;
+        clear: both;
+    }
+
+    .tlb-logo {
+        width: 160px;
+        height: auto;
+        cursor: pointer
+    }
+
+    .site-lang {
+        width: 30px;
+        height: 30px;
+    }
+
+    .btnvendorportal {
+        width: 152px;
+        height: 48px;
+        cursor: pointer;
+        color: #fff;
+        background: 0 0;
+        font-size: 16px;
+        padding: 10px 24px;
+        border-radius: 8px;
+        border: solid 2px #ff5a00;
+        text-decoration: none;
+        margin-left: 30px;
+    }
+
+    .btnvendorportal a {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        transition: color .1s linear;
+    }
+
+    .header-left {
+        margin-top: 60px;
+        position: relative;
+        top: -150px;
+        max-width: 96%;
+    }
+
+    .header-left h1 {
+        font-weight: 500;
+        font-size: 40px;
+        color: #fff;
+        text-align: left;
+        line-height: 1.1;
+    }
+
+    .header-left h3 {
+        color: #ff5a00;
+        text-align: left;
+    }
+
+    .under-nav {
+        display: block;
+        position: relative;
+        top: 100px;
+    }
+
+    .header-right {
+        margin-top: 50px;
+        position: relative;
+        top: -160px;
+        left: 10px;
+        border-radius: 5px;
+        /* max-width: 4%; */
+    }
+
+    /*custom font*/
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+    /*
+    body {
+        font-family: montserrat, arial, verdana;
+    } */
+
+    /*form styles*/
+    #msform {
+        width: 400px;
+        margin: 50px auto;
+        text-align: center;
+        position: relative;
+    }
+
+    #msform fieldset {
+        background: white;
+        border: 0 none;
+        border-radius: 3px;
+        box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+        padding: 20px 30px;
+        box-sizing: border-box;
+        width: 80%;
+        margin: 0 16%;
+
+        /*stacking fieldsets above each other*/
+        position: relative;
+    }
+
+    /*Hide all except first fieldset*/
+    #msform fieldset:not(:first-of-type) {
+        display: none;
+    }
+
+    .form-control {
+        box-shadow: inset 0 0px 1px rgb(0 0 0 / 8%);
+    }
+
+    /*inputs*/
+    #msform input, #msform select {
+        padding: 15px;
+        /* border: 1px solid #ccc; */
+        border: none;
+        border-bottom: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: montserrat;
+        color: #2C3E50;
+        font-size: 13px;
+        outline: none;
+    }
+
+    /*buttons*/
+    #msform .action-button {
+        width: 100%;
+        /* background: #27AE60; */
+        background: #ff5a00;
+        font-weight: bold;
+        color: white;
+        border: 0 none;
+        border-radius: 3px;
+        cursor: pointer;
+        padding: 10px 5px;
+        margin: 10px 5px;
+    }
+
+    #msform .action-button:hover, #msform .action-button:focus {
+        box-shadow: 0 0 0 2px white, 0 0 0 3px #ff5a00;
+    }
+
+    /*headings*/
+    .fs-title {
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #ff5a00;
+        margin-bottom: 10px;
+    }
+
+    .fs-subtitle {
+        font-weight: normal;
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    /*progressbar*/
+    #progressbar {
+        margin-bottom: 30px;
+        overflow: hidden;
+        /*CSS counters to number the steps*/
+        counter-reset: step;
+    }
+
+    #progressbar li {
+        list-style-type: none;
+        color: white;
+        text-transform: uppercase;
+        font-size: 9px;
+        width: 33.33%;
+        float: left;
+        position: relative;
+    }
+
+    #progressbar li:before {
+        content: counter(step);
+        counter-increment: step;
+        width: 20px;
+        line-height: 20px;
+        display: block;
+        font-size: 10px;
+        color: #333;
+        background: white;
+        border-radius: 3px;
+        margin: 0 auto 5px auto;
+    }
+
+    /*progressbar connectors*/
+    #progressbar li:after {
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: white;
+        position: absolute;
+        left: -50%;
+        top: 9px;
+        z-index: -1; /*put it behind the numbers*/
+    }
+
+    #progressbar li:first-child:after {
+        /*connector not needed before the first step*/
+        content: none;
+    }
+
+    /*marking active/completed steps green*/
+    /*The number of the step and the connector before it = green*/
+    #progressbar li.active:before,  #progressbar li.active:after{
+        background: #ff5a00;
+        color: white;
+    }
+
+    .partner-benefits {
+        text-align: center;
+        justify-content: center;
+        margin-top: 150px;
+        margin-bottom: 100px ;
+    }
+
+    .partner-benefits h1 {
+        margin-bottom: 50px;
+        color: #000;
+    }
+
+    .partner-benefits .first-benefit {
+        text-align: right;
+        position: relative;
+        left: 75px;
+    }
+
+    .partner-benefits .third-benefit {
+        text-align: left;
+        position: relative;
+        right: 75px;
+    }
+
+    .partner-benefits span{
+        padding: 0;
+        margin: 0;
+        color: rgba(83, 37, 37, 0.54);
+        font-size: 18px;
+    }
+
+    #delivery-benefits {
+        width: 100%;
+        height: 750px;
+        background-color: #f2f7fa;
+        margin-bottom: 250px;
+    }
+
+    .delivery-benefits {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .delivery-benefits h1 {
+        padding-top: 80px;
+        padding-bottom: 50px;
+        color: #000;
+    }
+
+    .delivery-group-benefits {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+
+    .delivery-benefits h3 {
+        color: #000;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 0 30px;
+    }
+
+    .delivery-benefits img{
+        min-width: 100%;
+        height: auto;
+        object-fit: cover;
+        position: relative;
+        top: 0;
+        left: -15px;
+        display: block;
+        margin: 0 auto 40px;
+        width: 327px;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .delivery-benefits span {
+        line-height: 1.5;
+        font-size: 18px;
+    }
+
+    .delivery-benefits .first-dbenefit, .seconde-dbenefit, .third-dbenefit {
+        width: 28%;
+        height: 460px;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        margin-right: 20px;
+        border-bottom: 5px solid #ff5a00;
+        box-shadow: rgb(0 0 0 / 20%) 0 1px 5px 0, rgb(0 0 0 / 12%) 0 3px 1px -2px;
+    }
+
+    .talabtRiders-in-number {
+        margin: 0 auto;
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+    .talabtRiders-in-number .fleet-img, .fleet-txt {
+        float: left;
+        vertical-align: middle;
+        justify-content: center;
+    }
+
+    .talabtRiders-in-number .fleet-img {
+        margin-right: 80px;
+    }
+
+    .talabtRiders-in-number .fleet-txt {
+        font-weight: bolder;
+        position: relative;
+        top: 70px;
+    }
+
+
+    #talabat-pipline {
+        width: 100%;
+        height: auto;
+        background-image: url('../../../../assets/partner/talabt-pipline-bg.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        margin-bottom: 120px;
+        margin-top: -50px;
+    }
+
+    .talabat-pipline {
+        text-align: center;
+        justify-content: center;
+        margin: 50px;
+    }
+
+    .talabat-pipline h1 {
+        padding-top: 0px;
+        padding-bottom: 50px;
+        color: #000;
+    }
+
+    .talabat-group-pipline {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+
+    .talabat-pipline h3 {
+        color: #000;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 0 30px;
+    }
+
+    .talabat-pipline img{
+        /* min-width: 100%; */
+        object-fit: cover;
+        position: relative;
+        display: block;
+        width: auto;
+        height: 161px;
+        margin: 0 auto;
+    }
+
+    .talabat-pipline span {
+        line-height: 1.5;
+        font-size: 18px;
+    }
+
+    .join-action {
+        padding-top: 0px;
+        padding-bottom: 50px;
+        color: #000;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .join-action h1 {
+        font-size: 44px;
+        font-weight: 700;
+        color: rgba(0, 0, 0, .85);
+        text-align: center;
+    }
+
+    .join-action button {
+        line-height: 52px;
+        border-radius: 8px;
+        width: 100%;
+        background-color: #ff5a00;
+        border: 0;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        max-width: 400px;
+        display: block;
+        margin: 50px auto 80px;
+        color: #fff;
+        box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.5);
+
+    }
+
+    .join-action a {
+        color: #fff;
+        text-decoration: none;
+
+    }
+
+    .join-action button:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 50%;
+      left: 50%;
+      transform-style: flat;
+      transform: translate3d(-50%, -50%, 0);
+      background: rgba(255, 255, 255, .1);
+      border-radius: 100%;
+      transition: width 0.3s ease, height 0.3s ease;
+   }
+   .join-action button:focus, .join-action button:hover {
+      background: #f16418;
+   }
+   .join-action button:active:after {
+      width: 200px;
+      height: 200px;
+   }
+
+
+    footer {
+        height: 381px;
+        font-size: 17px;
+        color: #fff;
+        background-color: #1f2532;
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grid-footer {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+
+    .grid-footer .footer-logo {
+        width: 160px;
+        height: auto;
+    }
+
+    .link-header {
+        font-weight: 700;
+        margin-bottom: 24px;
+        font-size: 16px;
+    }
+
+    .appStores {
+        display: flex;
+        -webkit-box-pack: end;
+        justify-content: flex-end;
+    }
+
+    .footer-upperline {
+        margin-bottom: 40px;
+    }
+
+    .footer-upperline a {
+        padding: 10px 0;
+        line-height: 32px;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #FFF;
+    }
+
+    hr {
+        opacity: 0.12;
+        background-color: #d8d8d8;
+    }
+
+    .footer-underline {
+        opacity: .6;
+        font-size: 14px;
+        line-height: 1.43;
+        color: #fff;
+        display: flex;
+        margin-block-start: 40px;
+        margin-block-end: 40px;
+        text-align: unset !important;
+    }
+
+    .social-media {
+        width: 255px;
+        display: flex !important;
+    }
+
+    .pLoginEffect {
+    border-color: #f1c40f;
+    color: #fff;
+    background-image: linear-gradient(45deg, #f1c40f 50%, transparent 50%);
+    background-position: 100%;
+    background-size: 400%;
+    transition: background 300ms ease-in-out;
+    }
+
+    .pLoginEffect:hover {
+        background-position: 0;
+    }
