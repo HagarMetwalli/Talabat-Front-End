@@ -151,7 +151,7 @@ import { TopPageScrollComponent } from './Components/top-page-scroll/top-page-sc
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCUzKQYbhsvR6K__DdrqYTJiSnuXpDNsWE',
+      apiKey: 'AIzaSyCUzKQYbhsvR6K__xxxxxxxxxxxxxxxxxx',
       libraries: ['places'],
     }),
     MatExpansionModule,
